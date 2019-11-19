@@ -3,14 +3,11 @@ package com.sxp.patMag.entity;
 
 import lombok.Builder;
 import lombok.Data;
-
 /**
- * @description:
- * @author: suixingpay<five@suixingpay.com>
- * @date: 2019/11/18 19:11
- * @version: V1.0
+ * Author： Jude
+ * Date:2019/11/19
+ * Time:18:18
  */
-
 public class Patent {
     /** 专利id **/
     private String patentId;

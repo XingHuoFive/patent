@@ -1,43 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="abf765cf-e148-4a6e-9d03-aadde9a0cad4" name="Default Changelist" comment="1.0.0">
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/LoginMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/LoginServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/LoginMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
+    <list default="true" id="abf765cf-e148-4a6e-9d03-aadde9a0cad4" name="Default Changelist" comment="1.8999">
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/GeneralResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/SystemApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/SystemApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/controller/TbPatentController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/dao/TbPatentMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/entity/TbPatent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/service/TbPatentService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/service/serviceImpl/TbPatentServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/resources/main/mapper/TbPatentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/TbPatentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/TbPatentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/PatentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/TbPatent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/TbPatentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/TbPatentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/PatentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/TbPatentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/PatentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/util/getAjax.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/PatentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/PatentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/PatentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/PatentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/JsonHashMap.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -89,55 +70,70 @@
       </state>
     </system>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="patentManage" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="26" selection-start-line="26" selection-end-line="27" />
+            <state relative-caret-position="118">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/PatentMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/PatentServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/LoginServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="152">
-              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/LoginMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -151,6 +147,7 @@
         <option value="Class" />
       </list>
     </option>
+    <option name="SCHEME" value="Project" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -170,14 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/navbar.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/tab.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/video.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/service/LoginService.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/entity/Login.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/dao/LoginMapper.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/css/login.css" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/css/style.css" />
         <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/service/serviceImpl/LoginServiceImpl.java" />
         <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/controller/LoginController.java" />
@@ -213,14 +202,22 @@
         <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/TbPatent.java" />
         <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/TbPatentController.java" />
         <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/user.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/PatentMapper.xml" />
         <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/User.java" />
         <option value="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/LoginMapper.xml" />
         <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/LoginServiceImpl.java" />
         <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java" />
         <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/LoginMapper.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/getAjax.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/JsonHashMap.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/TaotaoResult.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/GeneralResult.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/PatentMapper.xml" />
         <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/PatentMapper.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/PatentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java" />
       </list>
     </option>
   </component>
@@ -414,21 +411,21 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\idea\ideaProjects\patentManage\patentManageSystem\src\main\java\com\sxp\patMag\util" />
       <recent name="D:\idea\ideaProjects\patentManage\patentManageSystem\src\main\resources\mapper" />
       <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\java\com\sxp\stuMag\util" />
       <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\resources\static\js" />
-      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\resources\static\images" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.sxp.patMag.dao" />
@@ -597,7 +594,7 @@
       <workItem from="1574144365624" duration="2699000" />
       <workItem from="1574147122055" duration="719000" />
       <workItem from="1574147867888" duration="1049000" />
-      <workItem from="1574149442297" duration="1984000" />
+      <workItem from="1574149442297" duration="7975000" />
     </task>
     <task id="LOCAL-00001" summary="1.0.0">
       <created>1574147434170</created>
@@ -606,28 +603,42 @@
       <option name="project" value="LOCAL" />
       <updated>1574147434170</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1.0.1">
+      <created>1574151492894</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574151492894</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1.8999">
+      <created>1574152958660</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574152958660</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24177000" />
+    <option name="totallyTimeSpent" value="30168000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="35" width="1384" height="740" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7580645" visible="true" weight="0.2677225" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6004902" visible="true" weight="0.2677225" />
       <window_info id="Structure" order="1" sideWeight="0.24193548" side_tool="true" weight="0.25660378" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Favorites" order="6" sideWeight="0.39950982" side_tool="true" weight="0.2677225" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32730263" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49773756" weight="0.32894737" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3963816" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49773756" visible="true" weight="0.32894737" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4984917" weight="0.26151314" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -635,7 +646,7 @@
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32840723" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5022625" side_tool="true" weight="0.4194079" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5015083" side_tool="true" weight="0.3963816" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.16548797" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
@@ -658,13 +669,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1.0.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.0.0" />
+    <MESSAGE value="1.0.1" />
+    <MESSAGE value="1.8999" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.8999" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/button.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/icheck.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/video.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/tab.jsp" />
     <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/navbar.jsp" />
     <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/nav.jsp" />
     <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/city.jsp" />
@@ -726,13 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -747,65 +749,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/PatentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/PatentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="69" column="25" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="25" />
-          <folding>
-            <element signature="e#1738#1739#0" expanded="true" />
-            <element signature="e#1815#1816#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/LoginMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="4" column="80" selection-start-line="4" selection-start-column="73" selection-end-line="4" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/PatentMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="104" lean-forward="true" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="104" />
         </state>
       </provider>
     </entry>
@@ -823,16 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/LoginMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -843,17 +780,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java">
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="26" selection-start-line="26" selection-end-line="27" />
+        <state relative-caret-position="86">
+          <caret line="69" column="25" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="25" />
+          <folding>
+            <element signature="e#1738#1739#0" expanded="true" />
+            <element signature="e#1815#1816#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/JsonHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="18" column="25" lean-forward="true" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/PatentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="49" lean-forward="true" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/GeneralResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding>
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#650#651#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/s.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/d.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" selection-start-line="4" selection-end-line="8" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+        <state relative-caret-position="133">
+          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/PatentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/PatentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -907,11 +951,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Web|main|studentManage|studentManage</last-edited>
+          <last-edited>patentManage</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
