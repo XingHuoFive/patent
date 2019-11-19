@@ -1,0 +1,32 @@
+spring:
+#  jackson:
+#    serialization:
+#      FAIL_ON_EMPTY_BEANS: true
+  devtools:
+    restart:
+      additional-paths: src/main/java
+      enabled: true
+
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/jsp/
+#      suffix: .jsp
+#      path-pattern: /static/**
+  datasource:
+    url: jdbc:mysql://39.106.157.58:3306/wuzu?useUnicode=true&amp;characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.sxp.patMag.entity
+  configuration:
+    mapUnderscoreToCamelCase: true
+
+
+
+
+
+
+
+

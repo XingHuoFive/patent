@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="abf765cf-e148-4a6e-9d03-aadde9a0cad4" name="Default Changelist" comment="1.0.0">
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileContent/fileContent.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/SystemApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/controller/TbPatentController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/dao/TbPatentMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/entity/TbPatent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/service/TbPatentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/service/serviceImpl/TbPatentServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/util/getAjax.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/mapper/TbPatentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/css/begtable.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/css/global.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/css/layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/css/table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/datas/nav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/datas/nav.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/datas/nav_content.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/datas/nav_member.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/btnbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/btnbg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/btnbg2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/buttonbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/c01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/c02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/c03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/cbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/clist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/close1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/cloud.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/d01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/d02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/d03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/d04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/d05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/d06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/d07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/diskbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/dp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/f01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/f02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/f03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/f04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/f05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/f06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/help.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/i01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/i02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/i03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/i04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/i05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/i06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/i07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/i08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/i09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/iadd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ibtnbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ico01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ico02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ico03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ico04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ico05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ico06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/icon01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/icon02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/icon03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/icon04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/icon05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/icon06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/img15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/inputbg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/itabbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/itabbg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/leftico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/leftico01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/leftico02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/leftico03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/leftico04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/leftline.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/leftmenubg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/lefttop.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/libg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/line.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/line1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/list.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/list1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/list2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/loginbg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/loginbg2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/loginbg3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/logininfo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/loginlogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/loginpassword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/loginsj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/loginuser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/logo-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/msg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/navbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/next.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/pre.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/px.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/righttop.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/rlist.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/sj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/sun.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/t01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/t02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/t03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/t04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/t05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/tbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/tcbg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/th.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ticon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/time.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/toolbg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/topbg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/topleft.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/topright.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ub1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/uew_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/uew_icon_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/ulist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/images/userbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/PIE.htc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/area.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/begtable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/city.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/cloud.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/layout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/navbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/tab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/js/validator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/code.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/flat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/flat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/flat@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/flat/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/futurico/futurico.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/futurico/futurico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/futurico/futurico@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/icheck.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/line.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/line.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/line@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/line/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/minimal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/minimal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/minimal@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/minimal/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/polaris/polaris.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/polaris/polaris.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/polaris/polaris@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/square.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/square.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/square@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/icheck/square/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/laydate/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/laydate/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/layer/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/layer/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/layer/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/layer/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/css/modules/layer/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/10.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/11.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/12.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/13.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/14.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/15.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/16.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/17.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/18.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/19.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/20.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/22.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/23.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/24.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/25.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/26.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/27.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/28.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/29.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/30.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/31.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/32.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/33.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/34.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/35.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/36.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/37.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/38.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/39.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/4.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/40.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/41.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/42.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/43.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/44.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/45.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/46.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/47.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/48.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/49.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/50.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/51.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/52.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/53.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/54.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/55.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/56.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/57.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/58.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/59.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/6.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/60.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/61.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/62.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/63.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/64.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/65.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/66.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/67.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/68.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/69.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/7.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/70.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/71.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/8.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/images/face/9.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/dest/layui.all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/dest/layui.mod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/lib/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/code.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/flow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/layedit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/laypage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/lay/modules/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/modules/icheck.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/layui/modules/pjax.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/code.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/flat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/flat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/flat@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/flat/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/futurico/futurico.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/futurico/futurico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/futurico/futurico@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/icheck.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/line.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/line.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/line@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/line/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/minimal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/minimal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/minimal@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/minimal/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/polaris/polaris.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/polaris/polaris.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/polaris/polaris@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/square.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/square.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/square@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/icheck/square/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/laydate/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/laydate/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/layer/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/layer/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/layer/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/layer/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/css/modules/layer/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/10.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/11.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/12.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/13.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/14.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/15.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/16.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/17.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/18.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/19.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/20.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/22.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/23.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/24.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/25.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/26.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/27.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/28.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/29.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/30.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/31.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/32.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/33.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/34.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/35.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/36.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/37.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/38.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/39.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/4.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/40.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/41.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/42.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/43.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/44.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/45.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/46.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/47.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/48.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/49.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/50.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/51.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/52.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/53.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/54.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/55.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/56.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/57.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/58.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/59.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/6.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/60.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/61.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/62.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/63.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/64.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/65.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/66.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/67.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/68.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/69.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/7.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/70.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/71.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/8.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/images/face/9.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/dest/layui.all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/dest/layui.mod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/lib/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/code.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/flow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/layedit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/laypage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/lay/modules/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/modules/icheck.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/plugins/layui/modules/pjax.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/resources/main/static/temp/edit-form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/build/tmp/war/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/TbPatentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/TbPatentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/TbPatent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/TbPatentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/TbPatentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/getAjax.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/TbPatentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path="$PROJECT_DIR$/studentManageSystem/.gradle/" />
+    <ignored path="$PROJECT_DIR$/studentManageSystem/build/" />
+    <ignored path="$PROJECT_DIR$/../StuManage/StuManage/.gradle/" />
+    <ignored path="$PROJECT_DIR$/../StuManage/StuManage/build/" />
+    <ignored path="$PROJECT_DIR$/../StuManage/StuManage/StuManageSystem/.gradle/" />
+    <ignored path="$PROJECT_DIR$/../StuManage/StuManage/StuManageSystem/build/" />
+    <ignored path="$PROJECT_DIR$/patentManageSystem/.gradle/" />
+    <ignored path="$PROJECT_DIR$/patentManageSystem/build/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/studentManageSystem">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>../../../resources</find>
+      <find>../images/</find>
+      <find>index.jsp</find>
+      <find>控</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>/static/images/</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/layout.html" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/login.html" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/controller/WebAppAdapter.java" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/auxiliar.html" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/begtable.html" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/begtable.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/city.html" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/icheck.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/layout.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/nav.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/navbar.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/tab.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/video.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/service/LoginService.java" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/entity/Login.java" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/dao/LoginMapper.java" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/css/login.css" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/css/style.css" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/service/serviceImpl/LoginServiceImpl.java" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/login.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/table.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/datas/nav.json" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/datas/nav.js" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/mapper/StudentMapper.xml" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/controller/IndexController.java" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/main.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/selectStudent.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/updateStudent.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/entity/Student.java" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/addStudent.jsp" />
+        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/controller/StudentController.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/TomcatConfig.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/StudentController.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/entity/tbPatent.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/tbPatentController.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/service/serviceImpl/TbPatentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/service/TbPatentService.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/TbPatentController.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/entity/TbPatent.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/TbPatentMapper.xml" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/dao/TbPatentMapper.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/TbPatentMapper.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/TbPatentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/TbPatentController.java" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/TbPatent.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/settings.gradle" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="176" />
+    <option name="y" value="31" />
+    <option name="width" value="1730" />
+    <option name="height" value="925" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="patMag" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\resources\static" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sxp.stuMag.entity" />
+      <recent name="com.sxp.stuMag.service.serviceImpl" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\webapp\WEB-INF\jsp" />
+      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\java\com\sxp\stuMag\util" />
+      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\resources\static\js" />
+      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\resources\static\images" />
+      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\resources\static\css" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SystemApplication (1)">
+    <configuration name="studentManage [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="studentManage [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="studentManage [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="studentManage [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="SystemApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="patentManage.patentManageSystem.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sxp.patMag.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sxp.patMag.SystemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="studentManage.patentManageSystem.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sxp.patMag.SystemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="studentManage.patentManageSystem.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sxp.patMag.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sxp.patMag.SystemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.studentManage [bootRun]" />
+      <item itemvalue="Gradle.studentManage [clean]" />
+      <item itemvalue="Gradle.studentManage [run]" />
+      <item itemvalue="Gradle.studentManage [build]" />
+      <item itemvalue="Spring Boot.SystemApplication" />
+      <item itemvalue="Spring Boot.SystemApplication (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SystemApplication (1)" />
+        <item itemvalue="Gradle.studentManage [build]" />
+        <item itemvalue="Gradle.studentManage [bootRun]" />
+        <item itemvalue="Gradle.studentManage [clean]" />
+        <item itemvalue="Gradle.studentManage [run]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abf765cf-e148-4a6e-9d03-aadde9a0cad4" name="Default Changelist" comment="" />
+      <created>1572780347380</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572780347380</updated>
+      <workItem from="1572780349488" duration="1056000" />
+      <workItem from="1572781619799" duration="5007000" />
+      <workItem from="1572793061743" duration="11663000" />
+      <workItem from="1574144365624" duration="2699000" />
+      <workItem from="1574147122055" duration="261000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="20686000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="141" y="25" width="1384" height="740" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7580645" visible="true" weight="0.260181" />
+      <window_info id="Structure" order="1" sideWeight="0.24193548" side_tool="true" weight="0.25660378" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32840723" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.049342107" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39737275" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.32840723" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32840723" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067025" side_tool="true" weight="0.32956153" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.16548797" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Messages" order="15" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.3297587" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Gradle" order="6" weight="0.5279035" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="10" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1.0.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0.0" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1346">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/standardSchemas/xhtml1-transitional.dtd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="1015" column="10" selection-start-line="1015" selection-start-column="10" selection-end-line="1015" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2382">
+          <caret line="1043" column="38" lean-forward="true" selection-start-line="1043" selection-start-column="38" selection-end-line="1043" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://Y:/jdk1.822/jre/lib/rt.jar!/sun/nio/ch/ServerSocketChannelImpl.class" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.5.23/e5c70a402738f0ab5153e11b16ec28fb5eb8da2/tomcat-embed-core-8.5.23-sources.jar!/org/apache/tomcat/util/net/NioEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="458" column="31" lean-forward="true" selection-start-line="458" selection-start-column="31" selection-end-line="458" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/util/getAjax.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/button.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/icheck.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/video.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/tab.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/navbar.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/nav.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/city.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/form.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/auxiliar.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/layout.jsp" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/datas/nav_content.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/datas/nav_member.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/table.jsp" />
+    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/begtable.jsp" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/datas/nav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/datas/nav.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/main.jsp" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/MyInterceptor.java" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/selectStudent.jsp" />
+    <entry file="jar://Y:/jdk1.822/jre/lib/rt.jar!/sun/nio/ch/SelectorImpl.class" />
+    <entry file="jar://Y:/jdk1.822/jre/lib/rt.jar!/sun/nio/ch/WindowsSelectorImpl.class" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1463">
+          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1653">
+          <caret line="87" column="44" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/addStudent.jsp" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/updateStudent.jsp" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/TomcatConfig.java" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/LoginController.java" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/IndexController.java" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/WebAppAdapter.java" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/service/serviceImpl/LoginServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/entity/Student.java" />
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/entity/Login.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.13.RELEASE/d225d6480b69dc70a04e332a348b448bf276f7f3/spring-web-4.3.13.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="204" selection-start-line="204" selection-end-line="204" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/TbPatentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/TbPatentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/TbPatentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/TbPatentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/TbPatent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.5.23/e5c70a402738f0ab5153e11b16ec28fb5eb8da2/tomcat-embed-core-8.5.23-sources.jar!/org/apache/coyote/AbstractProcessorLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/TbPatentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web|main|studentManage|studentManage</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.19060403" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
