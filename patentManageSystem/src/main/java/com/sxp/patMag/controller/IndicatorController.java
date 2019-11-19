@@ -1,6 +1,7 @@
 package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.Indicator;
+import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.IndicatorService;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
@@ -25,7 +26,7 @@ public class IndicatorController {
     @GetMapping("/list")
     public GeneralResult list() {
         GeneralResult generalResult = new GeneralResult();
-        List<Indicator> list = indicatorService.list();
+        List<Patent> list = indicatorService.list();
         if (null == list) {
             generalResult.setStatus(-1);
             generalResult.setMsg("失败");
@@ -37,23 +38,23 @@ public class IndicatorController {
         return generalResult;
     }
 
-    @GetMapping("/list/{patentId}")
-    public GeneralResult listByPatentId(@PathVariable String patentId) {
+    @PostMapping("/list")
+    public GeneralResult listByPatentId(@RequestBody Patent patent) {
         GeneralResult generalResult = new GeneralResult();
-        if (patentId == null || "".equals(patentId)) {
+        if (patent == null) {
             generalResult.setStatus(-1);
-            generalResult.setMsg("专利id为空");
+            generalResult.setMsg("查询内容为空");
             return generalResult;
         }
-        List<Indicator> indicators = indicatorService.listByPatentId(patentId);
-        if (null == indicators) {
+        List<Patent> patents = indicatorService.listByPatentId(patent);
+        if (null == patents) {
             generalResult.setStatus(-1);
             generalResult.setMsg("失败");
             return generalResult;
         }
         generalResult.setStatus(1);
         generalResult.setMsg("成功");
-        generalResult.setData(indicators);
+        generalResult.setData(patents);
         return generalResult;
     }
 

@@ -2,6 +2,7 @@ package com.sxp.patMag.service.serviceImpl;
 
 import com.sxp.patMag.dao.IndicatorMapper;
 import com.sxp.patMag.entity.Indicator;
+import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.IndicatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +22,13 @@ public class IndicatorServiceImpl implements IndicatorService {
     private IndicatorMapper indicatorMapper;
 
     @Override
-    public List<Indicator> list() {
-        return indicatorMapper.getIndicatorList();
+    public List<Patent> list() {
+        return indicatorMapper.getPatentList();
     }
 
     @Override
-    public List<Indicator> listByPatentId(String patentId) {
-        return indicatorMapper.getIndicatorListByPatentId(patentId);
+    public List<Patent> listByPatentId(Patent patent) {
+        return indicatorMapper.getPatentListByVO(patent);
     }
 
     @Override
