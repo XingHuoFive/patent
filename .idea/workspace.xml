@@ -1,293 +1,735 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="abf765cf-e148-4a6e-9d03-aadde9a0cad4" name="Default Changelist" comment="1.0.0">
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/LoginMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/LoginServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/LoginMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0-rc-1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="57f8bcd8-799c-4f68-93a1-d7ae4d4e898d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/SystemApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/SystemApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/controller/TbPatentController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/dao/TbPatentMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/entity/TbPatent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/service/TbPatentService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/classes/java/main/com/sxp/patMag/service/serviceImpl/TbPatentServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/build/resources/main/mapper/TbPatentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/TbPatentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/TbPatentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/PatentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/TbPatent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/TbPatentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/TbPatentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/PatentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/TbPatentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/PatentMapper.xml" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
-    <ignored path="$PROJECT_DIR$/studentManageSystem/.gradle/" />
-    <ignored path="$PROJECT_DIR$/studentManageSystem/build/" />
-    <ignored path="$PROJECT_DIR$/../StuManage/StuManage/.gradle/" />
-    <ignored path="$PROJECT_DIR$/../StuManage/StuManage/build/" />
-    <ignored path="$PROJECT_DIR$/../StuManage/StuManage/StuManageSystem/.gradle/" />
-    <ignored path="$PROJECT_DIR$/../StuManage/StuManage/StuManageSystem/build/" />
     <ignored path="$PROJECT_DIR$/patentManageSystem/.gradle/" />
-    <ignored path="$PROJECT_DIR$/patentManageSystem/build/" />
+    <ignored path="$PROJECT_DIR$/patentManageSystem/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
-    <option name="isMigrated" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <task path="$PROJECT_DIR$/studentManageSystem">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="patentManage" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java">
+    <leaf>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="26" selection-start-line="26" selection-end-line="27" />
+            <state relative-caret-position="100">
+              <caret line="80" selection-start-line="80" selection-end-line="80" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/LoginServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java">
+      <file leaf-file-name="SystemApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="133">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/LoginMapper.java">
+      <file leaf-file-name="LoginService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="76">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PatentService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Patent.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Jsp File" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>../../../resources</find>
-      <find>../images/</find>
-      <find>index.jsp</find>
-      <find>控</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-      <replace>/static/images/</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="myGradleHomes">
+      <map>
+        <entry key="$PROJECT_DIR$" value="D:\gradle\gradle-4.4" />
+      </map>
+    </option>
+    <option name="myGradleVersions">
+      <map>
+        <entry key="$PROJECT_DIR$" value="4.4" />
+      </map>
+    </option>
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="patentManage" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="patentManage" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value=":patentManageSystem" />
+                <option name="path" value="$PROJECT_DIR$/patentManageSystem" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="availableTasks">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <list>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the components produced by root project 'patentManage'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="components" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the sub-projects of root project 'patentManage'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in root project 'patentManage'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependentComponents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="classes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'patentManage'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildEnvironment" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Gradle wrapper files." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="wrapper" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs this project as a JVM application" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="run" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles test classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="testClasses" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Javadoc API documentation for the main source code." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="javadoc" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Creates OS specific scripts to run the project as a JVM application." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="startScripts" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the configuration model of root project 'patentManage'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="model" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a jar archive containing the main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="jar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs the project as a distribution as-is." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="installDist" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes main resources." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the tasks runnable from root project 'patentManage' (some of the displayed tasks may belong to subprojects)." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="tasks" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the main distributions" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assembleDist" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Initializes a new Gradle build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="init" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the unit tests." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="test" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependency management declared in project ':patentManageSystem'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencyManagement" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Repackage existing JAR and WAR archives so that they can be executed from the command line using 'java -jar'" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="bootRepackage" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Run the project with support for auto-detecting main class and reloading static resources" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="bootRun" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles main Java source." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates a war archive with all the compiled classes, the web-app content and the libraries." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="war" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the insight into a specific dependency in root project 'patentManage'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencyInsight" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all checks." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="check" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the outputs of this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assemble" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deletes the build directory." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="clean" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles test Java source." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileTestJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all dependencies declared in root project 'patentManage'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes test resources." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays a help message." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="help" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="build" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="findMainClass" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects it depends on." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildNeeded" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Bundles the project as a distribution." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="distTar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Bundles the project as a distribution." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="distZip" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the properties of root project 'patentManage'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="properties" />
+              </ExternalTaskPojo>
+            </list>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/patentManageSystem">
+          <value>
+            <list>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the components produced by project ':patentManageSystem'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="components" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the sub-projects of project ':patentManageSystem'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="classes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in project ':patentManageSystem'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="dependentComponents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all buildscript dependencies declared in project ':patentManageSystem'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="buildEnvironment" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs this project as a JVM application" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="run" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles test classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="testClasses" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Javadoc API documentation for the main source code." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="javadoc" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Creates OS specific scripts to run the project as a JVM application." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="startScripts" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a jar archive containing the main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="jar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the configuration model of project ':patentManageSystem'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="model" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs the project as a distribution as-is." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="installDist" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes main resources." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="processResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the tasks runnable from project ':patentManageSystem'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="tasks" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the main distributions" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="assembleDist" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the unit tests." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="test" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependency management declared in project ':patentManageSystem'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="dependencyManagement" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Repackage existing JAR and WAR archives so that they can be executed from the command line using 'java -jar'" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="bootRepackage" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Run the project with support for auto-detecting main class and reloading static resources" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="bootRun" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles main Java source." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="compileJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates a war archive with all the compiled classes, the web-app content and the libraries." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="war" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the insight into a specific dependency in project ':patentManageSystem'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="dependencyInsight" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all checks." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="check" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the outputs of this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="assemble" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deletes the build directory." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="clean" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles test Java source." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="compileTestJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all dependencies declared in project ':patentManageSystem'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="dependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes test resources." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="processTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays a help message." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="help" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="build" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="findMainClass" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects it depends on." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="buildNeeded" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Bundles the project as a distribution." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="distTar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Bundles the project as a distribution." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="distZip" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the properties of project ':patentManageSystem'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/patentManageSystem" />
+                <option name="name" value="properties" />
+              </ExternalTaskPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/.gradle" value="0" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="3610970296" />
+        <entry key="$PROJECT_DIR$/patentManageSystem/build.gradle" value="2505049368" />
+        <entry key="$PROJECT_DIR$/settings.gradle" value="352353460" />
+      </map>
+    </option>
+    <option name="projectBuildClasspath">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <ExternalProjectBuildClasspathPojo>
+              <option name="modulesBuildClasspath">
+                <map>
+                  <entry key="$PROJECT_DIR$">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="entries">
+                          <list>
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-gradle-plugin/1.5.9.RELEASE/eb1d7232a90469dd12946582bb9a99b84aa632c/spring-boot-gradle-plugin-1.5.9.RELEASE-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-gradle-plugin/1.5.9.RELEASE/4f3d6d5164784c51959db58bfc438c7ee44e0c5c/spring-boot-gradle-plugin-1.5.9.RELEASE.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-loader-tools/1.5.9.RELEASE/61791907844a11bcea7eca8fb8ca853c9a95421a/spring-boot-loader-tools-1.5.9.RELEASE-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-loader-tools/1.5.9.RELEASE/5ce69eaa5709ccff5b4db4a85abfae16affa107a/spring-boot-loader-tools-1.5.9.RELEASE.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/io.spring.gradle/dependency-management-plugin/1.0.3.RELEASE/7bb9ab86474b9ff2e7aa8ea3609878a1750e3f90/dependency-management-plugin-1.0.3.RELEASE-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/io.spring.gradle/dependency-management-plugin/1.0.3.RELEASE/c7fc988680e19cef9bf91de0c39b891e4c8dca2d/dependency-management-plugin-1.0.3.RELEASE.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.13.RELEASE/fc9cf4f489515d429b005ee86ef105a704a94016/spring-core-4.3.13.RELEASE-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.13.RELEASE/eea18d7f4d01f1baa1b6728b678b5a6fe23c61f6/spring-core-4.3.13.RELEASE.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" />
+                          </list>
+                        </option>
+                        <option name="path" value="$PROJECT_DIR$" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                  <entry key="$PROJECT_DIR$/patentManageSystem">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="entries">
+                          <list>
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-gradle-plugin/1.5.9.RELEASE/eb1d7232a90469dd12946582bb9a99b84aa632c/spring-boot-gradle-plugin-1.5.9.RELEASE-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-gradle-plugin/1.5.9.RELEASE/4f3d6d5164784c51959db58bfc438c7ee44e0c5c/spring-boot-gradle-plugin-1.5.9.RELEASE.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-loader-tools/1.5.9.RELEASE/61791907844a11bcea7eca8fb8ca853c9a95421a/spring-boot-loader-tools-1.5.9.RELEASE-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-loader-tools/1.5.9.RELEASE/5ce69eaa5709ccff5b4db4a85abfae16affa107a/spring-boot-loader-tools-1.5.9.RELEASE.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/io.spring.gradle/dependency-management-plugin/1.0.3.RELEASE/7bb9ab86474b9ff2e7aa8ea3609878a1750e3f90/dependency-management-plugin-1.0.3.RELEASE-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/io.spring.gradle/dependency-management-plugin/1.0.3.RELEASE/c7fc988680e19cef9bf91de0c39b891e4c8dca2d/dependency-management-plugin-1.0.3.RELEASE.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.13.RELEASE/fc9cf4f489515d429b005ee86ef105a704a94016/spring-core-4.3.13.RELEASE-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.13.RELEASE/eea18d7f4d01f1baa1b6728b678b5a6fe23c61f6/spring-core-4.3.13.RELEASE.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar" />
+                            <option value="D:/gradle/repository/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" />
+                          </list>
+                        </option>
+                        <option name="path" value="$PROJECT_DIR$/patentManageSystem" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="name" value="patentManage" />
+              <option name="projectBuildClasspath">
+                <list>
+                  <option value="D:/gradle/gradle-4.4/lib/ant-1.9.9.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/ant-launcher-1.9.9.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-base-services-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-base-services-groovy-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-build-cache-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-build-option-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-cli-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-core-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-core-api-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-docs-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-installation-beacon-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-jvm-services-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-kotlin-dsl-0.13.1.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-kotlin-dsl-tooling-builders-0.13.1.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-kotlin-dsl-tooling-models-0.13.1.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-launcher-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-logging-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-messaging-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-model-core-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-model-groovy-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-native-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-persistent-cache-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-process-services-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-resources-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-runtime-api-info-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-tooling-api-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/gradle-wrapper-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/groovy-all-2.4.12.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-announce-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-antlr-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-build-cache-http-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-build-comparison-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-build-init-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-code-quality-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-composite-builds-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-dependency-management-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-diagnostics-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-ear-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-ide-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-ide-native-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-ide-play-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-ivy-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-jacoco-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-javascript-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-language-groovy-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-language-java-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-language-jvm-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-language-native-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-language-scala-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-maven-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-osgi-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-platform-base-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-platform-jvm-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-platform-native-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-platform-play-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-plugin-development-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-plugin-use-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-plugins-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-publish-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-reporting-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-resources-gcs-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-resources-http-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-resources-s3-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-resources-sftp-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-scala-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-signing-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-test-kit-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-testing-base-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-testing-jvm-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-testing-native-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-tooling-api-builders-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-version-control-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/gradle-workers-4.4.jar" />
+                  <option value="D:/gradle/gradle-4.4/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
+                  <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
+                </list>
+              </option>
+            </ExternalProjectBuildClasspathPojo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/Documents/WeChat Files/w13329355618/FileStorage/File/2019-10" value="PREVIEW" />
+        <entry key="$USER_HOME$/Documents/WeChat Files/w13329355618/FileStorage/File/2019-11/Redis课程/redis-test" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../cloud-train" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../demo1" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../patent1" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../sendmail" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../springboot-mybatis" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../suixingpay-cloud-demo" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../test" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../test1" value="PREVIEW" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/navbar.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/tab.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/video.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/service/LoginService.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/entity/Login.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/dao/LoginMapper.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/css/login.css" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/css/style.css" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/service/serviceImpl/LoginServiceImpl.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/login.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/table.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/datas/nav.json" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/static/datas/nav.js" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/resources/mapper/StudentMapper.xml" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/controller/IndexController.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/index.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/main.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/selectStudent.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/updateStudent.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/entity/Student.java" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/addStudent.jsp" />
-        <option value="$PROJECT_DIR$/studentManageSystem/src/main/java/com/sxp/stuMag/controller/StudentController.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/TomcatConfig.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/StudentController.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/entity/tbPatent.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/tbPatentController.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/service/serviceImpl/TbPatentServiceImpl.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/service/TbPatentService.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/TbPatentController.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/entity/TbPatent.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/TbPatentMapper.xml" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/dao/TbPatentMapper.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/TbPatentMapper.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/TbPatentServiceImpl.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/settings.gradle" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/TbPatent.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/TbPatentController.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/user.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/PatentMapper.xml" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/User.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/LoginMapper.xml" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/LoginServiceImpl.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/LoginMapper.java" />
-        <option value="$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="vmOptionsForImporter" value="-Xmx768m" />
-      </MavenImportingSettings>
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/Maven/apache-maven-3.5.4" />
+        <option name="userSettingsFile" value="D:\Maven\apache-maven-3.5.4\conf\settings.xml" />
+      </MavenGeneralSettings>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-5" />
-    <option name="y" value="43" />
-    <option name="width" value="1730" />
-    <option name="height" value="925" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="186" />
+    <option name="width" value="1226" />
+    <option name="height" value="1044" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
@@ -295,8 +737,8 @@
               <item name="patMag" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
@@ -305,8 +747,8 @@
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
@@ -315,8 +757,8 @@
               <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
@@ -325,8 +767,8 @@
               <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
@@ -335,8 +777,8 @@
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
@@ -346,100 +788,28 @@
               <item name="serviceImpl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="patent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="patent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="patentManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="patentManage" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="patentManageSystem" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="patMag" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelOrder2" value="2" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RequestMappingsPanelWidth2" value="75" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\idea\ideaProjects\patentManage\patentManageSystem\src\main\resources\mapper" />
-      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\webapp\WEB-INF\jsp" />
-      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\java\com\sxp\stuMag\util" />
-      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\resources\static\js" />
-      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\resources\static\images" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.sxp.patMag.dao" />
-      <recent name="com.sxp.patMag.service.serviceImpl" />
-      <recent name="com.sxp.patMag.service" />
-      <recent name="com.sxp.patMag.entity" />
-      <recent name="com.sxp.patMag.controller" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\95664\Desktop\studentManage\studentManageSystem\src\main\resources\static" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -453,495 +823,157 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SystemApplication (1)">
-    <configuration name="studentManage [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="bootRun" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="studentManage [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="studentManage [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="studentManage [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="run" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="SystemApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="patentManage.patentManageSystem.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sxp.patMag.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sxp.patMag.SystemApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration name="SystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="studentManage.patentManageSystem.main" />
+      <module name="patentManageSystem_main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.sxp.patMag.SystemApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
-    <configuration name="SystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="studentManage.patentManageSystem.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sxp.patMag.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sxp.patMag.SystemApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
     </configuration>
-    <list>
-      <item itemvalue="Gradle.studentManage [bootRun]" />
-      <item itemvalue="Gradle.studentManage [clean]" />
-      <item itemvalue="Gradle.studentManage [run]" />
-      <item itemvalue="Gradle.studentManage [build]" />
-      <item itemvalue="Spring Boot.SystemApplication" />
-      <item itemvalue="Spring Boot.SystemApplication (1)" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.SystemApplication (1)" />
-        <item itemvalue="Gradle.studentManage [build]" />
-        <item itemvalue="Gradle.studentManage [bootRun]" />
-        <item itemvalue="Gradle.studentManage [clean]" />
-        <item itemvalue="Gradle.studentManage [run]" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
-    <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="abf765cf-e148-4a6e-9d03-aadde9a0cad4" name="Default Changelist" comment="" />
-      <created>1572780347380</created>
+      <changelist id="57f8bcd8-799c-4f68-93a1-d7ae4d4e898d" name="Default" comment="" />
+      <created>1574151987238</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1572780347380</updated>
-      <workItem from="1572780349488" duration="1056000" />
-      <workItem from="1572781619799" duration="5007000" />
-      <workItem from="1572793061743" duration="11663000" />
-      <workItem from="1574144365624" duration="2699000" />
-      <workItem from="1574147122055" duration="719000" />
-      <workItem from="1574147867888" duration="1049000" />
-      <workItem from="1574149442297" duration="1984000" />
+      <updated>1574151987238</updated>
+      <workItem from="1574151988508" duration="269000" />
     </task>
-    <task id="LOCAL-00001" summary="1.0.0">
-      <created>1574147434170</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1574147434170</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24177000" />
+    <option name="totallyTimeSpent" value="269000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="35" width="1384" height="740" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7580645" visible="true" weight="0.2677225" />
-      <window_info id="Structure" order="1" sideWeight="0.24193548" side_tool="true" weight="0.25660378" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32730263" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49773756" weight="0.32894737" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3963816" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49924585" weight="0.32730263" />
-      <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32840723" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5022625" side_tool="true" weight="0.4194079" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.16548797" />
-      <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" />
-      <window_info anchor="bottom" id="Messages" order="15" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info anchor="bottom" id="Build" weight="0.62610227" />
+      <window_info anchor="right" id="Database" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="bottom" id="Java Enterprise" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.12345679" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Spring" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2497979" />
+      <window_info anchor="right" id="Bean Validation" />
+      <window_info id="Web" side_tool="true" />
+      <window_info anchor="right" id="Gradle" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.3297587" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" visible="true" weight="0.09351433" />
-      <window_info anchor="right" id="Database" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info anchor="right" id="Bean Validation" order="10" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="1.0.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.0.0" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/button.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/icheck.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/video.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/tab.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/navbar.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/nav.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/city.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/form.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/auxiliar.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/layout.jsp" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/datas/nav_content.json" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/datas/nav_member.json" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/table.jsp" />
-    <entry file="file://$PROJECT_DIR$/studentManageSystem/src/main/webapp/WEB-INF/jsp/begtable.jsp" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/datas/nav.js" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/static/datas/nav.json" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/main.jsp" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/MyInterceptor.java" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/selectStudent.jsp" />
-    <entry file="jar://Y:/jdk1.822/jre/lib/rt.jar!/sun/nio/ch/SelectorImpl.class" />
-    <entry file="jar://Y:/jdk1.822/jre/lib/rt.jar!/sun/nio/ch/WindowsSelectorImpl.class" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/login.jsp">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1653">
-          <caret line="87" column="44" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+        <state relative-caret-position="100">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/addStudent.jsp" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/updateStudent.jsp" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/TomcatConfig.java" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/LoginController.java" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/IndexController.java" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/controller/WebAppAdapter.java" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/service/serviceImpl/LoginServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/entity/Student.java" />
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/stuMag/entity/Login.java" />
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.5.23/e5c70a402738f0ab5153e11b16ec28fb5eb8da2/tomcat-embed-core-8.5.23-sources.jar!/org/apache/coyote/AbstractProcessorLight.java">
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+        <state relative-caret-position="133">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/build.gradle">
+    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/webapp/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="76">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/PatentService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="84" column="25" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/PatentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="12" />
+        <state relative-caret-position="76">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/Patent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/SystemApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/PatentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="69" column="25" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="25" />
-          <folding>
-            <element signature="e#1738#1739#0" expanded="true" />
-            <element signature="e#1815#1816#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/LoginMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="80" selection-start-line="4" selection-start-column="73" selection-end-line="4" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/resources/mapper/PatentMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="104" lean-forward="true" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.13.RELEASE/d225d6480b69dc70a04e332a348b448bf276f7f3/spring-web-4.3.13.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="211" selection-start-line="211" selection-end-line="211" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/serviceImpl/LoginServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/service/LoginService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/dao/LoginMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/PatentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="26" selection-start-line="26" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/patentManageSystem/src/main/java/com/sxp/patMag/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>Web|main|studentManage|studentManage</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.19060403" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
