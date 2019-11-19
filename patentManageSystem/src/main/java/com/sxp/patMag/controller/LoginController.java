@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Author： Jude
+ * Date:2019/11/19
+ * Time:18:18
+ */
 @Controller
 @RequestMapping("/login")
 public class LoginController {
