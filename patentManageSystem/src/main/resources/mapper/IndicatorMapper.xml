@@ -10,4 +10,8 @@
         SELECT indicator_id indicatorId, indicator_name indicatorName,patent_id patentId FROM tb_indicator WHERE patent_id = {patentId}
     </select>
 
+    <insert id="addIndicator" parameterType="com.sxp.patMag.entity.Indicator">
+        INSERT INTO tb_indicator (indicator_id, indicator_name, patent_id) VALUES ($(indicatorId), $(indicatorName), $(patentId))
+    </insert>
+
 </mapper>
