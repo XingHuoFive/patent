@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxp.patMag.dao.IndicatorMapper">
+
+    <select id="getIndicatorList" resultType="com.sxp.patMag.entity.Indicator">
+        SELECT indicator_id indicatorId, indicator_name indicatorName,patent_id patentId FROM tb_indicator
+    </select>
+
+    <select id="getIndicatorListByPatentId" resultType="com.sxp.patMag.entity.Indicator">
+        SELECT indicator_id indicatorId, indicator_name indicatorName,patent_id patentId FROM tb_indicator WHERE patent_id = {patentId}
+    </select>
+
+</mapper>
