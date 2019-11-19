@@ -35,6 +35,8 @@ public class Patent {
     /** 备注 **/
     private String patentRemarks;
 
+
+
     @Override
     public String toString() {
         return "Patent{" +
