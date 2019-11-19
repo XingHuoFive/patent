@@ -238,10 +238,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-5" />
-    <option name="y" value="43" />
-    <option name="width" value="1730" />
-    <option name="height" value="925" />
+    <option name="x" value="-17" />
+    <option name="y" value="5" />
+    <option name="width" value="1386" />
+    <option name="height" value="722" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -470,7 +470,6 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="studentManage [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -489,7 +488,6 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="studentManage [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -508,7 +506,6 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="studentManage [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -527,7 +524,6 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="SystemApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
@@ -564,11 +560,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Spring Boot.SystemApplication" />
       <item itemvalue="Gradle.studentManage [bootRun]" />
       <item itemvalue="Gradle.studentManage [clean]" />
       <item itemvalue="Gradle.studentManage [run]" />
       <item itemvalue="Gradle.studentManage [build]" />
-      <item itemvalue="Spring Boot.SystemApplication" />
       <item itemvalue="Spring Boot.SystemApplication (1)" />
     </list>
     <recent_temporary>
