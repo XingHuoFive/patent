@@ -9,4 +9,6 @@ public interface AdminService {
     boolean checkPatent(String patentId, String updateField);
 
     List<JBook> selectAllFilesByPatentId(String patentId);
+
+    List<String> readLogFile();
 }

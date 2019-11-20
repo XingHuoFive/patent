@@ -82,29 +82,32 @@ public class WeLogFile {
      *
      * @throws IOException
      */
-    public static void readLog() {
+    public static List<String> readLog() {
         //读取文件
         try {
             FileInputStream fstream = new FileInputStream(path);
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String strLine;
             StringBuilder stringBuilder = new StringBuilder();
-            List<StringBuilder> list = new ArrayList<>();
-            int numLine = 1;
+            List<String> list = new ArrayList<>();
+            int numLine = 0;
             /* read log line by line */
             while ((strLine = br.readLine()) != null) {
                 stringBuilder.append(strLine + "\n");
-                numLine++;
                 /* parse strLine to obtain what you want */
-                if (numLine == 3) {
-                    list.add(stringBuilder);
-                    numLine = 1;
+                if (++numLine == 10) {
+                    list.add(stringBuilder.toString());
+                    numLine = 0;
+                    stringBuilder.delete(0, stringBuilder.length());
                 }
             }
-            System.out.println(list.get(0));
+            list.add(stringBuilder.toString());
             fstream.close();
+            return list;
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
         }
+        return null;
     }
+
 }

@@ -37,9 +37,10 @@ public class AdminController {
         return list;
     }
 
-//    @RequestMapping("/readLogFile")
-//    public String readLogFile() {
-//        adminService.readLogFile();
-//        return "";
-//    }
+    @RequestMapping("/readLogFile")
+    @ResponseBody
+    public List<String> readLogFile() {
+        List<String> list = adminService.readLogFile();
+        return list;
+    }
 }
