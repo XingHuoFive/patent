@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface PatentSelcetMapper {
     List<Patent> selectPatentByPatent(Patent patent);
+    List<Patent> selectPatentToUser( );
 }

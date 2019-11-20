@@ -16,8 +16,15 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     @Autowired
     PatentSelcetMapper  patentSelcetMapper;
 
+
     @Override
     public List<Patent> selectPatentByPatent(Patent patent) {
         return patentSelcetMapper.selectPatentByPatent(patent);
+    }
+
+
+    @Override
+    public List<Patent> selectPatentToUser( ) {
+        return patentSelcetMapper.selectPatentToUser();
     }
 }

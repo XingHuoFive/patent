@@ -4,10 +4,9 @@ import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.PatentSelcetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -18,22 +17,39 @@ import java.util.List;
  **/
 
 @Controller
-@RequestMapping("/Patent")
+@RequestMapping("/patent")
 public class PatentSelcetController {
-
 
 
 
     @Autowired
     PatentSelcetService patentSelcetService;
 
-    @RequestMapping("/selectPatentByPatent")
+
+    /**
+     * 专利查询
+     *
+     * @param patent
+     * @return
+     */
+    @RequestMapping(value = "/selectPatentByPatent",method = RequestMethod.POST)
     @ResponseBody
-    public List<Patent> selectPatentByPatent(Patent patent){
-
-        System.out.println(patentSelcetService.selectPatentByPatent(patent).toString());
+    public List<Patent> selectPatentByPatent(@RequestBody Patent patent){
         return  patentSelcetService.selectPatentByPatent(patent);
-
-
     }
+
+
+
+    /**
+     * 查询未被认领的专利
+     * @param patentClaim
+     * @return
+     */
+    @RequestMapping(value = "/selectPatentToUser",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Patent> selectPatentToUser(){
+        System.out.println(patentSelcetService.selectPatentToUser());
+        return  patentSelcetService.selectPatentToUser();
+    }
+
 }
