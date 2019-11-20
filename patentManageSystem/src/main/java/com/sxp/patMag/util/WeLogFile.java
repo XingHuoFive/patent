@@ -1,8 +1,7 @@
 package com.sxp.patMag.util;
 
-import org.aspectj.lang.JoinPoint;
+import com.sxp.patMag.entity.User;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -11,18 +10,23 @@ import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.logging.*;
+import java.util.logging.Formatter;
 
 @Aspect
 @Component
 @EnableAspectJAutoProxy
 public class WeLogFile {
-
+    /**
+     * 日志存放地址
+     */
     private static String path = "D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
+
+    /**
+     * 当时操作人
+     */
+    private static String username = null;
 
     /**
      * 声明切点
@@ -37,7 +41,6 @@ public class WeLogFile {
      * @param joinPoint
      * @throws IOException
      */
-//    @After("doLog()")
     @Around("doLog()")
     public Object writeLog(ProceedingJoinPoint joinPoint) throws Throwable {
         Logger log = Logger.getLogger(path);
@@ -57,11 +60,18 @@ public class WeLogFile {
         String methodName = joinPoint.getSignature().getName();
         // 获取参数
         List<Object> args = Arrays.asList(joinPoint.getArgs());
+        User user = null;
+        if (methodName == "login") {
+            user = (User) args.get(0);
+        }
+        if (username != user.getUserName()) {
+            username = user.getUserName();
+        }
         Object proceed = joinPoint.proceed();
         if (proceed != null) {
-            log.info("bai" + "|" + methodName + "|incoming paramter:" + args.toString() + "|returning value is " + proceed);
+            log.info(username + "|" + methodName + "|incoming paramter:" + args.toString() + "|returning value is " + proceed);
         } else {
-            log.info("bai" + "|" + methodName + "|incoming paramter:" + args.toString());
+            log.info(username + "|" + methodName + "|incoming paramter:" + args.toString());
         }
         fileHandler.close();
         return proceed;
@@ -72,26 +82,26 @@ public class WeLogFile {
      *
      * @throws IOException
      */
-    public static void readLog() throws IOException {
-        // 读取文件
-//        File file = new File(path);
-//        Scanner sc = new Scanner(file);
-//        sc.useDelimiter("\\Z");
-//        String s = sc.next();
-//        System.out.println(s);
-
+    public static void readLog() {
         //读取文件
         try {
             FileInputStream fstream = new FileInputStream(path);
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String strLine;
             StringBuilder stringBuilder = new StringBuilder();
+            List<StringBuilder> list = new ArrayList<>();
+            int numLine = 1;
             /* read log line by line */
             while ((strLine = br.readLine()) != null) {
                 stringBuilder.append(strLine + "\n");
+                numLine++;
                 /* parse strLine to obtain what you want */
+                if (numLine == 3) {
+                    list.add(stringBuilder);
+                    numLine = 1;
+                }
             }
-            System.out.println(stringBuilder.toString());
+            System.out.println(list.get(0));
             fstream.close();
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());

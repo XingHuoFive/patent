@@ -1,10 +1,12 @@
 package com.sxp.patMag.controller;
 
+import com.sxp.patMag.entity.JBook;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 /**
@@ -29,8 +31,15 @@ public class AdminController {
     }
 
     @RequestMapping("/selectAllFilesByPatentId")
-    public String selectAllFilesByPatentId(String patentId) {
-        List<String> list = adminService.selectAllFilesByPatentId(patentId);
-        return "";
+    @ResponseBody
+    public List<JBook> selectAllFilesByPatentId(String patentId) {
+        List<JBook> list = adminService.selectAllFilesByPatentId(patentId);
+        return list;
     }
+
+//    @RequestMapping("/readLogFile")
+//    public String readLogFile() {
+//        adminService.readLogFile();
+//        return "";
+//    }
 }
