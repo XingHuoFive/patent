@@ -29,6 +29,9 @@ public class Indicator {
         this.patentId = patentId;
     }
 
+    public Indicator() {
+    }
+
     public String getIndicatorId() {
         return indicatorId;
     }
@@ -61,5 +64,4 @@ public class Indicator {
                 ", patentId='" + patentId + '\'' +
                 '}';
     }
-
 }

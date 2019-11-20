@@ -4,6 +4,7 @@ import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.Patent;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lhx
@@ -24,7 +25,7 @@ public interface IndicatorService {
      * @param patent 要获取指标查询条件
      * @return 获取到的指标列表
      */
-    List<Patent> listByPatentId(Patent patent);
+    List<Patent> listByPatent(Patent patent);
 
     /**
      * 新增指标
@@ -33,5 +34,10 @@ public interface IndicatorService {
      */
     int save(Indicator indicator);
 
-    void export(List<Patent> list);
+    /**
+     * 导出成excel
+     * @param map 导出条件
+     * @return 是否导出成功
+     */
+    boolean export(Map<String, Object> map);
 }

@@ -3,13 +3,13 @@ package com.sxp.patMag.controller;
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.IndicatorService;
-import com.sxp.patMag.util.ExcelUtil;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lhx
@@ -25,12 +25,21 @@ public class IndicatorController {
     private IndicatorService indicatorService;
 
     @GetMapping("/export")
-    public GeneralResult export(@RequestBody Patent patent) {
-        GeneralResult generalResult = listByPatent(patent);
-        if (generalResult.getStatus() != 1) {
+    public GeneralResult export(@RequestBody Map<String, Object> map) {
+        GeneralResult generalResult = new GeneralResult();
+        if (null == map || map.isEmpty() || map.size() <= 0) {
+            generalResult.setStatus(-1);
+            generalResult.setMsg("导出失败");
             return generalResult;
         }
-        indicatorService.export((List<Patent>)generalResult.getData());
+        boolean export = indicatorService.export(map);
+        if (export) {
+            generalResult.setStatus(-1);
+            generalResult.setMsg("导出失败");
+            return generalResult;
+        }
+        generalResult.setStatus(1);
+        generalResult.setMsg("导出成功");
         return generalResult;
     }
 
@@ -57,7 +66,7 @@ public class IndicatorController {
             generalResult.setMsg("查询内容为空");
             return generalResult;
         }
-        List<Patent> patents = indicatorService.listByPatentId(patent);
+        List<Patent> patents = indicatorService.listByPatent(patent);
         if (null == patents) {
             generalResult.setStatus(-1);
             generalResult.setMsg("失败");
