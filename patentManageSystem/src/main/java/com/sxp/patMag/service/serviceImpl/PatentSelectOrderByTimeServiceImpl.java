@@ -19,6 +19,7 @@ public class PatentSelectOrderByTimeServiceImpl implements PatentSelectOrderByTi
     PatentSelectOrderByTimeMapper patentSelectOrderByTimeMapper;
 
 
+
     @Override
     public List<Patent> selectPatentByPatentOrderbyTime(Patent patent) {
         return patentSelectOrderByTimeMapper.selectPatentByPatentOrderbyTime(patent);

@@ -44,5 +44,7 @@ public class PatentSelectOrderByTimeController {
     public List<Patent> selectPatentToAdmin(){
         System.out.println(patentSelectOrderByTimeService.selectPatentToAdmin());
         return  patentSelectOrderByTimeService.selectPatentToAdmin();
+
+
     }
 }
