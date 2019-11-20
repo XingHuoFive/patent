@@ -1,5 +1,6 @@
 package com.sxp.patMag.controller;
 
+import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.service.LoginService;
 import com.sxp.patMag.service.UploadService;
@@ -31,6 +32,7 @@ public class UploadController {
     /**
      * 实现文件上传
      * */
+
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
     @ResponseBody
     public GeneralResult fileUpload(@RequestParam("fileName") MultipartFile file, HttpServletRequest request){
