@@ -2,7 +2,6 @@ package com.sxp.patMag.service;
 
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.Patent;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -34,4 +33,5 @@ public interface IndicatorService {
      */
     int save(Indicator indicator);
 
+    void export(List<Patent> list);
 }

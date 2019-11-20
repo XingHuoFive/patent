@@ -35,4 +35,9 @@ public class IndicatorServiceImpl implements IndicatorService {
     public int save(Indicator indicator) {
         return indicatorMapper.addIndicator(indicator);
     }
+
+    @Override
+    public void export(List<Patent> list) {
+
+    }
 }

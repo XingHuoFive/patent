@@ -3,6 +3,7 @@ package com.sxp.patMag.controller;
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.IndicatorService;
+import com.sxp.patMag.util.ExcelUtil;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,16 @@ public class IndicatorController {
     @Autowired
     private IndicatorService indicatorService;
 
+    @GetMapping("/export")
+    public GeneralResult export(@RequestBody Patent patent) {
+        GeneralResult generalResult = listByPatent(patent);
+        if (generalResult.getStatus() != 1) {
+            return generalResult;
+        }
+        indicatorService.export((List<Patent>)generalResult.getData());
+        return generalResult;
+    }
+
     @GetMapping("/list")
     public GeneralResult list() {
         GeneralResult generalResult = new GeneralResult();
@@ -39,7 +50,7 @@ public class IndicatorController {
     }
 
     @PostMapping("/list")
-    public GeneralResult listByPatentId(@RequestBody Patent patent) {
+    public GeneralResult listByPatent(@RequestBody Patent patent) {
         GeneralResult generalResult = new GeneralResult();
         if (patent == null) {
             generalResult.setStatus(-1);

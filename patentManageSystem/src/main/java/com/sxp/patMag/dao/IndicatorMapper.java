@@ -3,6 +3,7 @@ package com.sxp.patMag.dao;
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.Patent;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @date 2019/11/19 18:48
  */
 @Mapper
+@Repository
 public interface IndicatorMapper {
 
     /**
