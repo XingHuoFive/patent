@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxp.patMag.dao.PatentSelcetMapper">
+
+
+    <select id="selectPatentById" parameterType="com.sxp.patMag.entity.Patent"  resultType="com.sxp.patMag.entity.Patent" >
+        select *   from  tb_patent   where  1=1
+            <if test="name != null and name != ''">
+                <trim  prefixOverrides="AND | OR">
+                    <if test="caseNumber != null and caseNumber.length()>0">
+                        AND name=#{name}
+                    </if>
+                    <if test="applyNumber != null and applyNumber.length()>0">
+                        AND hobby=#{hobby}
+                    </if>
+                    <if test="patentName != null and patentName.length()>0">
+                        AND hobby=#{hobby}
+                    </if>
+                    <if test="createPerson != null and createPerson.length()>0">
+                        AND hobby=#{hobby}
+                    </if>
+                    <if test="patentSchedule != null and patentSchedule.length()>0">
+                        AND hobby=#{hobby}
+                    </if>
+                    <if test="applyTime != null and applyTime.length()>0">
+                        AND hobby=#{hobby}
+                    </if>
+                </trim>
+            </if>
+            order by apply_time
+    </select>
+
+
+
+</mapper>

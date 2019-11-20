@@ -3,6 +3,9 @@ package com.sxp.patMag.entity;
 
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
+
 /**
  * Author： Jude
  * Date:2019/11/19
@@ -31,6 +34,9 @@ public class Patent {
     private String patentClaim;
     /** 备注 **/
     private String patentRemarks;
+    /** 指标 **/
+    private List<Indicator> indicatorList;
+
 
     @Override
     public String toString() {
@@ -46,6 +52,7 @@ public class Patent {
                 ", patentSchedule='" + patentSchedule + '\'' +
                 ", patentClaim='" + patentClaim + '\'' +
                 ", patentRemarks='" + patentRemarks + '\'' +
+                ", IndicatorList=" + indicatorList +
                 '}';
     }
 
@@ -139,7 +146,16 @@ public class Patent {
     public Patent(){
 
     }
-    public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks) {
+
+    public List<Indicator> getIndicatorList() {
+        return indicatorList;
+    }
+
+    public void setIndicatorList(List<Indicator> indicatorList) {
+        indicatorList = indicatorList;
+    }
+
+    public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList) {
         this.patentId = patentId;
         this.caseNumber = caseNumber;
         this.applyNumber = applyNumber;
@@ -151,5 +167,6 @@ public class Patent {
         this.patentSchedule = patentSchedule;
         this.patentClaim = patentClaim;
         this.patentRemarks = patentRemarks;
+        this.indicatorList = indicatorList;
     }
 }

@@ -1,6 +1,7 @@
 package com.sxp.patMag.dao;
 
 import com.sxp.patMag.entity.Indicator;
+import com.sxp.patMag.entity.Patent;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,23 +16,23 @@ import java.util.List;
 public interface IndicatorMapper {
 
     /**
-     * 获取所有的指标
-     * @return 指标列表
-     */
-    List<Indicator> getIndicatorList();
-
-    /**
-     * 根据专利id获取指标
-     * @param patentId 要获取指标的id
-     * @return 获取到的指标列表
-     */
-    List<Indicator> getIndicatorListByPatentId(String patentId);
-
-    /**
      * 新增指标
      * @param indicator 新增的指标
      * @return 影响行数
      */
     int addIndicator(Indicator indicator);
+
+    /**
+     * 获取指标列表
+     * @return 指标列表
+     */
+    List<Patent> getPatentList();
+
+    /**
+     * 复杂查询
+     * @param patent 要查询的字段
+     * @return 查询出的结果
+     */
+    List<Patent> getPatentListByVO(Patent patent);
 
 }
