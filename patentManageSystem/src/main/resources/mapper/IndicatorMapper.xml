@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxp.patMag.dao.IndicatorMapper">
+
+    <insert id="addIndicator" parameterType="com.sxp.patMag.entity.Indicator">
+        INSERT INTO tb_indicator (indicator_id, indicator_name, patent_id) VALUES (#(indicatorId), #(indicatorName), #(patentId))
+    </insert>
+
+    <select id="getPatentList" resultType="com.sxp.patMag.entity.Patent">
+        SELECT indicator_name indicatorName, case_number caseNumber, patent_schedule patentSchedule,apply_time applyTime, create_person createPerson, write_person writePerson FROM tb_indicator,tb_patent WHERE tb_indicator.patent_id = tb_patent.patent_id
+    </select>
+
+    <select id="getPatentListByVO" resultType="com.sxp.patMag.entity.Patent">
+        SELECT indicator_name indicatorName, case_number caseNumber, patent_schedule patentSchedule,apply_time
+        applyTime, create_person createPerson, write_person writePerson FROM tb_indicator,tb_patent WHERE
+        tb_indicator.patent_id = tb_patent.patent_id
+        <trim prefix="AND" suffixOverrides="AND">
+            <if test="indicatorList != null">
+                <foreach collection="indicatorList" index="index" item="item" open="(" separator="or" close=")">
+                    AND indicator_name = #{indicatorName} AND
+                </foreach>
+            </if>
+            <if test="caseNumber != null">
+                case_number = #{caseNumber} AND
+            </if>
+            <if test="patentSchedule != null">
+                patent_schedule = #{patentSchedule} AND
+            </if>
+            <if test="applyTime != null">
+                apply_time = #{applyTime} AND
+            </if>
+            <if test="createPerson != null">
+                create_person = #{createPerson} AND
+            </if>
+            <if test="writePerson != null">
+                write_person = #{writePerson} AND
+            </if>
+        </trim>
+    </select>
+
+</mapper>
