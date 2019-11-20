@@ -1,8 +1,8 @@
 
 package com.sxp.patMag.entity;
 
-import lombok.Builder;
-import lombok.Data;
+//import lombok.Builder;
+//import lombok.Data;
 /**
  * Author： Jude
  * Date:2019/11/19
@@ -25,7 +25,7 @@ public class Patent {
     private String createPerson;
     /** 专利名称 **/
     private String patentName;
-    /** 专利进度:1.审核中2.未认领3.未通过4.已通过5.撰写中6.已提交 **/
+    /** 专利进度:1.未审核2.审核中3.未认领4.未通过5.已认领6.撰写中7.已提交 **/
     private String patentSchedule;
     /** 是否被认领： 认领——未被认领 **/
     private String patentClaim;

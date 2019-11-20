@@ -1,0 +1,12 @@
+2019-11-19 23:07:43:043|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]
+2019-11-19 23:45:54:054|INFO|bai|CheckUser|incoming paramter:[User{userId='1', userName='1', userPassword='1', userRole='1'}]|returning value is 0
+2019-11-19 23:47:21:021|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
+2019-11-19 23:51:44:044|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
+2019-11-19 23:52:17:017|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
+2019-11-19 23:53:06:006|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 
+2019-11-19 23:53:58:058|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 
+2019-11-19 23:57:20:020|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
+2019-11-19 23:58:09:009|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
+2019-11-20 00:02:08:008|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
+2019-11-20 00:04:07:007|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]
+2019-11-20 00:05:43:043|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
