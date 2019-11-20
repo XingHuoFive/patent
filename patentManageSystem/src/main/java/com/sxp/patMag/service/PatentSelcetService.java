@@ -2,7 +2,8 @@ package com.sxp.patMag.service;
 
 import com.sxp.patMag.entity.Patent;
 
-public interface PatentSelcetService {
+import java.util.List;
 
-    Patent selectPatentById();
+public interface PatentSelcetService {
+    List<Patent> selectPatentByPatent(Patent patent);
 }
