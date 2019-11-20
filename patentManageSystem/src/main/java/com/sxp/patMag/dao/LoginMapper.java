@@ -5,9 +5,11 @@ import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface LoginMapper {
 
-    Integer CheckUser(User user);
+    List<User> CheckUser(User user);
 
 }

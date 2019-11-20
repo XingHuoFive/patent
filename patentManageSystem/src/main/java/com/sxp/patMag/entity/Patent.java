@@ -35,7 +35,7 @@ public class Patent {
     /** 备注 **/
     private String patentRemarks;
     /** 指标 **/
-    private List<Indicator> IndicatorList;
+    private List<Indicator> indicatorList;
 
 
     @Override
@@ -52,7 +52,7 @@ public class Patent {
                 ", patentSchedule='" + patentSchedule + '\'' +
                 ", patentClaim='" + patentClaim + '\'' +
                 ", patentRemarks='" + patentRemarks + '\'' +
-                ", IndicatorList=" + IndicatorList +
+                ", IndicatorList=" + indicatorList +
                 '}';
     }
 
@@ -148,11 +148,11 @@ public class Patent {
     }
 
     public List<Indicator> getIndicatorList() {
-        return IndicatorList;
+        return indicatorList;
     }
 
     public void setIndicatorList(List<Indicator> indicatorList) {
-        IndicatorList = indicatorList;
+        indicatorList = indicatorList;
     }
 
     public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList) {
@@ -167,6 +167,6 @@ public class Patent {
         this.patentSchedule = patentSchedule;
         this.patentClaim = patentClaim;
         this.patentRemarks = patentRemarks;
-        IndicatorList = indicatorList;
+        this.indicatorList = indicatorList;
     }
 }
