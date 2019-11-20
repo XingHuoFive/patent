@@ -21,7 +21,7 @@ public class WeLogFile {
     /**
      * 日志存放地址
      */
-    private static String path = "D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
+    private static String path = "D:\\idea\\ideaProjects\\patentManage\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
 
     /**
      * 当时操作人
@@ -63,8 +63,9 @@ public class WeLogFile {
         User user = null;
         if (methodName == "login") {
             user = (User) args.get(0);
+
         }
-        if (username != user.getUserName()) {
+        if (user !=null && username != user.getUserName()) {
             username = user.getUserName();
         }
         Object proceed = joinPoint.proceed();
