@@ -1,7 +1,7 @@
 package com.sxp.patMag.service.serviceImpl;
 
 import com.sxp.patMag.dao.AdminMapper;
-import com.sxp.patMag.entity.JBook;
+import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.service.AdminService;
 import com.sxp.patMag.util.WeLogFile;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,7 @@ public class AdminServiceImpl implements AdminService {
      */
 
     @Override
-    public List<JBook> selectAllFilesByPatentId(String patentId) {
+    public List<Jbook> selectAllFilesByPatentId(String patentId) {
         return adminMapper.selectAllFilesByPatentId(patentId);
     }
 

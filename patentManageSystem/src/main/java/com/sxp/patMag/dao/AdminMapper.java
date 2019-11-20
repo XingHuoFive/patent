@@ -1,6 +1,6 @@
 package com.sxp.patMag.dao;
 
-import com.sxp.patMag.entity.JBook;
+import com.sxp.patMag.entity.Jbook;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,5 +10,5 @@ import java.util.List;
 public interface AdminMapper {
     boolean checkPatent(@Param("patentId")String patentId, @Param("updateField")String updateField);
 
-    List<JBook> selectAllFilesByPatentId(@Param("patentId")String patentId);
+    List<Jbook> selectAllFilesByPatentId(@Param("patentId")String patentId);
 }
