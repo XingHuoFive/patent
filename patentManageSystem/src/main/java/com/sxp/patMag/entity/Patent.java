@@ -23,6 +23,8 @@ public class Patent {
     /** 撰写人 **/
     private String writePerson;
     /** 申请人/机构 **/
+    
+    /**。。。**/
     private String applyPerson;
     /** 发明人 **/
     private String createPerson;
