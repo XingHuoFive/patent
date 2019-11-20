@@ -3,36 +3,33 @@
 <mapper namespace="com.sxp.patMag.dao.PatentSelcetMapper">
 
 
-
-
     <select id="selectPatentByPatent" parameterType="com.sxp.patMag.entity.Patent"  resultType="com.sxp.patMag.entity.Patent" >
-        select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
-         from  tb_patent   where  1=1
+        select *   from  tb_patent   where  1=1
+          <!--  <if test="name != null and name != ''">
+                <trim  prefixOverrides="AND | OR">
                     <if test="caseNumber != null and caseNumber.length()>0">
-                        AND case_number=#{caseNumber}
+                        AND name=#{name}
                     </if>
                     <if test="applyNumber != null and applyNumber.length()>0">
-                        AND apply_number=#{applyNumber}
+                        AND hobby=#{hobby}
                     </if>
                     <if test="patentName != null and patentName.length()>0">
-                        AND patent_Name=#{patentName}
+                        AND hobby=#{hobby}
                     </if>
                     <if test="createPerson != null and createPerson.length()>0">
-                        AND create_person=#{createPerson}
+                        AND hobby=#{hobby}
                     </if>
                     <if test="patentSchedule != null and patentSchedule.length()>0">
-                        AND patent_schedule=#{patentSchedule}
+                        AND hobby=#{hobby}
                     </if>
                     <if test="applyTime != null and applyTime.length()>0">
-                        AND apply_time=#{applyTime}
+                        AND hobby=#{hobby}
                     </if>
-            order by apply_time
+                </trim>
+            </if>
+            order by apply_time-->
     </select>
 
 
-
-    <select id="selectPatentToUser" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
-        select *   from  tb_patent   where patent_claim="true" order by apply_time,patent_claim
-    </select>
 
 </mapper>
