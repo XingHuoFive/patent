@@ -2,9 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.PatentSelcetMapper">
 
-
-
-
+    <!--专利查询-->
     <select id="selectPatentByPatent" parameterType="com.sxp.patMag.entity.Patent"  resultType="com.sxp.patMag.entity.Patent" >
         select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
          from  tb_patent   where  1=1
@@ -31,8 +29,25 @@
 
 
 
+
+
+    <!--确认认领人-->
+    <update id="updatePatentToWritePerson" parameterType="com.sxp.patMag.entity.Patent" >
+            UPDATE tb_patent SET write_person=#{writePerson},patent_claim="1" WHERE patent_id=#{patentId}
+    </update>
+
+
+
+    <!--普通用户查询-->
     <select id="selectPatentToUser" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
-        select *   from  tb_patent   where patent_claim="true" order by apply_time,patent_claim
+        select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
+           from  tb_patent   where patent_claim="true" order by apply_time,patent_claim
+    </select>
+
+    <!--查询详细或审核信息-->
+    <select id="selectPatentById" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
+        select patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
+        from  tb_patent   where patent_id=${patentId}
     </select>
 
 </mapper>

@@ -27,4 +27,14 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     public List<Patent> selectPatentToUser( ) {
         return patentSelcetMapper.selectPatentToUser();
     }
+
+    @Override
+    public Patent selectPatentById(String patentId){
+        return patentSelcetMapper.selectPatentById( patentId);
+    }
+
+    @Override
+    public Integer updatePatentToWritePerson(Patent patent) {
+        return patentSelcetMapper.updatePatentToWritePerson(patent);
+    }
 }

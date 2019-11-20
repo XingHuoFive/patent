@@ -12,4 +12,7 @@ import java.util.List;
 public interface PatentSelcetMapper {
     List<Patent> selectPatentByPatent(Patent patent);
     List<Patent> selectPatentToUser( );
+    Patent selectPatentById(String patentId);
+    Integer updatePatentToWritePerson(Patent patent);
+
 }
