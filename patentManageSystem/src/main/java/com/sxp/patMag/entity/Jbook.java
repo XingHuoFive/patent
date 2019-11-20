@@ -3,16 +3,20 @@ package com.sxp.patMag.entity;
 /**
  * Author： Jude
  * Date:2019/11/20
- * Time:11:44
+ * Time:11:43
  */
 
 public class Jbook {
+
+
     private String jbookId;
+
     private String jbookPatentId;
+
     private String jbookUrl;
+
     private String jbookUserId;
     private String jbookView;
-
 
 
     @Override
