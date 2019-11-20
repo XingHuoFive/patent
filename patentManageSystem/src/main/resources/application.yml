@@ -32,7 +32,7 @@ mybatis:
   configuration:
     mapUnderscoreToCamelCase: true
 
-
+visualPath: http://172.16.41.88:8080/
 
 
 
