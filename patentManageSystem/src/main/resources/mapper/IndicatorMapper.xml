@@ -3,35 +3,43 @@
 <mapper namespace="com.sxp.patMag.dao.IndicatorMapper">
 
     <resultMap id="PatentMap" type="com.sxp.patMag.entity.Patent">
-        <id column="patentId" property="patentId"/>
-        <result column="caseNumber" property="caseNumber"/>
-        <result column="patentSchedule" property="patentSchedule"/>
-        <result column="applyTime" property="applyTime"/>
-        <result column="createPerson" property="createPerson"/>
-        <result column="writePerson" property="writePerson"/>
+        <id column="patent_id" property="patentId"/>
+        <result column="case_number" property="caseNumber"/>
+        <result column="patent_schedule" property="patentSchedule"/>
+        <result column="apply_time" property="applyTime"/>
+        <result column="create_person" property="createPerson"/>
+        <result column="write_person" property="writePerson"/>
+        <collection property="indicatorList" ofType="com.sxp.patMag.entity.Indicator">
+            <!--<id column="indicatorId" property="indicatorId"/>-->
+            <result column="indicator_name" property="indicatorName"/>
+            <!--<result column="patentId" property="patentId"/>-->
+        </collection>
+    </resultMap>
+    
+    <!--<resultMap id="indicator" type="com.sxp.patMag.entity.Patent" extends="PatentMap">-->
         <!--<collection property="indicatorList" ofType="com.sxp.patMag.entity.Indicator">-->
-
             <!--<id column="indicatorId" property="indicatorId"/>-->
             <!--<result column="indicatorName" property="indicatorName"/>-->
             <!--&lt;!&ndash;<result column="patentId" property="patentId"/>&ndash;&gt;-->
         <!--</collection>-->
-    </resultMap>
-    
-    <resultMap id="indicator" type="com.sxp.patMag.entity.Indicator" extends="PatentMap">
-        <collection property="indicatorList" ofType="com.sxp.patMag.entity.Indicator">
-            <id column="indicatorId" property="indicatorId"/>
-            <result column="indicatorName" property="indicatorName"/>
-            <!--<result column="patentId" property="patentId"/>-->
-        </collection>
-    </resultMap>
+    <!--</resultMap>-->
 
     <insert id="addIndicator" parameterType="com.sxp.patMag.entity.Indicator">
         INSERT INTO tb_indicator (indicator_id, indicator_name, patent_id) VALUES (#(indicatorId), #(indicatorName), #(patentId))
     </insert>
 
     <select id="getPatentList" resultMap="PatentMap">
-        SELECT i.indicator_id indicatorId, p.patent_id patentId, i.indicator_name indicatorName, p.case_number caseNumber, p.patent_schedule patentSchedule, p.apply_time applyTime, p.create_person createPerson, p.write_person writePerson
-        FROM  tb_patent p join tb_indicator i
+        SELECT
+            i.indicator_id indicatorId,
+            p.patent_id patentId,
+            i.indicator_name indicatorName,
+            p.case_number caseNumber,
+            p.patent_schedule patentSchedule,
+            p.apply_time applyTime,
+            p.create_person createPerson,
+            p.write_person writePerson
+        FROM  tb_patent p
+        join tb_indicator i
         on i.patent_id = p.patent_id
     </select>
 

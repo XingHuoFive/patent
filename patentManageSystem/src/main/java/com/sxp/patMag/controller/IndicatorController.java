@@ -1,6 +1,7 @@
 package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.Indicator;
+import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.IndicatorService;
 import com.sxp.patMag.util.GeneralResult;
@@ -25,14 +26,14 @@ public class IndicatorController {
     private IndicatorService indicatorService;
 
     @GetMapping("/export")
-    public GeneralResult export(@RequestBody Map<String, Object> map) {
+    public GeneralResult export(@RequestBody IndicatorExport indicatorExport) {
         GeneralResult generalResult = new GeneralResult();
-        if (null == map || map.isEmpty() || map.size() <= 0) {
+        if (null == indicatorExport) {
             generalResult.setStatus(-1);
             generalResult.setMsg("导出失败");
             return generalResult;
         }
-        boolean export = indicatorService.export(map);
+        boolean export = indicatorService.export(indicatorExport);
         if (export) {
             generalResult.setStatus(-1);
             generalResult.setMsg("导出失败");
@@ -46,7 +47,7 @@ public class IndicatorController {
     @GetMapping("/list")
     public GeneralResult list() {
         GeneralResult generalResult = new GeneralResult();
-        List<Patent> list = indicatorService.list();
+        List<IndicatorExport> list = indicatorService.list();
         if (null == list) {
             generalResult.setStatus(-1);
             generalResult.setMsg("失败");
@@ -59,14 +60,14 @@ public class IndicatorController {
     }
 
     @PostMapping("/list")
-    public GeneralResult listByPatent(@RequestBody Patent patent) {
+    public GeneralResult listByPatent(@RequestBody IndicatorExport indicatorExport) {
         GeneralResult generalResult = new GeneralResult();
-        if (patent == null) {
+        if (indicatorExport == null) {
             generalResult.setStatus(-1);
             generalResult.setMsg("查询内容为空");
             return generalResult;
         }
-        List<Patent> patents = indicatorService.listByPatent(patent);
+        List<IndicatorExport> patents = indicatorService.listByPatent(indicatorExport);
         if (null == patents) {
             generalResult.setStatus(-1);
             generalResult.setMsg("失败");

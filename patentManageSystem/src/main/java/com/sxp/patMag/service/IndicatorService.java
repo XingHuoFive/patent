@@ -1,6 +1,7 @@
 package com.sxp.patMag.service;
 
 import com.sxp.patMag.entity.Indicator;
+import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
 
 import java.util.List;
@@ -18,14 +19,14 @@ public interface IndicatorService {
      * 获取所有的指标
      * @return 指标列表
      */
-    List<Patent> list();
+    List<IndicatorExport> list();
 
     /**
      * 根据查询条件获取指标
-     * @param patent 要获取指标查询条件
+     * @param indicatorExport 要获取指标查询条件
      * @return 获取到的指标列表
      */
-    List<Patent> listByPatent(Patent patent);
+    List<IndicatorExport> listByPatent(IndicatorExport indicatorExport);
 
     /**
      * 新增指标
@@ -36,8 +37,8 @@ public interface IndicatorService {
 
     /**
      * 导出成excel
-     * @param map 导出条件
+     * @param indicatorExport 导出条件
      * @return 是否导出成功
      */
-    boolean export(Map<String, Object> map);
+    boolean export(IndicatorExport indicatorExport);
 }

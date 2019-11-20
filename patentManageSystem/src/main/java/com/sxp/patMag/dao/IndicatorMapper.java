@@ -1,6 +1,7 @@
 package com.sxp.patMag.dao;
 
 import com.sxp.patMag.entity.Indicator;
+import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -32,9 +33,9 @@ public interface IndicatorMapper {
 
     /**
      * 复杂查询
-     * @param patent 要查询的字段
+     * @param indicatorExport 要查询的字段
      * @return 查询出的结果
      */
-    List<Patent> getPatentListByVO(Patent patent);
+    List<Patent> getPatentListByVO(IndicatorExport indicatorExport);
 
 }
