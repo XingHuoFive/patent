@@ -1,6 +1,6 @@
 package com.sxp.patMag.controller;
 
-import com.sxp.patMag.entity.JBook;
+import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,8 @@ public class AdminController {
 
     @RequestMapping("/selectAllFilesByPatentId")
     @ResponseBody
-    public List<JBook> selectAllFilesByPatentId(String patentId) {
-        List<JBook> list = adminService.selectAllFilesByPatentId(patentId);
+    public List<Jbook> selectAllFilesByPatentId(String patentId) {
+        List<Jbook> list = adminService.selectAllFilesByPatentId(patentId);
         return list;
     }
 
