@@ -1,17 +1,26 @@
 spring:
-#  jackson:
-#    serialization:
-#      FAIL_ON_EMPTY_BEANS: true
+  #  jackson:
+  #    serialization:
+  #      FAIL_ON_EMPTY_BEANS: true
   devtools:
     restart:
       additional-paths: src/main/java
       enabled: true
+  redis:
+    host: 39.106.157.58
+    port: 6379
+    database: 1
+    pool:
+      max-active: 2000
+      max-idle: 8
+      max-wait: -1
+      min-idle: 2
 
-#  mvc:
-#    view:
-#      prefix: /WEB-INF/jsp/
-#      suffix: .jsp
-#      path-pattern: /static/**
+  #  mvc:
+  #    view:
+  #      prefix: /WEB-INF/jsp/
+  #      suffix: .jsp
+  #      path-pattern: /static/**
   datasource:
     url: jdbc:mysql://39.106.157.58:3306/wuzu?useUnicode=true&amp;characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
     username: root
