@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxp.patMag.dao.AdminMapper">
+    <resultMap id="fileResultMap" type="com.sxp.patMag.entity.JBook">
+        <result column="jbook_id" property="jBookId"/>
+        <result column="jbook_patent_id" property="jBookPatentId"/>
+        <result column="jbook_url" property="jBookUrl"/>
+        <result column="jbook_user_id" property="jBookUserId"/>
+        <result column="jbook_view" property="jBookView"/>
+    </resultMap>
+
+    <update id="checkPatent">
+        update tb_patent
+        set patent_schedule = #{updateField}
+        where patent_id = #{patentId}
+    </update>
+
+    <select id="selectAllFilesByPatentId" resultMap="fileResultMap">
+        select jbook_id, jbook_patent_id, jbook_url, jbook_user_id, jbook_view
+        from tb_jbook
+        where jbook_id = #{patentId}
+    </select>
+</mapper>

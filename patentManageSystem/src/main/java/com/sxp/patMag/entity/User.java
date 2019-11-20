@@ -1,8 +1,8 @@
 
 package com.sxp.patMag.entity;
 
-import lombok.Builder;
-import lombok.Data;
+//import lombok.Builder;
+//import lombok.Data;
 
 import java.util.Objects;
 
@@ -31,6 +31,16 @@ public class User {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userRole = userRole;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userRole='" + userRole + '\'' +
+                '}';
     }
 
     public void setUserId(String userId) {

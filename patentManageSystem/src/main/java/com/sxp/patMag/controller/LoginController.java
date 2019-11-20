@@ -21,7 +21,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping(value="/login" , method= RequestMethod.POST)
+    @RequestMapping(value="/login" , method= RequestMethod.GET)
     @ResponseBody
     public GeneralResult login(User user){
         return loginService.login(user);
