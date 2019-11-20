@@ -7,9 +7,9 @@ spring:
       additional-paths: src/main/java
       enabled: true
   redis:
-    host: 39.106.157.58
+    host: 172.16.138.240
     port: 6379
-    database: 1
+    database: 5
     pool:
       max-active: 2000
       max-idle: 8

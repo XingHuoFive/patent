@@ -32,22 +32,22 @@ public class LoginServiceImpl implements LoginService  {
 
         //判断用户名和密码是否正确
         if (user==null){
-            return GeneralResult.build(400, "用户名或密码为空");
+            return GeneralResult.build(1, "用户名或密码为空");
         }
         if (StringUtils.isNull(user.getUserName())) {
 
-            return GeneralResult.build(400, "用户名或密码为空");
+            return GeneralResult.build(1, "用户名或密码为空");
         }
         if (StringUtils.isNull(user.getUserPassword())){
 
-            return GeneralResult.build(400, "用户名或密码为空");
+            return GeneralResult.build(1, "用户名或密码为空");
         }
 
 
         List<User> list = loginMapper.CheckUser(user);
         if (list == null || list.size() == 0) {
             //返回登录失败
-            return GeneralResult.build(400, "用户名或密码不正确");
+            return GeneralResult.build(1, "用户名或密码不正确");
         }
 
         //生成token，使用uuid
@@ -67,7 +67,7 @@ public class LoginServiceImpl implements LoginService  {
     public GeneralResult getUserByToken(String token) {
         String json = (String) redis.get("UserLogin" + ":" + token);
         if ( json==null||json.length()==0) {
-            return GeneralResult.build(400, "用户登录已经过期");
+            return GeneralResult.build(1, "用户登录已经过期");
         }
         //重置Session的过期时间
         redis.expire("UserLogin" + ":" + token, 86400);
