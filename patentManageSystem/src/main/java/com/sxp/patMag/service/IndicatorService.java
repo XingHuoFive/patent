@@ -41,4 +41,11 @@ public interface IndicatorService {
      * @return 是否导出成功
      */
     boolean export(IndicatorExport indicatorExport);
+
+    /**
+     * 根据id获取指标详情
+     * @param indicatorId 要获取的指标id
+     * @return 获取到的指标详情
+     */
+    IndicatorExport getById(String indicatorId);
 }
