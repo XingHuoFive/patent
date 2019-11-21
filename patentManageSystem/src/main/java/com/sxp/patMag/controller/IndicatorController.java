@@ -31,6 +31,7 @@ public class IndicatorController {
             generalResult.setMsg("id为空，无法获取");
             return generalResult;
         }
+
         IndicatorExport indicator = indicatorService.getById(indicatorId);
         if (null == indicator) {
             generalResult.setStatus(0);

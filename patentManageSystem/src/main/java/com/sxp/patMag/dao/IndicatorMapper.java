@@ -18,6 +18,7 @@ import java.util.List;
 @Repository
 public interface IndicatorMapper {
 
+
     /**
      * 新增指标
      * @param indicator 新增的指标

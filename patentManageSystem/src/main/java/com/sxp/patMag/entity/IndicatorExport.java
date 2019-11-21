@@ -8,6 +8,7 @@ package com.sxp.patMag.entity;
  */
 public class IndicatorExport {
 
+
     /**
      * 指标id
      */

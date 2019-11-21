@@ -26,6 +26,7 @@ public interface IndicatorService {
      * @param indicatorExport 要获取指标查询条件
      * @return 获取到的指标列表
      */
+
     List<IndicatorExport> listByPatent(IndicatorExport indicatorExport);
 
     /**
