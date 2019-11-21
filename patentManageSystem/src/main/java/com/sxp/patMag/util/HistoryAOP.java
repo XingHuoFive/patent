@@ -54,26 +54,17 @@ public class HistoryAOP {
             String value = monitor.value();
             history.setHtOperation(value);//保存获取的操作
         }
-
         //获取请求的类名
         String className = joinPoint.getTarget().getClass().getName();
         //获取请求的方法名
         String methodName = method.getName();
-
         //请求的参数
         Object[] args = joinPoint.getArgs();
-
         //将参数所在的数组转换成json
        String params = JSON.toJSONString(args);
 
 
-
-
-
-
         Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
-
-
 
 
         history.setHtDate(new Date().toString());

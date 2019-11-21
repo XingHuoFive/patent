@@ -7,10 +7,7 @@ import com.sxp.patMag.dao.PatentMapper;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.LoginService;
 import com.sxp.patMag.service.PatentService;
-import com.sxp.patMag.util.GeneralResult;
-import com.sxp.patMag.util.JsonUtils;
-import com.sxp.patMag.util.RedisUtil;
-import com.sxp.patMag.util.StringUtils;
+import com.sxp.patMag.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +22,11 @@ public class LoginServiceImpl implements LoginService  {
     private LoginMapper loginMapper;
     @Autowired
     private RedisUtil redis ;
+
+    @Autowired
+    private WeLogFile weLogFile;
+
+
     public GeneralResult login(User user) {
 
         System.out.println(user.toString());
@@ -55,6 +57,8 @@ public class LoginServiceImpl implements LoginService  {
         String token = UUID.randomUUID().toString();
         //清空密码
         user.setUserPassword(null);
+
+        weLogFile.setUser1(user);
          //权限存储
          user.setUserRole(list.get(0).getUserRole());
          user.setUserId(list.get(0).getUserId());

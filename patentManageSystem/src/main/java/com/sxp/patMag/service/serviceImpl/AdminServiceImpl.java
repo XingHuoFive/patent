@@ -3,6 +3,7 @@ package com.sxp.patMag.service.serviceImpl;
 import com.sxp.patMag.dao.AdminMapper;
 import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.service.AdminService;
+import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.WeLogFile;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +27,13 @@ public class AdminServiceImpl implements AdminService {
      * @return 修改结果
      */
     @Override
-    public boolean checkPatent(String patentId, String updateField) {
-        return adminMapper.checkPatent(patentId, updateField);
+    public GeneralResult checkPatent(String patentId, String updateField) {
+        boolean flag = adminMapper.checkPatent(patentId, updateField);
+        if (flag) {
+            return GeneralResult.build(0, "修改成功");
+        } else {
+            return GeneralResult.build(1, "修改不成功");
+        }
     }
 
     /**
@@ -37,8 +43,13 @@ public class AdminServiceImpl implements AdminService {
      */
 
     @Override
-    public List<Jbook> selectAllFilesByPatentId(String patentId) {
-        return adminMapper.selectAllFilesByPatentId(patentId);
+    public GeneralResult selectAllFilesByPatentId(String patentId) {
+        List<Jbook> list = adminMapper.selectAllFilesByPatentId(patentId);
+        if (list == null || list.size() == 0) {
+            //返回登录失败
+            return GeneralResult.build(1, "fail");
+        }
+        return GeneralResult.build(0, "success", list);
     }
 
     /**
@@ -46,7 +57,12 @@ public class AdminServiceImpl implements AdminService {
      * @return 日志列表
      */
     @Override
-    public List<String> readLogFile() {
-        return WeLogFile.readLog();
+    public GeneralResult readLogFile() {
+        List<String> list = WeLogFile.readLog();
+        if (list == null || list.size() == 0) {
+            //返回查询失败
+            return GeneralResult.build(1, "fail");
+        }
+        return GeneralResult.build(0, "success", list);
     }
 }
