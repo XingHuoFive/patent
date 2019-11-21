@@ -25,7 +25,7 @@ public class IndicatorController {
     @Autowired
     private IndicatorService indicatorService;
 
-    @GetMapping("/export")
+    @PostMapping("/export")
     public GeneralResult export(@RequestBody IndicatorExport indicatorExport) {
         GeneralResult generalResult = new GeneralResult();
         if (null == indicatorExport) {
@@ -34,7 +34,7 @@ public class IndicatorController {
             return generalResult;
         }
         boolean export = indicatorService.export(indicatorExport);
-        if (export) {
+        if (!export) {
             generalResult.setStatus(-1);
             generalResult.setMsg("导出失败");
             return generalResult;

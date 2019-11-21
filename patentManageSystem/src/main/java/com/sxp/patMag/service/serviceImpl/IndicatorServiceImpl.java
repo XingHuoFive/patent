@@ -54,7 +54,6 @@ public class IndicatorServiceImpl implements IndicatorService {
     public boolean export(IndicatorExport indicatorExport) {
         boolean flag = false;
         List<IndicatorExport> patents = patentService.listByPatent(indicatorExport);
-        System.out.println(patents);
         String[] columnNames={"编号", "指标详情", "所属专利", "专利进度", "申请日", "发明人中文名称", "撰写人"};
         String[] keys = {"number", "indicatorName", "caseNumber", "patentSchedule", "applyTime", "createPerson", "writePerson"};
         flag = processData(patents, columnNames, keys);
@@ -78,13 +77,15 @@ public class IndicatorServiceImpl implements IndicatorService {
         for (int i = 0; i < list.size(); i++) {
             mapValue = new HashMap<>();
             indicatorExport = list.get(i);
-            for (int j = 0; j < keys.length; j++) {
+            mapValue.put(keys[0], i + 1);
+            for (int j = 1; j < keys.length; j++) {
                 mapValue.put(keys[j], getParams(keys[j], indicatorExport));
             }
             listmap.add(mapValue);
         }
         try {
             ExcelUtil.createWorkbook(listmap, keys, columnNames,"test.xlsx");
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
         }
