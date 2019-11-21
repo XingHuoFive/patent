@@ -10,4 +10,6 @@ public interface HistoryService {
 
     public GeneralResult insertHistory(History history);
 
+    public GeneralResult selectHistory(String patnetId);
+
 }

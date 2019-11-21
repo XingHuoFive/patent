@@ -1,13 +1,14 @@
 package com.sxp.patMag.util;
 
 import com.sxp.patMag.entity.User;
+import com.sxp.patMag.service.LoginService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -18,15 +19,23 @@ import java.util.logging.Formatter;
 @Component
 @EnableAspectJAutoProxy
 public class WeLogFile {
+    @Autowired
+    private LoginService loginService;
     /**
      * 日志存放地址
      */
-    private static String path = "D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
+    private static String path = "D:\\idea\\ideaProjects\\patentManage\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
 
     /**
      * 当时操作人
      */
-    private static String username = null;
+    private static String username;
+
+    private User user1;
+
+    public void setUser1(User user1) {
+        this.user1 = user1;
+    }
 
     /**
      * 声明切点
@@ -60,15 +69,10 @@ public class WeLogFile {
         String methodName = joinPoint.getSignature().getName();
         // 获取参数
         List<Object> args = Arrays.asList(joinPoint.getArgs());
-        User user = null;
-        if (methodName == "login") {
-            user = (User) args.get(0);
-        }
-        if (username != user.getUserName()) {
-            username = user.getUserName();
-        }
+
         Object proceed = joinPoint.proceed();
         if (proceed != null) {
+            username = user1.getUserName();
             log.info(username + "|" + methodName + "|incoming paramter:" + args.toString() + "|returning value is " + proceed);
         } else {
             log.info(username + "|" + methodName + "|incoming paramter:" + args.toString());

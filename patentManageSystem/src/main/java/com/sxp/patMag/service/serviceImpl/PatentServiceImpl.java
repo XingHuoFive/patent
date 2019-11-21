@@ -40,4 +40,14 @@ public class PatentServiceImpl implements PatentService {
         return tbPatentMapper.getPatentListByVO(indicatorExport);
     }
 
+    @Override
+    public IndicatorExport getById(String indicatorId) {
+        return tbPatentMapper.getIndicatorById(indicatorId);
+    }
+
+    @Override
+    public int updatePatent(Patent patent) {
+        return tbPatentMapper.updatePatent(patent);
+    }
+
 }

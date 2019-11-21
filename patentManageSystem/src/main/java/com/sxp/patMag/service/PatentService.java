@@ -27,4 +27,19 @@ public interface PatentService {
      * @return 获取到的指标列表
      */
     List<IndicatorExport> listByPatent(IndicatorExport indicatorExport);
+
+    /**
+     * 根据id获取指标详情
+     * @param indicatorId 要获取的指标id
+     * @return 获取到的指标详情
+     */
+    IndicatorExport getById(String indicatorId);
+
+    /**
+     * 更改专利信息
+     * @param patent 待更改的信息
+     * @return 影响条数
+     */
+    int updatePatent(Patent patent);
+
 }

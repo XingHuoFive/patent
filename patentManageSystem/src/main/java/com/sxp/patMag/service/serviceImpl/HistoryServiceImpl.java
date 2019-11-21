@@ -17,24 +17,36 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class HistoryServiceImpl implements HistoryService {
     @Resource
     private HistoryMapper historyMapper;
 
-    public GeneralResult insertHistory(History history){
-
+    /**
+     * @param history
+     * @return 插入流程历史
+     */
+    public GeneralResult insertHistory(History history) {
         int a = historyMapper.insertHistory(history);
-
-        if(a>0){
-            return GeneralResult.build(0,"success");
+        if (a > 0) {
+            return GeneralResult.build(0, "success");
         }
-        return GeneralResult.build(1,"failed");
-
-
+        return GeneralResult.build(1, "failed");
     }
 
+    /**
+     * @param patnetId
+     * @return 根据XXX查询历史记录
+     */
 
+    public GeneralResult selectHistory(String patnetId) {
+        List<History> historyList = historyMapper.selectHistory(patnetId);
+        if (historyList == null || historyList.size() == 0) {
+            return GeneralResult.build(1, "failed");
+        }
+        return GeneralResult.build(0, "success", historyList);
+    }
 
 }
