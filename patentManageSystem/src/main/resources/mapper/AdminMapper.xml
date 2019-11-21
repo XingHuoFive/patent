@@ -11,7 +11,7 @@
 
     <update id="checkPatent">
         update tb_patent
-        set patent_schedule = #{updateField}
+        set patent_schedule = #{patentSchedule}
         where patent_id = #{patentId}
     </update>
 
@@ -20,4 +20,5 @@
         from tb_jbook
         where jbook_id = #{patentId}
     </select>
+
 </mapper>

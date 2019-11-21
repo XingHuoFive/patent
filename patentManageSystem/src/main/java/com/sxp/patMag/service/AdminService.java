@@ -1,13 +1,12 @@
 package com.sxp.patMag.service;
 
-import com.sxp.patMag.entity.Jbook;
-import com.sxp.patMag.util.GeneralResult;
 
-import java.util.List;
+import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.util.GeneralResult;
 
 public interface AdminService {
 
-    GeneralResult checkPatent(String patentId, String updateField);
+    GeneralResult checkPatent(Patent patent);
 
     GeneralResult selectAllFilesByPatentId(String patentId);
 

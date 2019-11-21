@@ -2,6 +2,7 @@ package com.sxp.patMag.service.serviceImpl;
 
 import com.sxp.patMag.dao.AdminMapper;
 import com.sxp.patMag.entity.Jbook;
+import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.AdminService;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.WeLogFile;
@@ -22,13 +23,12 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 审核新建的专利
-     * @param patentId 专利id
-     * @param updateField 要修改成的状态
+     * @param patent 专利
      * @return 修改结果
      */
     @Override
-    public GeneralResult checkPatent(String patentId, String updateField) {
-        boolean flag = adminMapper.checkPatent(patentId, updateField);
+    public GeneralResult checkPatent(Patent patent) {
+        boolean flag = adminMapper.checkPatent(patent);
         if (flag) {
             return GeneralResult.build(0, "修改成功");
         } else {
@@ -41,7 +41,6 @@ public class AdminServiceImpl implements AdminService {
      * @param patentId 专利id
      * @return 文件地址
      */
-
     @Override
     public GeneralResult selectAllFilesByPatentId(String patentId) {
         List<Jbook> list = adminMapper.selectAllFilesByPatentId(patentId);
