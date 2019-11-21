@@ -61,6 +61,16 @@ public class IndicatorServiceImpl implements IndicatorService {
     }
 
     /**
+     * 根据id获取指标详情
+     * @param indicatorId 要获取的指标id
+     * @return 获取到的指标详情
+     */
+    @Override
+    public IndicatorExport getById(String indicatorId) {
+        return patentService.getById(indicatorId);
+    }
+
+    /**
      * 处理数据生成Excel
      * @param list 数据列表
      * @param columnNames 表格表头

@@ -71,5 +71,19 @@
         </trim>
     </select>
 
+    <select id="getIndicatorById" resultType="com.sxp.patMag.entity.IndicatorExport">
+        SELECT
+            p.patent_id patentId,
+            i.indicator_name indicatorName,
+            p.case_number caseNumber,
+            p.patent_schedule patentSchedule,
+            p.apply_time applyTime,
+            p.create_person createPerson,
+            p.write_person writePerson
+        FROM  tb_patent p
+        RIGHT JOIN tb_indicator i
+        ON i.patent_id = p.patent_id WHERE indicator_id = #{indicatorId}
+    </select>
+
 
 </mapper>

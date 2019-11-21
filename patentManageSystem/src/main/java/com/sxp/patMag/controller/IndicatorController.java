@@ -2,7 +2,6 @@ package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.IndicatorExport;
-import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.IndicatorService;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author lhx
@@ -25,17 +23,37 @@ public class IndicatorController {
     @Autowired
     private IndicatorService indicatorService;
 
+    @GetMapping("/get/{indicatorId}")
+    public GeneralResult getById(@PathVariable String indicatorId) {
+        GeneralResult generalResult = new GeneralResult();
+        if (null == indicatorId || "".equals(indicatorId)) {
+            generalResult.setStatus(0);
+            generalResult.setMsg("id为空，无法获取");
+            return generalResult;
+        }
+        IndicatorExport indicator = indicatorService.getById(indicatorId);
+        if (null == indicator) {
+            generalResult.setStatus(1);
+            generalResult.setMsg("无匹配数据，查询失败");
+            return generalResult;
+        }
+        generalResult.setStatus(1);
+        generalResult.setMsg("查询成功");
+        generalResult.setData(indicator);
+        return generalResult;
+    }
+
     @PostMapping("/export")
     public GeneralResult export(@RequestBody IndicatorExport indicatorExport) {
         GeneralResult generalResult = new GeneralResult();
         if (null == indicatorExport) {
-            generalResult.setStatus(-1);
+            generalResult.setStatus(0);
             generalResult.setMsg("导出失败");
             return generalResult;
         }
         boolean export = indicatorService.export(indicatorExport);
         if (!export) {
-            generalResult.setStatus(-1);
+            generalResult.setStatus(0);
             generalResult.setMsg("导出失败");
             return generalResult;
         }
@@ -49,7 +67,7 @@ public class IndicatorController {
         GeneralResult generalResult = new GeneralResult();
         List<IndicatorExport> list = indicatorService.list();
         if (null == list) {
-            generalResult.setStatus(-1);
+            generalResult.setStatus(0);
             generalResult.setMsg("失败");
             return generalResult;
         }
@@ -63,13 +81,13 @@ public class IndicatorController {
     public GeneralResult listByPatent(@RequestBody IndicatorExport indicatorExport) {
         GeneralResult generalResult = new GeneralResult();
         if (indicatorExport == null) {
-            generalResult.setStatus(-1);
+            generalResult.setStatus(0);
             generalResult.setMsg("查询内容为空");
             return generalResult;
         }
         List<IndicatorExport> patents = indicatorService.listByPatent(indicatorExport);
         if (null == patents) {
-            generalResult.setStatus(-1);
+            generalResult.setStatus(0);
             generalResult.setMsg("失败");
             return generalResult;
         }
@@ -83,19 +101,19 @@ public class IndicatorController {
     public GeneralResult save(@RequestBody Indicator indicator) {
         GeneralResult generalResult = new GeneralResult();
         if (null == indicator) {
-            generalResult.setStatus(-1);
+            generalResult.setStatus(0);
             generalResult.setMsg("指标内容不能为空");
             return generalResult;
         }
 
         if (null == indicator.getPatentId() || "".equals(indicator.getPatentId())) {
-            generalResult.setStatus(-1);
+            generalResult.setStatus(0);
             generalResult.setMsg("指标对应专利id不能为空");
             return generalResult;
         }
 
         if (null == indicator.getIndicatorName() || "".equals(indicator.getIndicatorName())) {
-            generalResult.setStatus(-1);
+            generalResult.setStatus(0);
             generalResult.setMsg("指标命不能为空");
             return generalResult;
         }
@@ -103,7 +121,7 @@ public class IndicatorController {
         indicator.setIndicatorId(UUID.getUUID());
         int save = indicatorService.save(indicator);
         if (save <= 0) {
-            generalResult.setStatus(-1);
+            generalResult.setStatus(0);
             generalResult.setMsg("添加失败");
             return generalResult;
         }

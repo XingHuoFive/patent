@@ -9,6 +9,11 @@ package com.sxp.patMag.entity;
 public class IndicatorExport {
 
     /**
+     * 指标id
+     */
+    private String indicatorId;
+
+    /**
      * 编号
      */
     private String number;
@@ -51,7 +56,8 @@ public class IndicatorExport {
     public IndicatorExport() {
     }
 
-    public IndicatorExport(String number, String indicatorName, String caseNumber, String patentSchedule, String applyTime, String createPerson, String writePerson, String applyNumber) {
+    public IndicatorExport(String indicatorId, String number, String indicatorName, String caseNumber, String patentSchedule, String applyTime, String createPerson, String writePerson, String applyNumber) {
+        this.indicatorId = indicatorId;
         this.number = number;
         this.indicatorName = indicatorName;
         this.caseNumber = caseNumber;
@@ -60,6 +66,14 @@ public class IndicatorExport {
         this.createPerson = createPerson;
         this.writePerson = writePerson;
         this.applyNumber = applyNumber;
+    }
+
+    public String getIndicatorId() {
+        return indicatorId;
+    }
+
+    public void setIndicatorId(String indicatorId) {
+        this.indicatorId = indicatorId;
     }
 
     public String getNumber() {
@@ -129,7 +143,8 @@ public class IndicatorExport {
     @Override
     public String toString() {
         return "IndicatorExport{" +
-                "number='" + number + '\'' +
+                "indicatorId='" + indicatorId + '\'' +
+                ", number='" + number + '\'' +
                 ", indicatorName='" + indicatorName + '\'' +
                 ", caseNumber='" + caseNumber + '\'' +
                 ", patentSchedule='" + patentSchedule + '\'' +
