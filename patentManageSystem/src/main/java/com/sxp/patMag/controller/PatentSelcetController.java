@@ -1,5 +1,6 @@
 package com.sxp.patMag.controller;
 
+import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.GeneralResult;
@@ -72,6 +73,7 @@ public class PatentSelcetController {
      * 认领人修改
      * @return
      */
+    @Monitor("专利认领")
     @RequestMapping(value = "/updatePatentToWritePerson",method = RequestMethod.POST)
     @ResponseBody
     public  GeneralResult updatePatentToWritePerson(@RequestBody Patent patent){

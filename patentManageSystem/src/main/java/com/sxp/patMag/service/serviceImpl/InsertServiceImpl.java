@@ -23,9 +23,7 @@ public class InsertServiceImpl implements InsertService {
     private InsertMapper insertMapper;
     @Monitor("新建专利")
     public GeneralResult InsertPatent(Patent patent){
-        System.out.println("______________");
         int a = insertMapper.InsertPatent(patent);
-        System.out.println("______________");
         if(a>0){
             return GeneralResult.build(0,"success");
         }

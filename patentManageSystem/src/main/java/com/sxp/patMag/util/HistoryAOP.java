@@ -49,13 +49,11 @@ public class HistoryAOP {
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("开始操作历史记录");
 
-
         History history = new History();
         //从切面织入点处通过反射机制获取织入点处的方法
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         //获取切入点所在的方法
         Method method = signature.getMethod();
-
         //获取操作
         Monitor monitor = method.getAnnotation(Monitor.class);
         String value = null;
@@ -76,9 +74,11 @@ public class HistoryAOP {
         history.setHtId(UUID.getUUID());
         history.setHtUserId(user.getUserId());
         System.out.println(params);
+
+        Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
+
         if (value.equals("新建专利")){
 
-            Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem(null);
             history.setHtOldItem( null);
@@ -87,7 +87,6 @@ public class HistoryAOP {
 
         }else if(value.equals("专利认领")){
 
-            Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem("write_person : "+patent.getWritePerson());
             history.setHtOldItem("write_person : "+null);
@@ -96,7 +95,6 @@ public class HistoryAOP {
 
         }else if(value.equals("初审")){
 
-            Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem("patent_schedule : "+patent.getPatentSchedule());
             history.setHtOldItem("patent_schedule : 未审核");
@@ -117,7 +115,6 @@ public class HistoryAOP {
         }else if(){
 
         }*/
-
 
         historyService.insertHistory(history);
 

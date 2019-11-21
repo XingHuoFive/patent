@@ -16,13 +16,14 @@ public class History {
     private String htNewItem;
     private String htPatentId;
     private String htOperation;
+    private User userPojo;
 
-    public String getHtOperation() {
-        return htOperation;
+    public User getUserPojo() {
+        return userPojo;
     }
 
-    public void setHtOperation(String htOperation) {
-        this.htOperation = htOperation;
+    public void setUserPojo(User userPojo) {
+        this.userPojo = userPojo;
     }
 
     @Override
@@ -36,7 +37,16 @@ public class History {
                 ", htNewItem='" + htNewItem + '\'' +
                 ", htPatentId='" + htPatentId + '\'' +
                 ", htOperation='" + htOperation + '\'' +
+                ", userPojo=" + userPojo +
                 '}';
+    }
+
+    public String getHtOperation() {
+        return htOperation;
+    }
+
+    public void setHtOperation(String htOperation) {
+        this.htOperation = htOperation;
     }
 
     public String getHtId() {
