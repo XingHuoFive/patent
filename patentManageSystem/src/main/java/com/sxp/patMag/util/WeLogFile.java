@@ -26,6 +26,7 @@ public class WeLogFile {
      */
     private static String path = "D:\\idea\\ideaProjects\\patentManage\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
 
+
     /**
      * 当时操作人
      */
