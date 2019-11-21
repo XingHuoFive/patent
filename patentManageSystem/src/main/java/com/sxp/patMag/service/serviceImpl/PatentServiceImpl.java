@@ -45,4 +45,9 @@ public class PatentServiceImpl implements PatentService {
         return tbPatentMapper.getIndicatorById(indicatorId);
     }
 
+    @Override
+    public int updatePatent(Patent patent) {
+        return tbPatentMapper.updatePatent(patent);
+    }
+
 }

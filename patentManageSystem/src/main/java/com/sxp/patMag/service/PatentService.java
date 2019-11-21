@@ -34,4 +34,12 @@ public interface PatentService {
      * @return 获取到的指标详情
      */
     IndicatorExport getById(String indicatorId);
+
+    /**
+     * 更改专利信息
+     * @param patent 待更改的信息
+     * @return 影响条数
+     */
+    int updatePatent(Patent patent);
+
 }
