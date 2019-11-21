@@ -80,7 +80,7 @@ public class HistoryAOP {
         if (value.equals("新建专利")){
 
             history.setHtPatentId(patent.getPatentId());
-            history.setHtNewItem(null);
+            history.setHtNewItem(patent.toString());
             history.setHtOldItem( null);
             history.setHtProcess(value);
             history.setHtOperation("新建专利");
@@ -100,6 +100,13 @@ public class HistoryAOP {
             history.setHtOldItem("patent_schedule : 未审核");
             history.setHtProcess(value);
             history.setHtOperation("初审");
+
+        }else if(value.equals("修改字段")){
+            history.setHtPatentId(patent.getPatentId());
+            history.setHtNewItem(patent.toString());
+            history.setHtOldItem("修改字段");
+            history.setHtProcess(value);
+            history.setHtOperation("修改字段");
 
         }
         /*
