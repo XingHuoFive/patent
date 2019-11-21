@@ -7,4 +7,11 @@ INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`,
  VALUES (#{htId}, #{htDate},#{htUserId}, #{htProcess}, #{htOldItem}, #{htNewItem}, #{htPatentId}, #{htOperation});
 
     </insert>
+
+
+    <select id="selectHistory" parameterType="java.lang.String"  resultType="History" >
+        select ht_id, ht_date,ht_user_id,ht_process,ht_old_item,ht_new_item,ht_patent_id,ht_operation  from  tb_history
+         where  ht_patent_id  = #{htPatentId}
+    </select>
+
 </mapper>

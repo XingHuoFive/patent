@@ -16,29 +16,32 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class LoginServiceImpl implements LoginService {
+public class LoginServiceImpl implements LoginService  {
 
     @Resource
     private LoginMapper loginMapper;
     @Autowired
-    private RedisUtil redis;
+    private RedisUtil redis ;
+
     @Autowired
     private WeLogFile weLogFile;
 
+
     public GeneralResult login(User user) {
 
-        user.setUserName(user.getUserName().trim());
-        user.setUserPassword(user.getUserPassword().trim());
+        System.out.println(user.toString());
+//        user.setUserName(user.getUserName().trim());
+//        user.setUserPassword(user.getUserPassword().trim());
 
         //判断用户名和密码是否正确
-        if (user == null) {
+        if (user==null){
             return GeneralResult.build(1, "用户名或密码为空");
         }
         if (StringUtils.isNull(user.getUserName())) {
 
             return GeneralResult.build(1, "用户名或密码为空");
         }
-        if (StringUtils.isNull(user.getUserPassword())) {
+        if (StringUtils.isNull(user.getUserPassword())){
 
             return GeneralResult.build(1, "用户名或密码为空");
         }
@@ -56,19 +59,20 @@ public class LoginServiceImpl implements LoginService {
         user.setUserPassword(null);
 
         weLogFile.setUser1(user);
-//        //权限存储
-//        user.setUserRole(list.get(0).getUserRole());
+         //权限存储
+         user.setUserRole(list.get(0).getUserRole());
+         user.setUserId(list.get(0).getUserId());
         //把用户信息保存到redis，key就是token，value就是用户信息
         redis.set("UserLogin" + ":" + token, JsonUtils.objectToJson(user));
         //设置key的过期时间
         redis.expire("UserLogin" + ":" + token, 86400);
         //返回登录成功，其中要把token返回。
-        return GeneralResult.ok(token);
+        return GeneralResult.build(0, user.getUserRole(),token);
     }
 
     public GeneralResult getUserByToken(String token) {
         String json = (String) redis.get("UserLogin" + ":" + token);
-        if (json == null || json.length() == 0) {
+        if ( json==null||json.length()==0) {
             return GeneralResult.build(1, "用户登录已经过期");
         }
         //重置Session的过期时间
@@ -77,6 +81,11 @@ public class LoginServiceImpl implements LoginService {
         User user = JsonUtils.jsonToPojo(json, User.class);
         return GeneralResult.ok(user);
     }
+
+
+
+
+
 
 
 }
