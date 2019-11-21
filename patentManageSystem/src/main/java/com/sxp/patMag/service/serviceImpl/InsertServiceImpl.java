@@ -1,5 +1,6 @@
 package com.sxp.patMag.service.serviceImpl;
 
+import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.dao.InsertMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.InsertService;
@@ -20,10 +21,8 @@ public class InsertServiceImpl implements InsertService {
 
     @Resource
     private InsertMapper insertMapper;
-
+    @Monitor("新建专利")
     public GeneralResult InsertPatent(Patent patent){
-        patent.setPatentId(UUID.getUUID());
-        patent.setApplyTime(new Date().toString());
         System.out.println("______________");
         int a = insertMapper.InsertPatent(patent);
         System.out.println("______________");
