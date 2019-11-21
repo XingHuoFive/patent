@@ -8,7 +8,8 @@ import java.util.List;
 
 @Mapper
 public interface AdminMapper {
-    boolean checkPatent(@Param("patentId")String patentId, @Param("updateField")String updateField);
+    boolean checkPatent(@Param("patentId") String patentId, @Param("updateField") String updateField);
 
-    List<Jbook> selectAllFilesByPatentId(@Param("patentId")String patentId);
+    List<Jbook> selectAllFilesByPatentId(@Param("patentId") String patentId);
+
 }
