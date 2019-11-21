@@ -2,6 +2,8 @@ package com.sxp.patMag.util;
 import com.alibaba.fastjson.JSON;
 import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.entity.History;
+import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.service.HistoryService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,6 +20,9 @@ import java.util.Date;
 public class HistoryAOP {
     @Autowired
     private RedisUtil redis ;
+
+    @Autowired
+    private HistoryService historyService;
     /**
      * 声明切点
      */
@@ -57,14 +62,31 @@ public class HistoryAOP {
 
         //请求的参数
         Object[] args = joinPoint.getArgs();
+
         //将参数所在的数组转换成json
-        String params = JSON.toJSONString(args);
+       String params = JSON.toJSONString(args);
+
+
+
+
+
+
+        Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
+
+
+
 
         history.setHtDate(new Date().toString());
+        history.setHtId(UUID.getUUID());
+        history.setHtPatentId(patent.getPatentId());
+        history.setHtUserId("1");
+        history.setHtNewItem(methodName);
+        history.setHtOldItem(methodName);
+        history.setHtProcess("过程");
+        historyService.insertHistory(history);
 
-        System.out.println(params);
+
         //获取用户名
-
 
         Object proceed = joinPoint.proceed();
         return proceed;
