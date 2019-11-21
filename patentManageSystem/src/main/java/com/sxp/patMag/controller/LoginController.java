@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Author： Jude
  * Date:2019/11/19
@@ -21,7 +23,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping(value="/login" , method= RequestMethod.GET)
+    @RequestMapping(value="/login" , method= RequestMethod.POST)
     @ResponseBody
     public GeneralResult login(User user){
         return loginService.login(user);
