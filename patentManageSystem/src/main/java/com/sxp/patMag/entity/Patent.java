@@ -4,6 +4,7 @@ package com.sxp.patMag.entity;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class Patent {
     /** 备注 **/
     private String patentRemarks;
     /** 指标 **/
-    private List<Indicator> indicatorList;
+    private List<Indicator> indicatorList = new ArrayList<>();
 
 
     @Override
@@ -153,8 +154,8 @@ public class Patent {
         return indicatorList;
     }
 
-    public void setIndicatorList(List<Indicator> indicatorList) {
-        indicatorList = indicatorList;
+    public void setIndicatorList(Indicator indicator) {
+        indicatorList.add(indicator);
     }
 
     public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList) {

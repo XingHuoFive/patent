@@ -46,7 +46,7 @@ public class GeneralResult {
     }
 
     public GeneralResult(Object data) {
-        this.status = 200;
+        this.status = 0;
         this.msg = "OK";
         this.data = data;
     }

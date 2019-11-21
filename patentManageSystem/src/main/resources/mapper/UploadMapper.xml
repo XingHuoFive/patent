@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxp.patMag.dao.UploadMapper">
+    <insert id="insertJbook" parameterType="Jbook">
+
+         INSERT INTO  tb_jbook(`jbook_id`, `jbook_patent_id`, `jbook_url`, `jbook_user_id`, `jbook_view`) VALUES (#{jbookId},#{jbookPatentId},#{jbookUrl},#{jbookUserId},#{jbookView})
+
+    </insert>
+</mapper>
