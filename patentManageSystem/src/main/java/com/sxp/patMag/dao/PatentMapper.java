@@ -38,4 +38,11 @@ public interface PatentMapper {
      */
     IndicatorExport getIndicatorById(String indicatorId);
 
+    /**
+     * 更改专利信息
+     * @param patent 待更改的信息
+     * @return 影响条数
+     */
+    int updatePatent(Patent patent);
+
 }
