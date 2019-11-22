@@ -5,6 +5,7 @@ import com.sxp.patMag.service.AdminService;
 import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,7 +24,7 @@ public class AdminController {
     /** 审核新建的专利 */
     @RequestMapping(value = "/checkPatent", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult checkPatent(Patent patent) {
+    public GeneralResult checkPatent(@RequestBody Patent patent) {
         return adminService.checkPatent(patent);
     }
 
@@ -37,8 +38,8 @@ public class AdminController {
     /** 管理员读取日志 */
     @RequestMapping(value = "/readLogFile", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult readLogFile() {
-        return adminService.readLogFile();
+    public GeneralResult readLogFile(String pageNumber) {
+        return adminService.readLogFile(pageNumber);
     }
 
 }
