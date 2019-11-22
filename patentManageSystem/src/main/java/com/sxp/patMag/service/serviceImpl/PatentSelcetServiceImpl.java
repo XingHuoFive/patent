@@ -1,7 +1,6 @@
 package com.sxp.patMag.service.serviceImpl;
 
 import com.sxp.patMag.dao.PatentSelcetMapper;
-import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentExport;
 import com.sxp.patMag.entity.PatentPath;
@@ -16,7 +15,6 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,15 +70,16 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
         return flag;
     }*/
 //弹出下载框
-/*    @Override
-    public Boolean export(Patent patent ,HttpServletResponse response) throws IOException {
+   @Override
+    public Boolean export(PatentPath patent , HttpServletResponse response) throws IOException {
         List<PatentExport> list = patentSelcetMapper.selectPatentByPatentExport(patent);
         String[] columnNames={"编号", "专利名称",   "案件文号",    "申请号",    "专利进度",        "申请日",   "发明人中文名称", "撰写人"};
         String[] keys = {"number", "patentName", "caseNumber", "applyNumber","patentSchedule", "applyTime", "createPerson", "writePerson"};
         Boolean flag = execl(list,columnNames,keys,response);//execl(list,columnNames,key,response);
         return flag;
-    }*/
+    }
 
+/*
 //传入下载地址
      @Override
      public Boolean export(PatentPath patent , String path) throws IOException {
@@ -90,6 +89,7 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
          Boolean flag = execl(list,columnNames,keys,path);//execl(list,columnNames,key,response);
          return flag;
      }
+*/
 
 
 
@@ -160,7 +160,7 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
 
 //下载地址
     @Override
-    public  Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys , String path) throws IOException {
+    public  Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys , HttpServletResponse response) throws IOException {
 
         List<Map<String, Object>>  listMap = new ArrayList<>();
         Map<String, Object> map = new HashMap<String, Object>();
@@ -184,7 +184,7 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
             }
         }
         System.out.println(listMap.toString());
-        ExcelUtil.createWorkbook(listMap,keys,columnNames,path);
+        ExcelUtil.createWorkbook(listMap,keys,columnNames,response);
 
         return  true;
     }

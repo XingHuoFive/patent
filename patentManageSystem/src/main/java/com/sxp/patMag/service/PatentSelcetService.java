@@ -70,7 +70,7 @@ public interface PatentSelcetService {
      * @return
      * @throws IOException
      */
-    Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys,String path ) throws IOException ;
+    Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys, HttpServletResponse response ) throws IOException ;
 
 
 /*    *//**
@@ -88,5 +88,5 @@ public interface PatentSelcetService {
      * @return
      * @throws IOException
      */
-    Boolean export(PatentPath patent, String path) throws IOException;
+    Boolean export(PatentPath patent, HttpServletResponse response) throws IOException;
 }

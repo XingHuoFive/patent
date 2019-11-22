@@ -29,11 +29,40 @@
 
 
 
+    <!--专利查询-->
+    <select id="selectPatentByPatentExport" parameterType="com.sxp.patMag.entity.Patent"  resultType="com.sxp.patMag.entity.PatentExport" >
+        select  patent_name, case_number,apply_number,patent_schedule, apply_time, create_person, write_person
+        from  tb_patent   where  1=1
+        <if test="caseNumber != null and caseNumber.length()>0">
+            AND case_number=#{caseNumber}
+        </if>
+        <if test="applyNumber != null and applyNumber.length()>0">
+            AND apply_number=#{applyNumber}
+        </if>
+        <if test="patentName != null and patentName.length()>0">
+            AND patent_Name=#{patentName}
+        </if>
+        <if test="createPerson != null and createPerson.length()>0">
+            AND create_person=#{createPerson}
+        </if>
+        <if test="patentSchedule != null and patentSchedule.length()>0">
+            AND patent_schedule=#{patentSchedule}
+        </if>
+        <if test="applyTime != null and applyTime.length()>0">
+            AND apply_time=#{applyTime}
+        </if>
+
+        order by apply_time
+    </select>
+
+
+
+
 
 
     <!--确认认领人-->
     <update id="updatePatentToWritePerson" parameterType="com.sxp.patMag.entity.Patent" >
-            UPDATE tb_patent SET write_person=#{writePerson},patent_claim="1" WHERE patent_id=#{patentId}
+            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = ""patent_claim="1" WHERE patent_id=#{patentId}
     </update>
 
 
@@ -44,10 +73,16 @@
            from  tb_patent   where patent_claim="true" order by apply_time,patent_claim
     </select>
 
+    <!--admin用户查询-->
+    <select id="selectPatentToAdmin" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
+        select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
+           from  tb_patent  order by apply_time,patent_claim
+    </select>
+
     <!--查询详细或审核信息-->
     <select id="selectPatentById" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
-        select patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks,spare
-        from  tb_patent   where patent_id=${patentId}
+        select patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
+        from  tb_patent  where patent_id=#{patentId}
     </select>
 
 </mapper>
