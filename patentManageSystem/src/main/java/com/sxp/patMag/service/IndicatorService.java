@@ -4,6 +4,8 @@ import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +43,7 @@ public interface IndicatorService {
      * @param indicatorExport 导出条件
      * @return 是否导出成功
      */
-    boolean export(IndicatorExport indicatorExport);
+    boolean export(IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req);
 
     /**
      * 根据id获取指标详情

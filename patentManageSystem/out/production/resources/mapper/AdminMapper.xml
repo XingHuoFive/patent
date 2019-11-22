@@ -8,17 +8,16 @@
         <result column="jbook_user_id" property="jbookUserId"/>
         <result column="jbook_view" property="jbookView"/>
     </resultMap>
-    <!--管理员审核-->
+
     <update id="checkPatent">
         update tb_patent
-        set patent_schedule = #{patentSchedule}
+        set patent_schedule = #{updateField}
         where patent_id = #{patentId}
     </update>
-    <!--专利交底书查询-->
+
     <select id="selectAllFilesByPatentId" resultMap="fileResultMap">
         select jbook_id, jbook_patent_id, jbook_url, jbook_user_id, jbook_view
         from tb_jbook
-        where jbook_patent_id = #{patentId}
+        where jbook_id = #{patentId}
     </select>
-
 </mapper>

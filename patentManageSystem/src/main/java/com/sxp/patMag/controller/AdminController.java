@@ -1,6 +1,5 @@
 package com.sxp.patMag.controller;
 
-import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.AdminService;
 import com.sxp.patMag.util.GeneralResult;
@@ -25,7 +24,6 @@ public class AdminController {
     /** 审核新建的专利 */
     @RequestMapping(value = "/checkPatent", method = RequestMethod.POST)
     @ResponseBody
-    @Monitor("初审")
     public GeneralResult checkPatent(@RequestBody Patent patent) {
         return adminService.checkPatent(patent);
     }
@@ -40,8 +38,8 @@ public class AdminController {
     /** 管理员读取日志 */
     @RequestMapping(value = "/readLogFile", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult readLogFile() {
-        return adminService.readLogFile();
+    public GeneralResult readLogFile(String pageNumber) {
+        return adminService.readLogFile(pageNumber);
     }
 
 }

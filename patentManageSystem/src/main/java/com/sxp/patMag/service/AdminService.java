@@ -10,5 +10,5 @@ public interface AdminService {
 
     GeneralResult selectAllFilesByPatentId(String patentId);
 
-    GeneralResult readLogFile();
+    GeneralResult readLogFile(String pageNumber);
 }

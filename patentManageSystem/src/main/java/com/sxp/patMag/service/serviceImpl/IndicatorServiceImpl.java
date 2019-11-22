@@ -6,10 +6,14 @@ import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.IndicatorService;
 import com.sxp.patMag.service.PatentService;
+import com.sxp.patMag.util.DownloadUtil;
 import com.sxp.patMag.util.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -52,12 +56,14 @@ public class IndicatorServiceImpl implements IndicatorService {
      */
 
     @Override
-    public boolean export(IndicatorExport indicatorExport) {
+    public boolean export(IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req) {
         boolean flag = false;
+        String filePath = null;
         List<IndicatorExport> patents = patentService.listByPatent(indicatorExport);
         String[] columnNames={"编号", "指标详情", "所属专利", "专利进度", "申请日", "发明人中文名称", "撰写人"};
         String[] keys = {"number", "indicatorName", "caseNumber", "patentSchedule", "applyTime", "createPerson", "writePerson"};
-        flag = processData(patents, columnNames, keys);
+        flag = processData(patents, columnNames, keys, "indicator.xlsx");
+        DownloadUtil.downloadFile("indicator.xlsx", "indicator.xlsx", resp, req);
         return flag;
     }
 
@@ -76,9 +82,10 @@ public class IndicatorServiceImpl implements IndicatorService {
      * @param list 数据列表
      * @param columnNames 表格表头
      * @param keys 表格表头对应key值列表
+     * @param filePath 导路径
      * @return
      */
-    private boolean processData(List<IndicatorExport> list, String[] columnNames, String[] keys) {
+    private boolean processData(List<IndicatorExport> list, String[] columnNames, String[] keys, String filePath) {
         List<Map<String, Object>> listmap = new ArrayList<Map<String, Object>>();
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("sheetName", "sheet1");
@@ -95,7 +102,7 @@ public class IndicatorServiceImpl implements IndicatorService {
             listmap.add(mapValue);
         }
         try {
-            ExcelUtil.createWorkbook(listmap, keys, columnNames,"test.xlsx");
+            ExcelUtil.createWorkbook(listmap, keys, columnNames,filePath);
             return true;
         } catch (IOException e) {
             e.printStackTrace();

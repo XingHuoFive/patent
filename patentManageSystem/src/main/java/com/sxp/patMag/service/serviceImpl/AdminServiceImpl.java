@@ -28,11 +28,31 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public GeneralResult checkPatent(Patent patent) {
+        if (patent == null || patent.getSpare() == null) {
+            return GeneralResult.build(1, "点击无效");
+        }
+        // 如果该专利通过审核，并且是还没有被认领，就把他的进度修改成待认领状态
+        if (Integer.parseInt(patent.getSpare()) == 1 && (Integer.parseInt(patent.getPatentClaim()) == 0 || patent.getPatentClaim() == null)) {
+            patent.setPatentSchedule("2");
+        }
+
+        // 如果该专利通过审核，并且已经被认领了，就把他的进度修改成已提交状态
+        if (Integer.parseInt(patent.getSpare()) == 1 && Integer.parseInt(patent.getPatentClaim()) == 1) {
+            patent.setPatentSchedule("5");
+        }
+        if (Integer.parseInt(patent.getSpare()) == 0 && (Integer.parseInt(patent.getPatentClaim()) == 0 || patent.getPatentClaim() == null)) {
+            patent.setPatentSchedule("3");
+        }
+        // 如果该专利审核没通过，就将它的进度修改成未通过
+        if (Integer.parseInt(patent.getSpare()) == 0 && Integer.parseInt(patent.getPatentClaim()) == 1) {
+            patent.setPatentSchedule("3");
+        }
+
         boolean flag = adminMapper.checkPatent(patent);
         if (flag) {
-            return GeneralResult.build(0, "修改成功");
+            return GeneralResult.build(0, "修改成功!");
         } else {
-            return GeneralResult.build(1, "修改不成功");
+            return GeneralResult.build(1, "修改不成功!");
         }
     }
 
@@ -43,6 +63,9 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public GeneralResult selectAllFilesByPatentId(String patentId) {
+        if (patentId == null) {
+            return GeneralResult.build(1, "该专利id为空");
+        }
         List<Jbook> list = adminMapper.selectAllFilesByPatentId(patentId);
         if (list == null || list.size() == 0) {
             //返回登录失败
@@ -56,12 +79,15 @@ public class AdminServiceImpl implements AdminService {
      * @return 日志列表
      */
     @Override
-    public GeneralResult readLogFile() {
+    public GeneralResult readLogFile(String pageNumber) {
         List<String> list = WeLogFile.readLog();
         if (list == null || list.size() == 0) {
             //返回查询失败
             return GeneralResult.build(1, "fail");
         }
-        return GeneralResult.build(0, "success", list);
+        if (pageNumber == null || pageNumber.length() == 0) {
+            return GeneralResult.build(0, "success", list);
+        }
+        return GeneralResult.build(0, "success", list.get(Integer.parseInt(pageNumber)-1));
     }
 }

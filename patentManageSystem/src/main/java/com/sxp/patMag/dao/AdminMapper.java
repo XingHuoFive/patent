@@ -11,6 +11,6 @@ import java.util.List;
 public interface AdminMapper {
     boolean checkPatent(Patent patent);
 
-    List<Jbook> selectAllFilesByPatentId(@Param("patentId") String patentId);
+    List<Jbook> selectAllFilesByPatentId(@Param("patentId")String patentId);
 
 }

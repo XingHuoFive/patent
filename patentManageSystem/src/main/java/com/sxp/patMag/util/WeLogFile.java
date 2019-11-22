@@ -45,7 +45,6 @@ public class WeLogFile {
     public void doLog() {
     }
 
-
     /**
      * 使用AOP写日志文件
      *
@@ -66,12 +65,12 @@ public class WeLogFile {
                         + record.getMessage() + "\n";
             }
         });
+
         log.addHandler(fileHandler);
         // 获取方法名
         String methodName = joinPoint.getSignature().getName();
         // 获取参数
         List<Object> args = Arrays.asList(joinPoint.getArgs());
-
         Object proceed = joinPoint.proceed();
         if (proceed != null) {
             username = user1.getUserName();

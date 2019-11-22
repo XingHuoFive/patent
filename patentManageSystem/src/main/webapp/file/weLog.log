@@ -9,6 +9,14 @@
 2019-11-19 23:58:09:009|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
 2019-11-20 00:02:08:008|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
 2019-11-20 00:04:07:007|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]
-2019-11-20 00:05:43:043|INFO|bai|CheckUser|incoming paramter:[User{userId='2', userName='xiaobai', userPassword='111', userRole='dd'}]|returning value is 0
-2019-11-20 15:47:16:016|INFO|null|login|incoming paramter:[User{userId='null', userName='null', userPassword='null', userRole='null'}]|returning value is com.sxp.patMag.util.GeneralResult@42701445
-2019-11-20 15:48:16:016|INFO|aa|login|incoming paramter:[User{userId='null', userName='aa', userPassword='null', userRole='null'}]|returning value is com.sxp.patMag.util.GeneralResult@9405783
+2019-11-20 19:44:42:042|INFO|null|readLogFile|incoming paramter:[]|returning value is com.sxp.patMag.util.GeneralResult@2b50be5f
+2019-11-20 20:52:00:000|INFO|username|login|incoming paramter:[User{userId='null', userName='张三', userPassword='null', userRole='null'}]|returning value is com.sxp.patMag.util.GeneralResult@5765e22e
+2019-11-21 09:47:33:033|INFO|张三|login|incoming paramter:[User{userId='null', userName='张三', userPassword='null', userRole='null'}]|returning value is com.sxp.patMag.util.GeneralResult@119e5939
+2019-11-21 09:48:37:037|INFO|张三|readLogFile|incoming paramter:[]|returning value is com.sxp.patMag.util.GeneralResult@1cb85350
+2019-11-21 09:51:34:034|INFO|张三|login|incoming paramter:[User{userId='null', userName='张三', userPassword='null', userRole='null'}]|returning value is com.sxp.patMag.util.GeneralResult@38db20fa
+2019-11-21 09:52:08:008|INFO|张三|readLogFile|incoming paramter:[]|returning value is com.sxp.patMag.util.GeneralResult@5e0b887
+2019-11-21 10:42:53:053|INFO|张三|login|incoming paramter:[User{userId='null', userName='张三', userPassword='null', userRole='null'}]|returning value is com.sxp.patMag.util.GeneralResult@5df02b87
+2019-11-21 10:50:27:027|INFO|张三|login|incoming paramter:[User{userId='null', userName='张三', userPassword='null', userRole='null'}]|returning value is com.sxp.patMag.util.GeneralResult@16f3517c
+2019-11-21 10:52:14:014|INFO|张三|login|incoming paramter:[User{userId='null', userName='张三', userPassword='null', userRole='null'}]|returning value is com.sxp.patMag.util.GeneralResult@6dd5653a
+2019-11-21 10:56:21:021|INFO|张三|login|incoming paramter:[User{userId='null', userName='张三', userPassword='null', userRole='null'}]|returning value is com.sxp.patMag.util.GeneralResult@507cff8
+2019-11-21 10:56:33:033|INFO|张三|readLogFile|incoming paramter:[]|returning value is com.sxp.patMag.util.GeneralResult@676729a9
