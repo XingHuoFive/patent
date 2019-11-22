@@ -13,33 +13,64 @@ import java.util.List;
  * Time:18:18
  */
 public class Patent {
-    /** 专利id **/
+    /**
+     * 专利id
+     **/
     private String patentId;
-    /** 案件号 **/
+    /**
+     * 案件号
+     **/
     private String caseNumber;
-    /** 申请号 **/
+    /**
+     * 申请号
+     **/
     private String applyNumber;
-    /** 申请时间 **/
+    /**
+     * 申请时间
+     **/
     private String applyTime;
-    /** 撰写人 **/
+    /**
+     * 撰写人
+     **/
     private String writePerson;
     /** 申请人/机构 **/
-    
-    /**。。。**/
-    private String applyPerson;
-    /** 发明人 **/
-    private String createPerson;
-    /** 专利名称 **/
-    private String patentName;
-    /** 专利进度:1.审核中2.未认领3.未通过4.已通过5.撰写中6.已提交 **/
-    private String patentSchedule;
-    /** 是否被认领： 认领——未被认领 **/
-    private String patentClaim;
-    /** 备注 **/
-    private String patentRemarks;
-    /** 指标 **/
-    private List<Indicator> indicatorList = new ArrayList<>();
 
+    /**
+     * 。。。
+     **/
+    private String applyPerson;
+    /**
+     * 发明人
+     **/
+    private String createPerson;
+    /**
+     * 专利名称
+     **/
+    private String patentName;
+    /**
+     * 专利进度:1.审核中2.待认领3.未通过4.编写中5.已提交
+     **/
+    private String patentSchedule;
+    /**
+     * 是否被认领： 认领——未被认领
+     **/
+    private String patentClaim;
+    /**
+     * 备注
+     **/
+    private String patentRemarks;
+    /**
+     * 指标
+     **/
+    private List<Indicator> indicatorList = new ArrayList<>();
+    /**
+     * 是否通过
+     */
+    private String spare;
+    /**
+     * 专利交底书
+     */
+    private List<Jbook> jbookList;
 
     @Override
     public String toString() {
@@ -55,7 +86,9 @@ public class Patent {
                 ", patentSchedule='" + patentSchedule + '\'' +
                 ", patentClaim='" + patentClaim + '\'' +
                 ", patentRemarks='" + patentRemarks + '\'' +
-                ", IndicatorList=" + indicatorList +
+                ", indicatorList=" + indicatorList +
+                ", spare='" + spare + '\'' +
+                ", jbookList=" + jbookList +
                 '}';
     }
 
@@ -65,6 +98,22 @@ public class Patent {
 
     public void setPatentId(String patentId) {
         this.patentId = patentId;
+    }
+
+    public String getSpare() {
+        return spare;
+    }
+
+    public void setSpare(String spare) {
+        this.spare = spare;
+    }
+
+    public List<Jbook> getJbookList() {
+        return jbookList;
+    }
+
+    public void setJbookList(List<Jbook> jbookList) {
+        this.jbookList = jbookList;
     }
 
     public String getCaseNumber() {
@@ -146,7 +195,8 @@ public class Patent {
     public void setPatentRemarks(String patentRemarks) {
         this.patentRemarks = patentRemarks;
     }
-    public Patent(){
+
+    public Patent() {
 
     }
 
@@ -156,6 +206,22 @@ public class Patent {
 
     public void setIndicatorList(Indicator indicator) {
         indicatorList.add(indicator);
+    }
+
+    public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList, String spare) {
+        this.patentId = patentId;
+        this.caseNumber = caseNumber;
+        this.applyNumber = applyNumber;
+        this.applyTime = applyTime;
+        this.writePerson = writePerson;
+        this.applyPerson = applyPerson;
+        this.createPerson = createPerson;
+        this.patentName = patentName;
+        this.patentSchedule = patentSchedule;
+        this.patentClaim = patentClaim;
+        this.patentRemarks = patentRemarks;
+        this.indicatorList = indicatorList;
+        this.spare = spare;
     }
 
     public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList) {

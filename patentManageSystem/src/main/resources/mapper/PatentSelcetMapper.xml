@@ -46,7 +46,7 @@
 
     <!--查询详细或审核信息-->
     <select id="selectPatentById" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
-        select patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
+        select patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks,spare
         from  tb_patent   where patent_id=${patentId}
     </select>
 
