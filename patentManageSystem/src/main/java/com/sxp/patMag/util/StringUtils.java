@@ -79,4 +79,7 @@ public class StringUtils {
         return !isNull(obj);
     }
 
+    public final static boolean isNotEmpty(Object obj){
+        return !isNull(obj);
+    }
 }

@@ -25,13 +25,17 @@ public class LoginServiceImpl implements LoginService  {
 
     @Autowired
     private WeLogFile weLogFile;
-
+    @Autowired
+    private HistoryAOP historyAOP;
 
     public GeneralResult login(User user) {
 
         System.out.println(user.toString());
 //        user.setUserName(user.getUserName().trim());
 //        user.setUserPassword(user.getUserPassword().trim());
+
+
+
 
         //判断用户名和密码是否正确
         if (user==null){
@@ -42,10 +46,11 @@ public class LoginServiceImpl implements LoginService  {
             return GeneralResult.build(1, "用户名或密码为空");
         }
         if (StringUtils.isNull(user.getUserPassword())){
-
             return GeneralResult.build(1, "用户名或密码为空");
         }
-
+        if ( user.getUserPassword().length()>16 ||user.getUserName().length()>16 ){
+            return GeneralResult.build(1, "用户名或密码长度超过了最大长度");
+        }
 
         List<User> list = loginMapper.CheckUser(user);
         if (list == null || list.size() == 0) {
@@ -57,7 +62,7 @@ public class LoginServiceImpl implements LoginService  {
         String token = UUID.randomUUID().toString();
         //清空密码
         user.setUserPassword(null);
-
+        historyAOP.setUser(user);
         weLogFile.setUser1(user);
          //权限存储
          user.setUserRole(list.get(0).getUserRole());

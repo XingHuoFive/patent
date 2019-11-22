@@ -1,18 +1,15 @@
-
 package com.sxp.patMag.entity;
 
-import lombok.Builder;
-import lombok.Data;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Author： Jude
- * Date:2019/11/19
- * Time:18:18
+ * Date:2019/11/22
+ * Time:10:56
  */
-public class Patent {
+
+public class PatentPath {
+
     /** 专利id **/
     private String patentId;
     /** 案件号 **/
@@ -24,7 +21,7 @@ public class Patent {
     /** 撰写人 **/
     private String writePerson;
     /** 申请人/机构 **/
-    
+
     /**。。。**/
     private String applyPerson;
     /** 发明人 **/
@@ -38,7 +35,9 @@ public class Patent {
     /** 备注 **/
     private String patentRemarks;
     /** 指标 **/
-    private List<Indicator> indicatorList = new ArrayList<>();
+    private List<Indicator> indicatorList;
+    /** 路径 **/
+    private String path;
 
 
     @Override
@@ -58,6 +57,7 @@ public class Patent {
                 ", IndicatorList=" + indicatorList +
                 '}';
     }
+
 
     public String getPatentId() {
         return patentId;
@@ -146,19 +146,27 @@ public class Patent {
     public void setPatentRemarks(String patentRemarks) {
         this.patentRemarks = patentRemarks;
     }
-    public Patent(){
-
-    }
 
     public List<Indicator> getIndicatorList() {
         return indicatorList;
     }
 
-    public void setIndicatorList(Indicator indicator) {
-        indicatorList.add(indicator);
+    public void setIndicatorList(List<Indicator> indicatorList) {
+        indicatorList = indicatorList;
     }
 
-    public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList) {
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public PatentPath() {
+    }
+
+    public PatentPath(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList) {
         this.patentId = patentId;
         this.caseNumber = caseNumber;
         this.applyNumber = applyNumber;

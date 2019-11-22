@@ -144,4 +144,12 @@ public class GeneralResult {
         }
     }
 
+    @Override
+    public String toString() {
+        return "GeneralResult{" +
+                "status=" + status +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

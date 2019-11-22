@@ -33,7 +33,11 @@ public interface PatentService {
      * @param indicatorId 要获取的指标id
      * @return 获取到的指标详情
      */
+
     IndicatorExport getById(String indicatorId);
+
+
+
 
     /**
      * 更改专利信息

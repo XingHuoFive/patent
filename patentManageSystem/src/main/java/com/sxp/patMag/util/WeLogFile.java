@@ -24,7 +24,8 @@ public class WeLogFile {
     /**
      * 日志存放地址
      */
-    private static String path = "D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
+    private static String path = "D:\\idea\\ideaProjects\\patentManage\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
+
 
     /**
      * 当时操作人
@@ -43,6 +44,7 @@ public class WeLogFile {
     @Pointcut("execution(* com.sxp.patMag.service.serviceImpl.*.*(..))")
     public void doLog() {
     }
+
 
     /**
      * 使用AOP写日志文件

@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.HistoryMapper">
+
+    <resultMap id="HistoryMap" type="History">
+        <id column="ht_id" property="htId"/>
+        <result column="ht_date" property="htDate"/>
+        <result column="ht_user_id" property="htUserId"/>
+        <result column="ht_process" property="htProcess"/>
+        <result column="ht_old_item" property="htOldItem"/>
+        <result column="ht_new_item" property="htNewItem"/>
+        <result column="ht_patent_id" property="htPatentId"/>
+        <result column="ht_operation" property="htOperation"/>
+
+        <association property="userPojo" javaType="User">
+            <id column="user_id" property="userId"/>
+            <result column="user_name" property="userName"/>
+        </association>
+    </resultMap>
+
+
     <insert id="insertHistory" parameterType="History">
 
 INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`, `ht_old_item`, `ht_new_item`, `ht_patent_id`, `ht_operation`)
@@ -9,9 +27,12 @@ INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`,
     </insert>
 
 
-    <select id="selectHistory" parameterType="java.lang.String"  resultType="History" >
-        select ht_id, ht_date,ht_user_id,ht_process,ht_old_item,ht_new_item,ht_patent_id,ht_operation  from  tb_history
-         where  ht_patent_id  = #{htPatentId}
+    <select id="selectHistory" parameterType="java.lang.String"  resultMap="HistoryMap" >
+        select hs.ht_id, hs.ht_date,hs.ht_user_id,hs.ht_process,hs.ht_old_item,hs.ht_new_item,hs.ht_patent_id,hs.ht_operation,us.user_name
+
+         from  tb_history hs  join tb_user us
+         on  hs.ht_user_id = us.user_id
+         where  hs.ht_patent_id  = #{htPatentId}
     </select>
 
 </mapper>

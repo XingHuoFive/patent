@@ -13,6 +13,7 @@ public class Indicator {
      */
     private String indicatorId;
 
+
     /**
      * 指标名
      */
