@@ -16,6 +16,18 @@ public class History {
     private String htNewItem;
     private String htPatentId;
     private String htOperation;
+
+
+    private Patent patentPojo;
+
+    public Patent getPatentPojo() {
+        return patentPojo;
+    }
+
+    public void setPatentPojo(Patent patentPojo) {
+        this.patentPojo = patentPojo;
+    }
+
     private User userPojo;
 
     public User getUserPojo() {

@@ -16,6 +16,11 @@
             <id column="user_id" property="userId"/>
             <result column="user_name" property="userName"/>
         </association>
+
+        <association property="patentPojo" javaType="patent">
+            <id column="patent_id" property="patentId"/>
+            <result column="patent_name" property="patentName"/>
+        </association>
     </resultMap>
 
 
@@ -29,9 +34,11 @@ INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`,
 
     <select id="selectHistory" parameterType="java.lang.String"  resultMap="HistoryMap" >
         select hs.ht_id, hs.ht_date,hs.ht_user_id,hs.ht_process,hs.ht_old_item,hs.ht_new_item,hs.ht_patent_id,hs.ht_operation,us.user_name
-
+            ,pt.patent_name,pt.patent_id
          from  tb_history hs  join tb_user us
-         on  hs.ht_user_id = us.user_id
+          on  hs.ht_user_id = us.user_id
+          join tb_patent pt
+          on  pt.patent_id = hs.ht_patent_id
          where  hs.ht_patent_id  = #{htPatentId}
     </select>
 

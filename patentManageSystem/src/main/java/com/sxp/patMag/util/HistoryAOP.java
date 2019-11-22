@@ -91,35 +91,50 @@ public class HistoryAOP {
         redis.set(patent.getPatentId(), JSON.toJSON(patent));
         if (value.equals("新建专利")){
             history.setHtPatentId(patent.getPatentId());
-            history.setHtNewItem(params);
-            history.setHtOldItem( null);
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (patent.getApplyNumber()!=null){
+                stringBuilder.append("申请号 ："+patent.getApplyNumber()+"  ");
+            }
+            if(patent.getCaseNumber()!=null){
+                stringBuilder.append("案件文号 ："+patent.getCaseNumber()+"  ");
+            }
+            if(patent.getPatentName()!=null){
+                stringBuilder.append("专利名 ："+patent.getPatentName()+"  ");
+            }
+            if(patent.getCreatePerson()!=null){
+                stringBuilder.append("申请人 ："+patent.getCreatePerson()+"   ");
+            }
+
+
+            history.setHtNewItem(stringBuilder.toString());
+            history.setHtOldItem("无");
             history.setHtProcess(value);
             history.setHtOperation("新建专利");
         }else if(value.equals("专利认领")){
             history.setHtPatentId(patent.getPatentId());
-            history.setHtNewItem("write_person : "+patent.getWritePerson());
-            history.setHtOldItem("write_person : "+null);
+            history.setHtNewItem("认领人 : "+patent.getWritePerson());
+            history.setHtOldItem("认领人 : 无");
             history.setHtProcess(value);
             history.setHtOperation("修改了专利撰写人");
         }else if(value.equals("审核")){
 
-            if (patent.getPatentClaim().equals("0")){
+            if (patent.getPatentClaim()=="0"){
                 history.setHtPatentId(patent.getPatentId());
-                history.setHtNewItem("patent_schedule : "+patent.getPatentSchedule());
-                history.setHtOldItem("patent_schedule : 未审核");
+                history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
+                history.setHtOldItem("专利进度 : 未审核");
                 history.setHtProcess(value);
                 history.setHtOperation("初审");
-            }else{
+            }
+
+            if (patent.getPatentClaim()=="1"){
                 history.setHtPatentId(patent.getPatentId());
-                history.setHtNewItem("patent_schedule : "+patent.getPatentSchedule());
-                history.setHtOldItem("patent_schedule : 编写中");
+                history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
+                history.setHtOldItem("专利进度 : 编写中");
                 history.setHtProcess(value);
                 history.setHtOperation("复审");
             }
-
-
-
-
 
 
 
@@ -129,9 +144,42 @@ public class HistoryAOP {
 */
            /* Patent pobj  = JSON.parseObject(  obj.toString() , Patent.class);*/
             //Patent obj  =(Patent) redis.get(patent.getPatentId());
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (patent.getApplyNumber()!=null){
+                stringBuilder.append("申请号 ："+patent.getApplyNumber()+"  ");
+            }
+            if(patent.getCaseNumber()!=null){
+                stringBuilder.append("案件文号 ："+patent.getCaseNumber()+"   ");
+            }
+            if(patent.getPatentName()!=null){
+                stringBuilder.append("专利名 ："+patent.getPatentName()+"   ");
+            }
+            if(patent.getPatentRemarks()!=null){
+                stringBuilder.append("备注 ："+patent.getPatentRemarks()+"  ");
+            }
+
+
+            StringBuilder stringBuilder2 = new StringBuilder();
+
+            if (old_patent.getApplyNumber()!=null){
+                stringBuilder2.append("申请号 ："+old_patent.getApplyNumber()+"  ");
+            }
+            if(old_patent.getCaseNumber()!=null){
+                stringBuilder2.append("案件文号 ："+old_patent.getCaseNumber()+"  ");
+            }
+            if(old_patent.getPatentName()!=null){
+                stringBuilder2.append("专利名 ："+old_patent.getPatentName()+"  ");
+            }
+            if(old_patent.getPatentRemarks()!=null){
+                stringBuilder2.append("备注 ："+old_patent.getPatentRemarks()+"  ");
+            }
+
+
             history.setHtPatentId(patent.getPatentId());
-            history.setHtNewItem("patent : " +params);
-            history.setHtOldItem("patent : " + old_patent);
+            history.setHtNewItem(stringBuilder.toString());
+            history.setHtOldItem(stringBuilder2.toString());
             history.setHtProcess(value);
             history.setHtOperation("修改字段");
         }
