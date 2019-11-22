@@ -4,12 +4,14 @@ import com.sxp.patMag.dao.PatentSelcetMapper;
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentExport;
+import com.sxp.patMag.entity.PatentPath;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.ExcelUtil;
 import com.sxp.patMag.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -43,6 +45,12 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     }
 
     @Override
+    public List<Patent> selectPatentToAdmin() {
+
+        return patentSelcetMapper.selectPatentToAdmin();
+    }
+
+    @Override
     public Patent selectPatentById(String patentId){
         return patentSelcetMapper.selectPatentById( patentId);
     }
@@ -51,18 +59,42 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     public Integer updatePatentToWritePerson(Patent patent) {
         return patentSelcetMapper.updatePatentToWritePerson(patent);
     }
-    @Override
+
+
+
+//最初下载模板
+ /*   @Override
     public Boolean export(Patent patent) throws IOException {
         List<PatentExport> list = patentSelcetMapper.selectPatentByPatentExport(patent);
         String[] columnNames={"编号", "专利名称",   "案件文号",    "申请号",    "专利进度",        "申请日",   "发明人中文名称", "撰写人"};
         String[] keys = {"number", "patentName", "caseNumber", "applyNumber","patentSchedule", "applyTime", "createPerson", "writePerson"};
         Boolean flag = execl(list,columnNames,keys);
         return flag;
-    }
+    }*/
+//弹出下载框
+/*    @Override
+    public Boolean export(Patent patent ,HttpServletResponse response) throws IOException {
+        List<PatentExport> list = patentSelcetMapper.selectPatentByPatentExport(patent);
+        String[] columnNames={"编号", "专利名称",   "案件文号",    "申请号",    "专利进度",        "申请日",   "发明人中文名称", "撰写人"};
+        String[] keys = {"number", "patentName", "caseNumber", "applyNumber","patentSchedule", "applyTime", "createPerson", "writePerson"};
+        Boolean flag = execl(list,columnNames,keys,response);//execl(list,columnNames,key,response);
+        return flag;
+    }*/
+
+//传入下载地址
+     @Override
+     public Boolean export(PatentPath patent , String path) throws IOException {
+         List<PatentExport> list = patentSelcetMapper.selectPatentByPatentExport(patent);
+         String[] columnNames={"编号", "专利名称",   "案件文号",    "申请号",    "专利进度",        "申请日",   "发明人中文名称", "撰写人"};
+         String[] keys = {"number", "patentName", "caseNumber", "applyNumber","patentSchedule", "applyTime", "createPerson", "writePerson"};
+         Boolean flag = execl(list,columnNames,keys,path);//execl(list,columnNames,key,response);
+         return flag;
+     }
 
 
 
-    @Override
+//最初下载模板
+/*    @Override
     public  Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys ) throws IOException {
 
         List<Map<String, Object>>  listMap = new ArrayList<>();
@@ -70,11 +102,8 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
         map.put("sheetName", "sheet1");
         listMap.add(map);
 
-
-
         //反射获取对象所有属性
         for (PatentExport patent: list) {
-
             try {
                 //添加数据
                 getFile(patent,listMap);
@@ -94,7 +123,72 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
 
 
         return  true;
+    }*/
+
+
+
+//弹窗下载
+//    @Override
+//    public  Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys , HttpServletResponse response) throws IOException {
+//
+//        List<Map<String, Object>>  listMap = new ArrayList<>();
+//        Map<String, Object> map = new HashMap<String, Object>();
+//        map.put("sheetName", "sheet1");
+//        listMap.add(map);
+//
+//        //反射获取对象所有属性
+//        for (PatentExport patent: list) {
+//            try {
+//                //添加数据
+//                getFile(patent,listMap);
+//            } catch (NoSuchMethodException e) {
+//                e.printStackTrace();
+//                return false;
+//            } catch (InvocationTargetException e) {
+//                e.printStackTrace();
+//                return false;
+//            } catch (IllegalAccessException e) {
+//                e.printStackTrace();
+//                return false;
+//            }
+//        }
+//        System.out.println(listMap.toString());
+//        ExcelUtil.createWorkbook(listMap,keys,columnNames,response);
+//
+//        return  true;
+//    }
+
+//下载地址
+    @Override
+    public  Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys , String path) throws IOException {
+
+        List<Map<String, Object>>  listMap = new ArrayList<>();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("sheetName", "sheet1");
+        listMap.add(map);
+
+        //反射获取对象所有属性
+        for (PatentExport patent: list) {
+            try {
+                //添加数据
+                getFile(patent,listMap);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+                return false;
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+                return false;
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        System.out.println(listMap.toString());
+        ExcelUtil.createWorkbook(listMap,keys,columnNames,path);
+
+        return  true;
     }
+
 
 
     /**

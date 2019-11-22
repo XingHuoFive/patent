@@ -2,6 +2,7 @@ package com.sxp.patMag.controller;
 
 
 import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.entity.PatentPath;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.ExcelUtil;
 import com.sxp.patMag.util.GeneralResult;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -45,7 +47,9 @@ public class PatentSelcetController {
     @RequestMapping(value = "/selectPatentByPatent",method = RequestMethod.POST)
     @ResponseBody
     public GeneralResult selectPatentByPatent(@RequestBody Patent patent){
+        if(patent==null){
 
+        }
         List<Patent> list =patentSelcetService.selectPatentByPatent(patent);
         if(list==null){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -95,6 +99,22 @@ public class PatentSelcetController {
     @RequestMapping(value = "/updatePatentToWritePerson",method = RequestMethod.POST)
     @ResponseBody
     public  GeneralResult updatePatentToWritePerson(@RequestBody Patent patent){
+
+        if(patent==null){
+            return GeneralResult.build(1,"对象为空",null);
+        }
+
+        if(patent.getWritePerson()==null){
+            return GeneralResult.build(1,"没有撰写人",null);
+        }else if(patent.getWritePerson().length()>100){
+            return GeneralResult.build(1,"撰写人字符串过长",null);
+        }
+        if(patent.getPatentId()==null){
+            return GeneralResult.build(1,"没有接收到专利ID",null);
+        }else if(patent.getPatentId().length()>100){
+            return GeneralResult.build(1,"专利ID字符串过长",null);
+        }
+
         Integer list = patentSelcetService.updatePatentToWritePerson(patent);
         if(list==0){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -108,14 +128,19 @@ public class PatentSelcetController {
 
 
     /**
+     *
+     * *************   未使用    ********************
+     *
      * 查询专利信息
-     * @param patentId  专利ID
+     * @param
      * @return
      */
     @RequestMapping(value = "/selectPatentById",method = RequestMethod.POST)
     @ResponseBody
-    public  GeneralResult selectPatentById(@RequestParam("patentId") String patentId){
+    public  GeneralResult selectPatentById(@RequestBody Patent patent){
+        String patentId = patent.getPatentId();
         System.out.println(patentId);
+
         Patent list = patentSelcetService.selectPatentById(patentId);
         if(list==null){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -124,56 +149,84 @@ public class PatentSelcetController {
         }
     }
 
+
+
+/*    @RequestMapping(value = "/selectPatentToAdmin",method = RequestMethod.POST)
+    @ResponseBody
+    public  GeneralResult selectPatentToAdmin(){
+        List<Patent> list = patentSelcetService.selectPatentToAdmin();
+        if(list==null){
+            return GeneralResult.build(1,"无匹配专利",null);
+        }else{
+            return GeneralResult.build(0,"成功",list);
+        }
+    }*/
+
+
+
+
+
+
+
+
     /**
      * 专利文件导出
      *
-     * @param patent   专利
+     * @param    专利
      * @return
      * @throws NoSuchMethodException
      * @throws InvocationTargetException
      * @throws IllegalAccessException
      */
-    @RequestMapping(value = "/patentExeclOut",method = RequestMethod.POST)
+    @RequestMapping(value = "/patentExeclOut",method = RequestMethod.GET)
     @ResponseBody
-    public GeneralResult patentExeclOut(Patent patent) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        boolean flag = false;
+    public GeneralResult patentExeclOut(@RequestBody PatentPath patent) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
+
+         String path = patent.getPath();
+        boolean flag = false;
+        System.out.println(path);
+        //数据校验
+        if(patent==null){
+            return GeneralResult.build(1,"对象为空",null);
+        }
+
+
+        /*if(patent.getApplyNumber()==null){
+            return GeneralResult.build(1,"没有申请号",null);
+        }else if(patent.getApplyNumber().length()>100){
+            return GeneralResult.build(1,"申请号过长",null);
+        }
+
+
+        if(patent.getApplyTime()==null){
+            return GeneralResult.build(1,"没有申请时间",null);
+        }else if(patent.getApplyTime().length()>100){
+            return GeneralResult.build(1,"申请时间过长",null);
+        }
+
+
+        if(patent.getPatentName()==null){
+            return GeneralResult.build(1,"没有专利名称",null);
+        }else if(patent.getPatentName().length()>100){
+            return GeneralResult.build(1,"专利名称过长",null);
+        }*/
+
+
+
+        //处理异常
         try {
-            flag =  patentSelcetService.export(patent);
+            flag =  patentSelcetService.export(patent,path);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        //返回数据
         if(!flag){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
             return GeneralResult.build(0,"成功",null);
         }
-
-       /* for (int i = 0; i < listMap.size(); i++) {
-            Patent p = listMap.get(i);
-            List<String> listString  = new ArrayList<>();
-            Field[] field = p.getClass().getDeclaredFields(); //获取实体类的所有属性，返回Field数组
-            for(int j=0 ; j<field.length ; j++){ //遍历所有属性
-                String name = field[j].getName(); //获取属性的名字
-                System.out.println("attribute name:"+name);
-                name = name.substring(0,1).toUpperCase()+name.substring(1); //将属性的首字符大写，方便构造get，set方法
-                String type = field[j].getGenericType().toString(); //获取属性的类型
-            }
-        }
-
-
-
-*/
-
-
-
-
-
-
-
-      //  ExcelUtil.createWorkbook(listMap);
-       // List<Patent> list = patentSelcetService;
 
     }
 
