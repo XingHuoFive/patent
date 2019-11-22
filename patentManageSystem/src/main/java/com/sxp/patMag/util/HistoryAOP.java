@@ -5,10 +5,10 @@ import com.sxp.patMag.entity.History;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.HistoryService;
+import org.apache.ibatis.annotations.Result;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,6 +45,10 @@ public class HistoryAOP {
      * @throws IOException
      */
 
+
+
+
+
     @Around("getAction()")
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("开始操作历史记录");
@@ -69,45 +73,67 @@ public class HistoryAOP {
         Object[] args = joinPoint.getArgs();
         //将参数所在的数组转换成json
         String params = JSON.toJSONString(args);
-
         history.setHtDate(new Date().toString());
         history.setHtId(UUID.getUUID());
         history.setHtUserId(user.getUserId());
-        System.out.println(params);
-
+           System.out.println(params);
+           //解析参数中的patent 成对象
         Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
+           //从reids获取之前的专利信息
+        String old_obj =  redis.get(patent.getPatentId())!=null ? redis.get(patent.getPatentId()).toString() :null;
 
+        System.out.println(old_obj);
+
+        //解析之前的专利为对象
+        Patent old_patent = JSON.parseObject( old_obj, Patent.class);;
+
+        //将新的对象放到redis
+        redis.set(patent.getPatentId(), JSON.toJSON(patent));
         if (value.equals("新建专利")){
-
             history.setHtPatentId(patent.getPatentId());
-            history.setHtNewItem(patent.toString());
+            history.setHtNewItem(params);
             history.setHtOldItem( null);
             history.setHtProcess(value);
             history.setHtOperation("新建专利");
-
         }else if(value.equals("专利认领")){
-
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem("write_person : "+patent.getWritePerson());
             history.setHtOldItem("write_person : "+null);
             history.setHtProcess(value);
             history.setHtOperation("修改了专利撰写人");
+        }else if(value.equals("审核")){
 
-        }else if(value.equals("初审")){
+            if (patent.getPatentClaim().equals("0")){
+                history.setHtPatentId(patent.getPatentId());
+                history.setHtNewItem("patent_schedule : "+patent.getPatentSchedule());
+                history.setHtOldItem("patent_schedule : 未审核");
+                history.setHtProcess(value);
+                history.setHtOperation("初审");
+            }else{
+                history.setHtPatentId(patent.getPatentId());
+                history.setHtNewItem("patent_schedule : "+patent.getPatentSchedule());
+                history.setHtOldItem("patent_schedule : 编写中");
+                history.setHtProcess(value);
+                history.setHtOperation("复审");
+            }
 
+
+
+
+
+
+
+        } else if(value.equals("修改字段")){
+
+      /*  Object obj =  redis.get(patent.getPatentId());
+*/
+           /* Patent pobj  = JSON.parseObject(  obj.toString() , Patent.class);*/
+            //Patent obj  =(Patent) redis.get(patent.getPatentId());
             history.setHtPatentId(patent.getPatentId());
-            history.setHtNewItem("patent_schedule : "+patent.getPatentSchedule());
-            history.setHtOldItem("patent_schedule : 未审核");
-            history.setHtProcess(value);
-            history.setHtOperation("初审");
-
-        }else if(value.equals("修改字段")){
-            history.setHtPatentId(patent.getPatentId());
-            history.setHtNewItem(patent.toString());
-            history.setHtOldItem("修改字段");
+            history.setHtNewItem("patent : " +params);
+            history.setHtOldItem("patent : " + old_patent);
             history.setHtProcess(value);
             history.setHtOperation("修改字段");
-
         }
         /*
         else if(){
@@ -124,12 +150,38 @@ public class HistoryAOP {
         }*/
 
         historyService.insertHistory(history);
-
-
         //获取用户名
-
         Object proceed = joinPoint.proceed();
         return proceed;
     }
+
+    //@AfterReturning(returning = "ret",pointcut = "getAction()")
+    public void doAfter(JoinPoint joinPoint, Object ret) throws Exception {
+        Integer result = (Integer) ret;
+
+        System.out.println("方法执行后返回");
+        System.out.println(result);
+
+    }
+
+
+   // @Before("getAction()")
+    public void doBefore(JoinPoint joinPoint)  {
+
+        System.out.println("方法执行前");
+  /*      //请求的参数
+        Object[] args = joinPoint.getArgs();
+        //将参数所在的数组转换成json
+
+        String params = JSON.toJSONString(args);
+
+        Patent patent = JSON.parseObject(params.substring(1,params.length()-1),Patent.class);
+
+        redis.set(patent.getPatentId(), JSON.toJSON(patent));
+
+        System.out.println(params);
+        */
+    }
+
 
 }
