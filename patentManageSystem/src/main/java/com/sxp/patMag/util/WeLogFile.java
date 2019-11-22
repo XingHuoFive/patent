@@ -66,6 +66,7 @@ public class WeLogFile {
                         + record.getMessage() + "\n";
             }
         });
+
         log.addHandler(fileHandler);
         // 获取方法名
         String methodName = joinPoint.getSignature().getName();

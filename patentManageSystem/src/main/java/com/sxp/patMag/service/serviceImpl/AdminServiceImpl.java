@@ -35,6 +35,7 @@ public class AdminServiceImpl implements AdminService {
         if (Integer.parseInt(patent.getSpare()) == 1 && (Integer.parseInt(patent.getPatentClaim()) == 0 || patent.getPatentClaim() == null)) {
             patent.setPatentSchedule("2");
         }
+
         // 如果该专利通过审核，并且已经被认领了，就把他的进度修改成已提交状态
         if (Integer.parseInt(patent.getSpare()) == 1 && Integer.parseInt(patent.getPatentClaim()) == 1) {
             patent.setPatentSchedule("5");
