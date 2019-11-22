@@ -28,7 +28,7 @@ public class IndicatorController {
     @GetMapping("/get/{indicatorId}")
     public GeneralResult getById(@PathVariable String indicatorId) {
         GeneralResult generalResult = new GeneralResult();
-        if (null == indicatorId || "".equals(indicatorId)) {
+        if (null == indicatorId || "".equals(indicatorId) || indicatorId.length() != 16) {
             generalResult.setStatus(1);
             generalResult.setMsg("id为空，无法获取");
             return generalResult;
