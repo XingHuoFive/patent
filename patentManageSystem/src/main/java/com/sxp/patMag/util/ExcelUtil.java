@@ -20,6 +20,8 @@ import java.util.Map;
  */
 public class ExcelUtil {
 
+
+
     /**
      * 创建excel文档，
      *
@@ -61,7 +63,14 @@ public class ExcelUtil {
     }
 
 
-
+    /**
+     * 王硕导出
+     * @param list
+     * @param keys
+     * @param columnNames
+     * @param response
+     * @throws IOException
+     */
     public static void createWorkbook(List<Map<String, Object>> list, String[] keys, String[] columnNames, /*String filePath*/ HttpServletResponse response) throws IOException {
     /*    if (filePath == null) {
             return;
