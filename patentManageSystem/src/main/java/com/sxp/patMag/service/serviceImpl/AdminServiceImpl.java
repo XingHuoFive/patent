@@ -28,32 +28,44 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public GeneralResult checkPatent(Patent patent) {
-        if (patent == null || patent.getSpare() == null) {
+        System.out.println(patent);
+        String patentSpare = patent.getSpare();
+        if (patent == null || patentSpare == null || patentSpare.trim().length() > 1) {
             return GeneralResult.build(1, "点击无效");
         }
+        boolean check = true;
+        for (int i = 0; i < patentSpare.length(); i++) {
+            check = Character.isDigit(patentSpare.charAt(i));
+            if (check == false) {
+                return GeneralResult.build(1, "点击无效");
+            }
+        }
         // 如果该专利通过审核，并且是还没有被认领，就把他的进度修改成待认领状态
-        if (Integer.parseInt(patent.getSpare()) == 1 && (Integer.parseInt(patent.getPatentClaim()) == 0 || patent.getPatentClaim() == null)) {
+        if (Integer.parseInt(patentSpare) == 1 && (Integer.parseInt(patent.getPatentClaim()) == 0 || patent.getPatentClaim() == null)) {
             patent.setPatentSchedule("2");
         }
 
         // 如果该专利通过审核，并且已经被认领了，就把他的进度修改成已提交状态
-        if (Integer.parseInt(patent.getSpare()) == 1 && Integer.parseInt(patent.getPatentClaim()) == 1) {
+        if (Integer.parseInt(patentSpare) == 1 && Integer.parseInt(patent.getPatentClaim()) == 1) {
             patent.setPatentSchedule("5");
         }
-        if (Integer.parseInt(patent.getSpare()) == 0 && (Integer.parseInt(patent.getPatentClaim()) == 0 || patent.getPatentClaim() == null)) {
+        if (Integer.parseInt(patentSpare) == 0 && (Integer.parseInt(patent.getPatentClaim()) == 0 || patent.getPatentClaim() == null)) {
             patent.setPatentSchedule("3");
         }
         // 如果该专利审核没通过，就将它的进度修改成未通过
-        if (Integer.parseInt(patent.getSpare()) == 0 && Integer.parseInt(patent.getPatentClaim()) == 1) {
+        if (Integer.parseInt(patentSpare) == 0 && Integer.parseInt(patent.getPatentClaim()) == 1) {
             patent.setPatentSchedule("3");
         }
 
         boolean flag = adminMapper.checkPatent(patent);
-        if (flag) {
-            return GeneralResult.build(0, "修改成功!");
-        } else {
-            return GeneralResult.build(1, "修改不成功!");
+        String spareNum = adminMapper.selectSpareOfPatent(patent.getPatentId());
+        if (flag == true && spareNum == "1") {
+            return GeneralResult.build(0, "审核通过!");
         }
+        if (flag == true && (spareNum == "0" || spareNum == null)){
+            return GeneralResult.build(1, "审核不通过!");
+        }
+        return GeneralResult.build(1, "出现错误!");
     }
 
     /**
@@ -63,8 +75,8 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public GeneralResult selectAllFilesByPatentId(String patentId) {
-        if (patentId == null) {
-            return GeneralResult.build(1, "该专利id为空");
+        if (patentId == null || patentId.length() > 16) {
+            return GeneralResult.build(1, "该专利id无效");
         }
         List<Jbook> list = adminMapper.selectAllFilesByPatentId(patentId);
         if (list == null || list.size() == 0) {

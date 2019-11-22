@@ -11,7 +11,7 @@
     <!--管理员审核-->
     <update id="checkPatent">
         update tb_patent
-        set patent_schedule = #{patentSchedule}
+        set patent_schedule = #{patentSchedule}, spare = #{spare}
         where patent_id = #{patentId}
     </update>
     <!--专利交底书查询-->
@@ -19,6 +19,10 @@
         select jbook_id, jbook_patent_id, jbook_url, jbook_user_id, jbook_view
         from tb_jbook
         where jbook_patent_id = #{patentId}
+    </select>
+
+    <select id="selectSpareOfPatent">
+        select spare from tb_patent where patent_id = #{patentId}
     </select>
 
 </mapper>
