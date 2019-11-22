@@ -29,12 +29,8 @@ import java.util.List;
 @RequestMapping("/patent")
 public class PatentSelcetController {
 
-
-
-
     @Autowired
     PatentSelcetService patentSelcetService;
-
 
     /**
      * 专利查询
@@ -57,10 +53,6 @@ public class PatentSelcetController {
     }
 
 
-    /**
-     *管理员专利显示
-     */
-
 
     /**
      * 查询未被认领的专利
@@ -81,11 +73,6 @@ public class PatentSelcetController {
 
     }
 
-    /*
-     *
-     * 修改专利状态
-     *
-*/
 
 
     /**
@@ -122,10 +109,7 @@ public class PatentSelcetController {
 
 
 
-
-
     /**
-     *
      * *************   未使用    ********************
      * 查询专利信息
      * @param
@@ -147,6 +131,9 @@ public class PatentSelcetController {
 
 
 
+    /**
+     *管理员专利显示
+     */
     @RequestMapping(value = "/selectPatentToAdmin",method = RequestMethod.POST)
     @ResponseBody
     public  GeneralResult selectPatentToAdmin(){
@@ -160,7 +147,7 @@ public class PatentSelcetController {
 
 
 
-    public void downloadPlan(HttpServletResponse response, HttpServletRequest request) throws IOException{
+    /*public void downloadPlan(HttpServletResponse response, HttpServletRequest request) throws IOException{
         OutputStream os = null;
         //注意文件的路径；只有路径正确，才能完成下载；
         String filePath = request.getSession().getServletContext().getRealPath("D:\\");
@@ -178,14 +165,12 @@ public class PatentSelcetController {
         response.setContentType("APPLICATION/OCTET-STREAM");
         response.setHeader("Content-Disposition", "attachment;filename="+f.getName());;
         os.write(buffer);
-    }
-
+    }*/
 
 
 
     /**
      * 专利文件导出
-     *
      * @param    patent
      * @return
      * @throws NoSuchMethodException
@@ -219,23 +204,17 @@ public class PatentSelcetController {
             return GeneralResult.build(0,"成功",null);
         }
 
-
-
-
-
         /*if(patent.getApplyNumber()==null){
             return GeneralResult.build(1,"没有申请号",null);
         }else if(patent.getApplyNumber().length()>100){
             return GeneralResult.build(1,"申请号过长",null);
         }
 
-
         if(patent.getApplyTime()==null){
             return GeneralResult.build(1,"没有申请时间",null);
         }else if(patent.getApplyTime().length()>100){
             return GeneralResult.build(1,"申请时间过长",null);
         }
-
 
         if(patent.getPatentName()==null){
             return GeneralResult.build(1,"没有专利名称",null);
