@@ -86,9 +86,6 @@ public class Patent {
                 ", patentSchedule='" + patentSchedule + '\'' +
                 ", patentClaim='" + patentClaim + '\'' +
                 ", patentRemarks='" + patentRemarks + '\'' +
-                ", indicatorList=" + indicatorList +
-                ", spare='" + spare + '\'' +
-                ", jbookList=" + jbookList +
                 '}';
     }
 
