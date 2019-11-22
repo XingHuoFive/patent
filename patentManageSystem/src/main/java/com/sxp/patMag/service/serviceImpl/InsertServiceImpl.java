@@ -21,6 +21,7 @@ public class InsertServiceImpl implements InsertService {
 
     @Resource
     private InsertMapper insertMapper;
+
     @Monitor("新建专利")
     public GeneralResult InsertPatent(Patent patent){
         int a = insertMapper.InsertPatent(patent);
