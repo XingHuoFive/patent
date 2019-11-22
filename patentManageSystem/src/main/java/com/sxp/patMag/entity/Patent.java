@@ -39,23 +39,29 @@ public class Patent {
     private String patentRemarks;
     /** 指标 **/
     private List<Indicator> indicatorList = new ArrayList<>();
-
+    /**
+     * 是否通过
+     */
+    private String spare;
+    /**
+     * 专利交底书
+     */
+    private List<Jbook> jbookList;
 
     @Override
     public String toString() {
-        return "Patent{" +
-                "patentId='" + patentId + '\'' +
-                ", caseNumber='" + caseNumber + '\'' +
-                ", applyNumber='" + applyNumber + '\'' +
-                ", applyTime='" + applyTime + '\'' +
-                ", writePerson='" + writePerson + '\'' +
-                ", applyPerson='" + applyPerson + '\'' +
-                ", createPerson='" + createPerson + '\'' +
-                ", patentName='" + patentName + '\'' +
-                ", patentSchedule='" + patentSchedule + '\'' +
-                ", patentClaim='" + patentClaim + '\'' +
-                ", patentRemarks='" + patentRemarks + '\'' +
-                ", IndicatorList=" + indicatorList +
+        return " {" +
+                " \"patentId\" : \"" + patentId + '\"' +
+                ", \"caseNumber\" : \"" + caseNumber + '\"' +
+                ", \"applyNumber\" : \"" + applyNumber + '\"' +
+                ", \"applyTime\" : \"" + applyTime + '\"' +
+                ", \"writePerson\" : \"" + writePerson + '\"' +
+                ", \"applyPerson\" : \"" + applyPerson + '\"' +
+                ", \"createPerson\" : \"" + createPerson + '"' +
+                ", \"patentName\" : \"" + patentName + '\"' +
+                ", \"patentSchedule\" : \"" + patentSchedule + '\"' +
+                ", \"patentClaim\" : \"" + patentClaim + '\"' +
+                ", \"patentRemarks\" : \"" + patentRemarks + '\"' +
                 '}';
     }
 
@@ -149,16 +155,7 @@ public class Patent {
     public Patent(){
 
     }
-
-    public List<Indicator> getIndicatorList() {
-        return indicatorList;
-    }
-
-    public void setIndicatorList(Indicator indicator) {
-        indicatorList.add(indicator);
-    }
-
-    public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList) {
+    public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks ) {
         this.patentId = patentId;
         this.caseNumber = caseNumber;
         this.applyNumber = applyNumber;
@@ -170,6 +167,24 @@ public class Patent {
         this.patentSchedule = patentSchedule;
         this.patentClaim = patentClaim;
         this.patentRemarks = patentRemarks;
-        this.indicatorList = indicatorList;
     }
+
+
+    public String getSpare() {
+        return spare;
+    }
+
+    public void setSpare(String spare) {
+        this.spare = spare;
+    }
+
+    public List<Jbook> getJbookList() {
+        return jbookList;
+    }
+
+    public void setJbookList(List<Jbook> jbookList) {
+        this.jbookList = jbookList;
+    }
+
+
 }
