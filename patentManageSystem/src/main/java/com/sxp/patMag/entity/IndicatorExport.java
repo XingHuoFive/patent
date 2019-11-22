@@ -53,7 +53,6 @@ public class IndicatorExport {
      * 申请号
      **/
     private String applyNumber;
-
     public IndicatorExport() {
     }
 
@@ -155,5 +154,4 @@ public class IndicatorExport {
                 ", applyNumber='" + applyNumber + '\'' +
                 '}';
     }
-
 }

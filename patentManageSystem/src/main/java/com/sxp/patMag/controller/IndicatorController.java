@@ -8,6 +8,8 @@ import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -45,14 +47,14 @@ public class IndicatorController {
     }
 
     @PostMapping("/export")
-    public GeneralResult export(@RequestBody IndicatorExport indicatorExport) {
+    public GeneralResult export(@RequestBody IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req) {
         GeneralResult generalResult = new GeneralResult();
         if (null == indicatorExport) {
             generalResult.setStatus(1);
             generalResult.setMsg("导出失败");
             return generalResult;
         }
-        boolean export = indicatorService.export(indicatorExport);
+        boolean export = indicatorService.export(indicatorExport, resp, req);
         if (!export) {
             generalResult.setStatus(1);
             generalResult.setMsg("导出失败");
