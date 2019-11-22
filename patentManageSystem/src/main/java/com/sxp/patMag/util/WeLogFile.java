@@ -69,7 +69,6 @@ public class WeLogFile {
         String methodName = joinPoint.getSignature().getName();
         // 获取参数
         List<Object> args = Arrays.asList(joinPoint.getArgs());
-
         Object proceed = joinPoint.proceed();
         if (proceed != null) {
             username = user1.getUserName();

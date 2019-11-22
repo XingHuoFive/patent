@@ -49,9 +49,9 @@ public class AdminServiceImpl implements AdminService {
 
         boolean flag = adminMapper.checkPatent(patent);
         if (flag) {
-            return GeneralResult.build(0, "修改成功");
+            return GeneralResult.build(0, "修改成功!");
         } else {
-            return GeneralResult.build(1, "修改不成功");
+            return GeneralResult.build(1, "修改不成功!");
         }
     }
 
