@@ -51,6 +51,7 @@
         <if test="applyTime != null and applyTime.length()>0">
             AND apply_time=#{applyTime}
         </if>
+
         order by apply_time
     </select>
 
@@ -61,7 +62,7 @@
 
     <!--确认认领人-->
     <update id="updatePatentToWritePerson" parameterType="com.sxp.patMag.entity.Patent" >
-            UPDATE tb_patent SET write_person=#{writePerson},patent_claim="1" WHERE patent_id=#{patentId}
+            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = ""patent_claim="1" WHERE patent_id=#{patentId}
     </update>
 
 
@@ -70,6 +71,12 @@
     <select id="selectPatentToUser" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
         select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
            from  tb_patent   where patent_claim="true" order by apply_time,patent_claim
+    </select>
+
+    <!--admin用户查询-->
+    <select id="selectPatentToAdmin" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
+        select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
+           from  tb_patent  order by apply_time,patent_claim
     </select>
 
     <!--查询详细或审核信息-->
