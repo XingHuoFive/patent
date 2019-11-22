@@ -30,7 +30,7 @@ public class IndicatorController {
         GeneralResult generalResult = new GeneralResult();
         if (null == indicatorId || "".equals(indicatorId) || indicatorId.length() != 16) {
             generalResult.setStatus(1);
-            generalResult.setMsg("id为空，无法获取");
+            generalResult.setMsg("id有误，无法获取");
             return generalResult;
         }
 
