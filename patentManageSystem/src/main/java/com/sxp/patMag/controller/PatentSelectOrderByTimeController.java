@@ -11,34 +11,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-/**
+/*
+*
  * @author Mrs.Wang
  * @create 2019-11-20 15:05
- */
+
+*/
+
 @Controller
-@RequestMapping("/patent")
+@RequestMapping("/patentOrder")
 public class PatentSelectOrderByTimeController {
 
     @Autowired
     PatentSelectOrderByTimeService patentSelectOrderByTimeService;
 
-    /**
+/**
      * 专利查询
      *
      * @param patent
-     * @return
-     */
+     * @return*/
+
+
     @RequestMapping(value = "/selectPatentByPatentOrderbyTime",method = RequestMethod.POST)
     @ResponseBody
     public List<Patent> selectPatentByPatentOrderbyTime(@RequestBody Patent patent){
         return  patentSelectOrderByTimeService.selectPatentByPatentOrderbyTime(patent);
     }
 
-    /**
+/*
+*
      * 查询未被认领的专利
      * @param
      * @return
-     */
+*/
+
+
     @RequestMapping(value = "/selectPatentToAdmin",method = RequestMethod.POST)
     @ResponseBody
     public List<Patent> selectPatentToAdmin(){
