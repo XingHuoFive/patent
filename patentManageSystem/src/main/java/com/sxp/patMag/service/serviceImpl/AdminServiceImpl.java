@@ -35,36 +35,46 @@ public class AdminServiceImpl implements AdminService {
         }
         String patentSpare = patent.getSpare();
         String pClaim = patent.getPatentClaim();
-        if (patentSpare == null || patentSpare.trim().length() != 1 || pClaim == null || pClaim.length() != 1) {
-            return GeneralResult.build(1, "校验不通过");
+        String patentId = patent.getPatentId();
+        if (patentId == null) {
+            return GeneralResult.build(1, "id为空!");
+        }
+        if (patentId.length() > 32) {
+            return GeneralResult.build(1, "id超长!");
+        }
+        if (patentSpare == null || pClaim == null) {
+            return GeneralResult.build(1, "参数为空");
+        }
+        if (patentSpare.trim().length() != 1 || pClaim.length() != 1) {
+            return GeneralResult.build(1, "参数超长");
         }
         boolean check = true;
         check = Character.isDigit(patentSpare.charAt(0));
         if (check == false) {
-            return GeneralResult.build(1, "校验不通过");
+            return GeneralResult.build(1, "参数包含除数字之外的其他字母");
         }
         check = true;
         for (int i = 0; i < pClaim.length(); i++) {
             check = Character.isDigit(patentSpare.charAt(i));
             if (check == false) {
-                return GeneralResult.build(1, "校验不通过");
+                return GeneralResult.build(1, "参数包含除数字之外的其他字母");
             }
         }
         // 如果该专利通过审核，并且是还没有被认领，就把他的进度修改成待认领状态
         if (Integer.parseInt(patentSpare) == 1 && (Integer.parseInt(patent.getPatentClaim()) == 0 || patent.getPatentClaim() == null)) {
-            patent.setPatentSchedule("2");
+            patent.setPatentSchedule("待认领");
         }
 
-        // 如果该专利通过审核，并且已经被认领了，就把他的进度修改成已提交状态
+        // 如果该专利通过审核，并且已经被认领了，就把他的进度修改成待提交状态
         if (Integer.parseInt(patentSpare) == 1 && Integer.parseInt(patent.getPatentClaim()) == 1) {
-            patent.setPatentSchedule("5");
+            patent.setPatentSchedule("待提交");
         }
         if (Integer.parseInt(patentSpare) == 0 && (Integer.parseInt(patent.getPatentClaim()) == 0 || patent.getPatentClaim() == null)) {
-            patent.setPatentSchedule("3");
+            patent.setPatentSchedule("未通过");
         }
         // 如果该专利审核没通过，就将它的进度修改成未通过
         if (Integer.parseInt(patentSpare) == 0 && Integer.parseInt(patent.getPatentClaim()) == 1) {
-            patent.setPatentSchedule("3");
+            patent.setPatentSchedule("未通过");
         }
 
         boolean flag = adminMapper.checkPatent(patent);
@@ -78,7 +88,7 @@ public class AdminServiceImpl implements AdminService {
         if (flag == true && Integer.parseInt(spareNum) == 0) {
             return GeneralResult.build(1, "审核不通过!");
         }
-        return GeneralResult.build(1, "出现错误!");
+        return GeneralResult.build(1, "其他错误!");
     }
 
     /**
@@ -119,15 +129,15 @@ public class AdminServiceImpl implements AdminService {
             //返回查询失败
             return GeneralResult.build(1, "fail");
         }
+        if (pageNumber == null || pageNumber.length() == 0) {
+            return GeneralResult.build(0, "success", list);
+        }
         boolean check = true;
         for (int i = 0; i < pageNumber.length(); i++) {
             check = Character.isDigit(pageNumber.charAt(i));
             if (check == false) {
-                return GeneralResult.build(1, "校验出错");
+                return GeneralResult.build(1, "校验中出现字母");
             }
-        }
-        if (pageNumber == null || pageNumber.length() == 0) {
-            return GeneralResult.build(0, "success", list);
         }
         return GeneralResult.build(0, "success", list.get(Integer.parseInt(pageNumber) - 1));
     }
