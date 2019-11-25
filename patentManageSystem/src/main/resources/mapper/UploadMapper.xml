@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.UploadMapper">
-    <insert id="insertJbook" parameterType="Jbook">
-
+    <insert id="insertJbook" parameterType="com.sxp.patMag.entity.Jbook">
          INSERT INTO  tb_jbook(`jbook_id`, `jbook_patent_id`, `jbook_url`, `jbook_user_id`, `jbook_view`) VALUES (#{jbookId},#{jbookPatentId},#{jbookUrl},#{jbookUserId},#{jbookView})
-
     </insert>
 
 
-<!--    &lt;!&ndash;当前修改为true，其他为false&ndash;&gt;
-    <update id="updatebook">
-        update tb_patent
-        set jbook_user_id = #{jbookUserId}
-        where patent_id = #{patentId}
-    </update>-->
+
+    <update id="updateJbookStatusByPatentId">
+        update tb_jbook
+        set jbook_view = '0'
+        where jbook_patent_id = #{patentId}
+    </update>
 
 </mapper>
