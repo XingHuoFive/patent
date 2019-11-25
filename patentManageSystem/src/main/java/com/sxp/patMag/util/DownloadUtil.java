@@ -1,8 +1,11 @@
 package com.sxp.patMag.util;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -13,6 +16,37 @@ import java.nio.charset.StandardCharsets;
  */
 public class DownloadUtil {
 
+    @Value("${visualPath}")
+    private String visualPath;
+
+    /**
+     * 获取url
+     * @param fileName 文件名
+     * @return 下载url
+     */
+    private static String getDownloadUrl(String fileName) {
+        InetAddress ia = null;
+        String url = null;
+        try {
+            ia=InetAddress.getLocalHost();
+            String localip=ia.getHostAddress();
+            url = localip + ":8080/" + fileName;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return url;
+    }
+
+    /**
+     * 通过返回url下载文件
+     * @param fileName 文件名
+     * @return 下载的url
+     */
+    public static String downloadByUrl(String fileName) {
+        return getDownloadUrl(fileName);
+    }
+
     /**
      * 下载文件
      *
@@ -22,7 +56,6 @@ public class DownloadUtil {
      * @param req      http请求
      */
     public static void downloadFile(String path, String fileName, HttpServletResponse resp, HttpServletRequest req) {
-
         try {
             File file = new File(path);
             /**

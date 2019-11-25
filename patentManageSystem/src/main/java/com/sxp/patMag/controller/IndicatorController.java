@@ -60,14 +60,15 @@ public class IndicatorController {
             generalResult.setMsg("失败");
             return generalResult;
         }
-        boolean export = indicatorService.export(indicatorExport, resp, req);
-        if (!export) {
+        String export = indicatorService.export(indicatorExport, resp, req);
+        if ("".equals(export)) {
             generalResult.setStatus(1);
             generalResult.setMsg("导出失败");
             return generalResult;
         }
         generalResult.setStatus(0);
         generalResult.setMsg("导出成功");
+        generalResult.setData(export);
         return generalResult;
     }
 
