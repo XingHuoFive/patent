@@ -4,6 +4,7 @@ package com.sxp.patMag.service.serviceImpl;
 import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.dao.UploadMapper;
 import com.sxp.patMag.entity.Jbook;
+import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.UploadService;
 import com.sxp.patMag.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class UploadServiceImpl implements UploadService {
     @Value("${visualPath}")
     private String visualPath;
 
-    public GeneralResult insertJbook(MultipartFile file, HttpServletRequest request) {
+    public GeneralResult insertJbook(MultipartFile file, Patent patent, HttpServletRequest request) {
 
         if (file.isEmpty()) {
             return GeneralResult.build(1, "failed");
@@ -53,10 +54,10 @@ public class UploadServiceImpl implements UploadService {
 
         Jbook jbook = new Jbook();
         jbook.setJbookId(UUID.getUUID());
-        jbook.setJbookPatentId("12");
+        jbook.setJbookPatentId(patent.getPatentId());
         jbook.setJbookUrl(url);
-        jbook.setJbookUserId("1");
-        jbook.setJbookView("true");
+        jbook.setJbookUserId(patent.getWritePerson());
+        jbook.setJbookView("0");
 
         int res = uploadMapper.insertJbook(jbook);
         if (res > 0) {
@@ -65,6 +66,9 @@ public class UploadServiceImpl implements UploadService {
             return GeneralResult.build(1, "failed");
         }
     }
+
+
+
 
 
 

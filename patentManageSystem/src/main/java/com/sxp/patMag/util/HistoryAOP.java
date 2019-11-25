@@ -5,7 +5,6 @@ import com.sxp.patMag.entity.History;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.HistoryService;
-import org.apache.ibatis.annotations.Result;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -14,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Aspect
@@ -25,6 +25,7 @@ public class HistoryAOP {
     @Autowired
     private HistoryService historyService;
 
+
     private User user;
 
     public void setUser(User user) {
@@ -34,6 +35,7 @@ public class HistoryAOP {
     /**
      * 声明切点
      */
+
     @Pointcut("@annotation(com.sxp.patMag.annotation.Monitor)")
     public void getAction() {
     }
@@ -46,13 +48,9 @@ public class HistoryAOP {
      */
 
 
-
-
-
     @Around("getAction()")
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("开始操作历史记录");
-
         History history = new History();
         //从切面织入点处通过反射机制获取织入点处的方法
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
@@ -73,7 +71,10 @@ public class HistoryAOP {
         Object[] args = joinPoint.getArgs();
         //将参数所在的数组转换成json
         String params = JSON.toJSONString(args);
-        history.setHtDate(new Date().toString());
+        //时间格式化
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = simpleDateFormat.format(new Date());
+        history.setHtDate(date);
         history.setHtId(UUID.getUUID());
         history.setHtUserId(user.getUserId());
            System.out.println(params);
@@ -104,9 +105,11 @@ public class HistoryAOP {
                 stringBuilder.append("专利名 ："+patent.getPatentName()+"  ");
             }
             if(patent.getCreatePerson()!=null){
-                stringBuilder.append("申请人 ："+patent.getCreatePerson()+"   ");
+                stringBuilder.append("发明人 ："+patent.getCreatePerson()+"   ");
             }
-
+            if(patent.getApplyPerson()!=null){
+                stringBuilder.append("申请人 ："+patent.getApplyPerson()+"   ");
+            }
 
             history.setHtNewItem(stringBuilder.toString());
             history.setHtOldItem("无");
@@ -119,7 +122,6 @@ public class HistoryAOP {
             history.setHtProcess(value);
             history.setHtOperation("修改了专利撰写人");
         }else if(value.equals("审核")){
-
             if (patent.getPatentClaim()=="0"){
                 history.setHtPatentId(patent.getPatentId());
                 history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
@@ -127,7 +129,6 @@ public class HistoryAOP {
                 history.setHtProcess(value);
                 history.setHtOperation("初审");
             }
-
             if (patent.getPatentClaim()=="1"){
                 history.setHtPatentId(patent.getPatentId());
                 history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
@@ -135,9 +136,6 @@ public class HistoryAOP {
                 history.setHtProcess(value);
                 history.setHtOperation("复审");
             }
-
-
-
         } else if(value.equals("修改字段")){
 
       /*  Object obj =  redis.get(patent.getPatentId());
@@ -151,7 +149,7 @@ public class HistoryAOP {
                 stringBuilder.append("申请号 ："+patent.getApplyNumber()+"  ");
             }
             if(patent.getCaseNumber()!=null){
-                stringBuilder.append("案件文号 ："+patent.getCaseNumber()+"   ");
+                stringBuilder.append("案件文号 ："+patent.getCaseNumber()+ "   ");
             }
             if(patent.getPatentName()!=null){
                 stringBuilder.append("专利名 ："+patent.getPatentName()+"   ");
@@ -159,7 +157,6 @@ public class HistoryAOP {
             if(patent.getPatentRemarks()!=null){
                 stringBuilder.append("备注 ："+patent.getPatentRemarks()+"  ");
             }
-
 
             StringBuilder stringBuilder2 = new StringBuilder();
 
@@ -175,7 +172,6 @@ public class HistoryAOP {
             if(old_patent.getPatentRemarks()!=null){
                 stringBuilder2.append("备注 ："+old_patent.getPatentRemarks()+"  ");
             }
-
 
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem(stringBuilder.toString());
