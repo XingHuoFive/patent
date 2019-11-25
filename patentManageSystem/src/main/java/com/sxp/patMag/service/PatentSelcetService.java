@@ -2,7 +2,7 @@ package com.sxp.patMag.service;
 
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentExport;
-import com.sxp.patMag.entity.PatentPath;
+import com.sxp.patMag.entity.PatentVO;
 import com.sxp.patMag.entity.User;
 
 import javax.servlet.http.HttpServletResponse;
@@ -24,8 +24,7 @@ public interface PatentSelcetService {
     List<Patent> selectPatentToUser();
 
     /**
-     * 查询所有专利
-     * @param patent
+     *  查询所有专利
      * @return
      */
     List<Patent>  selectPatentToAdmin();
@@ -47,7 +46,12 @@ public interface PatentSelcetService {
     Integer updatePatentToWritePerson(Patent patent);
 
 
-    Patent selectPatentMessage(User user);
+    /**
+     *
+     * @param user
+     * @return
+     */
+    PatentVO selectPatentMessage(User user);
 /**
      * 设置excel  专利
      * @param list
@@ -67,6 +71,7 @@ public interface PatentSelcetService {
      * @param list
      * @param columnNames
      * @param keys
+     * @param response
      * @return
      * @throws IOException
      */
@@ -88,5 +93,5 @@ public interface PatentSelcetService {
      * @return
      * @throws IOException
      */
-    Boolean export(PatentPath patent, HttpServletResponse response) throws IOException;
+    Boolean export(PatentVO patent, HttpServletResponse response) throws IOException;
 }

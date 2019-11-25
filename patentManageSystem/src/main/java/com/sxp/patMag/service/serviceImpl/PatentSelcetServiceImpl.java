@@ -4,7 +4,7 @@ import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.dao.PatentSelcetMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentExport;
-import com.sxp.patMag.entity.PatentPath;
+import com.sxp.patMag.entity.PatentVO;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.ExcelUtil;
@@ -64,7 +64,7 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
 
 
     @Override
-    public Patent selectPatentMessage(User user) {
+    public PatentVO selectPatentMessage(User user) {
         return patentSelcetMapper.selectPatentMessage(user);
     }
 
@@ -79,7 +79,7 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     }*/
 //弹出下载框
    @Override
-    public Boolean export(PatentPath patent , HttpServletResponse response) throws IOException {
+    public Boolean export(PatentVO patent , HttpServletResponse response) throws IOException {
         List<PatentExport> list = patentSelcetMapper.selectPatentByPatentExport(patent);
         String[] columnNames={"编号", "专利名称",   "案件文号",    "申请号",    "专利进度",        "申请日",   "发明人中文名称", "撰写人"};
         String[] keys = {"number", "patentName", "caseNumber", "applyNumber","patentSchedule", "applyTime", "createPerson", "writePerson"};
