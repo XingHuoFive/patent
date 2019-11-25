@@ -1,5 +1,6 @@
 package com.sxp.patMag.service.serviceImpl;
 
+import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.dao.PatentSelcetMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentExport;
@@ -55,6 +56,7 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     }
 
     @Override
+    @Monitor("专利认领")
     public Integer updatePatentToWritePerson(Patent patent) {
         return patentSelcetMapper.updatePatentToWritePerson(patent);
     }
