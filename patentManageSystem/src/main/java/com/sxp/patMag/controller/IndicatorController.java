@@ -3,6 +3,7 @@ package com.sxp.patMag.controller;
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.service.IndicatorService;
+import com.sxp.patMag.util.CheckOut;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,11 @@ public class IndicatorController {
             generalResult.setMsg("导出失败");
             return generalResult;
         }
+        if (!CheckOut.checkOutIndicatorSelect(indicatorExport)) {
+            generalResult.setStatus(1);
+            generalResult.setMsg("失败");
+            return generalResult;
+        }
         boolean export = indicatorService.export(indicatorExport, resp, req);
         if (!export) {
             generalResult.setStatus(1);
@@ -90,6 +96,11 @@ public class IndicatorController {
         }
         List<IndicatorExport> patents = indicatorService.listByPatent(indicatorExport);
         if (null == patents) {
+            generalResult.setStatus(1);
+            generalResult.setMsg("失败");
+            return generalResult;
+        }
+        if (!CheckOut.checkOutIndicatorSelect(indicatorExport)) {
             generalResult.setStatus(1);
             generalResult.setMsg("失败");
             return generalResult;
