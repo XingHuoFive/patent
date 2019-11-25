@@ -65,13 +65,7 @@ public class PatentSelcetController {
             return GeneralResult.build(1,"没有符合的申请时间",null);
         }
 
-
-
-
-
-
         List<Patent> list =patentSelcetService.selectPatentByPatent(patent);
-
 
         if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -117,22 +111,6 @@ public class PatentSelcetController {
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
         }
-
-
-
-     /*   GeneralResult generalResult = null;
-        //校验是否为空
-        generalResult =  CheckOut.checkOutNull(patent);
-        if(generalResult != null){
-            return  generalResult;
-        }
-
-        //校验长度
-        generalResult = CheckOut.checkOutLength(patent);
-        if(generalResult != null){
-            return  generalResult;
-        }*/
-
         if(patent.getWritePerson() == null || patent.getWritePerson() == ""){
             return GeneralResult.build(1,"没有撰写人",null);
         }else if(patent.getWritePerson().length() > 16){
@@ -189,28 +167,6 @@ public class PatentSelcetController {
             return GeneralResult.build(0,"成功",list);
         }
     }
-
-
-
-    /*public void downloadPlan(HttpServletResponse response, HttpServletRequest request) throws IOException{
-        OutputStream os = null;
-        //注意文件的路径；只有路径正确，才能完成下载；
-        String filePath = request.getSession().getServletContext().getRealPath("D:\\");
-        System.out.println(filePath+"---------------------");
-        File f = new File("D:\\wangshuo.xlsx");
-        FileInputStream input = new FileInputStream(f);
-        byte[] buffer  = new byte[(int)f.length()];
-        int offset = 0;
-        int numRead = 0;
-        while (offset<buffer.length&&(numRead-input.read(buffer,offset,buffer.length-offset))>=0) {
-            offset+=numRead;
-        }
-        input.close();
-        os = response.getOutputStream();
-        response.setContentType("APPLICATION/OCTET-STREAM");
-        response.setHeader("Content-Disposition", "attachment;filename="+f.getName());;
-        os.write(buffer);
-    }*/
 
 
 
@@ -272,12 +228,6 @@ public class PatentSelcetController {
 
 
 
-
-
-
-
-
-
     /**
      *根据用户查询专利显示
      */
@@ -295,4 +245,27 @@ public class PatentSelcetController {
             return GeneralResult.build(0,"成功",list);
         }
     }
+
+
+
+        /*public void downloadPlan(HttpServletResponse response, HttpServletRequest request) throws IOException{
+        OutputStream os = null;
+        //注意文件的路径；只有路径正确，才能完成下载；
+        String filePath = request.getSession().getServletContext().getRealPath("D:\\");
+        System.out.println(filePath+"---------------------");
+        File f = new File("D:\\wangshuo.xlsx");
+        FileInputStream input = new FileInputStream(f);
+        byte[] buffer  = new byte[(int)f.length()];
+        int offset = 0;
+        int numRead = 0;
+        while (offset<buffer.length&&(numRead-input.read(buffer,offset,buffer.length-offset))>=0) {
+            offset+=numRead;
+        }
+        input.close();
+        os = response.getOutputStream();
+        response.setContentType("APPLICATION/OCTET-STREAM");
+        response.setHeader("Content-Disposition", "attachment;filename="+f.getName());;
+        os.write(buffer);
+    }*/
+
 }
