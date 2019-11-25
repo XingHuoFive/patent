@@ -101,17 +101,19 @@
 
     <!--admin用户查询-->
     <select id="selectPatentMessage" parameterType="com.sxp.patMag.entity.User" resultMap="PatentMap" >   <!--resultType="com.sxp.patMag.entity.Patent"-->
-        SELECT  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks,indicator_name
-            i.indicator_id indicatorId,
-            p.patent_id patentId,
-            i.indicator_name indicatorName,
-            p.case_number caseNumber,
-            p.patent_schedule patentSchedule,
-            p.apply_time applyTime,
-            p.create_person createPerson,
-            p.write_person writePerson
-        FROM  tb_patent p
-        join tb_indicator i
-        on i.patent_id = p.patent_id
-
+        select  p.patent_id,
+                case_number,
+                apply_number,
+                apply_time,
+                write_person,
+                apply_person,
+                create_person,
+                patent_name,
+                patent_schedule,
+                patent_claim,
+                patent_remarks,
+                i.indicator_name
+        from tb_indicator i left join tb_patent p
+        on p.patent_id = i.patent_id
+    </select>
 </mapper>
