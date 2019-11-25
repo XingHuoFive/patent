@@ -46,9 +46,6 @@ public class HistoryAOP {
      */
 
 
-
-
-
     @Around("getAction()")
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("开始操作历史记录");
@@ -104,9 +101,11 @@ public class HistoryAOP {
                 stringBuilder.append("专利名 ："+patent.getPatentName()+"  ");
             }
             if(patent.getCreatePerson()!=null){
-                stringBuilder.append("申请人 ："+patent.getCreatePerson()+"   ");
+                stringBuilder.append("发明人 ："+patent.getCreatePerson()+"   ");
             }
-
+            if(patent.getApplyPerson()!=null){
+                stringBuilder.append("申请人 ："+patent.getApplyPerson()+"   ");
+            }
 
             history.setHtNewItem(stringBuilder.toString());
             history.setHtOldItem("无");
@@ -119,7 +118,6 @@ public class HistoryAOP {
             history.setHtProcess(value);
             history.setHtOperation("修改了专利撰写人");
         }else if(value.equals("审核")){
-
             if (patent.getPatentClaim()=="0"){
                 history.setHtPatentId(patent.getPatentId());
                 history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
@@ -127,7 +125,6 @@ public class HistoryAOP {
                 history.setHtProcess(value);
                 history.setHtOperation("初审");
             }
-
             if (patent.getPatentClaim()=="1"){
                 history.setHtPatentId(patent.getPatentId());
                 history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
@@ -135,9 +132,6 @@ public class HistoryAOP {
                 history.setHtProcess(value);
                 history.setHtOperation("复审");
             }
-
-
-
         } else if(value.equals("修改字段")){
 
       /*  Object obj =  redis.get(patent.getPatentId());
@@ -151,7 +145,7 @@ public class HistoryAOP {
                 stringBuilder.append("申请号 ："+patent.getApplyNumber()+"  ");
             }
             if(patent.getCaseNumber()!=null){
-                stringBuilder.append("案件文号 ："+patent.getCaseNumber()+"   ");
+                stringBuilder.append("案件文号 ："+patent.getCaseNumber()+ "   ");
             }
             if(patent.getPatentName()!=null){
                 stringBuilder.append("专利名 ："+patent.getPatentName()+"   ");
