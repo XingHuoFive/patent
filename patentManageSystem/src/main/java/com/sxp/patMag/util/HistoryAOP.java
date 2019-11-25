@@ -25,6 +25,7 @@ public class HistoryAOP {
     @Autowired
     private HistoryService historyService;
 
+
     private User user;
 
     public void setUser(User user) {
