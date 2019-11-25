@@ -6,4 +6,13 @@
          INSERT INTO  tb_jbook(`jbook_id`, `jbook_patent_id`, `jbook_url`, `jbook_user_id`, `jbook_view`) VALUES (#{jbookId},#{jbookPatentId},#{jbookUrl},#{jbookUserId},#{jbookView})
 
     </insert>
+
+
+<!--    &lt;!&ndash;当前修改为true，其他为false&ndash;&gt;
+    <update id="updatebook">
+        update tb_patent
+        set jbook_user_id = #{jbookUserId}
+        where patent_id = #{patentId}
+    </update>-->
+
 </mapper>

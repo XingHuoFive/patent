@@ -5,7 +5,6 @@ import com.sxp.patMag.entity.History;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.HistoryService;
-import org.apache.ibatis.annotations.Result;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -14,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Aspect
@@ -34,6 +34,7 @@ public class HistoryAOP {
     /**
      * 声明切点
      */
+
     @Pointcut("@annotation(com.sxp.patMag.annotation.Monitor)")
     public void getAction() {
     }
@@ -49,7 +50,6 @@ public class HistoryAOP {
     @Around("getAction()")
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("开始操作历史记录");
-
         History history = new History();
         //从切面织入点处通过反射机制获取织入点处的方法
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
@@ -70,7 +70,10 @@ public class HistoryAOP {
         Object[] args = joinPoint.getArgs();
         //将参数所在的数组转换成json
         String params = JSON.toJSONString(args);
-        history.setHtDate(new Date().toString());
+        //时间格式化
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = simpleDateFormat.format(new Date());
+        history.setHtDate(date);
         history.setHtId(UUID.getUUID());
         history.setHtUserId(user.getUserId());
            System.out.println(params);
@@ -154,7 +157,6 @@ public class HistoryAOP {
                 stringBuilder.append("备注 ："+patent.getPatentRemarks()+"  ");
             }
 
-
             StringBuilder stringBuilder2 = new StringBuilder();
 
             if (old_patent.getApplyNumber()!=null){
@@ -169,7 +171,6 @@ public class HistoryAOP {
             if(old_patent.getPatentRemarks()!=null){
                 stringBuilder2.append("备注 ："+old_patent.getPatentRemarks()+"  ");
             }
-
 
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem(stringBuilder.toString());

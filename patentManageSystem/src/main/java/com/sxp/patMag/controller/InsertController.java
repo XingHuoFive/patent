@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -32,8 +33,11 @@ public class InsertController{
     @ResponseBody
     public GeneralResult insertPatent(@RequestBody Patent patent){
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = simpleDateFormat.format(new Date());
+
         patent.setPatentId(UUID.getUUID());
-        patent.setApplyTime(new Date().toString());
+        patent.setApplyTime(date);
         patent.setPatentSchedule("未审核");
        patent.setPatentClaim("0");
 //        patent.setApplyNumber("");
