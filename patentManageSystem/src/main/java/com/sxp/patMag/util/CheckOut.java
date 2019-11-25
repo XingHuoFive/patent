@@ -38,22 +38,22 @@ public class CheckOut {
 
     public static GeneralResult checkOutNull(Patent patent){
         if (patent.getApplyTime() == null){
-            return GeneralResult.build(1,"申请时间长度过长",null);
+            return GeneralResult.build(1,"申请时间为空",null);
         }
         if(patent.getApplyNumber() == null){
-            return GeneralResult.build(1,"申请号长度过长",null);
+            return GeneralResult.build(1,"申请号为空",null);
         }
         if(patent.getPatentName() == null){
-            return GeneralResult.build(1,"专利名字长度过长",null);
+            return GeneralResult.build(1,"专利名字为空",null);
         }
         if(patent.getApplyPerson() == null){
-            return GeneralResult.build(1,"申请人长度过长",null);
+            return GeneralResult.build(1,"申请人为空",null);
         }
         if(patent.getCreatePerson() == null){
-            return GeneralResult.build(1,"发明人长度过长",null);
+            return GeneralResult.build(1,"发明人为空",null);
         }
         if(patent.getCaseNumber() == null){
-            return GeneralResult.build(1,"案例号长度过长",null);
+            return GeneralResult.build(1,"案例号为空",null);
         }else{
             return null;
         }

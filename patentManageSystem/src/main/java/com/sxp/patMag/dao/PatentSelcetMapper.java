@@ -2,7 +2,7 @@ package com.sxp.patMag.dao;
 
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentExport;
-import com.sxp.patMag.entity.PatentPath;
+import com.sxp.patMag.entity.PatentVO;
 import com.sxp.patMag.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -17,7 +17,7 @@ public interface PatentSelcetMapper {
     List<Patent> selectPatentToUser( );
     Patent selectPatentById(String patentId);
     Integer updatePatentToWritePerson(Patent patent);
-    List<PatentExport> selectPatentByPatentExport(PatentPath patent);
+    List<PatentExport> selectPatentByPatentExport(PatentVO patent);
     List<Patent>  selectPatentToAdmin();
-    Patent selectPatentMessage(User user);
+    PatentVO selectPatentMessage(User user);
 }

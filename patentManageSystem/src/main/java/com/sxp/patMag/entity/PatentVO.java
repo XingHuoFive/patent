@@ -8,7 +8,7 @@ import java.util.List;
  * Time:10:56
  */
 
-public class PatentPath {
+public class PatentVO {
 
     /** 专利id **/
     private String patentId;
@@ -21,8 +21,6 @@ public class PatentPath {
     /** 撰写人 **/
     private String writePerson;
     /** 申请人/机构 **/
-
-    /**。。。**/
     private String applyPerson;
     /** 发明人 **/
     private String createPerson;
@@ -38,6 +36,8 @@ public class PatentPath {
     private List<Indicator> indicatorList;
     /** 路径 **/
     private String path;
+    /** 交底书 **/
+    private String jbook;
 
 
     @Override
@@ -163,10 +163,10 @@ public class PatentPath {
         this.path = path;
     }
 
-    public PatentPath() {
+    public PatentVO() {
     }
 
-    public PatentPath(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList) {
+    public PatentVO(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList) {
         this.patentId = patentId;
         this.caseNumber = caseNumber;
         this.applyNumber = applyNumber;
