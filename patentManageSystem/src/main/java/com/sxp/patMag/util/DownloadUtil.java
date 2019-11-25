@@ -16,9 +16,6 @@ import java.nio.charset.StandardCharsets;
  */
 public class DownloadUtil {
 
-    @Value("${visualPath}")
-    private String visualPath;
-
     /**
      * 获取url
      * @param fileName 文件名
