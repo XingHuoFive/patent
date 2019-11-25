@@ -59,4 +59,50 @@ public class CheckOut {
         }
 
     }
+
+    public static boolean checkOutUpdate(Patent patent) {
+        boolean flag = false;
+        if (null != patent.getApplyNumber()) {
+            if (patent.getApplyNumber().length() > 50) {
+                return flag;
+            }
+        }
+        if (null != patent.getCaseNumber()) {
+            if (patent.getCaseNumber().length() > 50) {
+                return flag;
+            }
+        }
+        if (null != patent.getApplyTime()) {
+            if (patent.getApplyTime().length() > 30) {
+                return flag;
+            }
+        }
+        if (null != patent.getWritePerson()) {
+            if (patent.getWritePerson().length() > 50) {
+                return flag;
+            }
+        }
+        if (null != patent.getApplyPerson()) {
+            if (patent.getApplyPerson().length() > 50) {
+                return flag;
+            }
+        }
+        if (null != patent.getCreatePerson()) {
+            if (patent.getCreatePerson().length() > 30) {
+                return flag;
+            }
+        }
+        if (null != patent.getPatentName()) {
+            if (patent.getPatentName().length() > 150) {
+                return flag;
+            }
+        }
+        if (null != patent.getPatentRemarks()) {
+            if (patent.getPatentRemarks().length() > 500) {
+                return flag;
+            }
+        }
+        flag = true;
+        return flag;
+    }
 }
