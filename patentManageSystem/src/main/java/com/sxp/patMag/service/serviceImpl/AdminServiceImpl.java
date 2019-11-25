@@ -59,10 +59,13 @@ public class AdminServiceImpl implements AdminService {
 
         boolean flag = adminMapper.checkPatent(patent);
         String spareNum = adminMapper.selectSpareOfPatent(patent.getPatentId());
-        if (flag == true && spareNum == "1") {
+        if (spareNum == null) {
+            spareNum = "0";
+        }
+        if (flag == true && Integer.parseInt(spareNum) == 1) {
             return GeneralResult.build(0, "审核通过!");
         }
-        if (flag == true && (spareNum == "0" || spareNum == null)){
+        if (flag == true && Integer.parseInt(spareNum) == 0){
             return GeneralResult.build(1, "审核不通过!");
         }
         return GeneralResult.build(1, "出现错误!");
