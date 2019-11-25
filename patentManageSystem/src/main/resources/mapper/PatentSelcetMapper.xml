@@ -2,6 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.PatentSelcetMapper">
 
+    <resultMap id="PatentMap" type="com.sxp.patMag.entity.Patent">
+        <id column="patent_id" property="patentId"/>
+        <result column="case_number" property="caseNumber"/>
+        <result column="patent_schedule" property="patentSchedule"/>
+        <result column="apply_time" property="applyTime"/>
+        <result column="create_person" property="createPerson"/>
+        <result column="write_person" property="writePerson"/>
+        <collection property="indicatorList" ofType="com.sxp.patMag.entity.Indicator">
+            <!--<id column="indicatorId" property="indicatorId"/>-->
+            <result column="indicator_name" property="indicatorName"/>
+            <!--<result column="patentId" property="patentId"/>-->
+        </collection>
+    </resultMap>
+
     <!--专利查询-->
     <select id="selectPatentByPatent" parameterType="com.sxp.patMag.entity.Patent"  resultType="com.sxp.patMag.entity.Patent" >
         select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
@@ -62,7 +76,7 @@
 
     <!--确认认领人-->
     <update id="updatePatentToWritePerson" parameterType="com.sxp.patMag.entity.Patent" >
-            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = ""patent_claim="1" WHERE patent_id=#{patentId}
+            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = "已认领",patent_claim="1" WHERE patent_id=#{patentId}
     </update>
 
 
@@ -76,7 +90,7 @@
     <!--admin用户查询-->
     <select id="selectPatentToAdmin" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
         select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
-           from  tb_patent  order by apply_time,patent_claim
+           from  tb_patent order by apply_time,patent_claim
     </select>
 
     <!--查询详细或审核信息-->
@@ -85,4 +99,21 @@
         from  tb_patent  where patent_id=#{patentId}
     </select>
 
+    <!--admin用户查询-->
+    <select id="selectPatentMessage" parameterType="com.sxp.patMag.entity.User" resultMap="PatentMap" >   <!--resultType="com.sxp.patMag.entity.Patent"-->
+        select  p.patent_id,
+                case_number,
+                apply_number,
+                apply_time,
+                write_person,
+                apply_person,
+                create_person,
+                patent_name,
+                patent_schedule,
+                patent_claim,
+                patent_remarks,
+                i.indicator_name
+        from tb_indicator i left join tb_patent p
+        on p.patent_id = i.patent_id
+    </select>
 </mapper>

@@ -3,7 +3,9 @@ package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentPath;
+import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.PatentSelcetService;
+import com.sxp.patMag.util.CheckOut;
 import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,9 +42,27 @@ public class PatentSelcetController {
     @RequestMapping(value = "/selectPatentByPatent",method = RequestMethod.POST)
     @ResponseBody
     public GeneralResult selectPatentByPatent(@RequestBody Patent patent){
+        GeneralResult generalResult = null;
         if(patent==null){
-
+            return GeneralResult.build(1,"对象为空",null);
         }
+
+        //校验是否为空
+        generalResult =  CheckOut.checkOutNull(patent);
+        if(generalResult != null){
+            return  generalResult;
+        }
+
+        //校验长度
+        generalResult = CheckOut.checkOutLength(patent);
+        if(generalResult != null){
+            return  generalResult;
+        }
+
+
+
+
+
         List<Patent> list =patentSelcetService.selectPatentByPatent(patent);
         if(list==null){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -63,7 +83,6 @@ public class PatentSelcetController {
     @ResponseBody
     public  GeneralResult selectPatentToUser(){
         System.out.println(patentSelcetService.selectPatentToUser());
-
         List<Patent> list = patentSelcetService.selectPatentToUser();
         if(list==null){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -86,6 +105,19 @@ public class PatentSelcetController {
 
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
+        }
+
+        GeneralResult generalResult = null;
+        //校验是否为空
+        generalResult =  CheckOut.checkOutNull(patent);
+        if(generalResult != null){
+            return  generalResult;
+        }
+
+        //校验长度
+        generalResult = CheckOut.checkOutLength(patent);
+        if(generalResult != null){
+            return  generalResult;
         }
 
         if(patent.getWritePerson()==null){
@@ -122,7 +154,7 @@ public class PatentSelcetController {
         System.out.println(patentId);
 
         Patent list = patentSelcetService.selectPatentById(patentId);
-        if(list==null){
+        if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
             return GeneralResult.build(0,"成功",list);
@@ -138,7 +170,7 @@ public class PatentSelcetController {
     @ResponseBody
     public  GeneralResult selectPatentToAdmin(){
         List<Patent> list = patentSelcetService.selectPatentToAdmin();
-        if(list==null){
+        if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
             return GeneralResult.build(0,"成功",list);
@@ -186,13 +218,31 @@ public class PatentSelcetController {
         System.out.println(path);
 
         //数据校验
-        if(patent==null){
+        if(patent == null){
             return GeneralResult.build(1,"对象为空",null);
+        }
+
+        if(patent.getApplyNumber() == null){
+            return GeneralResult.build(1,"没有申请号",null);
+        }else if(patent.getApplyNumber().length() > 100){
+            return GeneralResult.build(1,"申请号过长",null);
+        }
+
+        if(patent.getApplyTime() == null){
+            return GeneralResult.build(1,"没有申请时间",null);
+        }else if(patent.getApplyTime().length() > 100){
+            return GeneralResult.build(1,"申请时间过长",null);
+        }
+
+        if(patent.getPatentName() == null){
+            return GeneralResult.build(1,"没有专利名称",null);
+        }else if(patent.getPatentName().length() > 100){
+            return GeneralResult.build(1,"专利名称过长",null);
         }
 
         //处理异常
         try {
-            flag =  patentSelcetService.export(patent,response);
+            flag = patentSelcetService.export(patent,response);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -204,23 +254,30 @@ public class PatentSelcetController {
             return GeneralResult.build(0,"成功",null);
         }
 
-        /*if(patent.getApplyNumber()==null){
-            return GeneralResult.build(1,"没有申请号",null);
-        }else if(patent.getApplyNumber().length()>100){
-            return GeneralResult.build(1,"申请号过长",null);
-        }
 
-        if(patent.getApplyTime()==null){
-            return GeneralResult.build(1,"没有申请时间",null);
-        }else if(patent.getApplyTime().length()>100){
-            return GeneralResult.build(1,"申请时间过长",null);
-        }
-
-        if(patent.getPatentName()==null){
-            return GeneralResult.build(1,"没有专利名称",null);
-        }else if(patent.getPatentName().length()>100){
-            return GeneralResult.build(1,"专利名称过长",null);
-        }*/
     }
+
+
+
+    /**
+     *管理员专利显示
+     */
+    @RequestMapping(value = "/selectPatentMessage",method = RequestMethod.POST)
+    @ResponseBody
+    public  GeneralResult selectPatentMessage(User user){
+
+
+        if(user==null){
+            return GeneralResult.build(1,"对象为空",null);
+        }
+        Patent list = patentSelcetService.selectPatentMessage(user);
+        if(list==null){
+            return GeneralResult.build(1,"无匹配专利",null);
+        }else{
+            return GeneralResult.build(0,"成功",list);
+        }
+    }
+
+
 
 }

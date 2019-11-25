@@ -3,6 +3,7 @@ package com.sxp.patMag.service;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentExport;
 import com.sxp.patMag.entity.PatentPath;
+import com.sxp.patMag.entity.User;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -45,9 +46,8 @@ public interface PatentSelcetService {
      */
     Integer updatePatentToWritePerson(Patent patent);
 
-/*
 
-    */
+    Patent selectPatentMessage(User user);
 /**
      * 设置excel  专利
      * @param list

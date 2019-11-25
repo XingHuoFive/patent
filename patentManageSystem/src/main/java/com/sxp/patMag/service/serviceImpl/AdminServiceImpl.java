@@ -23,21 +23,31 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 审核新建的专利
+     *
      * @param patent 专利
      * @return 修改结果
      */
     @Override
     public GeneralResult checkPatent(Patent patent) {
         System.out.println(patent);
+        if (patent == null) {
+            return GeneralResult.build(1, "校验不通过");
+        }
         String patentSpare = patent.getSpare();
-        if (patent == null || patentSpare == null || patentSpare.trim().length() > 1) {
-            return GeneralResult.build(1, "点击无效");
+        String pClaim = patent.getPatentClaim();
+        if (patentSpare == null || patentSpare.trim().length() != 1 || pClaim == null || pClaim.length() != 1) {
+            return GeneralResult.build(1, "校验不通过");
         }
         boolean check = true;
-        for (int i = 0; i < patentSpare.length(); i++) {
+        check = Character.isDigit(patentSpare.charAt(0));
+        if (check == false) {
+            return GeneralResult.build(1, "校验不通过");
+        }
+        check = true;
+        for (int i = 0; i < pClaim.length(); i++) {
             check = Character.isDigit(patentSpare.charAt(i));
             if (check == false) {
-                return GeneralResult.build(1, "点击无效");
+                return GeneralResult.build(1, "校验不通过");
             }
         }
         // 如果该专利通过审核，并且是还没有被认领，就把他的进度修改成待认领状态
@@ -59,10 +69,13 @@ public class AdminServiceImpl implements AdminService {
 
         boolean flag = adminMapper.checkPatent(patent);
         String spareNum = adminMapper.selectSpareOfPatent(patent.getPatentId());
-        if (flag == true && spareNum == "1") {
+        if (spareNum == null) {
+            spareNum = "0";
+        }
+        if (flag == true && Integer.parseInt(spareNum) == 1) {
             return GeneralResult.build(0, "审核通过!");
         }
-        if (flag == true && (spareNum == "0" || spareNum == null)){
+        if (flag == true && Integer.parseInt(spareNum) == 0) {
             return GeneralResult.build(1, "审核不通过!");
         }
         return GeneralResult.build(1, "出现错误!");
@@ -70,6 +83,7 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 根据专利id查询它所有的文件
+     *
      * @param patentId 专利id
      * @return 文件地址
      */
@@ -77,6 +91,13 @@ public class AdminServiceImpl implements AdminService {
     public GeneralResult selectAllFilesByPatentId(String patentId) {
         if (patentId == null || patentId.length() > 16) {
             return GeneralResult.build(1, "该专利id无效");
+        }
+        boolean check = true;
+        for (int i = 0; i < patentId.length(); i++) {
+            check = Character.isDigit(patentId.charAt(i));
+            if (check == false) {
+                return GeneralResult.build(1, "校验出错");
+            }
         }
         List<Jbook> list = adminMapper.selectAllFilesByPatentId(patentId);
         if (list == null || list.size() == 0) {
@@ -87,7 +108,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     /**
-     *  管理员读取日志
+     * 管理员读取日志
+     *
      * @return 日志列表
      */
     @Override
@@ -97,9 +119,16 @@ public class AdminServiceImpl implements AdminService {
             //返回查询失败
             return GeneralResult.build(1, "fail");
         }
+        boolean check = true;
+        for (int i = 0; i < pageNumber.length(); i++) {
+            check = Character.isDigit(pageNumber.charAt(i));
+            if (check == false) {
+                return GeneralResult.build(1, "校验出错");
+            }
+        }
         if (pageNumber == null || pageNumber.length() == 0) {
             return GeneralResult.build(0, "success", list);
         }
-        return GeneralResult.build(0, "success", list.get(Integer.parseInt(pageNumber)-1));
+        return GeneralResult.build(0, "success", list.get(Integer.parseInt(pageNumber) - 1));
     }
 }

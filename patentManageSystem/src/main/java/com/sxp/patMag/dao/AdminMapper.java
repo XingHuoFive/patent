@@ -14,4 +14,5 @@ public interface AdminMapper {
     List<Jbook> selectAllFilesByPatentId(@Param("patentId")String patentId);
 
     String selectSpareOfPatent(String patentId);
+
 }
