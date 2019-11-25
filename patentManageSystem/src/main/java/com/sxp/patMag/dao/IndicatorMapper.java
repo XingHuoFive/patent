@@ -26,17 +26,4 @@ public interface IndicatorMapper {
      */
     int addIndicator(Indicator indicator);
 
-    /**
-     * 获取指标列表
-     * @return 指标列表
-     */
-    List<Patent> getPatentList();
-
-    /**
-     * 复杂查询
-     * @param indicatorExport 要查询的字段
-     * @return 查询出的结果
-     */
-    List<Patent> getPatentListByVO(IndicatorExport indicatorExport);
-
 }

@@ -61,11 +61,12 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
         return patentSelcetMapper.updatePatentToWritePerson(patent);
     }
 
+
+
     @Override
     public Patent selectPatentMessage(User user) {
         return patentSelcetMapper.selectPatentMessage(user);
     }
-
 
     //最初下载模板
  /*   @Override

@@ -24,6 +24,19 @@ public class InsertServiceImpl implements InsertService {
 
     @Monitor("新建专利")
     public GeneralResult InsertPatent(Patent patent){
+
+        if (null == patent.getCreatePerson() || "".equals(patent.getCreatePerson())) {
+            return  GeneralResult.build(1,"发明人不能为空");
+        }
+        if (null == patent.getPatentName() || "".equals(patent.getPatentName())) {
+            return  GeneralResult.build(1,"专利名称不能为空");
+        }
+        if (null == patent.getApplyPerson() || "".equals(patent.getApplyPerson())) {
+            return  GeneralResult.build(1,"申请人不能为空");
+        }
+
+
+
         int a = insertMapper.InsertPatent(patent);
         if(a>0){
             return GeneralResult.build(0,"success");

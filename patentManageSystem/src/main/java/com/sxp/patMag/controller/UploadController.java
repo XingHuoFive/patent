@@ -2,6 +2,7 @@ package com.sxp.patMag.controller;
 
 import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.entity.Jbook;
+import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.LoginService;
 import com.sxp.patMag.service.UploadService;
 import com.sxp.patMag.util.GeneralResult;
@@ -35,7 +36,7 @@ public class UploadController {
 
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult fileUpload(@RequestParam("fileName") MultipartFile file, HttpServletRequest request){
-           return  uploadService.insertJbook(file,request);
+    public GeneralResult fileUpload(@RequestParam("fileName") MultipartFile file, Patent patent, HttpServletRequest request){
+           return  uploadService.insertJbook(file,patent,request);
     }
 }
