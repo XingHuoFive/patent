@@ -4,6 +4,7 @@ import com.sxp.patMag.dao.PatentSelcetMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentExport;
 import com.sxp.patMag.entity.PatentPath;
+import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.ExcelUtil;
 import com.sxp.patMag.util.StringUtils;
@@ -58,9 +59,13 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
         return patentSelcetMapper.updatePatentToWritePerson(patent);
     }
 
+    @Override
+    public Patent selectPatentMessage(User user) {
+        return patentSelcetMapper.selectPatentMessage(user);
+    }
 
 
-//最初下载模板
+    //最初下载模板
  /*   @Override
     public Boolean export(Patent patent) throws IOException {
         List<PatentExport> list = patentSelcetMapper.selectPatentByPatentExport(patent);
@@ -78,6 +83,9 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
         Boolean flag = execl(list,columnNames,keys,response);//execl(list,columnNames,key,response);
         return flag;
     }
+
+
+
 
 /*
 //传入下载地址
