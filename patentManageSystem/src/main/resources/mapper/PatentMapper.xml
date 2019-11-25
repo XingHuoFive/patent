@@ -4,18 +4,19 @@
 
     <update id="updatePatent">
         UPDATE tb_patent
-        <set>
+        <trim prefix="SET" suffixOverrides=",">
             <if test="caseNumber != null">case_number=#{caseNumber},</if>
             <if test="applyNumber != null">apply_number=#{applyNumber},</if>
             <if test="applyTime != null">apply_time=#{applyTime},</if>
-            <if test="writePerson != null">write_person=#{writePerson}</if>
-            <if test="applyPerson != null">apply_person=#{applyPerson}</if>
-            <if test="createPerson != null">create_person=#{createPerson}</if>
-            <if test="patentName != null">patent_name=#{patentName}</if>
-            <if test="patentSchedule != null">patent_schedule=#{patentSchedule}</if>
-            <if test="patentClaim != null">patent_claim=#{patentClaim}</if>
-            <if test="patentRemarks != null">patent_remarks=#{patentRemarks}</if>
-        </set>
+            <if test="writePerson != null">write_person=#{writePerson},</if>
+            <if test="applyPerson != null">apply_person=#{applyPerson},</if>
+            <if test="createPerson != null">create_person=#{createPerson},</if>
+            <if test="patentName != null">patent_name=#{patentName},</if>
+            <if test="patentSchedule != null">patent_schedule=#{patentSchedule},</if>
+            <if test="patentClaim != null">patent_claim=#{patentClaim},</if>
+            <if test="patentRemarks != null">patent_remarks=#{patentRemarks},</if>
+            <if test="patentId != null">patent_id=#{patentId}</if>
+        </trim>
         where patent_id=#{patentId}
     </update>
 
