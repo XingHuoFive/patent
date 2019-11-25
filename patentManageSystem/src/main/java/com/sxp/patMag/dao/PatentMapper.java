@@ -6,6 +6,7 @@ import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 /**
@@ -14,6 +15,7 @@ import java.util.List;
  * Time:18:18
  */
 @Mapper
+@Repository
 public interface PatentMapper {
 
     /**

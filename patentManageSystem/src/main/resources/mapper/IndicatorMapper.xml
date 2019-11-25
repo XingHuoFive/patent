@@ -2,73 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.IndicatorMapper">
 
-    <resultMap id="PatentMap" type="com.sxp.patMag.entity.Patent">
-        <id column="patent_id" property="patentId"/>
-        <result column="case_number" property="caseNumber"/>
-        <result column="patent_schedule" property="patentSchedule"/>
-        <result column="apply_time" property="applyTime"/>
-        <result column="create_person" property="createPerson"/>
-        <result column="write_person" property="writePerson"/>
-        <collection property="indicatorList" ofType="com.sxp.patMag.entity.Indicator">
-            <!--<id column="indicatorId" property="indicatorId"/>-->
-            <result column="indicator_name" property="indicatorName"/>
-            <!--<result column="patentId" property="patentId"/>-->
-        </collection>
-    </resultMap>
-    
-    <!--<resultMap id="indicator" type="com.sxp.patMag.entity.Patent" extends="PatentMap">-->
-        <!--<collection property="indicatorList" ofType="com.sxp.patMag.entity.Indicator">-->
-            <!--<id column="indicatorId" property="indicatorId"/>-->
-            <!--<result column="indicatorName" property="indicatorName"/>-->
-            <!--&lt;!&ndash;<result column="patentId" property="patentId"/>&ndash;&gt;-->
-        <!--</collection>-->
-    <!--</resultMap>-->
+
 
     <insert id="addIndicator" parameterType="com.sxp.patMag.entity.Indicator">
         INSERT INTO tb_indicator (indicator_id, indicator_name, patent_id) VALUES (#(indicatorId), #(indicatorName), #(patentId))
     </insert>
-
-    <select id="getPatentList" resultMap="PatentMap">
-        SELECT
-            i.indicator_id indicatorId,
-            p.patent_id patentId,
-            i.indicator_name indicatorName,
-            p.case_number caseNumber,
-            p.patent_schedule patentSchedule,
-            p.apply_time applyTime,
-            p.create_person createPerson,
-            p.write_person writePerson
-        FROM  tb_patent p
-        join tb_indicator i
-        on i.patent_id = p.patent_id
-    </select>
-
-    <select id="getPatentListByVO" resultMap="PatentMap">
-        SELECT indicator_id indicatorId, tb_patent.patent_id patentId, indicator_name indicatorName, case_number caseNumber, patent_schedule patentSchedule,apply_time
-        applyTime, create_person createPerson, write_person writePerson FROM tb_indicator,tb_patent WHERE
-        tb_indicator.patent_id = tb_patent.patent_id
-        <trim prefix="AND" suffixOverrides="AND">
-            <if test="indicatorList != null">
-                <foreach collection="indicatorList" index="index" item="item" open="(" separator="or" close=")">
-                    AND indicator_name = #{indicatorName} AND
-                </foreach>
-            </if>
-            <if test="caseNumber != null">
-                case_number = #{caseNumber} AND
-            </if>
-            <if test="patentSchedule != null">
-                patent_schedule = #{patentSchedule} AND
-            </if>
-            <if test="applyTime != null">
-                apply_time = #{applyTime} AND
-            </if>
-            <if test="createPerson != null">
-                create_person = #{createPerson} AND
-            </if>
-            <if test="writePerson != null">
-                write_person = #{writePerson} AND
-            </if>
-        </trim>
-    </select>
 
 </mapper>
