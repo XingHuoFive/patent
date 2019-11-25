@@ -28,7 +28,7 @@ import java.util.List;
  **/
 
 @Controller
-@RequestMapping("/patent")
+@RequestMapping("/patentSelcet")
 public class PatentSelcetController {
 
     @Autowired
