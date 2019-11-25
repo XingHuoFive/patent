@@ -21,8 +21,10 @@
         where jbook_patent_id = #{patentId}
     </select>
 
-    <select id="selectSpareOfPatent">
-        select spare from tb_patent where patent_id = #{patentId}
+    <select id="selectSpareOfPatent" resultType="java.lang.String">
+        select spare
+        from tb_patent
+        where patent_id = #{patentId}
     </select>
 
 </mapper>
