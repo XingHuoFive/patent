@@ -1,5 +1,6 @@
 package com.sxp.patMag.util;
 
+import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
 
 /**
@@ -68,7 +69,7 @@ public class CheckOut {
             }
         }
         if (null != patent.getCaseNumber()) {
-            if (patent.getCaseNumber().length() > 50) {
+            if (patent.getCaseNumber().length() > 16) {
                 return flag;
             }
         }
@@ -105,4 +106,44 @@ public class CheckOut {
         flag = true;
         return flag;
     }
+
+    public static boolean checkOutIndicatorSelect(IndicatorExport indicatorExport) {
+        if (null != indicatorExport.getWritePerson()) {
+            if (indicatorExport.getWritePerson().length() > 50) {
+                return false;
+            }
+        }
+        if (null != indicatorExport.getPatentSchedule()) {
+            if (indicatorExport.getPatentSchedule().length() > 10) {
+                return false;
+            }
+        }
+        if (null != indicatorExport.getIndicatorName()) {
+            if (indicatorExport.getIndicatorName().length() > 100) {
+                return false;
+            }
+        }
+        if (null != indicatorExport.getCaseNumber()) {
+            if (indicatorExport.getCaseNumber().length() > 16) {
+                return false;
+            }
+        }
+        if (null != indicatorExport.getApplyNumber()) {
+            if (indicatorExport.getApplyNumber().length() > 16) {
+                return false;
+            }
+        }
+        if (null != indicatorExport.getApplyTime()) {
+            if (indicatorExport.getApplyTime().length() > 30) {
+                return false;
+            }
+        }
+        if (null != indicatorExport.getCreatePerson()) {
+            if (indicatorExport.getCreatePerson().length() > 30) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
