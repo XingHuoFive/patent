@@ -46,14 +46,19 @@ public class PatentSelcetController {
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
         }
-        generalResult = CheckOut.checkOutLength(patent);
-        if(generalResult != null){
-            return  generalResult;
-        }
+
+        //校验是否为空
         generalResult =  CheckOut.checkOutNull(patent);
         if(generalResult != null){
             return  generalResult;
         }
+
+        //校验长度
+        generalResult = CheckOut.checkOutLength(patent);
+        if(generalResult != null){
+            return  generalResult;
+        }
+
 
 
 
@@ -103,17 +108,18 @@ public class PatentSelcetController {
         }
 
         GeneralResult generalResult = null;
-        if(patent==null){
-            return GeneralResult.build(1,"对象为空",null);
-        }
-        generalResult = CheckOut.checkOutLength(patent);
-        if(generalResult != null){
-            return  generalResult;
-        }
+        //校验是否为空
         generalResult =  CheckOut.checkOutNull(patent);
         if(generalResult != null){
             return  generalResult;
         }
+
+        //校验长度
+        generalResult = CheckOut.checkOutLength(patent);
+        if(generalResult != null){
+            return  generalResult;
+        }
+
         if(patent.getWritePerson()==null){
             return GeneralResult.build(1,"没有撰写人",null);
         }else if(patent.getWritePerson().length()>100){
