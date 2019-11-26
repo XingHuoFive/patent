@@ -2,7 +2,6 @@ package com.sxp.patMag.service;
 
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
-import com.sxp.patMag.util.GeneralResult;
 
 import java.util.List;
 

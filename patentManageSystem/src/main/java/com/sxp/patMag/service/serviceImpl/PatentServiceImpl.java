@@ -5,7 +5,6 @@ import com.sxp.patMag.dao.PatentMapper;
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.PatentService;
-import com.sxp.patMag.util.GeneralResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
