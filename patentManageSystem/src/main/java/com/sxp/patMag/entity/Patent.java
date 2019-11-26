@@ -1,6 +1,8 @@
 
 package com.sxp.patMag.entity;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.util.List;
 
 /**
@@ -12,6 +14,7 @@ public class Patent {
     /**
      * 专利id
      **/
+    @NotNull
     private String patentId;
     /**
      * 案件号
@@ -32,7 +35,7 @@ public class Patent {
     /** 申请人/机构 **/
 
     /**
-     * 。。。
+     *
      **/
     private String applyPerson;
     /**
