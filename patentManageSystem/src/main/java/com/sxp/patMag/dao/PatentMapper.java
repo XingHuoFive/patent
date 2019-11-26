@@ -3,16 +3,15 @@ package com.sxp.patMag.dao;
 
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
-import com.sxp.patMag.entity.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 /**
- * Author： Jude
- * Date:2019/11/19
- * Time:18:18
+ * @author lhx
+ * @PackageName: com.sxp.patMag.dao
+ * @ClassName: PatentMapper
+ * @date 2019/11/26 17:08
  */
 @Mapper
 @Repository
@@ -31,8 +30,6 @@ public interface PatentMapper {
      */
     List<IndicatorExport> getPatentListByVO(IndicatorExport indicatorExport);
 
-    List<Patent> selectById(String patentId);
-
     /**
      * 根据id获取指标详情
      * @param indicatorId 要获取的指标id
@@ -47,4 +44,10 @@ public interface PatentMapper {
      */
     int updatePatent(Patent patent);
 
+    /**
+     * 根据id查询专利
+     * @param patentId 专利id
+     * @return 查询到的专利
+     */
+    Patent getById(String patentId);
 }
