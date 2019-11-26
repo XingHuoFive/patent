@@ -24,15 +24,6 @@ public class PatentServiceImpl implements PatentService {
     private PatentMapper tbPatentMapper;
 
     @Override
-    public GeneralResult selectById(String patentId) {
-
-          List<Patent> patentList    = tbPatentMapper.selectById(patentId);
-          return  GeneralResult.build(0,"success",patentList);
-
-
-    }
-
-    @Override
     public List<IndicatorExport> list() {
         return tbPatentMapper.getPatentList();
     }

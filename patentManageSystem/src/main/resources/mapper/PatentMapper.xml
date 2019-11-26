@@ -34,10 +34,6 @@
         ON i.patent_id = p.patent_id
     </select>
 
-    <select id="selectById" parameterType="java.lang.String" resultType="com.sxp.patMag.entity.Patent">
-        select *   from  tb_patent   where  patent_id  = #{patentId}
-    </select>
-
     <select id="getPatentListByVO" resultType="com.sxp.patMag.entity.IndicatorExport">
         SELECT
         i.indicator_id indicatorId,

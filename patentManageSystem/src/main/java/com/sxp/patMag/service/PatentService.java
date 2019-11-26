@@ -14,8 +14,6 @@ import java.util.List;
  */
 public interface PatentService {
 
-    public GeneralResult selectById(String patentId);
-
     /**
      * 获取所有的指标
      * @return 指标列表
