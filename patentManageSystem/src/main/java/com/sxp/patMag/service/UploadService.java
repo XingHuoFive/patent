@@ -9,6 +9,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+/**
+ * @author： Jude
+ * @date:2019/11/26
+ * @time:11:21
+ */
 
 public interface UploadService {
 

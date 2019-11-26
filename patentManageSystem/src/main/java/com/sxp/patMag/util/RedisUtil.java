@@ -10,9 +10,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 /**
- * Author： Jude
- * Date:2019/11/19
- * Time:20:43
+ * @author： Jude
+ * @date:2019/11/19
+ * @time:20.43
  */
 
 

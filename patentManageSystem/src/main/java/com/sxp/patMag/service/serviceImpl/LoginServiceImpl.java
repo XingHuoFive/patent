@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+/**
+ * @author： Jude
+ * @date:2019/11/26
+ * @time:11:21
+ */
 
 @Service
 public class LoginServiceImpl implements LoginService  {
