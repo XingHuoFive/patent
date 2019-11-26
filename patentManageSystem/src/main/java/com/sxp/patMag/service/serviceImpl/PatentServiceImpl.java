@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 /**
- * Author： Jude
- * Date:2019/11/19
- * Time:18:18
+ * @author lhx
+ * @PackageName: com.sxp.patMag.serviceImpl
+ * @ClassName: PatentServiceImpl
+ * @date 2019/11/26 17:08
  */
 @Service
 public class PatentServiceImpl implements PatentService {

@@ -3,16 +3,15 @@ package com.sxp.patMag.dao;
 
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
-import com.sxp.patMag.entity.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 /**
- * Author： Jude
- * Date:2019/11/19
- * Time:18:18
+ * @author lhx
+ * @PackageName: com.sxp.patMag.dao
+ * @ClassName: PatentMapper
+ * @date 2019/11/26 17:08
  */
 @Mapper
 @Repository

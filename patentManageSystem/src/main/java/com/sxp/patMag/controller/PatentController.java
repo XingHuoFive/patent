@@ -7,7 +7,12 @@ import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
+/**
+ * @author lhx
+ * @PackageName: com.sxp.patMag.controller
+ * @ClassName: PatentController
+ * @date 2019/11/26 17:08
+ */
 @RestController
 @RequestMapping("/patent")
 public class PatentController {
