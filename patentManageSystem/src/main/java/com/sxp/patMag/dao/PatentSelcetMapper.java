@@ -15,7 +15,7 @@ import java.util.List;
 public interface PatentSelcetMapper {
     List<Patent> selectPatentByPatent(Patent patent);
     List<Patent> selectPatentToUser( );
-    Patent selectPatentById(String patentId);
+    PatentVO selectPatentById(String patentId);
     Integer updatePatentToWritePerson(Patent patent);
     List<PatentExport> selectPatentByPatentExport(PatentVO patent);
     List<Patent>  selectPatentToAdmin();
