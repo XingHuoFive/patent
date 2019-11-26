@@ -20,7 +20,7 @@ public class PatentController {
     @Autowired
     private PatentService tbPatentService;
 
-    @PostMapping("/selectTbPatentById/{patentId}")
+    @PostMapping("/selectPatentById/{patentId}")
     @ResponseBody
     public GeneralResult selectTbPatentById(@PathVariable("patentId") String patentId) {
         GeneralResult generalResult = new GeneralResult();
