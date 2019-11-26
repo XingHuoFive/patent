@@ -6,6 +6,8 @@ import com.sxp.patMag.entity.PatentVO;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.GeneralResult;
+import com.sxp.patMag.util.JsonUtils;
+import com.sxp.patMag.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +32,8 @@ public class PatentSelcetController {
 
     @Autowired
     PatentSelcetService patentSelcetService;
-
+    @Autowired
+    private RedisUtil redis ;
     /**
      * 专利查询
      * @param patent  专利对象
@@ -109,15 +112,18 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/updatePatentToWritePerson",method = RequestMethod.POST)
     @ResponseBody
-    public  GeneralResult updatePatentToWritePerson(@RequestBody Patent patent){
-
+    public  GeneralResult updatePatentToWritePerson(@RequestBody Patent patent,HttpServletRequest req){
+        String token  =  req.getHeader("data");
+        String json = (String) redis.get("UserLogin" + ":" + token);
+        if ( json==null||json.length()==0) {
+            return GeneralResult.build(1, "无此用户");
+        }
+        //把json转换成User对象
+        User user = JsonUtils.jsonToPojo(json, User.class);
+        patent.setWritePerson(user.getUserName());
+        System.out.println(patent.toString());
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
-        }
-        if(patent.getWritePerson() == null || patent.getWritePerson() == ""){
-            return GeneralResult.build(1,"没有撰写人",null);
-        }else if(patent.getWritePerson().length() > 16){
-            return GeneralResult.build(1,"撰写人字符串过长",null);
         }
         if(patent.getPatentId() == null){
             return GeneralResult.build(1,"没有接收到专利ID",null);
