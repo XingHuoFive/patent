@@ -1,5 +1,6 @@
 package com.sxp.patMag.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class PatentVO {
     /** 备注 **/
     private String patentRemarks;
     /** 指标 **/
-    private List<Indicator> indicatorList;
+    private List<Indicator> indicatorList = new ArrayList<Indicator>();
     /** 路径 **/
     private String path;
     /** 交底书 **/
@@ -161,6 +162,14 @@ public class PatentVO {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getJbook() {
+        return jbook;
+    }
+
+    public void setJbook(String jbook) {
+        this.jbook = jbook;
     }
 
     public PatentVO() {

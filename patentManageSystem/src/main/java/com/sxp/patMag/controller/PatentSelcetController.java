@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -37,6 +39,7 @@ public class PatentSelcetController {
     @RequestMapping(value = "/selectPatentByPatent",method = RequestMethod.POST)
     @ResponseBody
     public GeneralResult selectPatentByPatent(@RequestBody Patent patent){
+        //System.out.println(patent.getPatentClaim()+"======================");
         GeneralResult generalResult = null;
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
@@ -144,7 +147,7 @@ public class PatentSelcetController {
         String patentId = patent.getPatentId();
         System.out.println(patentId);
 
-        Patent list = patentSelcetService.selectPatentById(patentId);
+        PatentVO list = patentSelcetService.selectPatentById(patentId);
         if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
@@ -178,20 +181,19 @@ public class PatentSelcetController {
      * @throws InvocationTargetException
      * @throws IllegalAccessException
      */
-    @RequestMapping(value = "/patentExeclOut",method = RequestMethod.GET)
+    @RequestMapping(value = "/patentExeclOut",method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult patentExeclOut(@RequestBody PatentVO patent, HttpServletResponse response) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public GeneralResult patentExeclOut(PatentVO patent, HttpServletRequest request) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        String path = "D:\\wangshuo.xlsx";
-        boolean flag = false;
-        System.out.println(path);
+        //String path = "D:\\wangshuo.xlsx";
+        String url = "";
 
         //数据校验
-        if(patent == null){
+     /*   if(patent == null){
             return GeneralResult.build(1,"对象为空",null);
-        }
+        }*/
 
-        if(patent.getApplyNumber() == null){
+        /*if(patent.getApplyNumber() == null){
             return GeneralResult.build(1,"没有申请号",null);
         }else if(patent.getApplyNumber().length() > 100){
             return GeneralResult.build(1,"申请号过长",null);
@@ -207,20 +209,20 @@ public class PatentSelcetController {
             return GeneralResult.build(1,"没有专利名称",null);
         }else if(patent.getPatentName().length() > 100){
             return GeneralResult.build(1,"专利名称过长",null);
-        }
+        }*/
 
         //处理异常
         try {
-            flag = patentSelcetService.export(patent,response);
+            url = patentSelcetService.export(patent,request);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         //返回数据
-        if(!flag){
+        if(url == ""){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
-            return GeneralResult.build(0,"成功",null);
+            return GeneralResult.build(0,"成功",url);
         }
 
 
@@ -245,9 +247,6 @@ public class PatentSelcetController {
             return GeneralResult.build(0,"成功",list);
         }
     }
-
-
-
         /*public void downloadPlan(HttpServletResponse response, HttpServletRequest request) throws IOException{
         OutputStream os = null;
         //注意文件的路径；只有路径正确，才能完成下载；
@@ -267,5 +266,4 @@ public class PatentSelcetController {
         response.setHeader("Content-Disposition", "attachment;filename="+f.getName());;
         os.write(buffer);
     }*/
-
 }
