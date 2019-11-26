@@ -15,6 +15,13 @@ import java.util.List;
 public interface PatentService {
 
     /**
+     * 根据id查询专利
+     * @param patentId id
+     * @return 查询到的专利
+     */
+    Patent selectById(String patentId);
+
+    /**
      * 获取所有的指标
      * @return 指标列表
      */

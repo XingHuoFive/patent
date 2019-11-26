@@ -20,10 +20,25 @@ public class PatentController {
     @Autowired
     private PatentService tbPatentService;
 
-    @RequestMapping(value = "/selectTbPatentById/{patentId}", method = RequestMethod.POST)
+    @PostMapping("/selectTbPatentById/{patentId}")
     @ResponseBody
     public GeneralResult selectTbPatentById(@PathVariable("patentId") String patentId) {
-        return tbPatentService.selectById(patentId);
+        GeneralResult generalResult = new GeneralResult();
+        if (null == patentId || "".equals(patentId)) {
+            generalResult.setStatus(1);
+            generalResult.setMsg("id为空，无法查询");
+            return generalResult;
+        }
+        Patent patent = tbPatentService.selectById(patentId);
+        if (null == patent) {
+            generalResult.setStatus(1);
+            generalResult.setMsg("为找到对应专利");
+            return generalResult;
+        }
+        generalResult.setStatus(0);
+        generalResult.setMsg("查询成功");
+        generalResult.setData(patent);
+        return generalResult;
     }
 
     @PostMapping("/update")

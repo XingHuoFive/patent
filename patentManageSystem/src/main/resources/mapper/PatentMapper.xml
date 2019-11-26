@@ -34,6 +34,22 @@
         ON i.patent_id = p.patent_id
     </select>
 
+    <select id="getById" parameterType="java.lang.String" resultType="com.sxp.patMag.entity.Patent">
+        SELECT patent_id patentId,
+            case_number caseNumber,
+            apply_number applyNumber,
+            apply_time applyTime,
+            write_person writePerson,
+            apply_person applyPerson,
+            create_person createPerson,
+            patent_name patentName,
+            patent_schedule patentSchedule,
+            patent_claim patentClaim,
+            patent_remarks patentRemarks,
+            spare
+        FROM tb_patent WHERE patent_id = #{patentId}
+    </select>
+
     <select id="getPatentListByVO" resultType="com.sxp.patMag.entity.IndicatorExport">
         SELECT
         i.indicator_id indicatorId,

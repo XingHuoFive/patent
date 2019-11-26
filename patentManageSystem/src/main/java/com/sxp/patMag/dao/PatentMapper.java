@@ -44,4 +44,10 @@ public interface PatentMapper {
      */
     int updatePatent(Patent patent);
 
+    /**
+     * 根据id查询专利
+     * @param patentId 专利id
+     * @return 查询到的专利
+     */
+    Patent getById(String patentId);
 }
