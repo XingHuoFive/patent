@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.HistoryMapper">
 
-    <resultMap id="HistoryMap" type="History">
+    <resultMap id="HistoryMap" type="com.sxp.patMag.entity.History">
         <id column="ht_id" property="htId"/>
         <result column="ht_date" property="htDate"/>
         <result column="ht_user_id" property="htUserId"/>
@@ -12,19 +12,19 @@
         <result column="ht_patent_id" property="htPatentId"/>
         <result column="ht_operation" property="htOperation"/>
 
-        <association property="userPojo" javaType="User">
+        <association property="userPojo" javaType="com.sxp.patMag.entity.User">
             <id column="user_id" property="userId"/>
             <result column="user_name" property="userName"/>
         </association>
 
-        <association property="patentPojo" javaType="patent">
+        <association property="patentPojo" javaType="com.sxp.patMag.entity.Patent">
             <id column="patent_id" property="patentId"/>
             <result column="patent_name" property="patentName"/>
         </association>
     </resultMap>
 
 
-    <insert id="insertHistory" parameterType="History">
+    <insert id="insertHistory" parameterType="com.sxp.patMag.entity.History">
 
 INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`, `ht_old_item`, `ht_new_item`, `ht_patent_id`, `ht_operation`)
  VALUES (#{htId}, #{htDate},#{htUserId}, #{htProcess}, #{htOldItem}, #{htNewItem}, #{htPatentId}, #{htOperation});
@@ -41,5 +41,11 @@ INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`,
           on  pt.patent_id = hs.ht_patent_id
          where  hs.ht_patent_id  = #{htPatentId}
     </select>
+
+   <!-- <select id="selectHistory" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.History" >
+        select *  from  tb_history
+         where  ht_patent_id  = #{htPatentId}
+    </select>-->
+
 
 </mapper>

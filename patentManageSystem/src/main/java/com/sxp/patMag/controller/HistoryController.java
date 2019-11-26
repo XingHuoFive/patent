@@ -1,6 +1,7 @@
 package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.History;
+import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.HistoryService;
 import com.sxp.patMag.service.UploadService;
 import com.sxp.patMag.util.GeneralResult;
@@ -31,7 +32,8 @@ public class HistoryController {
 
     @RequestMapping(value = "/getHistory", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult getHistory(@RequestBody String patentId){
-           return  historyService.selectHistory(patentId);
+    public GeneralResult getHistory(@RequestBody Patent patent ){
+
+           return  historyService.selectHistory(patent);
     }
 }

@@ -64,7 +64,6 @@ public class IndicatorServiceImpl implements IndicatorService {
         String projectUrl = req.getSession().getServletContext().getRealPath("/");
         String path = projectUrl + "/" + "indicator.xlsx";
         flag = processData(patents, columnNames, keys, path);
-//        DownloadUtil.downloadFile("indicator.xlsx", "indicator.xlsx", resp, req);
         if (flag) {
             return DownloadUtil.downloadByUrl("indicator.xlsx");
         } else {

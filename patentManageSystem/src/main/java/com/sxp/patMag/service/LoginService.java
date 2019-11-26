@@ -10,5 +10,4 @@ public interface LoginService {
     public GeneralResult getUserByToken(String token);
 
 
-
 }

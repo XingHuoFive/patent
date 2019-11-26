@@ -13,5 +13,7 @@ public interface UploadMapper {
 
 
    Integer insertJbook(Jbook jbook);
+ Integer updateJbookStatusByPatentId(String  patentId);
+
 
 }

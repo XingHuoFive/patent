@@ -5,6 +5,7 @@ import com.sxp.patMag.dao.HistoryMapper;
 import com.sxp.patMag.dao.UploadMapper;
 import com.sxp.patMag.entity.History;
 import com.sxp.patMag.entity.Jbook;
+import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.HistoryService;
 import com.sxp.patMag.service.UploadService;
 import com.sxp.patMag.util.GeneralResult;
@@ -28,6 +29,7 @@ public class HistoryServiceImpl implements HistoryService {
      * @param history
      * @return 插入流程历史
      */
+    @Override
     public GeneralResult insertHistory(History history) {
         int a = historyMapper.insertHistory(history);
         if (a > 0) {
@@ -37,14 +39,17 @@ public class HistoryServiceImpl implements HistoryService {
     }
 
     /**
-     * @param patnetId
+     * @param patent
      * @return 根据XXX查询历史记录
      */
-
-    public GeneralResult selectHistory(String patnetId) {
-        List<History> historyList = historyMapper.selectHistory(patnetId);
-        if (historyList == null || historyList.size() == 0) {
-            return GeneralResult.build(1, "failed");
+    @Override
+    public GeneralResult selectHistory(Patent patent) {
+        if (patent.getPatentId() == null) {
+            return GeneralResult.build(1, "id不能为空");
+        }
+        List<History> historyList = historyMapper.selectHistory(patent.getPatentId());
+        if (historyList.size() == 0) {
+            return GeneralResult.build(1, "查询记录为空");
         }
         return GeneralResult.build(0, "success", historyList);
     }

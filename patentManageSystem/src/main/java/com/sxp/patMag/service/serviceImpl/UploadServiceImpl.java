@@ -1,32 +1,37 @@
 package com.sxp.patMag.service.serviceImpl;
 
-
-import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.dao.UploadMapper;
 import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.UploadService;
 import com.sxp.patMag.util.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 @Service
 public class UploadServiceImpl implements UploadService {
 
     @Resource
     private UploadMapper uploadMapper;
-    @Value("${visualPath}")
-    private String visualPath;
+ /*   @Value("${visualPath}")
+    private String visualPath;*/
 
-    public GeneralResult insertJbook(MultipartFile file, Patent patent, HttpServletRequest request) {
+    @Override
+    public GeneralResult insertJbook( HttpServletRequest request) {
+
+
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        MultipartFile file = multipartRequest.getFile("fileName");
+        // 接收其他表单参数
+        String patentId = multipartRequest.getParameter("patentId");
+        String writePerson = multipartRequest.getParameter("writePerson");
 
         if (file.isEmpty()) {
             return GeneralResult.build(1, "failed");
@@ -36,7 +41,7 @@ public class UploadServiceImpl implements UploadService {
 
         String projectUrl = request.getSession().getServletContext().getRealPath("/");
         String path = projectUrl + "/" + fileName;
-        String url = visualPath + fileName;
+        String url = DownloadUtil.downloadByUrl(fileName);
         File dest = new File(path);
         if (!dest.getParentFile().exists()) { //判断文件父目录是否存在
             dest.getParentFile().mkdir();
@@ -54,10 +59,12 @@ public class UploadServiceImpl implements UploadService {
 
         Jbook jbook = new Jbook();
         jbook.setJbookId(UUID.getUUID());
-        jbook.setJbookPatentId(patent.getPatentId());
+        jbook.setJbookPatentId(patentId);
         jbook.setJbookUrl(url);
-        jbook.setJbookUserId(patent.getWritePerson());
-        jbook.setJbookView("0");
+        jbook.setJbookUserId(writePerson);
+        jbook.setJbookView("1");
+
+        uploadMapper.updateJbookStatusByPatentId(patentId );
 
         int res = uploadMapper.insertJbook(jbook);
         if (res > 0) {
