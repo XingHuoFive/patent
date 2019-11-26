@@ -14,5 +14,4 @@ public interface LoginMapper {
     List<User> CheckUser(User user);
 
 
-
 }

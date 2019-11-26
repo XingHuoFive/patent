@@ -81,7 +81,7 @@ public class HistoryAOP {
            //解析参数中的patent 成对象
         Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
            //从reids获取之前的专利信息
-        String old_obj =  redis.get(patent.getPatentId())!=null ? redis.get(patent.getPatentId()).toString() :null;
+        String old_obj =  redis.get("Patent" + ":" + patent.getPatentId())!=null ? redis.get("Patent" + ":" +patent.getPatentId()).toString() :null;
 
         System.out.println(old_obj);
 
@@ -89,7 +89,8 @@ public class HistoryAOP {
         Patent old_patent = JSON.parseObject( old_obj, Patent.class);;
 
         //将新的对象放到redis
-        redis.set(patent.getPatentId(), JSON.toJSON(patent));
+        redis.set("Patent" + ":" +patent.getPatentId(), JSON.toJSON(patent));
+        redis.expire("Patent" + ":" +patent.getPatentId(),  86400);
         if (value.equals("新建专利")){
             history.setHtPatentId(patent.getPatentId());
 

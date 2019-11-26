@@ -1,6 +1,7 @@
 package com.sxp.patMag.controller;
 
 import com.sxp.patMag.annotation.Monitor;
+import com.sxp.patMag.annotation.PassToken;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.LoginService;
 import com.sxp.patMag.util.GeneralResult;
@@ -27,6 +28,7 @@ public class LoginController {
 
     @RequestMapping(value="/login" , method= RequestMethod.POST)
     @ResponseBody
+    @PassToken
     public GeneralResult login(@RequestBody User user){
         return loginService.login(user);
     }

@@ -5,8 +5,6 @@
          INSERT INTO  tb_jbook(`jbook_id`, `jbook_patent_id`, `jbook_url`, `jbook_user_id`, `jbook_view`) VALUES (#{jbookId},#{jbookPatentId},#{jbookUrl},#{jbookUserId},#{jbookView})
     </insert>
 
-
-
     <update id="updateJbookStatusByPatentId">
         update tb_jbook
         set jbook_view = '0'
