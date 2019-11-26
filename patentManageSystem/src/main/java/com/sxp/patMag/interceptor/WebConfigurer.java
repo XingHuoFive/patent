@@ -19,7 +19,7 @@ import java.util.List;
  * Date:2019/11/25
  * Time:15:18
  */
-//@Configuration
+@Configuration
 public class WebConfigurer implements WebMvcConfigurer {
 
     @Autowired

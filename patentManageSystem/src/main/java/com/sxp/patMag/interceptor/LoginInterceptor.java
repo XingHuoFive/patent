@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
  * Time:15:15
  */
 @Slf4j
-//@Component
+@Component
 public class LoginInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -35,7 +35,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
         // 从 http 请求头中取出 token
-        String token = httpServletRequest.getHeader("token");
+        String token = httpServletRequest.getHeader("data");
         HandlerMethod handlerMethod = (HandlerMethod) object;
         Method method = handlerMethod.getMethod();
         //检查是否有passtoken注释，有则跳过认证
