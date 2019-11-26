@@ -44,7 +44,7 @@
                     <if test="applyTime != null and applyTime.length()>0">
                         AND apply_time=#{applyTime}
                     </if>
-                    <if test="patentClaim != null and  patentClaim !=0">
+                    <if test="patentClaim != null and  patentClaim !=1">
                         AND patent_claim=#{patentClaim}
                     </if>
             order by apply_time,patent_claim

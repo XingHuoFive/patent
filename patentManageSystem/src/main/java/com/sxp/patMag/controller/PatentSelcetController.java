@@ -39,6 +39,7 @@ public class PatentSelcetController {
     @RequestMapping(value = "/selectPatentByPatent",method = RequestMethod.POST)
     @ResponseBody
     public GeneralResult selectPatentByPatent(@RequestBody Patent patent){
+        //System.out.println(patent.getPatentClaim()+"======================");
         GeneralResult generalResult = null;
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
@@ -180,17 +181,17 @@ public class PatentSelcetController {
      * @throws InvocationTargetException
      * @throws IllegalAccessException
      */
-    @RequestMapping(value = "/patentExeclOut",method = RequestMethod.GET)
+    @RequestMapping(value = "/patentExeclOut",method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult patentExeclOut(@RequestBody PatentVO patent, HttpServletRequest request) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public GeneralResult patentExeclOut(PatentVO patent, HttpServletRequest request) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
         //String path = "D:\\wangshuo.xlsx";
         String url = "";
 
         //数据校验
-        if(patent == null){
+     /*   if(patent == null){
             return GeneralResult.build(1,"对象为空",null);
-        }
+        }*/
 
         /*if(patent.getApplyNumber() == null){
             return GeneralResult.build(1,"没有申请号",null);
@@ -218,10 +219,10 @@ public class PatentSelcetController {
         }
 
         //返回数据
-        if(url.isEmpty()){
+        if(url == ""){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
-            return GeneralResult.build(0,"成功",null);
+            return GeneralResult.build(0,"成功",url);
         }
 
 
@@ -246,9 +247,6 @@ public class PatentSelcetController {
             return GeneralResult.build(0,"成功",list);
         }
     }
-
-
-
         /*public void downloadPlan(HttpServletResponse response, HttpServletRequest request) throws IOException{
         OutputStream os = null;
         //注意文件的路径；只有路径正确，才能完成下载；
@@ -268,5 +266,4 @@ public class PatentSelcetController {
         response.setHeader("Content-Disposition", "attachment;filename="+f.getName());;
         os.write(buffer);
     }*/
-
 }
