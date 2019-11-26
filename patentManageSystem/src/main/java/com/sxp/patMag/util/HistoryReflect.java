@@ -25,7 +25,7 @@ import java.util.Date;
 
 @Aspect
 @Component
-public class HistoryAOP {
+public class HistoryReflect {
     @Autowired
     private RedisUtil redis ;
 

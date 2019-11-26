@@ -29,7 +29,7 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private WeLogFile weLogFile;
     @Autowired
-    private HistoryAOP historyAOP;
+    private HistoryReflect reflect;
     @Value("${expireTime}")
     private Integer expireTime;
 
@@ -67,7 +67,7 @@ public class LoginServiceImpl implements LoginService {
         String token = UUID.getUUID();
         //清空密码
         user.setUserPassword(null);
-        historyAOP.setUser(user);
+        reflect.setUser(user);
         weLogFile.setUser1(user);
         //权限存储
         user.setUserRole(list.get(0).getUserRole());

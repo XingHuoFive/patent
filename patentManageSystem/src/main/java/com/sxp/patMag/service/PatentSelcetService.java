@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+
 public interface PatentSelcetService {
     /**
      * 根据专利条件查询
