@@ -1,5 +1,8 @@
 package com.sxp.patMag.entity;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
+
 /**
  * @author lhx
  * @PackageName: com.sxp.patMag.entity
@@ -11,17 +14,20 @@ public class Indicator {
     /**
      * 指标id
      */
+    @Size(max = 32, min = 32)
     private String indicatorId;
 
 
     /**
      * 指标名
      */
+    @Max(100)
     private String indicatorName;
 
     /**
      * 指标对应专利id
      */
+    @Size(max = 32, min = 32)
     private String patentId;
 
     public Indicator(String indicatorId, String indicatorName, String patentId) {

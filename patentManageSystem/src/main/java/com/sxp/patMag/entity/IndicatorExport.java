@@ -1,5 +1,8 @@
 package com.sxp.patMag.entity;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
+
 /**
  * @author lhx
  * @PackageName: com.sxp.patMag.entity
@@ -12,6 +15,7 @@ public class IndicatorExport {
     /**
      * 指标id
      */
+    @Size(min = 32, max = 32)
     private String indicatorId;
 
     /**
@@ -22,37 +26,45 @@ public class IndicatorExport {
     /**
      * 指标名
      */
+    @Max(100)
     private String indicatorName;
 
     /**
      * 所属专利
      */
+    @Max(16)
     private String caseNumber;
 
     /**
      * 专利进度:1.审核中2.未认领3.未通过4.已通过5.撰写中6.已提交
      **/
+    @Max(10)
     private String patentSchedule;
 
     /**
      * 申请日
      */
+    @Max(30)
     private String applyTime;
 
     /**
      * 发明人
      **/
+    @Max(30)
     private String createPerson;
 
     /**
      * 撰写人
      */
+    @Max(50)
     private String writePerson;
 
     /**
      * 申请号
      **/
+    @Max(16)
     private String applyNumber;
+
     public IndicatorExport() {
     }
 
