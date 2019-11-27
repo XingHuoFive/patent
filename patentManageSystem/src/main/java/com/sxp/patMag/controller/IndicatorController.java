@@ -3,10 +3,10 @@ package com.sxp.patMag.controller;
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.service.IndicatorService;
-import com.sxp.patMag.util.CheckOut;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,12 +29,11 @@ public class IndicatorController {
     @GetMapping("/get/{indicatorId}")
     public GeneralResult getById(@PathVariable String indicatorId) {
         GeneralResult generalResult = new GeneralResult();
-        if (null == indicatorId || "".equals(indicatorId) || indicatorId.length() != 32) {
+        if (null == indicatorId || "".equals(indicatorId) || 32 == indicatorId.length()) {
             generalResult.setStatus(1);
             generalResult.setMsg("id有误，无法获取");
             return generalResult;
         }
-
         IndicatorExport indicator = indicatorService.getById(indicatorId);
         if (null == indicator) {
             generalResult.setStatus(0);
@@ -48,16 +47,11 @@ public class IndicatorController {
     }
 
     @PostMapping("/export")
-    public GeneralResult export(@RequestBody IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req) {
+    public GeneralResult export(@RequestBody @Validated IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req) {
         GeneralResult generalResult = new GeneralResult();
         if (null == indicatorExport) {
             generalResult.setStatus(1);
             generalResult.setMsg("导出失败");
-            return generalResult;
-        }
-        if (!CheckOut.checkOutIndicatorSelect(indicatorExport)) {
-            generalResult.setStatus(1);
-            generalResult.setMsg("失败");
             return generalResult;
         }
         String export = indicatorService.export(indicatorExport, resp, req);
@@ -88,7 +82,7 @@ public class IndicatorController {
     }
 
     @PostMapping("/list")
-    public GeneralResult listByPatent(@RequestBody IndicatorExport indicatorExport) {
+    public GeneralResult listByPatent(@RequestBody @Validated IndicatorExport indicatorExport) {
         GeneralResult generalResult = new GeneralResult();
         if (indicatorExport == null) {
             generalResult.setStatus(1);
@@ -96,12 +90,7 @@ public class IndicatorController {
             return generalResult;
         }
         List<IndicatorExport> patents = indicatorService.listByPatent(indicatorExport);
-        if (null == patents) {
-            generalResult.setStatus(1);
-            generalResult.setMsg("失败");
-            return generalResult;
-        }
-        if (!CheckOut.checkOutIndicatorSelect(indicatorExport)) {
+        if (null == patents || patents.isEmpty()) {
             generalResult.setStatus(1);
             generalResult.setMsg("失败");
             return generalResult;
