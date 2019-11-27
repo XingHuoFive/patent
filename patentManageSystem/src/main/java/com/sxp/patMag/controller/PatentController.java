@@ -2,7 +2,6 @@ package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.PatentService;
-import com.sxp.patMag.util.CheckOut;
 import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -52,11 +51,6 @@ public class PatentController {
         if (null == patent.getPatentId() || "".equals(patent.getPatentId()) || patent.getPatentId().length() != 32) {
             generalResult.setStatus(1);
             generalResult.setMsg("id有误，无法更改");
-            return generalResult;
-        }
-        if (!CheckOut.checkOutUpdate(patent)) {
-            generalResult.setStatus(1);
-            generalResult.setMsg("输入内容有误，无法更改");
             return generalResult;
         }
         int i = tbPatentService.updatePatent(patent);

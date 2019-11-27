@@ -15,7 +15,7 @@ public class IndicatorExport {
     /**
      * 指标id
      */
-    @Size(min = 32, max = 32)
+    @Size(min = 32, max = 32, message = "指标id长度有误")
     private String indicatorId;
 
     /**
@@ -26,43 +26,43 @@ public class IndicatorExport {
     /**
      * 指标名
      */
-    @Max(100)
+    @Max(value = 100, message = "指标名过长")
     private String indicatorName;
 
     /**
      * 所属专利
      */
-    @Max(16)
+    @Max(value = 16, message = "专利号过长")
     private String caseNumber;
 
     /**
      * 专利进度:1.审核中2.未认领3.未通过4.已通过5.撰写中6.已提交
      **/
-    @Max(10)
+    @Max(value = 10, message = "专利进度过长")
     private String patentSchedule;
 
     /**
      * 申请日
      */
-    @Max(30)
+    @Max(value = 30, message = "申请日过长")
     private String applyTime;
 
     /**
      * 发明人
      **/
-    @Max(30)
+    @Max(value = 30, message = "发明人过长")
     private String createPerson;
 
     /**
      * 撰写人
      */
-    @Max(50)
+    @Max(value = 50, message = "撰写人过长")
     private String writePerson;
 
     /**
      * 申请号
      **/
-    @Max(16)
+    @Max(value = 16, message = "申请号过长")
     private String applyNumber;
 
     public IndicatorExport() {

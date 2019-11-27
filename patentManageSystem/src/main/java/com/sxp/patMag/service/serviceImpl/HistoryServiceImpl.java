@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -35,7 +36,7 @@ public class HistoryServiceImpl implements HistoryService {
      * @return 插入流程历史
      */
     @Override
-    public GeneralResult insertHistory(History history) {
+    public GeneralResult insertHistory(@Valid History history) {
         int a = historyMapper.insertHistory(history);
         if (a > 0) {
             return GeneralResult.build(0, "success");
@@ -48,7 +49,7 @@ public class HistoryServiceImpl implements HistoryService {
      * @return 根据XXX查询历史记录
      */
     @Override
-    public GeneralResult selectHistory(Patent patent) {
+    public GeneralResult selectHistory(@Valid Patent patent) {
         if (patent.getPatentId() == null) {
             return GeneralResult.build(1, "id不能为空");
         }

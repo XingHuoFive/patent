@@ -6,6 +6,7 @@ import com.sxp.patMag.service.IndicatorService;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,8 +48,14 @@ public class IndicatorController {
     }
 
     @PostMapping("/export")
-    public GeneralResult export(@RequestBody @Validated IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req) {
+    public GeneralResult export(@RequestBody @Validated IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req, BindingResult bindingResult) {
         GeneralResult generalResult = new GeneralResult();
+        if(bindingResult.hasErrors()) {
+            String defaultMessage = bindingResult.getFieldError().getDefaultMessage();
+            generalResult.setStatus(1);
+            generalResult.setMsg(defaultMessage);
+            return generalResult;
+        }
         if (null == indicatorExport) {
             generalResult.setStatus(1);
             generalResult.setMsg("导出失败");
@@ -82,8 +89,14 @@ public class IndicatorController {
     }
 
     @PostMapping("/list")
-    public GeneralResult listByPatent(@RequestBody @Validated IndicatorExport indicatorExport) {
+    public GeneralResult listByPatent(@RequestBody @Validated IndicatorExport indicatorExport, BindingResult bindingResult) {
         GeneralResult generalResult = new GeneralResult();
+        if(bindingResult.hasErrors()) {
+            String defaultMessage = bindingResult.getFieldError().getDefaultMessage();
+            generalResult.setStatus(1);
+            generalResult.setMsg(defaultMessage);
+            return generalResult;
+        }
         if (indicatorExport == null) {
             generalResult.setStatus(1);
             generalResult.setMsg("查询内容为空");
