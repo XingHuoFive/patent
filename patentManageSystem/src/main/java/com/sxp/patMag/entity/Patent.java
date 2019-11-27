@@ -16,45 +16,40 @@ public class Patent {
     /**
      * 专利id
      **/
-    @Size(max = 32, min = 16)
+    @Size(max = 32, min = 16,message="id超过范围")
     private String patentId;
     /**
      * 案件号
      **/
-    @Size(max = 16,min = 0)
+    @Size(max = 16,min = 0,message="案例号超过范围")
     private String caseNumber;
     /**
      * 申请号
      **/
-    @Size(max = 16,min = 0)
+    @Size(max = 16,min = 0,message="申请号超过范围")
     private String applyNumber;
     /**
      * 申请时间
      **/
-
-    @Size(max = 30,min = 0)
+    @Size(max = 30,min = 0,message="申请时间超过范围")
     private String applyTime;
     /**
      * 撰写人
      **/
-    @Size(max = 50,min = 0)
+    @Size(max = 50,min = 0,message="撰写人超过范围")
     private String writePerson;
     /** 申请人/机构 **/
-
-    /**
-     *
-     **/
-    @Size(max = 50,min = 0)
+    @Size(max = 50,min = 0,message="申请人超过范围")
     private String applyPerson;
     /**
      * 发明人
      **/
-    @Size(max = 30,min = 0)
+    @Size(max = 30,min = 0,message="发明人超过范围")
     private String createPerson;
     /**
      * 专利名称
      **/
-    @Size(max = 150,min = 0)
+    @Size(max = 150,min = 0,message="专利名超过范围")
     private String patentName;
     /**
      * 专利进度:1.审核中2.待认领3.未通过4.编写中5.已提交
@@ -69,7 +64,7 @@ public class Patent {
     /**
      * 备注
      **/
-    @Size(max = 255,min = 0)
+    @Size(max = 255,min = 0,message="备注超过范围")
     private String patentRemarks;
     /**
      * 指标

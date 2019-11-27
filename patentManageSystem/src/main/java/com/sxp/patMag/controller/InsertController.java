@@ -7,11 +7,13 @@ import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,7 +33,12 @@ public class InsertController{
 
     @RequestMapping(value="/insertPatent", method= RequestMethod.POST)
     @ResponseBody
-    public GeneralResult insertPatent(@RequestBody Patent patent){
+    public GeneralResult insertPatent(@RequestBody @Valid Patent patent/*, BindingResult bindingResult*/){
+
+/*
+        if(bindingResult.hasErrors()){
+            return GeneralResult.build(1,bindingResult.getFieldError().getDefaultMessage());
+        }*/
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = simpleDateFormat.format(new Date());
