@@ -1,14 +1,14 @@
-package com.sxp.patMag.dao;
+package com.sxp.patmag.dao;
 
-import com.sxp.patMag.entity.Jbook;
-import com.sxp.patMag.entity.Patent;
+import com.sxp.patmag.entity.Jbook;
+import com.sxp.patmag.entity.Patent;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
- * Author： Guofengzhang
+ * @Author： Guofengzhang
  * Date:2019/11/20
  * Time:9:37
  */
