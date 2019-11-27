@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 /**
  * Author： Jude
@@ -32,7 +33,7 @@ public class HistoryController {
 
     @RequestMapping(value = "/getHistory", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult getHistory(@RequestBody Patent patent ){
+    public GeneralResult getHistory(@RequestBody @Valid Patent patent ){
 
            return  historyService.selectHistory(patent);
     }

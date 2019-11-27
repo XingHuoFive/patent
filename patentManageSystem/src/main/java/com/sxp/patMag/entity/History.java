@@ -1,20 +1,54 @@
 package com.sxp.patMag.entity;
 
+import javax.validation.constraints.Size;
+
 /**
- * Author： Jude
- * Date:2019/11/20
- * Time:19:39
+ * @author： Jude
+ * @date:2019/11/20
+ * @time:19:39
  */
 
 public class History {
 
+    /**
+     * 历史id
+     **/
+    @Size(max = 32, min = 16,message="id超过范围")
     private String htId;
+    /**
+     * 创建时间
+     **/
+    @Size(max = 30,min = 0,message="日期超过范围")
     private String htDate;
+    /**
+     * 操作用户
+     **/
+    @Size(max = 50,min = 0,message="用户id超过范围")
     private String htUserId;
+    /**
+     * 进程
+     **/
+    @Size(max = 20,min = 0,message="进程超过范围")
     private String htProcess;
+    /**
+     * 修改旧
+     **/
+    @Size(max = 255,min = 0,message="旧修改项超过范围")
     private String htOldItem;
+    /**
+     * 修改新
+     **/
+    @Size(max = 255,min = 0,message="新修改项超过范围")
     private String htNewItem;
+    /**
+     * 专利ID
+     **/
+    @Size(max = 32,min = 16,message="专利号超过范围")
     private String htPatentId;
+    /**
+     * 操作
+     **/
+    @Size(max = 20,min = 0,message="操作超过范围")
     private String htOperation;
 
 

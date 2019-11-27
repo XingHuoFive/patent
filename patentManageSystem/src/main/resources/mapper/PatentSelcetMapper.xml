@@ -108,25 +108,25 @@
     <select id="selectPatentById" parameterType="java.lang.String" resultMap="PatentMap"> <!--resultType="com.sxp.patMag.entity.Patent"-->
 
         SELECT
-            p.patent_id id,
-            case_number,
-            apply_number,
-            apply_time,
-            write_person,
-            apply_person,
-            create_person,
-            patent_name,
-            patent_schedule,
-            patent_claim,
-            patent_remarks,
-            i.indicator_name,
-            jbook_url
+        p.patent_id id,
+        case_number,
+        apply_number,
+        apply_time,
+        write_person,
+        apply_person,
+        create_person,
+        patent_name,
+        patent_schedule,
+        patent_claim,
+        patent_remarks,
+        i.indicator_name,
+        jbook_url
         FROM
-            tb_indicator i
-            LEFT JOIN tb_patent p ON p.patent_id = i.patent_id
-            LEFT JOIN tb_jbook j ON j.jbook_patent_id = i.patent_id
-        WHERE
-            p.patent_id = #{patentId}
+        tb_patent p
+
+        LEFT JOIN tb_indicator i ON p.patent_id = i.patent_id
+        LEFT JOIN tb_jbook j ON j.jbook_patent_id = p.patent_id
+        WHERE   p.patent_id = #{patentId} ,j.jook_view=1
     </select>
 
 
