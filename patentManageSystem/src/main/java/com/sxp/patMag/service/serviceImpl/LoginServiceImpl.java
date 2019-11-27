@@ -3,6 +3,7 @@ package com.sxp.patMag.service.serviceImpl;
 
 import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.entity.User;
+import com.sxp.patMag.enums.ProcessEnum;
 import com.sxp.patMag.service.LoginService;
 import com.sxp.patMag.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -36,35 +38,14 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public GeneralResult login(User user) {
-
-        System.out.println(user.toString());
-//        user.setUserName(user.getUserName().trim());
-//        user.setUserPassword(user.getUserPassword().trim());
-
-
-        //判断用户名和密码是否正确
-        if (user == null) {
-            return GeneralResult.build(1, "用户名或密码为空");
-        }
-        if (StringUtils.isNull(user.getUserName())) {
-
-            return GeneralResult.build(1, "用户名或密码为空");
-        }
-        if (StringUtils.isNull(user.getUserPassword())) {
-            return GeneralResult.build(1, "用户名或密码为空");
-        }
-        if (user.getUserPassword().length() > 16 || user.getUserName().length() > 16) {
-            return GeneralResult.build(1, "用户名或密码长度超过了最大长度");
-        }
-
         List<User> list = loginMapper.checkUser(user);
         if (list == null || list.size() == 0) {
             //返回登录失败
             return GeneralResult.build(1, "用户名或密码不正确");
         }
-
         //生成token，使用uuid
-        String token = UUID.getUUID();
+        String token =null;
+        String userMd5 = Md5Util.encrypt(list.get(0).getUserId());
         //清空密码
         user.setUserPassword(null);
         reflect.setUser(user);
@@ -72,25 +53,37 @@ public class LoginServiceImpl implements LoginService {
         //权限存储
         user.setUserRole(list.get(0).getUserRole());
         user.setUserId(list.get(0).getUserId());
+        if (redis.get(ProcessEnum.USERLOGIN.name() +userMd5)==null){
+        token= JwtUtil.getToken(list.get(0));
         //把用户信息保存到redis，key就是token，value就是用户信息
-        redis.set("UserLogin" + ":" + token, JsonUtils.objectToJson(user));
-        //设置key的过期时间
-        redis.expire("UserLogin" + ":" + token, expireTime);
+        redis.set(ProcessEnum.USERLOGIN.getName() + userMd5, token);
+        }else {
+        token = redis.get(ProcessEnum.USERLOGIN .getName()+userMd5).toString();
+        }
+        //重置key的过期时间
+        redis.expire(ProcessEnum.USERLOGIN.getName() + userMd5, expireTime);
         //返回登录成功，其中要把token返回。
         return GeneralResult.build(0, user.getUserRole(), token);
     }
 
     @Override
-    public GeneralResult getUserByToken(String token) {
-        String json = (String) redis.get("UserLogin" + ":" + token);
-        if (json == null || json.length() == 0) {
-            return GeneralResult.build(1, "用户登录已经过期");
+    public GeneralResult getUserByToken(HttpServletRequest request) {
+        String token = request.getHeader("data");
+        String userId =JwtUtil.getTokenUserId(token);
+        return GeneralResult.build(0,"success",loginMapper.selectUserById(userId));
+
+    }
+
+    @Override
+    public GeneralResult invalidate(HttpServletRequest request) {
+        String token = request.getHeader("data");
+        String userId =JwtUtil.getTokenUserId(token);
+        try {
+            redis.del(Md5Util.encrypt(userId));
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        //重置Session的过期时间
-        redis.expire("UserLogin" + ":" + token, expireTime);
-        //把json转换成User对象
-        User user = JsonUtils.jsonToPojo(json, User.class);
-        return GeneralResult.ok(user);
+         return GeneralResult.ok();
     }
 
 

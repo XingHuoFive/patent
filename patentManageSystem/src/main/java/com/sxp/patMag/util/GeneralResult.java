@@ -19,6 +19,8 @@ public class GeneralResult {
     // 响应中的数据
     private Object data;
 
+
+
     public static GeneralResult build(Integer status, String msg, Object data) {
         return new GeneralResult(status, msg, data);
     }

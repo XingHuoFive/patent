@@ -7,6 +7,7 @@ import com.sxp.patMag.service.UploadService;
 import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,7 +34,11 @@ public class HistoryController {
 
     @RequestMapping(value = "/getHistory", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult getHistory(@RequestBody @Valid Patent patent ){
+    public GeneralResult getHistory(@RequestBody @Valid Patent patent , BindingResult bindingResult ){
+
+        if(bindingResult.hasErrors()){
+            return GeneralResult.build(1,bindingResult.getFieldError().getDefaultMessage());
+        }
 
            return  historyService.selectHistory(patent);
     }

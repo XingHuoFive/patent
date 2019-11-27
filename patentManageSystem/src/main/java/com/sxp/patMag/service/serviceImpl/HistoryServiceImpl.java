@@ -48,8 +48,12 @@ public class HistoryServiceImpl implements HistoryService {
      * @param patent
      * @return 根据XXX查询历史记录
      */
+
     @Override
     public GeneralResult selectHistory(@Valid Patent patent) {
+
+
+
         if (patent.getPatentId() == null) {
             return GeneralResult.build(1, "id不能为空");
         }
@@ -59,5 +63,6 @@ public class HistoryServiceImpl implements HistoryService {
         }
         return GeneralResult.build(0, "success", historyList);
     }
+
 
 }
