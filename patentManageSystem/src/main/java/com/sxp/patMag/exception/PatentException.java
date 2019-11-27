@@ -33,6 +33,5 @@ public enum PatentException implements ExceptionEnum {
 
     @Override
     public String getMessage() {
-        return null;
-    }
-}
+        return message;
+    }}
