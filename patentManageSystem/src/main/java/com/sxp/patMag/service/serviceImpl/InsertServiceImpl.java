@@ -4,7 +4,6 @@ import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.dao.InsertMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.InsertService;
-import com.sxp.patMag.util.CheckOut;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.stereotype.Service;
