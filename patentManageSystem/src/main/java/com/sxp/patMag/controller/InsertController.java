@@ -44,6 +44,6 @@ public class InsertController{
 
 
 
-        return insertService.InsertPatent(patent);
+        return insertService.insertPatent(patent);
     }
 }

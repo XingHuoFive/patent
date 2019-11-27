@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface LoginMapper {
 
-    List<User> CheckUser(User user);
+    List<User> checkUser(User user);
 
 
 }
