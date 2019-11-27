@@ -155,6 +155,6 @@
         LEFT JOIN tb_patent p ON p.patent_id = i.patent_id
         LEFT JOIN tb_jbook j ON j.jbook_user_id = #{userName}
         WHERE
-        write_person = #{userName}
+        write_person = #{userName},jbook_view='1'
     </select>
 </mapper>
