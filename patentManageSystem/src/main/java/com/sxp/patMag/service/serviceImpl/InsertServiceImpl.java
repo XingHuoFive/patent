@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 
 /**
@@ -29,7 +28,7 @@ public class InsertServiceImpl implements InsertService {
 
     @Monitor("新建专利")
     @Override
-    public GeneralResult insertPatent(@Valid Patent patent) {
+    public GeneralResult insertPatent(Patent patent) {
         if (null == patent.getIndicatorList() || patent.getIndicatorList().isEmpty()) {
             int a = insertMapper.insertPatent(patent);
             if (a > 0 ) {
