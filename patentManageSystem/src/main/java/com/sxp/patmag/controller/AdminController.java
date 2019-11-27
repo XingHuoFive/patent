@@ -1,8 +1,8 @@
-package com.sxp.patMag.controller;
+package com.sxp.patmag.controller;
 
-import com.sxp.patMag.entity.Patent;
-import com.sxp.patMag.service.AdminService;
-import com.sxp.patMag.util.GeneralResult;
+import com.sxp.patmag.entity.Patent;
+import com.sxp.patmag.service.AdminService;
+import com.sxp.patmag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
+
 /**
- * Author： Guofengzhang
+ * @Author： Guofengzhang
  * Date:2019/11/20
  * Time:9:32
  */

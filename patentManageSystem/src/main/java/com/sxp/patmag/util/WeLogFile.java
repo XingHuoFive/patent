@@ -1,7 +1,7 @@
-package com.sxp.patMag.util;
+package com.sxp.patmag.util;
 
-import com.sxp.patMag.entity.User;
-import com.sxp.patMag.service.LoginService;
+import com.sxp.patmag.entity.User;
+import com.sxp.patmag.service.LoginService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,7 +14,11 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.*;
 import java.util.logging.Formatter;
-
+/**
+ * @Author: Guofengzhang
+ * Date:2019/11/20
+ * Time:9:32
+ */
 @Aspect
 @Component
 @EnableAspectJAutoProxy
@@ -24,7 +28,7 @@ public class WeLogFile {
     /**
      * 日志存放地址
      */
-    private static String path = "D:\\idea\\ideaProjects\\patentManage\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
+    private static String path = "D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
 
 
     /**
@@ -41,7 +45,7 @@ public class WeLogFile {
     /**
      * 声明切点
      */
-    @Pointcut("execution(* com.sxp.patMag.service.serviceImpl.*.*(..))")
+    @Pointcut("execution(* com.sxp.patmag.service.serviceImpl.*.*(..))")
     public void doLog() {
     }
 
@@ -55,7 +59,8 @@ public class WeLogFile {
     public Object writeLog(ProceedingJoinPoint joinPoint) throws Throwable {
         Logger log = Logger.getLogger(path);
         log.setLevel(Level.ALL);
-        FileHandler fileHandler = new FileHandler(path, true);//true是以追加的形式
+        //true是以追加的形式
+        FileHandler fileHandler = new FileHandler(path, true);
         fileHandler.setLevel(Level.ALL);
         fileHandler.setFormatter(new Formatter() {
             @Override
@@ -96,10 +101,8 @@ public class WeLogFile {
             StringBuilder stringBuilder = new StringBuilder();
             List<String> list = new ArrayList<>();
             int numLine = 0;
-            /* read log line by line */
             while ((strLine = br.readLine()) != null) {
                 stringBuilder.append(strLine + "\n");
-                /* parse strLine to obtain what you want */
                 if (++numLine == 10) {
                     list.add(stringBuilder.toString());
                     numLine = 0;
