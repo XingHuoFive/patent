@@ -1,5 +1,7 @@
 package com.sxp.patMag.entity;
 
+import javax.validation.constraints.Size;
+
 /**
  * Author： Jude
  * Date:2019/11/20
@@ -7,10 +9,30 @@ package com.sxp.patMag.entity;
  */
 
 public class Jbook {
+    /**
+     * id主键
+     */
+    @Size(max = 32,min = 16,message="id超过范围")
     private String jbookId;
+    /**
+     * 专利外键
+     */
+    @Size(max = 32,min = 16,message="专利id超过范围")
     private String jbookPatentId;
+    /**
+     * URL
+     */
+    @Size(max = 255,min = 0,message="链接地址")
     private String jbookUrl;
+    /**
+     * 用户id
+     */
+    @Size(max = 32,min = 16,message="用户id超过范围")
     private String jbookUserId;
+    /**
+     * 是否是最新
+     */
+    @Size(max = 10,min = 0,message="判断值view超过范围")
     private String jbookView;
 
 

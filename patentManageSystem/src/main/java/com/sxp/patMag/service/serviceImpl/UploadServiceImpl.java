@@ -20,9 +20,6 @@ public class UploadServiceImpl implements UploadService {
 
     @Resource
     private UploadMapper uploadMapper;
- /*   @Value("${visualPath}")
-    private String visualPath;*/
-
     @Override
     public GeneralResult insertJbook( HttpServletRequest request) {
 
@@ -33,8 +30,14 @@ public class UploadServiceImpl implements UploadService {
         String patentId = multipartRequest.getParameter("patentId");
         String writePerson = multipartRequest.getParameter("writePerson");
 
+        if (patentId==null && patentId.length()==0){
+            return GeneralResult.build(1, "专利id为空");
+        }
+        if (writePerson==null && writePerson.length()==0){
+            return GeneralResult.build(1, "撰写人为空");
+        }
         if (file.isEmpty()) {
-            return GeneralResult.build(1, "failed");
+            return GeneralResult.build(1, "文件为空");
         }
         String fileName = file.getOriginalFilename();
         int size = (int) file.getSize();
@@ -43,12 +46,13 @@ public class UploadServiceImpl implements UploadService {
         String path = projectUrl + "/" + fileName;
         String url = DownloadUtil.downloadByUrl(fileName);
         File dest = new File(path);
-        if (!dest.getParentFile().exists()) { //判断文件父目录是否存在
+        //判断文件父目录是否存在
+        if (!dest.getParentFile().exists()) {
             dest.getParentFile().mkdir();
         }
         try {
-            file.transferTo(dest); //保存文件
-
+            //保存文件
+            file.transferTo(dest);
         } catch (IllegalStateException e) {
             e.printStackTrace();
             return GeneralResult.build(1, "failed");
