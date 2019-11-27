@@ -1,4 +1,4 @@
-package com.sxp.patmag.util;
+package com.sxp.patMag.util;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
@@ -10,6 +10,10 @@ import org.springframework.web.servlet.config.annotation.*;
  */
 @Configuration
 public class LoggerConfigration extends WebMvcConfigurerAdapter {
+    /**
+     * 设置拦截器
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration registration = registry.addInterceptor(new LoggerHandler());

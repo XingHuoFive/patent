@@ -1,6 +1,6 @@
-package com.sxp.patmag.util;
+package com.sxp.patMag.util;
 
-import com.sxp.patmag.entity.User;
+import com.sxp.patMag.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -19,10 +19,6 @@ public class LoggerHandler extends HandlerInterceptorAdapter {
     WeLogFile weLogFile;
     @Autowired
     RedisUtil redisUtil;
-
-    public void setRedisUtil(RedisUtil redisUtil) {
-        this.redisUtil = redisUtil;
-    }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
