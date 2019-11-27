@@ -6,11 +6,17 @@ import com.sxp.patMag.entity.PatentVO;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.GeneralResult;
+import com.sxp.patMag.util.JsonUtils;
+import com.sxp.patMag.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -28,7 +34,8 @@ public class PatentSelcetController {
 
     @Autowired
     PatentSelcetService patentSelcetService;
-
+    @Autowired
+    private RedisUtil redis ;
     /**
      * 专利查询
      * @param patent  专利对象
@@ -36,7 +43,8 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/selectPatentByPatent",method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult selectPatentByPatent(@RequestBody Patent patent){
+    public GeneralResult selectPatentByPatent(@RequestBody @Valid Patent patent){
+        //System.out.println(patent.getPatentClaim()+"======================");
         GeneralResult generalResult = null;
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
@@ -65,13 +73,7 @@ public class PatentSelcetController {
             return GeneralResult.build(1,"没有符合的申请时间",null);
         }
 
-
-
-
-
-
         List<Patent> list =patentSelcetService.selectPatentByPatent(patent);
-
 
         if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -112,38 +114,31 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/updatePatentToWritePerson",method = RequestMethod.POST)
     @ResponseBody
-    public  GeneralResult updatePatentToWritePerson(@RequestBody Patent patent){
+    public  GeneralResult updatePatentToWritePerson(@RequestBody @Valid Patent patent,HttpServletRequest req){
 
+        //获取redis中得token值并取得用户名
+        String token  =  req.getHeader("data");
+        String json = (String) redis.get("UserLogin" + ":" + token);
+        if ( json==null||json.length()==0) {
+            return GeneralResult.build(1, "无此用户");
+        }
+
+        //把json转换成User对象
+        User user = JsonUtils.jsonToPojo(json, User.class);
+        patent.setWritePerson(user.getUserName());
+        System.out.println(patent.toString());
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
         }
 
-
-
-     /*   GeneralResult generalResult = null;
-        //校验是否为空
-        generalResult =  CheckOut.checkOutNull(patent);
-        if(generalResult != null){
-            return  generalResult;
-        }
-
-        //校验长度
-        generalResult = CheckOut.checkOutLength(patent);
-        if(generalResult != null){
-            return  generalResult;
-        }*/
-
-        if(patent.getWritePerson() == null || patent.getWritePerson() == ""){
-            return GeneralResult.build(1,"没有撰写人",null);
-        }else if(patent.getWritePerson().length() > 16){
-            return GeneralResult.build(1,"撰写人字符串过长",null);
-        }
+        //数据校验
         if(patent.getPatentId() == null){
             return GeneralResult.build(1,"没有接收到专利ID",null);
         }else if(patent.getPatentId().length() > 50){
             return GeneralResult.build(1,"专利ID字符串过长",null);
         }
 
+        //获取数据并封装数据
         Integer list = patentSelcetService.updatePatentToWritePerson(patent);
         if(list==0){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -162,17 +157,16 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/selectPatentById",method = RequestMethod.POST)
     @ResponseBody
-    public  GeneralResult selectPatentById(@RequestBody Patent patent){
+    public  GeneralResult selectPatentById(@RequestBody @Valid Patent patent){
         String patentId = patent.getPatentId();
-        System.out.println(patentId);
-
-        Patent list = patentSelcetService.selectPatentById(patentId);
+        PatentVO list = patentSelcetService.selectPatentById(patentId);
         if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
             return GeneralResult.build(0,"成功",list);
         }
     }
+    //System.out.println(patentId);
 
 
 
@@ -192,28 +186,6 @@ public class PatentSelcetController {
 
 
 
-    /*public void downloadPlan(HttpServletResponse response, HttpServletRequest request) throws IOException{
-        OutputStream os = null;
-        //注意文件的路径；只有路径正确，才能完成下载；
-        String filePath = request.getSession().getServletContext().getRealPath("D:\\");
-        System.out.println(filePath+"---------------------");
-        File f = new File("D:\\wangshuo.xlsx");
-        FileInputStream input = new FileInputStream(f);
-        byte[] buffer  = new byte[(int)f.length()];
-        int offset = 0;
-        int numRead = 0;
-        while (offset<buffer.length&&(numRead-input.read(buffer,offset,buffer.length-offset))>=0) {
-            offset+=numRead;
-        }
-        input.close();
-        os = response.getOutputStream();
-        response.setContentType("APPLICATION/OCTET-STREAM");
-        response.setHeader("Content-Disposition", "attachment;filename="+f.getName());;
-        os.write(buffer);
-    }*/
-
-
-
     /**
      * 专利文件导出
      * @param    patent
@@ -222,59 +194,28 @@ public class PatentSelcetController {
      * @throws InvocationTargetException
      * @throws IllegalAccessException
      */
-    @RequestMapping(value = "/patentExeclOut",method = RequestMethod.GET)
+    @RequestMapping(value = "/patentExeclOut",method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult patentExeclOut(@RequestBody PatentVO patent, HttpServletResponse response) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public GeneralResult patentExeclOut(PatentVO patent, HttpServletRequest request) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        String path = "D:\\wangshuo.xlsx";
-        boolean flag = false;
-        System.out.println(path);
-
-        //数据校验
-        if(patent == null){
-            return GeneralResult.build(1,"对象为空",null);
-        }
-
-        if(patent.getApplyNumber() == null){
-            return GeneralResult.build(1,"没有申请号",null);
-        }else if(patent.getApplyNumber().length() > 100){
-            return GeneralResult.build(1,"申请号过长",null);
-        }
-
-        if(patent.getApplyTime() == null){
-            return GeneralResult.build(1,"没有申请时间",null);
-        }else if(patent.getApplyTime().length() > 100){
-            return GeneralResult.build(1,"申请时间过长",null);
-        }
-
-        if(patent.getPatentName() == null){
-            return GeneralResult.build(1,"没有专利名称",null);
-        }else if(patent.getPatentName().length() > 100){
-            return GeneralResult.build(1,"专利名称过长",null);
-        }
+        String url = "";
 
         //处理异常
         try {
-            flag = patentSelcetService.export(patent,response);
+            url = patentSelcetService.export(patent,request);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         //返回数据
-        if(!flag){
+        if(url == ""){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
-            return GeneralResult.build(0,"成功",null);
+            return GeneralResult.build(0,"成功",url);
         }
 
 
     }
-
-
-
-
-
-
 
 
 
@@ -295,4 +236,47 @@ public class PatentSelcetController {
             return GeneralResult.build(0,"成功",list);
         }
     }
+        /*public void downloadPlan(HttpServletResponse response, HttpServletRequest request) throws IOException{
+        OutputStream os = null;
+        //注意文件的路径；只有路径正确，才能完成下载；
+        String filePath = request.getSession().getServletContext().getRealPath("D:\\");
+        System.out.println(filePath+"---------------------");
+        File f = new File("D:\\wangshuo.xlsx");
+        FileInputStream input = new FileInputStream(f);
+        byte[] buffer  = new byte[(int)f.length()];
+        int offset = 0;
+        int numRead = 0;
+        while (offset<buffer.length&&(numRead-input.read(buffer,offset,buffer.length-offset))>=0) {
+            offset+=numRead;
+        }
+        input.close();
+        os = response.getOutputStream();
+        response.setContentType("APPLICATION/OCTET-STREAM");
+        response.setHeader("Content-Disposition", "attachment;filename="+f.getName());;
+        os.write(buffer);
+    }*/
+
+
+    //数据校验
+     /*   if(patent == null){
+            return GeneralResult.build(1,"对象为空",null);
+        }*/
+
+        /*if(patent.getApplyNumber() == null){
+            return GeneralResult.build(1,"没有申请号",null);
+        }else if(patent.getApplyNumber().length() > 100){
+            return GeneralResult.build(1,"申请号过长",null);
+        }
+
+        if(patent.getApplyTime() == null){
+            return GeneralResult.build(1,"没有申请时间",null);
+        }else if(patent.getApplyTime().length() > 100){
+            return GeneralResult.build(1,"申请时间过长",null);
+        }
+
+        if(patent.getPatentName() == null){
+            return GeneralResult.build(1,"没有专利名称",null);
+        }else if(patent.getPatentName().length() > 100){
+            return GeneralResult.build(1,"专利名称过长",null);
+        }*/
 }

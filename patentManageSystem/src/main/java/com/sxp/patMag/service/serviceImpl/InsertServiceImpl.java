@@ -9,6 +9,7 @@ import com.sxp.patMag.util.UUID;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.Date;
 
 
@@ -23,25 +24,14 @@ public class InsertServiceImpl implements InsertService {
     private InsertMapper insertMapper;
 
     @Monitor("新建专利")
-    public GeneralResult InsertPatent(Patent patent){
+    @Override
+    public GeneralResult insertPatent(@Valid Patent patent) {
 
-        if (null == patent.getCreatePerson() || "".equals(patent.getCreatePerson())) {
-            return  GeneralResult.build(1,"发明人不能为空");
+        int a = insertMapper.insertPatent(patent);
+        if (a > 0) {
+               return GeneralResult.build(0, "success");
         }
-        if (null == patent.getPatentName() || "".equals(patent.getPatentName())) {
-            return  GeneralResult.build(1,"专利名称不能为空");
-        }
-        if (null == patent.getApplyPerson() || "".equals(patent.getApplyPerson())) {
-            return  GeneralResult.build(1,"申请人不能为空");
-        }
-
-
-
-        int a = insertMapper.InsertPatent(patent);
-        if(a>0){
-            return GeneralResult.build(0,"success");
-        }
-        return GeneralResult.build(1,"failed");
+        return GeneralResult.build(1, "failed");
     }
 
 }

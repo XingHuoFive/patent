@@ -1,6 +1,7 @@
 package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.History;
+import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.HistoryService;
 import com.sxp.patMag.service.UploadService;
 import com.sxp.patMag.util.GeneralResult;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 /**
  * Author： Jude
@@ -31,7 +33,8 @@ public class HistoryController {
 
     @RequestMapping(value = "/getHistory", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult getHistory(@RequestBody String patentId){
-           return  historyService.selectHistory(patentId);
+    public GeneralResult getHistory(@RequestBody @Valid Patent patent ){
+
+           return  historyService.selectHistory(patent);
     }
 }

@@ -5,15 +5,16 @@ import com.sxp.patMag.dao.PatentMapper;
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.PatentService;
-import com.sxp.patMag.util.GeneralResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 /**
- * Author： Jude
- * Date:2019/11/19
- * Time:18:18
+ * @author lhx
+ * @PackageName: com.sxp.patMag.serviceImpl
+ * @ClassName: PatentServiceImpl
+ * @date 2019/11/26 17:08
  */
 @Service
 public class PatentServiceImpl implements PatentService {
@@ -22,12 +23,8 @@ public class PatentServiceImpl implements PatentService {
     private PatentMapper tbPatentMapper;
 
     @Override
-    public GeneralResult selectById(String patentId) {
-
-          List<Patent> patentList    = tbPatentMapper.selectById(patentId);
-          return  GeneralResult.build(0,"success",patentList);
-
-
+    public Patent selectById(String patentId) {
+        return tbPatentMapper.getById(patentId);
     }
 
     @Override

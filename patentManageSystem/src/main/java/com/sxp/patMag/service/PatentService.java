@@ -2,18 +2,23 @@ package com.sxp.patMag.service;
 
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
-import com.sxp.patMag.util.GeneralResult;
 
 import java.util.List;
 
 /**
- * Author： Jude
- * Date:2019/11/19
- * Time:18:18
+ * @author lhx
+ * @PackageName: com.sxp.patMag.service
+ * @ClassName: PatentService
+ * @date 2019/11/26 17:08
  */
 public interface PatentService {
 
-    public GeneralResult selectById(String patentId);
+    /**
+     * 根据id查询专利
+     * @param patentId id
+     * @return 查询到的专利
+     */
+    Patent selectById(String patentId);
 
     /**
      * 获取所有的指标

@@ -2,17 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.PatentSelcetMapper">
 
-    <resultMap id="PatentMap" type="com.sxp.patMag.entity.Patent">
-        <id column="patent_id" property="patentId"/>
+    <resultMap id="PatentMap" type="com.sxp.patMag.entity.PatentVO">
+        <id column="id" property="patentId"/>
         <result column="case_number" property="caseNumber"/>
         <result column="patent_schedule" property="patentSchedule"/>
         <result column="apply_time" property="applyTime"/>
+        <result column="apply_number" property="applyNumber"/>
+        <result column="apply_person" property="applyPerson"/>
         <result column="create_person" property="createPerson"/>
         <result column="write_person" property="writePerson"/>
-        <collection property="indicatorList" ofType="com.sxp.patMag.entity.Indicator">
-            <!--<id column="indicatorId" property="indicatorId"/>-->
+        <result column="patent_name" property="patentName"/>
+        <result column="patent_claim" property="patentClaim"/>
+        <result column="patent_remarks" property="patentRemarks"/>
+        <result column="jbook_url"  property="jbook"/>
+        <collection property="indicatorList" ofType="java.lang.String">
+           <!-- <id column="indicatorId" property="indicatorId"/>-->
             <result column="indicator_name" property="indicatorName"/>
-            <!--<result column="patentId" property="patentId"/>-->
+<!--            <result column="patentId" property="patentId"/>-->
         </collection>
     </resultMap>
 
@@ -38,12 +44,16 @@
                     <if test="applyTime != null and applyTime.length()>0">
                         AND apply_time=#{applyTime}
                     </if>
-            order by apply_time
-    </select>
+                    <if test="patentClaim != null and  patentClaim !=1">
+                        AND patent_claim=#{patentClaim}
+                        AND patent_schedule="待认领"
+                    </if>
+            order by apply_time,patent_claim
+        </select>
 
 
 
-    <!--专利查询-->
+    <!--专利导出-->
     <select id="selectPatentByPatentExport" parameterType="com.sxp.patMag.entity.Patent"  resultType="com.sxp.patMag.entity.PatentExport" >
         select  patent_name, case_number,apply_number,patent_schedule, apply_time, create_person, write_person
         from  tb_patent   where  1=1
@@ -64,7 +74,7 @@
         </if>
         <if test="applyTime != null and applyTime.length()>0">
             AND apply_time=#{applyTime}
-        </if>
+        </if >
 
         order by apply_time
     </select>
@@ -76,7 +86,7 @@
 
     <!--确认认领人-->
     <update id="updatePatentToWritePerson" parameterType="com.sxp.patMag.entity.Patent" >
-            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = "已认领",patent_claim="1" WHERE patent_id=#{patentId}
+            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = "编写中",patent_claim="1" WHERE patent_id=#{patentId}
     </update>
 
 
@@ -84,7 +94,7 @@
     <!--普通用户查询-->
     <select id="selectPatentToUser" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
         select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
-           from  tb_patent   where patent_claim="true" order by apply_time,patent_claim
+           from  tb_patent   where patent_claim="0" order by apply_time,patent_claim
     </select>
 
     <!--admin用户查询-->
@@ -94,26 +104,56 @@
     </select>
 
     <!--查询详细或审核信息-->
-    <select id="selectPatentById" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
-        select patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
-        from  tb_patent  where patent_id=#{patentId}
+   <!--  select patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
+    from  tb_patent  where patent_id=#{patentId}-->
+    <select id="selectPatentById" parameterType="java.lang.String" resultMap="PatentMap"> <!--resultType="com.sxp.patMag.entity.Patent"-->
+        SELECT
+        p.patent_id id,
+        case_number,
+        apply_number,
+        apply_time,
+        write_person,
+        apply_person,
+        create_person,
+        patent_name,
+        patent_schedule,
+        patent_claim,
+        patent_remarks,
+        i.indicator_name,
+        jbook_url
+        FROM
+        tb_patent p
+        LEFT JOIN tb_indicator i ON p.patent_id = i.patent_id
+        LEFT JOIN tb_jbook j ON j.jbook_patent_id = p.patent_id
+        WHERE p.patent_id = #{patentId} AND j.jbook_view='1'
     </select>
 
-    <!--admin用户查询-->
+
+
+
+
+
+    <!--根据用户查询专利显示-->
     <select id="selectPatentMessage" parameterType="com.sxp.patMag.entity.User" resultMap="PatentMap" >   <!--resultType="com.sxp.patMag.entity.Patent"-->
-        select  p.patent_id,
-                case_number,
-                apply_number,
-                apply_time,
-                write_person,
-                apply_person,
-                create_person,
-                patent_name,
-                patent_schedule,
-                patent_claim,
-                patent_remarks,
-                i.indicator_name
-        from tb_indicator i left join tb_patent p
-        on p.patent_id = i.patent_id
+        SELECT
+        p.patent_id id,
+        case_number,
+        apply_number,
+        apply_time,
+        write_person,
+        apply_person,
+        create_person,
+        patent_name,
+        patent_schedule,
+        patent_claim,
+        patent_remarks,
+        i.indicator_name,
+        jbook_url
+        FROM
+        tb_patent p
+        LEFT JOIN tb_indicator i ON p.patent_id = i.patent_id
+        LEFT JOIN tb_jbook j ON j.jbook_user_id = #{userName}
+        WHERE
+        write_person = #{userName} AND jbook_view='1'
     </select>
 </mapper>

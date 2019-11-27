@@ -5,9 +5,11 @@ import com.sxp.patMag.entity.PatentExport;
 import com.sxp.patMag.entity.PatentVO;
 import com.sxp.patMag.entity.User;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+
 
 public interface PatentSelcetService {
     /**
@@ -35,7 +37,7 @@ public interface PatentSelcetService {
      * @param patentId
      * @return
      */
-    Patent selectPatentById(String patentId);
+    PatentVO selectPatentById(String patentId);
 
 
     /**
@@ -71,11 +73,11 @@ public interface PatentSelcetService {
      * @param list
      * @param columnNames
      * @param keys
-     * @param response
+
      * @return
      * @throws IOException
      */
-    Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys, HttpServletResponse response ) throws IOException ;
+    Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys, String path/*HttpServletResponse response*/ ) throws IOException ;
 
 
 /*    *//**
@@ -93,5 +95,6 @@ public interface PatentSelcetService {
      * @return
      * @throws IOException
      */
-    Boolean export(PatentVO patent, HttpServletResponse response) throws IOException;
+ //   Boolean export(PatentVO patent, HttpServletResponse response) throws IOException;
+     String export(PatentVO patent, HttpServletRequest req) throws IOException;
 }

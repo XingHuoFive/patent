@@ -41,9 +41,9 @@ public interface IndicatorService {
     /**
      * 导出成excel
      * @param indicatorExport 导出条件
-     * @return 是否导出成功
+     * @return 导出文件下载路径
      */
-    boolean export(IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req);
+    String export(IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req);
 
     /**
      * 根据id获取指标详情

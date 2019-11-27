@@ -1,5 +1,8 @@
 package com.sxp.patMag.entity;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
+
 /**
  * @author lhx
  * @PackageName: com.sxp.patMag.entity
@@ -12,6 +15,7 @@ public class IndicatorExport {
     /**
      * 指标id
      */
+    @Size(min = 32, max = 32, message = "指标id长度有误")
     private String indicatorId;
 
     /**
@@ -22,37 +26,45 @@ public class IndicatorExport {
     /**
      * 指标名
      */
+    @Size(max = 100, message = "指标名过长")
     private String indicatorName;
 
     /**
      * 所属专利
      */
+    @Size(max = 16, message = "专利号过长")
     private String caseNumber;
 
     /**
      * 专利进度:1.审核中2.未认领3.未通过4.已通过5.撰写中6.已提交
      **/
+    @Size(max = 10, message = "专利进度过长")
     private String patentSchedule;
 
     /**
      * 申请日
      */
+    @Size(max = 30, message = "申请日过长")
     private String applyTime;
 
     /**
      * 发明人
      **/
+    @Size(max = 30, message = "发明人过长")
     private String createPerson;
 
     /**
      * 撰写人
      */
+    @Size(max = 50, message = "撰写人过长")
     private String writePerson;
 
     /**
      * 申请号
      **/
+    @Size(max = 16, message = "申请号过长")
     private String applyNumber;
+
     public IndicatorExport() {
     }
 

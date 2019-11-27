@@ -10,5 +10,5 @@ import com.sxp.patMag.util.GeneralResult;
  */
 public interface InsertService {
 
-    public GeneralResult InsertPatent(Patent patent);
+    public GeneralResult insertPatent(Patent patent);
 }

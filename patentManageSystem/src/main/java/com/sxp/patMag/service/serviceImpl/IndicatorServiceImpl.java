@@ -56,15 +56,19 @@ public class IndicatorServiceImpl implements IndicatorService {
      */
 
     @Override
-    public boolean export(IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req) {
+    public String export(IndicatorExport indicatorExport, HttpServletResponse resp, HttpServletRequest req) {
         boolean flag = false;
-        String filePath = null;
         List<IndicatorExport> patents = patentService.listByPatent(indicatorExport);
         String[] columnNames={"编号", "指标详情", "所属专利", "专利进度", "申请日", "发明人中文名称", "撰写人"};
         String[] keys = {"number", "indicatorName", "caseNumber", "patentSchedule", "applyTime", "createPerson", "writePerson"};
-        flag = processData(patents, columnNames, keys, "indicator.xlsx");
-        DownloadUtil.downloadFile("indicator.xlsx", "indicator.xlsx", resp, req);
-        return flag;
+        String projectUrl = req.getSession().getServletContext().getRealPath("/");
+        String path = projectUrl + "/" + "indicator.xlsx";
+        flag = processData(patents, columnNames, keys, path);
+        if (flag) {
+            return DownloadUtil.downloadByUrl("indicator.xlsx");
+        } else {
+            return "";
+        }
     }
 
     /**

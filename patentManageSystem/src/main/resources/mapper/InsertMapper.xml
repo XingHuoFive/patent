@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.InsertMapper">
 
-    <insert id="InsertPatent" parameterType="com.sxp.patMag.entity.Patent">
+    <insert id="insertPatent" parameterType="com.sxp.patMag.entity.Patent">
         INSERT INTO tb_patent (`patent_id`, `case_number`, `apply_number`, `apply_time`, `write_person`, `apply_person`, `create_person`, `patent_name`, `patent_schedule`, `patent_claim`, `patent_remarks`)
         VALUES (#{patentId}, #{caseNumber}, #{applyNumber}, #{applyTime}, #{writePerson}, #{applyPerson}, #{createPerson}, #{patentName}, #{patentSchedule}, #{patentClaim},#{patentRemarks});
     </insert>
