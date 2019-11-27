@@ -74,6 +74,7 @@ public class LoginServiceImpl implements LoginService {
 
     }
 
+
     @Override
     public GeneralResult invalidate(HttpServletRequest request) {
         String token = request.getHeader("data");

@@ -11,7 +11,6 @@ import java.util.Date;
  * @date:2019/11/27
  * @time:15:31
  */
-
 public class JwtUtil {
 
     public static String getTokenUserId(String token) {

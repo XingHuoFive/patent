@@ -49,7 +49,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
         PrintWriter out = null;
-
         // 从 http 请求头中取出 token
         String token = request.getHeader("data");
         HandlerMethod handlerMethod = (HandlerMethod) object;

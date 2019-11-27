@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * @time:11:21
  */
 
+
 public interface LoginService {
 
     GeneralResult login(User user);

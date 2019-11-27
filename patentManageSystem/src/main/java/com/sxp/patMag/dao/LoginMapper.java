@@ -17,7 +17,6 @@ public interface LoginMapper {
      * @return 校验密码
      */
     List<User> checkUser(User user);
-
     /**
      *
      * @param userId

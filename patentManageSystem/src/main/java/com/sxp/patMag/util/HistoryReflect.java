@@ -144,7 +144,6 @@ public class HistoryReflect {
         Object proceed = joinPoint.proceed();
         return proceed;
     }
-
 public static String getHistory(Patent patent){
 
     StringBuilder stringBuilder = new StringBuilder();

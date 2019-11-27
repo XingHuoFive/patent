@@ -61,4 +61,5 @@ public class LoginController {
     @PassToken
     public GeneralResult invalidate(HttpServletRequest request){return  loginService.invalidate(request);     }
 
+
 }
