@@ -3,7 +3,6 @@ package com.sxp.patMag.controller;
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.service.IndicatorService;
-import com.sxp.patMag.util.CheckOut;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.Max;
 import java.util.List;
 
 /**
