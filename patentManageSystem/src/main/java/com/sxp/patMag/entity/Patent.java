@@ -3,60 +3,73 @@ package com.sxp.patMag.entity;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
- * Author： Jude
- * Date:2019/11/19
- * Time:18:18
+ * @Author： Jude
+ * @Date:2019/11/19
+ * @Time:18:18
  */
 public class Patent {
     /**
      * 专利id
      **/
-    @NotNull
+    @Size(max = 32, min = 16)
     private String patentId;
     /**
      * 案件号
      **/
+    @Size(max = 16,min = 0)
     private String caseNumber;
     /**
      * 申请号
      **/
+    @Size(max = 16,min = 0)
     private String applyNumber;
     /**
      * 申请时间
      **/
+
+    @Size(max = 30,min = 0)
     private String applyTime;
     /**
      * 撰写人
      **/
+    @Size(max = 50,min = 0)
     private String writePerson;
     /** 申请人/机构 **/
 
     /**
      *
      **/
+    @Size(max = 50,min = 0)
     private String applyPerson;
     /**
      * 发明人
      **/
+    @Size(max = 30,min = 0)
     private String createPerson;
     /**
      * 专利名称
      **/
+    @Size(max = 150,min = 0)
     private String patentName;
     /**
      * 专利进度:1.审核中2.待认领3.未通过4.编写中5.已提交
      **/
+    @Size(max = 10,min = 0)
     private String patentSchedule;
     /**
      * 是否被认领： 认领——未被认领
      **/
+    @Size(max = 10,min = 0)
     private String patentClaim;
     /**
      * 备注
      **/
+    @Size(max = 255,min = 0)
     private String patentRemarks;
     /**
      * 指标
