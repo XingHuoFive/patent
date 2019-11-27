@@ -1,11 +1,11 @@
-package com.sxp.patmag.service.serviceImpl;
+package com.sxp.patMag.service.serviceImpl;
 
-import com.sxp.patmag.dao.AdminMapper;
-import com.sxp.patmag.entity.Jbook;
-import com.sxp.patmag.entity.Patent;
-import com.sxp.patmag.service.AdminService;
-import com.sxp.patmag.util.GeneralResult;
-import com.sxp.patmag.util.WeLogFile;
+import com.sxp.patMag.dao.AdminMapper;
+import com.sxp.patMag.entity.Jbook;
+import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.service.AdminService;
+import com.sxp.patMag.util.GeneralResult;
+import com.sxp.patMag.util.WeLogFile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

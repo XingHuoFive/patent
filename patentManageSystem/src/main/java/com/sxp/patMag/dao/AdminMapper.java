@@ -1,7 +1,7 @@
-package com.sxp.patmag.dao;
+package com.sxp.patMag.dao;
 
-import com.sxp.patmag.entity.Jbook;
-import com.sxp.patmag.entity.Patent;
+import com.sxp.patMag.entity.Jbook;
+import com.sxp.patMag.entity.Patent;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

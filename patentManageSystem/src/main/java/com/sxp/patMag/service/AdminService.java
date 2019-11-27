@@ -1,8 +1,8 @@
-package com.sxp.patmag.service;
+package com.sxp.patMag.service;
 
 
-import com.sxp.patmag.entity.Patent;
-import com.sxp.patmag.util.GeneralResult;
+import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.util.GeneralResult;
 /**
  * @Author： Guofengzhang
  * Date:2019/11/20

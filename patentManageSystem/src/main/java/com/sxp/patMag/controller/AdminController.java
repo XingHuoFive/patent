@@ -1,16 +1,14 @@
-package com.sxp.patmag.controller;
+package com.sxp.patMag.controller;
 
-import com.sxp.patmag.entity.Patent;
-import com.sxp.patmag.service.AdminService;
-import com.sxp.patmag.util.GeneralResult;
+import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.service.AdminService;
+import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.validation.Valid;
 
 /**
  * @Author： Guofengzhang
@@ -43,5 +41,6 @@ public class AdminController {
     public GeneralResult readLogFile(String pageNumber) {
         return adminService.readLogFile(pageNumber);
     }
+
 
 }
