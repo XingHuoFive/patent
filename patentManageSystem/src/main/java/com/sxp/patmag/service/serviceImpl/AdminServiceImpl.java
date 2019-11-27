@@ -82,7 +82,7 @@ public class AdminServiceImpl implements AdminService {
         }
         // 如果该专利审核没通过，就将它的进度修改成未通过
         if (patentSpareInt == 0 && patentClaimInt == 1) {
-            patent.setPatentSchedule("未通过");
+            patent.setPatentSchedule("编写中");
         }
 
         boolean flag = adminMapper.checkPatent(patent);
