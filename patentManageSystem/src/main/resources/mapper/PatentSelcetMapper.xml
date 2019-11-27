@@ -46,6 +46,7 @@
                     </if>
                     <if test="patentClaim != null and  patentClaim !=1">
                         AND patent_claim=#{patentClaim}
+                        AND patent_schedule="待认领"
                     </if>
             order by apply_time,patent_claim
         </select>
@@ -85,7 +86,7 @@
 
     <!--确认认领人-->
     <update id="updatePatentToWritePerson" parameterType="com.sxp.patMag.entity.Patent" >
-            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = "已认领",patent_claim="1" WHERE patent_id=#{patentId}
+            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = "编写中",patent_claim="1" WHERE patent_id=#{patentId}
     </update>
 
 

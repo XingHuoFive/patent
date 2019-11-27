@@ -111,10 +111,7 @@ public class IndicatorController {
         GeneralResult generalResult = new GeneralResult();
         try {
             if(bindingResult.hasErrors()) {
-                String defaultMessage = bindingResult.getFieldError().getDefaultMessage();
-                generalResult.setStatus(1);
-                generalResult.setMsg(defaultMessage);
-                return generalResult;
+                throw new ServiceException(PatentException.ERROR_PARAME);
             }
             if (indicatorExport == null) {
                 generalResult.setStatus(1);
@@ -132,7 +129,7 @@ public class IndicatorController {
             generalResult.setData(patents);
         } catch (ServiceException e) {
             generalResult.setStatus(1);
-            generalResult.setMsg(e.getMessage());
+            generalResult.setMsg(e.getExceptionEnum().getMessage());
             return generalResult;
         }
         return generalResult;
