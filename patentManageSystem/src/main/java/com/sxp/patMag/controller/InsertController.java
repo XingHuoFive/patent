@@ -25,31 +25,22 @@ import java.util.Date;
 
 @Controller
 @RequestMapping("/insert")
-public class InsertController{
+public class InsertController {
 
     @Autowired
     private InsertService insertService;
 
 
-    @RequestMapping(value="/insertPatent", method= RequestMethod.POST)
+    @RequestMapping(value = "/insertPatent", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult insertPatent(@RequestBody @Valid Patent patent/*, BindingResult bindingResult*/){
-
-/*
-        if(bindingResult.hasErrors()){
-            return GeneralResult.build(1,bindingResult.getFieldError().getDefaultMessage());
-        }*/
-
+    public GeneralResult insertPatent(@RequestBody @Valid Patent patent) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = simpleDateFormat.format(new Date());
 
         patent.setPatentId(UUID.getUUID());
         patent.setApplyTime(date);
         patent.setPatentSchedule("未审核");
-       patent.setPatentClaim("0");
-//        patent.setApplyNumber("");
-
-
+        patent.setPatentClaim("0");
 
         return insertService.insertPatent(patent);
     }
