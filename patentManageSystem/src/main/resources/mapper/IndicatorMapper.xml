@@ -2,8 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.IndicatorMapper">
 
-    <insert id="addIndicator" parameterType="com.sxp.patMag.entity.Indicator">
-        INSERT INTO tb_indicator (indicator_id, indicator_name, patent_id) VALUES (#(indicatorId), #(indicatorName), #(patentId))
+    <insert id="addIndicator" parameterType="java.util.List" useGeneratedKeys="false">
+        INSERT INTO tb_indicator (indicator_id, indicator_name, patent_id) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.indicatorId},
+            #{item.indicatorName},
+            #{item.patentId}
+            )
+        </foreach>
     </insert>
 
 </mapper>

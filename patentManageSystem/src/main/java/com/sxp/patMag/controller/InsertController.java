@@ -8,10 +8,7 @@ import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
@@ -25,31 +22,22 @@ import java.util.Date;
 
 @Controller
 @RequestMapping("/insert")
-public class InsertController{
+public class InsertController {
 
     @Autowired
     private InsertService insertService;
 
 
-    @RequestMapping(value="/insertPatent", method= RequestMethod.POST)
+    @RequestMapping(value = "/insertPatent", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult insertPatent(@RequestBody @Valid Patent patent/*, BindingResult bindingResult*/){
-
-/*
-        if(bindingResult.hasErrors()){
-            return GeneralResult.build(1,bindingResult.getFieldError().getDefaultMessage());
-        }*/
-
+    public GeneralResult insertPatent(@RequestBody @Valid Patent patent) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = simpleDateFormat.format(new Date());
 
         patent.setPatentId(UUID.getUUID());
         patent.setApplyTime(date);
         patent.setPatentSchedule("未审核");
-       patent.setPatentClaim("0");
-//        patent.setApplyNumber("");
-
-
+        patent.setPatentClaim("0");
 
         return insertService.insertPatent(patent);
     }

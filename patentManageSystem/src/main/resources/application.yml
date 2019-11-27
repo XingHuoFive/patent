@@ -22,7 +22,7 @@ spring:
   #      suffix: .jsp
   #      path-pattern: /static/**
   datasource:
-    url: jdbc:mysql://39.106.157.58:3306/wuzu?useUnicode=true&amp;characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://39.106.157.58:3306/wuzu?useUnicode=true&amp;characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&allowMutiQueries=true
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver

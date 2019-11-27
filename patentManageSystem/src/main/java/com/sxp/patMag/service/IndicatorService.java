@@ -36,7 +36,7 @@ public interface IndicatorService {
      * @param indicator 新增的指标
      * @return 影响行数
      */
-    int save(Indicator indicator);
+    int save(List<Indicator> indicator);
 
     /**
      * 导出成excel

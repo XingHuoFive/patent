@@ -135,37 +135,4 @@ public class IndicatorController {
         return generalResult;
     }
 
-    @PostMapping("/save")
-    public GeneralResult save(@RequestBody Indicator indicator) {
-        GeneralResult generalResult = new GeneralResult();
-        if (null == indicator) {
-            generalResult.setStatus(1);
-            generalResult.setMsg("指标内容不能为空");
-            return generalResult;
-        }
-
-        if (null == indicator.getPatentId() || "".equals(indicator.getPatentId())) {
-            generalResult.setStatus(1);
-            generalResult.setMsg("指标对应专利id不能为空");
-            return generalResult;
-        }
-
-        if (null == indicator.getIndicatorName() || "".equals(indicator.getIndicatorName())) {
-            generalResult.setStatus(1);
-            generalResult.setMsg("指标命不能为空");
-            return generalResult;
-        }
-
-        indicator.setIndicatorId(UUID.getUUID());
-        int save = indicatorService.save(indicator);
-        if (save <= 0) {
-            generalResult.setStatus(1);
-            generalResult.setMsg("添加失败");
-            return generalResult;
-        }
-        generalResult.setStatus(0);
-        generalResult.setMsg("成功");
-        return generalResult;
-    }
-
 }
