@@ -1,6 +1,5 @@
 package com.sxp.patMag.dao;
 
-import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.entity.Patent;
 import org.apache.ibatis.annotations.Mapper;
@@ -9,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * Author： Guofengzhang
+ * @Author： Guofengzhang
  * Date:2019/11/20
  * Time:9:37
  */
@@ -21,7 +20,6 @@ public interface AdminMapper {
      * @param patent 专利对象
      * @return 修改结果
      */
-    @Monitor("审核")
     boolean checkPatent(Patent patent);
 
     /**
