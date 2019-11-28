@@ -54,6 +54,9 @@ public class ExcelUtil {
             for (int j = 0; j < keys.length; j++) {
                 Cell cell = row1.createCell(j);
                 cell.setCellValue(list.get(i).get(keys[j]) == null ? " " : list.get(i).get(keys[j]).toString());
+                if(j == 0){
+                    cell.setCellValue(i);
+                }
             }
         }
         OutputStream os = new FileOutputStream(filePath);
@@ -64,7 +67,7 @@ public class ExcelUtil {
 
 
     /**
-     * 王硕导出
+     * 王硕版导出
      * @param list
      * @param keys
      * @param columnNames
@@ -94,6 +97,10 @@ public class ExcelUtil {
             // 在row行上创建一个方格
             for (int j = 0; j < keys.length; j++) {
                 Cell cell = row1.createCell(j);
+                if(j == 1){
+                    cell.setCellValue(i);
+                }
+                //在方格上添加数据
                 cell.setCellValue(list.get(i).get(keys[j]) == null ? " " : list.get(i).get(keys[j]).toString());
             }
         }
