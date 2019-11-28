@@ -31,12 +31,15 @@ public class InsertServiceImpl implements InsertService {
     public GeneralResult insertPatent(Patent patent) {
         if (null == patent.getIndicatorList() || patent.getIndicatorList().isEmpty()) {
             int a = insertMapper.insertPatent(patent);
-            if (a > 0 ) {
+            if (a > 0) {
                 return GeneralResult.build(0, "success");
             }
             return GeneralResult.build(1, "failed");
         } else {
             for (int i = 0; i < patent.getIndicatorList().size(); i++) {
+                if (null == patent.getIndicatorList().get(i)) {
+                    return GeneralResult.build(1, "failed");
+                }
                 patent.getIndicatorList().get(i).setPatentId(patent.getPatentId());
                 patent.getIndicatorList().get(i).setIndicatorId(UUID.getUUID());
             }

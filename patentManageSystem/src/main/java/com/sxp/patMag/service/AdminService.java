@@ -28,8 +28,7 @@ public interface AdminService {
     /**
      * 读取日志
      *
-     * @param pageNumber 页码
      * @return 封装数据包
      */
-    GeneralResult readLogFile(String pageNumber);
+    GeneralResult readLogFile(String role);
 }

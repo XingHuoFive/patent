@@ -65,8 +65,12 @@ public class UploadServiceImpl implements UploadService {
         String url = DownloadUtil.downloadByUrl(saveToPath + fileName);
         File dest = new File(filepath);
         //判断文件父目录是否存在
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdir();
+//        if (!dest.getParentFile().exists()) {
+//            dest.getParentFile().mkdir();
+//        }
+        File parent = dest.getParentFile();
+        if(!parent.exists()) {
+            parent.mkdirs();
         }
         try {
             //保存文件

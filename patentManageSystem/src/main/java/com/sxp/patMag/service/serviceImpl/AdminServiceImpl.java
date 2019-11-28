@@ -132,22 +132,18 @@ public class AdminServiceImpl implements AdminService {
      * @return 日志列表
      */
     @Override
-    public GeneralResult readLogFile(String pageNumber) {
+    public GeneralResult readLogFile(String role) {
         List<String> list = WeLogFile.readLog();
         if (list == null || list.size() == 0) {
             //返回查询失败
             return GeneralResult.build(1, "fail");
         }
-        if (pageNumber == null || pageNumber.length() == 0) {
+        if ("0".equals(role) || role == null) {
+            return GeneralResult.build(1, "fail", "您不是管理员，无法查看日志!");
+        }
+        if ("1".equals(role)) {
             return GeneralResult.build(0, "success", list);
         }
-        boolean check = true;
-        for (int i = 0; i < pageNumber.length(); i++) {
-            check = Character.isDigit(pageNumber.charAt(i));
-            if (check == false) {
-                return GeneralResult.build(1, "校验中出现字母");
-            }
-        }
-        return GeneralResult.build(0, "success", list.get(Integer.parseInt(pageNumber) - 1));
+        return GeneralResult.build(0, "success", "日志正在维护中...");
     }
 }
