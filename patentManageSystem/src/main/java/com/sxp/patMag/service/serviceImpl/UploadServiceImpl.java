@@ -68,8 +68,9 @@ public class UploadServiceImpl implements UploadService {
 //        if (!dest.getParentFile().exists()) {
 //            dest.getParentFile().mkdir();
 //        }
-        if (!dest.exists() && !dest.isDirectory()) {
-            dest.mkdirs();
+        File parent = dest.getParentFile();
+        if(!parent.exists()) {
+            parent.mkdirs();
         }
         try {
             //保存文件

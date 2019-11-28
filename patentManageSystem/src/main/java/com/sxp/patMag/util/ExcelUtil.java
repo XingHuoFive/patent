@@ -60,8 +60,9 @@ public class ExcelUtil {
             }
         }
         File file = new File(filePath);
-        if (!file.exists() && !file.isDirectory()) {
-            file.mkdirs();
+        File parent = file.getParentFile();
+        if(!parent.exists()) {
+            parent.mkdirs();
         }
         OutputStream os = new FileOutputStream(filePath);
         workbook.write(os);
