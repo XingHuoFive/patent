@@ -23,15 +23,11 @@ public class JwtUtil {
     public static String getToken(User user) {
 
         String token = "";
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //日期转字符串
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.SECOND,30 );
+        calendar.add(Calendar.MINUTE,30 );
         //特定时间的年后
         Date date = calendar.getTime();
-
-
         token = JWT.create().withAudience(user.getUserId()).withExpiresAt(date)
                 .sign(Algorithm.HMAC256(user.getUserPassword()));
         return token;

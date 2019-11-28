@@ -68,27 +68,18 @@ public class LoginInterceptor implements HandlerInterceptor {
         try {
             userId = JWT.decode(token).getAudience().get(0);
         } catch (JWTDecodeException j) {
-            res.put("status", 1);
-            res.put("msg", "token解析错误");
-            out = response.getWriter();
-            out.append(res.toString());
             throw new ServiceException(PatentException.TOKEN_PARSE_ERR);
         }
         // 获取 token 中的 user id
         Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() +Md5Util.getMd5Keys(userId));
         if (userJson == null) {
-
-            res.put("status", 1);
-            res.put("msg", "token过期");
-            out = response.getWriter();
-            out.append(res.toString());
-
             log.info("token过期");
-            return false;
+            throw new ServiceException(PatentException.TOKEN_ERR);
+
         }
 
         List<User> list = loginMapper.selectUserById(userId);
-        if (list==null && list.size()==0) {
+        if (list==null || list.size()==0) {
             throw new ServiceException(PatentException.TOKEN_ERR);
         }
         // 验证 token
