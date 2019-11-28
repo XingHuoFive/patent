@@ -1,12 +1,13 @@
 package com.sxp.patMag.util;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
+import java.util.Enumeration;
 
 /**
  * @author lhx
@@ -16,18 +17,53 @@ import java.nio.charset.StandardCharsets;
  */
 public class DownloadUtil {
 
+    private static InetAddress getLocalHostLANAddress() throws UnknownHostException {
+        try {
+            InetAddress candidateAddress = null;
+            // 遍历所有的网络接口
+            for (Enumeration ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();) {
+                NetworkInterface iface = (NetworkInterface) ifaces.nextElement();
+                // 在所有的接口下再遍历IP
+                for (Enumeration inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {
+                    InetAddress inetAddr = (InetAddress) inetAddrs.nextElement();
+                    if (!inetAddr.isLoopbackAddress()) {// 排除loopback类型地址
+                        if (inetAddr.isSiteLocalAddress()) {
+                            // 如果是site-local地址，就是它了
+                            return inetAddr;
+                        } else if (candidateAddress == null) {
+                            // site-local类型的地址未被发现，先记录候选地址
+                            candidateAddress = inetAddr;
+                        }
+                    }
+                }
+            }
+            if (candidateAddress != null) {
+                return candidateAddress;
+            }
+            // 如果没有发现 non-loopback地址.只能用最次选的方案
+            InetAddress jdkSuppliedAddress = InetAddress.getLocalHost();
+            if (jdkSuppliedAddress == null) {
+                throw new UnknownHostException("The JDK InetAddress.getLocalHost() method unexpectedly returned null.");
+            }
+            return jdkSuppliedAddress;
+        } catch (Exception e) {
+            UnknownHostException unknownHostException = new UnknownHostException(
+                    "Failed to determine LAN address: " + e);
+            unknownHostException.initCause(e);
+            throw unknownHostException;
+        }
+    }
+
     /**
      * 获取url
      * @param fileName 文件名
      * @return 下载url
      */
     private static String getDownloadUrl(String fileName) {
-        InetAddress ia = null;
         String url = null;
         try {
-            ia=InetAddress.getLocalHost();
-            String localip=ia.getHostAddress();
-            url = localip + ":8080/" + fileName;
+            String hostAddress = getLocalHostLANAddress().getHostAddress();
+            url = hostAddress + ":8080/" + fileName;
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
