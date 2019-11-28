@@ -1,11 +1,11 @@
 package com.sxp.patMag.util;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 
@@ -15,6 +15,8 @@ import java.util.Enumeration;
  * @ClassName: DownloadUtil
  * @date 2019/11/22 14:21
  */
+
+
 public class DownloadUtil {
 
     private static InetAddress getLocalHostLANAddress() throws UnknownHostException {
@@ -26,10 +28,13 @@ public class DownloadUtil {
                 // 在所有的接口下再遍历IP
                 for (Enumeration inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {
                     InetAddress inetAddr = (InetAddress) inetAddrs.nextElement();
-                    if (!inetAddr.isLoopbackAddress()) {// 排除loopback类型地址
+                    if (!inetAddr.isLoopbackAddress()) {
+                        // 排除loopback类型地址
                         if (inetAddr.isSiteLocalAddress()) {
                             // 如果是site-local地址，就是它了
-                            return inetAddr;
+                            if (inetAddr.toString().indexOf("172.16")>0) {
+                                return inetAddr;
+                            }
                         } else if (candidateAddress == null) {
                             // site-local类型的地址未被发现，先记录候选地址
                             candidateAddress = inetAddr;
@@ -70,6 +75,49 @@ public class DownloadUtil {
         }
         return url;
     }
+
+
+
+    public static String getRealIP() {
+        try {
+            Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface
+                    .getNetworkInterfaces();
+            while (allNetInterfaces.hasMoreElements()) {
+                NetworkInterface netInterface = (NetworkInterface) allNetInterfaces
+                        .nextElement();
+
+                // 去除回环接口，子接口，未运行和接口
+                if (netInterface.isLoopback() || netInterface.isVirtual()
+                        || !netInterface.isUp()) {
+                    continue;
+                }
+
+                if (!netInterface.getDisplayName().contains("Intel")
+                        && !netInterface.getDisplayName().contains("Realtek")) {
+                    continue;
+                }
+                Enumeration<InetAddress> addresses = netInterface
+                        .getInetAddresses();
+                System.out.println(netInterface.getDisplayName());
+                while (addresses.hasMoreElements()) {
+                    InetAddress ip = addresses.nextElement();
+                    if (ip != null) {
+                        // ipv4
+                        if (ip instanceof Inet4Address) {
+                            System.out.println("ipv4 = " + ip.getHostAddress());
+                            return ip.getHostAddress();
+                        }
+                    }
+                }
+                break;
+            }
+        } catch (SocketException e) {
+            System.err.println("Error when getting host ip address"
+                    + e.getMessage());
+        }
+        return null;
+    }
+
 
     /**
      * 通过返回url下载文件
