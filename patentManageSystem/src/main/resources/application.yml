@@ -34,8 +34,7 @@ mybatis:
 
 expireTime: 1800
 
-
-
-
-
-
+file:
+  accessPath: /upload/
+  staticAccessPath: /upload/**
+  uploadFolder: C://tmp/

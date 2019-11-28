@@ -9,6 +9,7 @@ import com.sxp.patMag.service.PatentService;
 import com.sxp.patMag.util.DownloadUtil;
 import com.sxp.patMag.util.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -27,6 +29,12 @@ import java.util.*;
  */
 @Service
 public class IndicatorServiceImpl implements IndicatorService {
+
+    @Value("${file.uploadFolder}")
+    private String realBasePath;
+
+    @Value("${file.accessPath}")
+    private String accessPath;
 
     @Autowired
     private IndicatorMapper indicatorMapper;
@@ -61,11 +69,15 @@ public class IndicatorServiceImpl implements IndicatorService {
         List<IndicatorExport> patents = patentService.listByPatent(indicatorExport);
         String[] columnNames={"编号", "指标详情", "所属专利", "专利进度", "申请日", "发明人中文名称", "撰写人"};
         String[] keys = {"number", "indicatorName", "caseNumber", "patentSchedule", "applyTime", "createPerson", "writePerson"};
-        String projectUrl = req.getSession().getServletContext().getRealPath("/");
-        String path = projectUrl + "/" + "indicator.xlsx";
-        flag = processData(patents, columnNames, keys, path);
+        Date todayDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String today = dateFormat.format(todayDate);
+        String realPath = realBasePath + today + "/";
+        String saveToPath = accessPath + today + "/";
+        String filepath = realPath + "indicator.xlsx";
+        flag = processData(patents, columnNames, keys, filepath);
         if (flag) {
-            return DownloadUtil.downloadByUrl("indicator.xlsx");
+            return DownloadUtil.downloadByUrl(saveToPath + "indicator.xlsx");
         } else {
             return "";
         }
