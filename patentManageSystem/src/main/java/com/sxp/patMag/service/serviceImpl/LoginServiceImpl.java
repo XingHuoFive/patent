@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class LoginServiceImpl implements LoginService {
 
 
     @Override
-    public GeneralResult login(User user) {
+    public GeneralResult login(@Valid User user) {
         List<User> list = loginMapper.checkUser(user);
         if (list == null || list.size() == 0) {
             //返回登录失败
@@ -45,7 +46,7 @@ public class LoginServiceImpl implements LoginService {
         }
         //生成token，使用uuid
         String token =null;
-        String userMd5 = Md5Util.encrypt(list.get(0).getUserId());
+        String userMd5 = Md5Util.getMd5Keys(list.get(0).getUserId());
         //清空密码
         user.setUserPassword(null);
         reflect.setUser(user);

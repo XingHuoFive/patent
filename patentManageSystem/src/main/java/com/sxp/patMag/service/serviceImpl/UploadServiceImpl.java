@@ -36,11 +36,10 @@ public class UploadServiceImpl implements UploadService {
         if (writePerson==null && writePerson.length()==0){
             return GeneralResult.build(1, "撰写人为空");
         }
-        if (file.isEmpty()) {
+        if (null == file || file.isEmpty()) {
             return GeneralResult.build(1, "文件为空");
         }
         String fileName = file.getOriginalFilename();
-        int size = (int) file.getSize();
 
         String projectUrl = request.getSession().getServletContext().getRealPath("/");
         String path = projectUrl + "/" + fileName;

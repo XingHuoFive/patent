@@ -36,4 +36,9 @@ public class Md5Util {
         return "";
     }
 
+    public static String getMd5Keys(String dataStr) {
+        return  encrypt(encrypt(dataStr));
+    }
+
+
 }

@@ -4,6 +4,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.sxp.patMag.entity.User;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -19,13 +21,14 @@ public class JwtUtil {
     }
 
     public static String getToken(User user) {
-        Date start = new Date();
-        //30min有效时间
-        long currentTime = System.currentTimeMillis() + 30* 60 * 1000;
-        Date end = new Date(currentTime);
-        String token = "";
 
-        token = JWT.create().withAudience(user.getUserId()).withIssuedAt(start).withExpiresAt(end)
+        String token = "";
+        //日期转字符串
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE,30 );
+        //特定时间的年后
+        Date date = calendar.getTime();
+        token = JWT.create().withAudience(user.getUserId()).withExpiresAt(date)
                 .sign(Algorithm.HMAC256(user.getUserPassword()));
         return token;
     }

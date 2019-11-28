@@ -12,6 +12,8 @@ import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.enums.ProcessEnum;
+import com.sxp.patMag.exception.PatentException;
+import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.LoginService;
 import com.sxp.patMag.util.Md5Util;
 import com.sxp.patMag.util.RedisUtil;
@@ -48,7 +50,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-        PrintWriter out = null;
         // 从 http 请求头中取出 token
         String token = request.getHeader("data");
         HandlerMethod handlerMethod = (HandlerMethod) object;
@@ -65,33 +66,28 @@ public class LoginInterceptor implements HandlerInterceptor {
         try {
             userId = JWT.decode(token).getAudience().get(0);
         } catch (JWTDecodeException j) {
-            throw new RuntimeException("401");
+            log.info(j.getMessage());
+            return false;
         }
-
-        JSONObject res = new JSONObject();
         // 获取 token 中的 user id
-        Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() +Md5Util.encrypt(userId));
+        Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() +Md5Util.getMd5Keys(userId));
         if (userJson == null) {
-
-            res.put("status", 1);
-            res.put("msg", "token过期");
-            out = response.getWriter();
-            out.append(res.toString());
-
             log.info("token过期");
             return false;
         }
 
         List<User> list = loginMapper.selectUserById(userId);
-        if (list==null && list.size()==0) {
-            throw new RuntimeException("用户不存在，请重新登录");
+        if (list==null || list.size()==0) {
+            log.info("token过期");
+            return false;
         }
         // 验证 token
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(list.get(0).getUserPassword())).build();
         try {
             jwtVerifier.verify(token);
         } catch (JWTVerificationException e) {
-            throw new RuntimeException("401");
+            log.info(e.getMessage());
+            return false;
         }
         return true;
     }
