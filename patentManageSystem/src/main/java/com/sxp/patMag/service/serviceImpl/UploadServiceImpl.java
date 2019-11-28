@@ -5,6 +5,7 @@ import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.UploadService;
 import com.sxp.patMag.util.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -13,13 +14,22 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 @Service
 public class UploadServiceImpl implements UploadService {
 
+    @Value("${file.accessPath}")
+    private String accessPath;
+
     @Resource
     private UploadMapper uploadMapper;
+
+    @Value("${file.uploadFolder}")
+    private String realBasePath;
+
     @Override
     public GeneralResult insertJbook( HttpServletRequest request) {
 
@@ -40,11 +50,20 @@ public class UploadServiceImpl implements UploadService {
             return GeneralResult.build(1, "文件为空");
         }
         String fileName = file.getOriginalFilename();
-
-        String projectUrl = request.getSession().getServletContext().getRealPath("/");
-        String path = projectUrl + "/" + fileName;
-        String url = DownloadUtil.downloadByUrl(fileName);
-        File dest = new File(path);
+//        String projectUrl = request.getSession().getServletContext().getRealPath("/");
+//        String path = projectUrl + "/" + fileName;
+        Date todayDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String today = dateFormat.format(todayDate);
+        // 域名访问的相对路径（通过浏览器访问的链接-虚拟路径）
+        String saveToPath = accessPath + today + "/";
+        // 真实路径，实际储存的路径
+        String realPath = realBasePath + today + "/";
+        // 储存文件的物理路径，使用本地路径储存
+        String filepath = realPath + fileName;
+//        String url = DownloadUtil.downloadByUrl(fileName);
+        String url = DownloadUtil.downloadByUrl(saveToPath + fileName);
+        File dest = new File(filepath);
         //判断文件父目录是否存在
         if (!dest.getParentFile().exists()) {
             dest.getParentFile().mkdir();
@@ -67,7 +86,7 @@ public class UploadServiceImpl implements UploadService {
         jbook.setJbookUserId(writePerson);
         jbook.setJbookView("1");
 
-        uploadMapper.updateJbookStatusByPatentId(patentId );
+//        uploadMapper.updateJbookStatusByPatentId(patentId);
 
         int res = uploadMapper.insertJbook(jbook);
         if (res > 0) {

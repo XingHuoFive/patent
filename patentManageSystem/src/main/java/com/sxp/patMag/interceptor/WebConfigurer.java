@@ -2,6 +2,7 @@ package com.sxp.patMag.interceptor;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -22,6 +23,11 @@ import java.util.List;
 @Configuration
 public class WebConfigurer implements WebMvcConfigurer {
 
+    @Value("${file.staticAccessPath}")
+    private String staticAccessPath;
+    @Value("${file.uploadFolder}")
+    private String uploadFolder;
+
     @Autowired
     private LoginInterceptor loginInterceptor;
     @Autowired
@@ -30,6 +36,7 @@ public class WebConfigurer implements WebMvcConfigurer {
     // 这个方法是用来配置静态资源的，比如html，js，css，等等
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler(staticAccessPath).addResourceLocations("file:" + uploadFolder);
     }
 
     @Override
