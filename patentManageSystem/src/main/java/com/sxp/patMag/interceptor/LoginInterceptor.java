@@ -12,6 +12,8 @@ import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.enums.ProcessEnum;
+import com.sxp.patMag.exception.PatentException;
+import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.LoginService;
 import com.sxp.patMag.util.Md5Util;
 import com.sxp.patMag.util.RedisUtil;
@@ -70,10 +72,8 @@ public class LoginInterceptor implements HandlerInterceptor {
             res.put("msg", "token解析错误");
             out = response.getWriter();
             out.append(res.toString());
-            throw new RuntimeException("token解析错误");
+            throw new ServiceException(PatentException.TOKEN_PARSE_ERR);
         }
-
-
         // 获取 token 中的 user id
         Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() +Md5Util.getMd5Keys(userId));
         if (userJson == null) {
@@ -89,14 +89,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         List<User> list = loginMapper.selectUserById(userId);
         if (list==null && list.size()==0) {
-            throw new RuntimeException("用户不存在，请重新登录");
+            throw new ServiceException(PatentException.TOKEN_ERR);
         }
         // 验证 token
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(list.get(0).getUserPassword())).build();
         try {
             jwtVerifier.verify(token);
         } catch (JWTVerificationException e) {
-            throw new RuntimeException("401");
+            throw new ServiceException(PatentException.TOKEN_PARSE_ERR);
         }
         return true;
     }
