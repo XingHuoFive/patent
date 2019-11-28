@@ -40,6 +40,10 @@ public class WeLogFile {
      */
     private static String username;
 
+    private static int num = 0;
+
+    private static String pubPath = "\\patentManageSystem\\src\\main\\webapp\\file\\weLog";
+
     private User user1;
 
     public void setUser1(User user1) {
@@ -100,12 +104,29 @@ public class WeLogFile {
     }
 
     /**
-     * 获取日志绝对路径
+     * 获取日志路径
      */
     public static void getPath() {
         File file = new File("");
         String absolutePath = file.getAbsolutePath();
-        path = absolutePath + "\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
+        if (num == 0) {
+            path = absolutePath + pubPath + ".log";
+        } else {
+            path = absolutePath + pubPath + num + ".log";
+        }
+        File logFile = new File(path);
+        long length = logFile.length();
+        if (length > 3000000) {
+            path =absolutePath + pubPath + (++num) + ".log";
+            File file1 = new File(path);
+            if (!file1.exists()) {
+                try {
+                    file1.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /**
@@ -114,29 +135,39 @@ public class WeLogFile {
      * @throws IOException
      */
     public static List<String> readLog() {
-        //读取文件
-        try {
-            FileInputStream fstream = new FileInputStream(path);
-            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
-            String strLine;
-            StringBuilder stringBuilder = new StringBuilder();
-            List<String> list = new ArrayList<>();
-            int numLine = 0;
-            while ((strLine = br.readLine()) != null) {
-                stringBuilder.append(strLine + "\n");
-                if (++numLine == 10) {
-                    list.add(stringBuilder.toString());
-                    numLine = 0;
-                    stringBuilder.delete(0, stringBuilder.length());
-                }
-            }
-            list.add(stringBuilder.toString());
-            fstream.close();
-            return list;
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
+        String parent = new File(path).getParent();
+        String[] lists = new File(parent).list();
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < lists.length; i++) {
+            list.add(DownloadUtil.downloadByUrl(lists[i]));
         }
-        return null;
+        return list;
     }
+
+//    public static List<String> readLog() {
+//        //读取文件
+//        try {
+//            FileInputStream fstream = new FileInputStream(path);
+//            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+//            String strLine;
+//            StringBuilder stringBuilder = new StringBuilder();
+//            List<String> list = new ArrayList<>();
+//            int numLine = 0;
+//            while ((strLine = br.readLine()) != null) {
+//                stringBuilder.append(strLine + "\n");
+//                if (++numLine == 10) {
+//                    list.add(stringBuilder.toString());
+//                    numLine = 0;
+//                    stringBuilder.delete(0, stringBuilder.length());
+//                }
+//            }
+//            list.add(stringBuilder.toString());
+//            fstream.close();
+//            return list;
+//        } catch (Exception e) {
+//            System.err.println("Error: " + e.getMessage());
+//        }
+//        return null;
+//    }
 
 }

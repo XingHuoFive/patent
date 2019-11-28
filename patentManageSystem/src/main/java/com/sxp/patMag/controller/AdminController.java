@@ -38,8 +38,8 @@ public class AdminController {
     /** 管理员读取日志 */
     @RequestMapping(value = "/readLogFile", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult readLogFile(String pageNumber) {
-        return adminService.readLogFile(pageNumber);
+    public GeneralResult readLogFile(String role) {
+        return adminService.readLogFile(role);
     }
 
 
