@@ -135,7 +135,7 @@ public class WeLogFile {
      * @throws IOException
      */
     public static List<String> readLog() {
-        String parent = new File("D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log").getParent();
+        String parent = new File(path).getParent();
         String[] lists = new File(parent).list();
         List<String> list = new ArrayList<>();
         for (int i = 0; i < lists.length; i++) {
