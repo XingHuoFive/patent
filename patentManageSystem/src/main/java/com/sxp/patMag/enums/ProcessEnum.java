@@ -7,7 +7,7 @@ package com.sxp.patMag.enums;
  */
 public  enum ProcessEnum {
 
-    NEW("新建专利"), CLAIM("专利认领"), CHECK("审核"), UPDATE("修改字段");
+    NEW("新建专利"), CLAIM("专利认领"), CHECK("审核"), UPDATE("修改字段"),USERLOGIN("UserLogin:");
     // 成员变量
     /**
      * name
@@ -18,5 +18,11 @@ public  enum ProcessEnum {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

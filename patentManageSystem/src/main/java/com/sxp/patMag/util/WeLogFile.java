@@ -9,22 +9,28 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.*;
 import java.util.logging.Formatter;
-
+/**
+ * @Author: Guofengzhang
+ * Date:2019/11/20
+ * Time:9:32
+ */
 @Aspect
 @Component
 @EnableAspectJAutoProxy
 public class WeLogFile {
     @Autowired
     private LoginService loginService;
+
     /**
      * 日志存放地址
      */
-    private static String path = "D:\\idea\\ideaProjects\\patentManage\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
+    private static String path = "D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
 
 
     /**
@@ -55,7 +61,8 @@ public class WeLogFile {
     public Object writeLog(ProceedingJoinPoint joinPoint) throws Throwable {
         Logger log = Logger.getLogger(path);
         log.setLevel(Level.ALL);
-        FileHandler fileHandler = new FileHandler(path, true);//true是以追加的形式
+        //true是以追加的形式
+        FileHandler fileHandler = new FileHandler(path, true);
         fileHandler.setLevel(Level.ALL);
         fileHandler.setFormatter(new Formatter() {
             @Override
@@ -96,10 +103,8 @@ public class WeLogFile {
             StringBuilder stringBuilder = new StringBuilder();
             List<String> list = new ArrayList<>();
             int numLine = 0;
-            /* read log line by line */
             while ((strLine = br.readLine()) != null) {
                 stringBuilder.append(strLine + "\n");
-                /* parse strLine to obtain what you want */
                 if (++numLine == 10) {
                     list.add(stringBuilder.toString());
                     numLine = 0;

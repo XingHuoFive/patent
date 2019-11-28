@@ -3,11 +3,12 @@
 <mapper namespace="com.sxp.patMag.dao.LoginMapper">
 
     <select id="checkUser" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.User" >
-        select user_id,user_name,user_role  from  tb_user   where  user_name  = #{userName} and user_password =#{userPassword}
+        select user_id,user_name,user_role,user_password  from  tb_user   where  user_name  = #{userName} and user_password =#{userPassword}
     </select>
 
 
-
-
+    <select id="selectUserById" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.User" >
+        select user_id,user_name,user_role,user_password  from  tb_user   where  user_id  = #{userId}
+    </select>
 
 </mapper>

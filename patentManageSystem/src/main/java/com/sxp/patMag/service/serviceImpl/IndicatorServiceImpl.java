@@ -45,7 +45,7 @@ public class IndicatorServiceImpl implements IndicatorService {
     }
 
     @Override
-    public int save(Indicator indicator) {
+    public int save(List<Indicator> indicator) {
         return indicatorMapper.addIndicator(indicator);
     }
 

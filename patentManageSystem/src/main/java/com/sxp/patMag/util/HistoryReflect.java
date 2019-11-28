@@ -57,7 +57,7 @@ public class HistoryReflect {
 
     @Around("getAction()")
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println("开始操作历史记录");
+        System.out.println("佛祖显灵");
         History history = new History();
         //从切面织入点处通过反射机制获取织入点处的方法
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
@@ -99,21 +99,21 @@ public class HistoryReflect {
         //将新的对象放到redis
         redis.set("Patent" + ":" +patent.getPatentId(), JSON.toJSON(patent));
         redis.expire("Patent" + ":" +patent.getPatentId(),  86400);
-        if (ProcessEnum.NEW.equals(value)){
+        if (ProcessEnum.NEW.getName().equals(value)){
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem(getHistory(patent));
             history.setHtOldItem("无");
             history.setHtProcess(value);
             history.setHtOperation("新建专利");
         }
-        if(ProcessEnum.CLAIM.equals(value)){
+        if(ProcessEnum.CLAIM.getName().equals(value)){
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem("认领人 : "+patent.getWritePerson());
             history.setHtOldItem("认领人 : 无");
             history.setHtProcess(value);
             history.setHtOperation("修改撰写人");
         }
-        if(ProcessEnum.CHECK.equals(value)){
+        if(ProcessEnum.CHECK.getName().equals(value)){
             if (patent.getPatentClaim()=="0"){
                 System.out.println("初审");
                 history.setHtPatentId(patent.getPatentId());
@@ -131,7 +131,7 @@ public class HistoryReflect {
                 history.setHtOperation(value);
             }
         }
-        if(ProcessEnum.UPDATE.equals(value)){
+        if(ProcessEnum.UPDATE.getName().equals(value)){
 
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem(getHistory(patent));
@@ -144,7 +144,6 @@ public class HistoryReflect {
         Object proceed = joinPoint.proceed();
         return proceed;
     }
-
 public static String getHistory(Patent patent){
 
     StringBuilder stringBuilder = new StringBuilder();

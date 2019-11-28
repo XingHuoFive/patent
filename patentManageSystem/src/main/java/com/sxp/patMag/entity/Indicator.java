@@ -21,7 +21,7 @@ public class Indicator {
     /**
      * 指标名
      */
-    @Max(value = 100, message = "指标名过长")
+    @Size(max = 100, message = "指标名过长")
     private String indicatorName;
 
     /**

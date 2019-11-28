@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,7 +75,7 @@ public class Patent {
     /**
      * 指标
      **/
-    private List<Indicator> indicatorList ;
+    private List<Indicator> indicatorList = new ArrayList<>();
     /**
      * 是否通过
      */
@@ -103,6 +104,14 @@ public class Patent {
 
     public String getPatentId() {
         return patentId;
+    }
+
+    public List<Indicator> getIndicatorList() {
+        return indicatorList;
+    }
+
+    public void setIndicatorList(List<Indicator> indicatorList) {
+        this.indicatorList = indicatorList;
     }
 
     public void setPatentId(String patentId) {

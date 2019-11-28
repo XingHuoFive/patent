@@ -4,6 +4,7 @@ import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,9 +22,9 @@ public interface IndicatorMapper {
 
     /**
      * 新增指标
-     * @param indicator 新增的指标
+     * @param list 新增的指标
      * @return 影响行数
      */
-    int addIndicator(Indicator indicator);
+    int addIndicator(@Param("list")List<Indicator> list);
 
 }

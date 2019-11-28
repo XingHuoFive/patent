@@ -11,8 +11,18 @@ import java.util.List;
 @Mapper
 public interface UploadMapper {
 
-
+    /**
+     * 添加交底书
+     * @param jbook
+     * @return
+     */
    Integer insertJbook(Jbook jbook);
+
+    /**
+     *
+     * @param patentId
+     * @return
+     */
  Integer updateJbookStatusByPatentId(String  patentId);
 
 

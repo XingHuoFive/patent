@@ -4,6 +4,8 @@ package com.sxp.patMag.entity;
 //import lombok.Builder;
 //import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 /**
@@ -16,12 +18,27 @@ import java.util.Objects;
 //@Builder
 public class User {
 
+    /**
+     * id
+     */
+    @Size(max = 32,min = 16,message="id超过范围")
     private String userId;
-
+    /**
+     * 用户名
+     */
+    @Size(max = 16,min = 0,message="用户名超过范围")
+    @NotNull(message = "用户名不能为空")
     private String userName;
-
+    /**
+     * 密码
+     */
+    @Size(max = 16,min = 0,message="密码超过范围")
+    @NotNull(message = "密码不能为空")
     private String userPassword;
-
+    /**
+     *角色
+     */
+    @Size(max = 1,min = 0,message="角色超过范围")
     private String userRole;
     public User(){
 

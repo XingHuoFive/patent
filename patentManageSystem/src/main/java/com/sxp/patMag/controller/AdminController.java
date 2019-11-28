@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Author： Guofengzhang
+ * @Author： Guofengzhang
  * Date:2019/11/20
  * Time:9:32
  */
@@ -41,5 +41,6 @@ public class AdminController {
     public GeneralResult readLogFile(String pageNumber) {
         return adminService.readLogFile(pageNumber);
     }
+
 
 }

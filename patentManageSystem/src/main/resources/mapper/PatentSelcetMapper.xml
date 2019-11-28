@@ -46,6 +46,7 @@
                     </if>
                     <if test="patentClaim != null and  patentClaim !=1">
                         AND patent_claim=#{patentClaim}
+                        AND patent_schedule="待认领"
                     </if>
             order by apply_time,patent_claim
         </select>
@@ -85,7 +86,7 @@
 
     <!--确认认领人-->
     <update id="updatePatentToWritePerson" parameterType="com.sxp.patMag.entity.Patent" >
-            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = "已认领",patent_claim="1" WHERE patent_id=#{patentId}
+            UPDATE tb_patent SET write_person=#{writePerson},patent_schedule = "编写中",patent_claim="1" WHERE patent_id=#{patentId}
     </update>
 
 
@@ -106,7 +107,6 @@
    <!--  select patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
     from  tb_patent  where patent_id=#{patentId}-->
     <select id="selectPatentById" parameterType="java.lang.String" resultMap="PatentMap"> <!--resultType="com.sxp.patMag.entity.Patent"-->
-
         SELECT
         p.patent_id id,
         case_number,
@@ -123,10 +123,9 @@
         jbook_url
         FROM
         tb_patent p
-
         LEFT JOIN tb_indicator i ON p.patent_id = i.patent_id
         LEFT JOIN tb_jbook j ON j.jbook_patent_id = p.patent_id
-        WHERE   p.patent_id = #{patentId} ,j.jook_view=1
+        WHERE p.patent_id = #{patentId} AND j.jbook_view='1'
     </select>
 
 
@@ -151,10 +150,10 @@
         i.indicator_name,
         jbook_url
         FROM
-        tb_indicator i
-        LEFT JOIN tb_patent p ON p.patent_id = i.patent_id
+        tb_patent p
+        LEFT JOIN tb_indicator i ON p.patent_id = i.patent_id
         LEFT JOIN tb_jbook j ON j.jbook_user_id = #{userName}
         WHERE
-        write_person = #{userName},jbook_view='1'
+        write_person = #{userName} AND jbook_view='1'
     </select>
 </mapper>
