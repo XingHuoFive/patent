@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class LoginServiceImpl implements LoginService {
 
 
     @Override
-    public GeneralResult login(User user) {
+    public GeneralResult login(@Valid User user) {
         List<User> list = loginMapper.checkUser(user);
         if (list == null || list.size() == 0) {
             //返回登录失败

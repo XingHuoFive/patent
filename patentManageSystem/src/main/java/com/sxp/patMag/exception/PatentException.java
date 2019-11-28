@@ -17,7 +17,7 @@ public enum PatentException implements ExceptionEnum {
     HTTP_GET_ERR(10007, "http get 请求异常"),
     GENERAL_ERR(10008, "一般异常"),
     TOKEN_ERR(10009,"token过期"),
-    TOKEN_PARSE_ERR(10009,"token校验错误或过期");
+    TOKEN_PARSE_ERR(10010,"token校验错误或过期");
     public int code;
     public String message;
 

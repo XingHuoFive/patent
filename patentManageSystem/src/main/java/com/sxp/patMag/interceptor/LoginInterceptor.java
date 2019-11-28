@@ -50,7 +50,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-        PrintWriter out = null;
         // 从 http 请求头中取出 token
         String token = request.getHeader("data");
         HandlerMethod handlerMethod = (HandlerMethod) object;
@@ -62,32 +61,33 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
-        JSONObject res = new JSONObject();
         // 获取 token 中的 user id
         String userId;
         try {
             userId = JWT.decode(token).getAudience().get(0);
         } catch (JWTDecodeException j) {
-            throw new ServiceException(PatentException.TOKEN_PARSE_ERR);
+            log.info(j.getMessage());
+            return false;
         }
         // 获取 token 中的 user id
         Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() +Md5Util.getMd5Keys(userId));
         if (userJson == null) {
             log.info("token过期");
-            throw new ServiceException(PatentException.TOKEN_ERR);
-
+            return false;
         }
 
         List<User> list = loginMapper.selectUserById(userId);
         if (list==null || list.size()==0) {
-            throw new ServiceException(PatentException.TOKEN_ERR);
+            log.info("token过期");
+            return false;
         }
         // 验证 token
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(list.get(0).getUserPassword())).build();
         try {
             jwtVerifier.verify(token);
         } catch (JWTVerificationException e) {
-            throw new ServiceException(PatentException.TOKEN_PARSE_ERR);
+            log.info(e.getMessage());
+            return false;
         }
         return true;
     }

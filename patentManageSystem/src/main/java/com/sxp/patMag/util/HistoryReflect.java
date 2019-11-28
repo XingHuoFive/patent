@@ -6,7 +6,6 @@ import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.enums.ProcessEnum;
 import com.sxp.patMag.service.HistoryService;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -21,17 +20,21 @@ import java.util.Date;
  * @date:2019/11/26
  * @time:11:21
  */
-
-
 @Aspect
 @Component
 public class HistoryReflect {
+
+
     @Autowired
     private RedisUtil redis ;
 
     @Autowired
     private HistoryService historyService;
 
+
+    private  static String statusCode_One = "1";
+
+    private  static String statusCode_Zero = "0";
 
     private User user;
 
@@ -54,7 +57,6 @@ public class HistoryReflect {
      * @throws IOException
      */
 
-
     @Around("getAction()")
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("佛祖显灵");
@@ -71,10 +73,6 @@ public class HistoryReflect {
             history.setHtOperation(value);
             //保存获取的操作
         }
-        //获取请求的类名
-        String className = joinPoint.getTarget().getClass().getName();
-        //获取请求的方法名
-        String methodName = method.getName();
         //请求的参数
         Object[] args = joinPoint.getArgs();
         //将参数所在的数组转换成json
@@ -85,14 +83,10 @@ public class HistoryReflect {
         history.setHtDate(date);
         history.setHtId(UUID.getUUID());
         history.setHtUserId(user.getUserId());
-        //   System.out.println(params);
-           //解析参数中的patent 成对象
+        //解析参数中的patent 成对象
         Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
-           //从reids获取之前的专利信息
+        //从redis获取之前的专利信息
         String oldObj =  redis.get("Patent" + ":" + patent.getPatentId())!=null ? redis.get("Patent" + ":" +patent.getPatentId()).toString() :null;
-
-       // System.out.println(old_obj);
-
         //解析之前的专利为对象
         Patent oldPatent = JSON.parseObject( oldObj, Patent.class);;
 
@@ -114,7 +108,7 @@ public class HistoryReflect {
             history.setHtOperation("修改撰写人");
         }
         if(ProcessEnum.CHECK.getName().equals(value)){
-            if (patent.getPatentClaim()=="0"){
+            if (patent.getPatentClaim()==statusCode_Zero){
                 System.out.println("初审");
                 history.setHtPatentId(patent.getPatentId());
                 history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
@@ -122,7 +116,7 @@ public class HistoryReflect {
                 history.setHtProcess("初审");
                 history.setHtOperation(value);
             }
-            if (patent.getPatentClaim()=="1"){
+            if (patent.getPatentClaim()==statusCode_One){
                 System.out.println("复审");
                 history.setHtPatentId(patent.getPatentId());
                 history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
@@ -141,8 +135,7 @@ public class HistoryReflect {
         }
         historyService.insertHistory(history);
         //获取用户名
-        Object proceed = joinPoint.proceed();
-        return proceed;
+        return joinPoint.proceed();
     }
 public static String getHistory(Patent patent){
 
