@@ -64,22 +64,22 @@
         ON i.patent_id = p.patent_id WHERE 1=1
         <trim prefix="AND" suffixOverrides="AND">
             <if test="indicatorName != null">
-                indicator_name = #{indicatorName} AND
+                indicator_name LIKE CONCAT(%,#{indicatorName},%) AND
             </if>
             <if test="caseNumber != null">
                 case_number = #{caseNumber} AND
             </if>
             <if test="patentSchedule != null">
-                patent_schedule = #{patentSchedule} AND
+                patent_schedule LIKE CONCAT(%,#{patentSchedule},%) AND
             </if>
             <if test="applyTime != null">
                 apply_time = #{applyTime} AND
             </if>
             <if test="createPerson != null">
-                create_person = #{createPerson} AND
+                create_person LIKE CONCAT(%,#{createPerson},%) AND
             </if>
             <if test="writePerson != null">
-                write_person = #{writePerson} AND
+                write_person LIKE CONCAT(%,#{writePerson},%) AND
             </if>
             <if test="applyNumber != null">
                 apply_number = #{applyNumber}
