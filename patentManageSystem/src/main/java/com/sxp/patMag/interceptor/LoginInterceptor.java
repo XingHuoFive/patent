@@ -60,17 +60,22 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
+        JSONObject res = new JSONObject();
         // 获取 token 中的 user id
         String userId;
         try {
             userId = JWT.decode(token).getAudience().get(0);
         } catch (JWTDecodeException j) {
-            throw new RuntimeException("401");
+            res.put("status", 1);
+            res.put("msg", "token解析错误");
+            out = response.getWriter();
+            out.append(res.toString());
+            throw new RuntimeException("token解析错误");
         }
 
-        JSONObject res = new JSONObject();
+
         // 获取 token 中的 user id
-        Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() +Md5Util.encrypt(userId));
+        Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() +Md5Util.getMd5Keys(userId));
         if (userJson == null) {
 
             res.put("status", 1);
