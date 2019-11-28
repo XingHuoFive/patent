@@ -1,7 +1,6 @@
 package com.sxp.patMag.util;
 
 import com.sxp.patMag.entity.User;
-import com.sxp.patMag.exception.CException;
 import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.LoginService;
@@ -18,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.*;
 import java.util.logging.Formatter;
+
 /**
  * @Author: Guofengzhang
  * Date:2019/11/20
@@ -34,7 +34,6 @@ public class WeLogFile {
      * 日志存放地址
      */
     private static String path = null;
-//    private static String path = "D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
 
     /**
      * 当时操作人
@@ -92,9 +91,9 @@ public class WeLogFile {
             log.info(username + "|" + methodName + "|incoming paramter:" + args.toString());
         } else {
             try {
-                throw new CException(PatentException.LOGIN_ERR);
-            } catch (CException e) {
-                e.printStackTrace();
+                throw new ServiceException(PatentException.LOGIN_ERR);
+            } catch (ServiceException e) {
+                e.getExceptionEnum().getMessage();
             }
         }
         fileHandler.close();
