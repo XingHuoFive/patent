@@ -10,6 +10,7 @@ import com.sxp.patMag.util.JsonUtils;
 import com.sxp.patMag.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,13 +44,16 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/selectPatentByPatent",method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult selectPatentByPatent(@RequestBody @Valid Patent patent){
-        //System.out.println(patent.getPatentClaim()+"======================");
+    public GeneralResult selectPatentByPatent(@RequestBody @Valid Patent patent,BindingResult bindingResult){
+
         GeneralResult generalResult = null;
+
+        // 校验对象
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
         }
-        if(patent.getCaseNumber() == null){
+
+        /*if(patent.getCaseNumber() == null){
 
         }else if(patent.getCaseNumber().length() > 16){
             return GeneralResult.build(1,"案例号过长",null);
@@ -72,13 +76,22 @@ public class PatentSelcetController {
         }else if(patent.getApplyTime().length() > 30){
             return GeneralResult.build(1,"没有符合的申请时间",null);
         }
+*/
+        // 获取数据
+        List<Patent> list = patentSelcetService.selectPatentByPatent(patent);
+        String message = null;
+        // 处理空指针异常
+        try {
+            message = bindingResult.getFieldError().getDefaultMessage();
+        }catch (NullPointerException e){
+            message = "null";
+        }
 
-        List<Patent> list =patentSelcetService.selectPatentByPatent(patent);
-
-        if(list == null){
+        // 封装数据
+        if(list == null || list.isEmpty()){
             return GeneralResult.build(1,"无匹配专利",null);
-        }else if(list.isEmpty()){
-            return GeneralResult.build(1,"无匹配专利",null);
+        }else if(message==null || message.isEmpty()){
+            return GeneralResult.build(1,message,null);
         } else{
             return GeneralResult.build(0,"成功",list);
         }
@@ -95,7 +108,9 @@ public class PatentSelcetController {
     @RequestMapping(value = "/selectPatentToUser",method = RequestMethod.POST)
     @ResponseBody
     public  GeneralResult selectPatentToUser(){
-        System.out.println(patentSelcetService.selectPatentToUser());
+
+        // System.out.println(patentSelcetService.selectPatentToUser());
+        // 获取数据并封装对象
         List<Patent> list = patentSelcetService.selectPatentToUser();
         if(list==null){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -114,16 +129,16 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/updatePatentToWritePerson",method = RequestMethod.POST)
     @ResponseBody
-    public  GeneralResult updatePatentToWritePerson(@RequestBody @Valid Patent patent,HttpServletRequest req){
+    public  GeneralResult updatePatentToWritePerson(@RequestBody @Valid Patent patent,HttpServletRequest req,BindingResult bindingResult){
 
-        //获取redis中得token值并取得用户名
+        // 获取redis中得token值并取得用户名
         String token  =  req.getHeader("data");
         String json = (String) redis.get("UserLogin" + ":" + token);
         if ( json==null||json.length()==0) {
             return GeneralResult.build(1, "无此用户");
         }
 
-        //把json转换成User对象
+        // 把json转换成User对象
         User user = JsonUtils.jsonToPojo(json, User.class);
         patent.setWritePerson(user.getUserName());
         System.out.println(patent.toString());
@@ -131,14 +146,14 @@ public class PatentSelcetController {
             return GeneralResult.build(1,"对象为空",null);
         }
 
-        //数据校验
+        // 数据校验
         if(patent.getPatentId() == null){
             return GeneralResult.build(1,"没有接收到专利ID",null);
         }else if(patent.getPatentId().length() > 50){
             return GeneralResult.build(1,"专利ID字符串过长",null);
         }
 
-        //获取数据并封装数据
+        // 获取数据并封装数据
         Integer list = patentSelcetService.updatePatentToWritePerson(patent);
         if(list==0){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -158,7 +173,10 @@ public class PatentSelcetController {
     @RequestMapping(value = "/selectPatentById",method = RequestMethod.POST)
     @ResponseBody
     public  GeneralResult selectPatentById(@RequestBody @Valid Patent patent){
+
         String patentId = patent.getPatentId();
+
+        // 获取数据并封装数据
         PatentVO list = patentSelcetService.selectPatentById(patentId);
         if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -176,6 +194,8 @@ public class PatentSelcetController {
     @RequestMapping(value = "/selectPatentToAdmin",method = RequestMethod.POST)
     @ResponseBody
     public  GeneralResult selectPatentToAdmin(){
+
+        // 获取数据并封装数据
         List<Patent> list = patentSelcetService.selectPatentToAdmin();
         if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
@@ -196,7 +216,8 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/patentExeclOut",method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult patentExeclOut(PatentVO patent, HttpServletRequest request) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public GeneralResult patentExeclOut(PatentVO patent, HttpServletRequest request, BindingResult bindingResult) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
 
         String url = "";
 
@@ -207,7 +228,7 @@ public class PatentSelcetController {
             e.printStackTrace();
         }
 
-        //返回数据
+        // 封装数据
         if(url == ""){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
@@ -225,11 +246,15 @@ public class PatentSelcetController {
     @RequestMapping(value = "/selectPatentMessage",method = RequestMethod.POST)
     @ResponseBody
     public  GeneralResult selectPatentMessage(@RequestBody User user){
+
+        //校验数据
         if(user == null){
             return GeneralResult.build(1,"对象为空",null);
         }
+
+        // System.out.println(list.toString());
+        // 获取数据并封装数据
         PatentVO list = patentSelcetService.selectPatentMessage(user);
-        System.out.println(list.toString());
         if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
