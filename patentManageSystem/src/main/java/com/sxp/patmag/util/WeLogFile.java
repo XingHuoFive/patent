@@ -1,6 +1,9 @@
 package com.sxp.patMag.util;
 
 import com.sxp.patMag.entity.User;
+import com.sxp.patMag.exception.CException;
+import com.sxp.patMag.exception.PatentException;
+import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.LoginService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -30,8 +33,8 @@ public class WeLogFile {
     /**
      * 日志存放地址
      */
-    private static String path = "D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
-
+    private static String path = null;
+//    private static String path = "D:\\idea\\patent\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
 
     /**
      * 当时操作人
@@ -59,6 +62,7 @@ public class WeLogFile {
      */
     @Around("doLog()")
     public Object writeLog(ProceedingJoinPoint joinPoint) throws Throwable {
+        getPath();
         Logger log = Logger.getLogger(path);
         log.setLevel(Level.ALL);
         //true是以追加的形式
@@ -79,14 +83,31 @@ public class WeLogFile {
         // 获取参数
         List<Object> args = Arrays.asList(joinPoint.getArgs());
         Object proceed = joinPoint.proceed();
-        if (proceed != null) {
+        if (user1 != null) {
             username = user1.getUserName();
+        }
+        if (proceed != null && user1 != null) {
             log.info(username + "|" + methodName + "|incoming paramter:" + args.toString() + "|returning value is " + proceed);
-        } else {
+        } else if (proceed == null && user1 != null) {
             log.info(username + "|" + methodName + "|incoming paramter:" + args.toString());
+        } else {
+            try {
+                throw new CException(PatentException.LOGIN_ERR);
+            } catch (CException e) {
+                e.printStackTrace();
+            }
         }
         fileHandler.close();
         return proceed;
+    }
+
+    /**
+     * 获取日志绝对路径
+     */
+    public static void getPath() {
+        File file = new File("");
+        String absolutePath = file.getAbsolutePath();
+        path = absolutePath + "\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
     }
 
     /**
