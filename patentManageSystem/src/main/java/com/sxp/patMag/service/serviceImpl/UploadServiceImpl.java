@@ -40,7 +40,6 @@ public class UploadServiceImpl implements UploadService {
             return GeneralResult.build(1, "文件为空");
         }
         String fileName = file.getOriginalFilename();
-        int size = (int) file.getSize();
 
         String projectUrl = request.getSession().getServletContext().getRealPath("/");
         String path = projectUrl + "/" + fileName;
