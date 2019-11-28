@@ -28,14 +28,12 @@ public class LoginServiceImpl implements LoginService {
     private LoginMapper loginMapper;
     @Autowired
     private RedisUtil redis;
-
     @Autowired
     private WeLogFile weLogFile;
     @Autowired
     private HistoryReflect reflect;
     @Value("${expireTime}")
     private Integer expireTime;
-
 
     @Override
     public GeneralResult login(@Valid User user) {
@@ -74,8 +72,6 @@ public class LoginServiceImpl implements LoginService {
         return GeneralResult.build(0,"success",loginMapper.selectUserById(userId));
 
     }
-
-
     @Override
     public GeneralResult invalidate(HttpServletRequest request) {
         String token = request.getHeader("data");

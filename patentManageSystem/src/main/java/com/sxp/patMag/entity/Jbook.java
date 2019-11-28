@@ -1,5 +1,6 @@
 package com.sxp.patMag.entity;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -23,11 +24,13 @@ public class Jbook {
      * URL
      */
     @Size(max = 255,min = 0,message="链接地址")
+    @NotNull(message = "交底书链接为空")
     private String jbookUrl;
     /**
      * 用户id
      */
     @Size(max = 32,min = 16,message="用户id超过范围")
+    @NotNull(message = "用户名不能为空")
     private String jbookUserId;
     /**
      * 是否是最新
