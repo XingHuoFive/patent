@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -50,6 +51,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
+        PrintWriter out = null ;
         // 从 http 请求头中取出 token
         String token = request.getHeader("data");
         HandlerMethod handlerMethod = (HandlerMethod) object;
@@ -63,22 +65,26 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         // 获取 token 中的 user id
         String userId;
+        JSONObject res = new JSONObject();
         try {
             userId = JWT.decode(token).getAudience().get(0);
         } catch (JWTDecodeException j) {
             log.info(j.getMessage());
+            responseWeb("1",j.getMessage(),response);
             return false;
         }
         // 获取 token 中的 user id
         Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() +Md5Util.getMd5Keys(userId));
         if (userJson == null) {
             log.info("token过期");
+            responseWeb("1","tokenOutOfDate",response);
             return false;
         }
 
         List<User> list = loginMapper.selectUserById(userId);
         if (list==null || list.size()==0) {
             log.info("token过期");
+            responseWeb("1","tokenOutOfDate",response);
             return false;
         }
         // 验证 token
@@ -87,12 +93,21 @@ public class LoginInterceptor implements HandlerInterceptor {
             jwtVerifier.verify(token);
         } catch (JWTVerificationException e) {
             log.info(e.getMessage());
+            responseWeb("1","tokenVerifyError",response);
             return false;
         }
         return true;
     }
 
-
+public static  void  responseWeb(String status, String msg, HttpServletResponse response) throws IOException {
+    JSONObject res = new JSONObject();
+    PrintWriter out = null ;
+    res.put("status",status);
+    res.put("msg",msg);
+    out = response.getWriter();
+    out.append(res.toString());
+    out.close();
+}
 /*
         JSONObject res = new JSONObject();
         // 获取 token 中的 user id

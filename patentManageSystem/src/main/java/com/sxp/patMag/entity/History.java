@@ -1,5 +1,6 @@
 package com.sxp.patMag.entity;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -24,6 +25,7 @@ public class History {
      * 操作用户
      **/
     @Size(max = 50,min = 0,message="用户id超过范围")
+    @NotNull(message = "操作用户不能为空")
     private String htUserId;
     /**
      * 进程
@@ -39,6 +41,7 @@ public class History {
      * 修改新
      **/
     @Size(max = 255,min = 0,message="新修改项超过范围")
+    @NotNull(message = "新修改项不能为空")
     private String htNewItem;
     /**
      * 专利ID

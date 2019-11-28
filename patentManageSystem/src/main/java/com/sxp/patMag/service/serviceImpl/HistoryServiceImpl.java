@@ -57,7 +57,10 @@ public class HistoryServiceImpl implements HistoryService {
         if (patent.getPatentId() == null) {
             return GeneralResult.build(1, "id不能为空");
         }
-        List<History> historyList = historyMapper.selectHistory(patent.getPatentId());
+        History history =new History();
+        history.setHtPatentId(patent.getPatentId());
+        history.setHtProcess(patent.getPatentSchedule());
+        List<History> historyList = historyMapper.selectHistory(history);
         if (historyList.size() == 0) {
             return GeneralResult.build(1, "查询记录为空");
         }
