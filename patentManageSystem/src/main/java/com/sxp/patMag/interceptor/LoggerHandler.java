@@ -1,14 +1,17 @@
-package com.sxp.patMag.util;
+package com.sxp.patMag.interceptor;
 
 import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.LoginService;
+import com.sxp.patMag.util.JwtUtil;
+import com.sxp.patMag.util.WeLogFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Author： Jude
@@ -25,7 +28,10 @@ public class LoggerHandler extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("data");
-        weLogFile.setUser1(mapper.selectUserById(token).get(0));
+        String userId = JwtUtil.getTokenUserId(token);
+        List<User> list = mapper.selectUserById(userId);
+        User user = list.get(0);
+        weLogFile.setUser1(user);
         return true;
     }
 }

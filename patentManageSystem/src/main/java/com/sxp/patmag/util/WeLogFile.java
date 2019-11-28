@@ -82,19 +82,18 @@ public class WeLogFile {
         // 获取参数
         List<Object> args = Arrays.asList(joinPoint.getArgs());
         Object proceed = joinPoint.proceed();
-        if (user1 != null) {
-            username = user1.getUserName();
-        }
-        if (proceed != null && user1 != null) {
-            log.info(username + "|" + methodName + "|incoming paramter:" + args.toString() + "|returning value is " + proceed);
-        } else if (proceed == null && user1 != null) {
-            log.info(username + "|" + methodName + "|incoming paramter:" + args.toString());
-        } else {
+        if (user1 == null) {
             try {
                 throw new ServiceException(PatentException.LOGIN_ERR);
             } catch (ServiceException e) {
                 e.getExceptionEnum().getMessage();
             }
+        }
+        if (proceed != null && user1 != null) {
+            username = user1.getUserName();
+            log.info(username + "|" + methodName + "|incoming paramter:" + args.toString() + "|returning value is " + proceed);
+        } else if (proceed == null && user1 != null) {
+            log.info(username + "|" + methodName + "|incoming paramter:" + args.toString());
         }
         fileHandler.close();
         return proceed;
