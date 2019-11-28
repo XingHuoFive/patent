@@ -27,19 +27,19 @@
         select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
          from  tb_patent   where  1=1
                     <if test="caseNumber != null and caseNumber.length()>0">
-                        AND case_number like CONCAT(%,#{caseNumber},%)
+                        AND case_number like CONCAT('%',#{caseNumber},'%')
                     </if>
                     <if test="applyNumber != null and applyNumber.length()>0">
-                        AND apply_number  like CONCAT(%,#{applyNumber},%)
+                        AND apply_number  like CONCAT('%',#{applyNumber},'%')
                     </if>
                     <if test="patentName != null and patentName.length()>0">
-                        AND patent_Name  like CONCAT(%,#{patentName},%)
+                        AND patent_Name  like CONCAT('%',#{patentName},'%')
                     </if>
                     <if test="createPerson != null and createPerson.length()>0">
-                        AND create_person  like CONCAT(%,#{createPerson},%)
+                        AND create_person  like CONCAT('%',#{createPerson},'%')
                     </if>
                     <if test="patentSchedule != null and patentSchedule.length()>0">
-                        AND patent_schedule  like CONCAT(%,#{patentSchedule},%)
+                        AND patent_schedule  like CONCAT('%',#{patentSchedule},'%')
                     </if>
                     <if test="applyTime != null and applyTime.length()>0">
                         AND apply_time=#{applyTime}
@@ -48,7 +48,7 @@
                         AND patent_claim=#{patentClaim}
                         AND patent_schedule="待认领"
                     </if>
-            order by apply_time,patent_claim,patentSchedule
+            order by apply_time,patent_claim,patent_schedule
         </select>
 
 
