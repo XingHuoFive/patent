@@ -47,4 +47,9 @@ public class PatentServiceImpl implements PatentService {
         return tbPatentMapper.updatePatent(patent);
     }
 
+    @Override
+    public List<String> JbookURLList(String patentId) {
+        return tbPatentMapper.getJbookURLList(patentId);
+    }
+
 }

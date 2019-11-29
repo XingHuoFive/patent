@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author lhx
  * @PackageName: com.sxp.patMag.controller
@@ -35,7 +37,7 @@ public class PatentController {
             Patent patent = tbPatentService.selectById(patentId);
             if (null == patent) {
                 generalResult.setStatus(1);
-                generalResult.setMsg("为找到对应专利");
+                generalResult.setMsg("未找到对应专利");
                 return generalResult;
             }
             generalResult.setStatus(0);
@@ -74,6 +76,32 @@ public class PatentController {
             }
             generalResult.setStatus(0);
             generalResult.setMsg("更新成功");
+        } catch (ServiceException e) {
+            generalResult.setStatus(1);
+            generalResult.setMsg(e.getMessage());
+            return generalResult;
+        }
+        return generalResult;
+    }
+
+    @GetMapping("/jbook/{patentId}")
+    public GeneralResult jbook(@PathVariable("patentId") String patentId) {
+        GeneralResult generalResult = new GeneralResult();
+        try {
+            if (null == patentId || "".equals(patentId)) {
+                generalResult.setStatus(1);
+                generalResult.setMsg("id为空，无法查询");
+                return generalResult;
+            }
+            List<String> urlList = tbPatentService.JbookURLList(patentId);
+            if (null == urlList) {
+                generalResult.setStatus(1);
+                generalResult.setMsg("未找到交底书");
+                return generalResult;
+            }
+            generalResult.setStatus(0);
+            generalResult.setMsg("查询成功");
+            generalResult.setData(urlList);
         } catch (ServiceException e) {
             generalResult.setStatus(1);
             generalResult.setMsg(e.getMessage());
