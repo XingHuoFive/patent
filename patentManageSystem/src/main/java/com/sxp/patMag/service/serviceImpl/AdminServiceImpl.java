@@ -3,12 +3,19 @@ package com.sxp.patMag.service.serviceImpl;
 import com.sxp.patMag.dao.AdminMapper;
 import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.exception.PatentException;
+import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.AdminService;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.WeLogFile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -45,7 +52,7 @@ public class AdminServiceImpl implements AdminService {
         if (patentSpare == null || patentSpare.length() == 0) {
             return GeneralResult.build(1, "通过字段参数为空");
         }
-        if ( pClaim == null || pClaim.length() == 0) {
+        if (pClaim == null || pClaim.length() == 0) {
             return GeneralResult.build(1, "认领字段参数为空");
         }
         if (pClaim.length() > 1) {
@@ -132,7 +139,7 @@ public class AdminServiceImpl implements AdminService {
      * @return 日志列表
      */
     @Override
-    public GeneralResult readLogFile(String role) {
+    public GeneralResult readLogFile(String role, HttpServletResponse response) {
         String dir = WeLogFile.readLog();
         if (dir == null || dir.length() == 0) {
             //返回查询失败
@@ -142,7 +149,21 @@ public class AdminServiceImpl implements AdminService {
             return GeneralResult.build(1, "fail", "您不是管理员，无法查看日志!");
         }
         if ("1".equals(role)) {
-            return GeneralResult.build(0, "success", dir);
+            try {
+                FileInputStream fis = new FileInputStream(dir);
+                response.setCharacterEncoding("utf-8");
+                response.setHeader("Content-Disposition", "attachment; filename=" + new File(dir).getName());
+                ServletOutputStream out = response.getOutputStream();
+                byte[] bt = new byte[1024];
+                int length = 0;
+                while ((length = fis.read(bt)) != -1) {
+                    out.write(bt, 0, length);
+                }
+                out.close();
+            } catch (IOException e) {
+                throw new ServiceException(PatentException.LOGIN_ERR);
+            }
+            return GeneralResult.build(0, "success", "");
         }
         return GeneralResult.build(0, "success", "role没收到!");
     }

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @Author： Guofengzhang
  * Date:2019/11/20
@@ -38,8 +40,8 @@ public class AdminController {
     /** 管理员读取日志 */
     @RequestMapping(value = "/readLogFile", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult readLogFile(String role) {
-        return adminService.readLogFile(role);
+    public GeneralResult readLogFile(String role, HttpServletResponse response) {
+        return adminService.readLogFile(role, response);
     }
 
 
