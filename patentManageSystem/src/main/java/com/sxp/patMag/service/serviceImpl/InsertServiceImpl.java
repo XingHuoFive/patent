@@ -9,7 +9,7 @@ import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 
 
@@ -26,6 +26,7 @@ public class InsertServiceImpl implements InsertService {
     @Autowired
     private IndicatorService indicatorService;
 
+    @Transactional(rollbackFor = Exception.class)
     @Monitor("新建专利")
     @Override
     public GeneralResult insertPatent(Patent patent) {
@@ -44,6 +45,7 @@ public class InsertServiceImpl implements InsertService {
                 patent.getIndicatorList().get(i).setIndicatorId(UUID.getUUID());
             }
             int a = insertMapper.insertPatent(patent);
+
             int b = indicatorService.save(patent.getIndicatorList());
             if (a > 0 && b > 0) {
                 return GeneralResult.build(0, "success");

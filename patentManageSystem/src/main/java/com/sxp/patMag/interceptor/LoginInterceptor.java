@@ -94,7 +94,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         try {
             jwtVerifier.verify(token);
         } catch (JWTVerificationException e) {
-            log.info("用户解析错误");
+            log.info("用户密码校验错误");
             responseWeb("110", "tokenVerifyError", response);
             return false;
         }
