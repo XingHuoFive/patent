@@ -52,4 +52,8 @@ public class PatentServiceImpl implements PatentService {
         return tbPatentMapper.submitPatent(patent);
     }
 
+    @Override
+    public int submitPatent(Patent patent) {
+        return tbPatentMapper.submitPatent(patent);
+    }
 }

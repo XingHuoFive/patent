@@ -51,6 +51,11 @@ public interface PatentService {
      */
     int updatePatent(Patent patent);
 
+    /**
+     * 管理员获取交底书下载链接
+     * @return 交底书下载链接
+     */
+    List<String> JbookURLList(String patentId);
 
     /**
      * 提交专利
