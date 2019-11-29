@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.Map;
 /**
  * @author： Jude
@@ -17,6 +18,6 @@ import java.util.Map;
 
 public interface UploadService {
 
-    public GeneralResult insertJbook( HttpServletRequest request );
+    public GeneralResult insertJbook( HttpServletRequest request ) throws IOException;
 
 }

@@ -59,7 +59,7 @@ public class HistoryReflect {
 
     @Around("getAction()")
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println("佛祖显灵");
+        System.out.println("history...");
         History history = new History();
         //从切面织入点处通过反射机制获取织入点处的方法
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();

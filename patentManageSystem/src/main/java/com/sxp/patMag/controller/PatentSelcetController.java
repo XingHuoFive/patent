@@ -12,6 +12,7 @@ import com.sxp.patMag.util.JwtUtil;
 import com.sxp.patMag.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -131,6 +132,7 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/updatePatentToWritePerson",method = RequestMethod.POST)
     @ResponseBody
+    @Transactional(rollbackFor = Exception.class)
     public  GeneralResult updatePatentToWritePerson(@RequestBody @Valid Patent patent,HttpServletRequest req,BindingResult bindingResult){
 
         // 获取redis中得token值并取得用户名

@@ -42,7 +42,7 @@
                         AND patent_schedule  like CONCAT('%',#{patentSchedule},'%')
                     </if>
                     <if test="applyTime != null and applyTime.length()>0">
-                        AND apply_time=#{applyTime}
+                        AND apply_time like  CONCAT('%',#{applyTime},'%')
                     </if>
                     <if test="patentClaim != null and  patentClaim !=1">
                         AND patent_claim=#{patentClaim}
@@ -155,5 +155,6 @@
         LEFT JOIN tb_jbook j ON j.jbook_user_id = #{userName}
         WHERE
         write_person = #{userName} AND jbook_view='1'
+        ORDER BY patent_schedule
     </select>
 </mapper>

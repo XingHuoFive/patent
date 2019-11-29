@@ -31,7 +31,7 @@ public class UploadServiceImpl implements UploadService {
     private String realBasePath;
 
     @Override
-    public GeneralResult insertJbook( HttpServletRequest request) {
+    public GeneralResult insertJbook( HttpServletRequest request) throws IOException {
 
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -72,16 +72,9 @@ public class UploadServiceImpl implements UploadService {
         if(!parent.exists()) {
             parent.mkdirs();
         }
-        try {
-            //保存文件
-            file.transferTo(dest);
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-            return GeneralResult.build(1, "failed");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return GeneralResult.build(1, "failed");
-        }
+
+        //保存文件
+        file.transferTo(dest);
 
         Jbook jbook = new Jbook();
         jbook.setJbookId(UUID.getUUID());
@@ -90,7 +83,7 @@ public class UploadServiceImpl implements UploadService {
         jbook.setJbookUserId(writePerson);
         jbook.setJbookView("1");
 
-//        uploadMapper.updateJbookStatusByPatentId(patentId);
+        uploadMapper.updateJbookStatusByPatentId(patentId);
 
         int res = uploadMapper.insertJbook(jbook);
         if (res > 0) {

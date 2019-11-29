@@ -3,6 +3,9 @@ package com.sxp.patMag.service;
 
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.util.GeneralResult;
+
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @Author： Guofengzhang
  * Date:2019/11/20
@@ -30,5 +33,5 @@ public interface AdminService {
      *
      * @return 封装数据包
      */
-    GeneralResult readLogFile(String role);
+    GeneralResult readLogFile(String role, HttpServletResponse response);
 }
