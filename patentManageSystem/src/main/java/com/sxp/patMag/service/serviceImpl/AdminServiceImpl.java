@@ -13,9 +13,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.List;
 
 /**
@@ -149,21 +148,46 @@ public class AdminServiceImpl implements AdminService {
             return GeneralResult.build(1, "fail", "您不是管理员，无法查看日志!");
         }
         if ("1".equals(role)) {
-            try {
-                FileInputStream fis = new FileInputStream(dir);
+            File file = new File(dir);
+            if (file.exists()) {
+                response.setHeader("content-type", "application/octet-stream");
+                response.setContentType("application/octet-stream");
                 response.setCharacterEncoding("utf-8");
-                response.setHeader("Content-Disposition", "attachment; filename=" + new File(dir).getName());
-                ServletOutputStream out = response.getOutputStream();
-                byte[] bt = new byte[1024];
-                int length = 0;
-                while ((length = fis.read(bt)) != -1) {
-                    out.write(bt, 0, length);
+                response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
+                byte[] buffer = new byte[1024];
+                FileInputStream fis = null;
+                BufferedInputStream bis = null;
+                try {
+                    fis = new FileInputStream(file);
+                    bis = new BufferedInputStream(fis);
+                    OutputStream os = response.getOutputStream();
+                    int i = bis.read(buffer);
+                    while (i != -1) {
+                        os.write(buffer, 0, i);
+                        i = bis.read(buffer);
+                    }
+                    System.out.println("下载成功!");
+                    return GeneralResult.build(0, "success", "下载成功!");
+                } catch (IOException e) {
+                    throw new ServiceException(PatentException.EXPORT_ERROR);
+                }finally {
+                    if (bis != null) {
+                        try {
+                            bis.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (fis != null) {
+                        try {
+                            fis.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-                out.close();
-            } catch (IOException e) {
-                throw new ServiceException(PatentException.LOGIN_ERR);
             }
-            return GeneralResult.build(0, "success", "");
+            return GeneralResult.build(0, "fail", "下载失败");
         }
         return GeneralResult.build(0, "success", "role没收到!");
     }
