@@ -82,4 +82,15 @@ public class PatentController {
         return generalResult;
     }
 
+    @PostMapping("/submit")
+    public GeneralResult submitPatent(@RequestBody Patent patent){
+        int flag = tbPatentService.submitPatent(patent);
+        if(flag != 0){
+            return GeneralResult.build(0,"成功");
+        }else {
+            return GeneralResult.build(1,"提交失败");
+        }
+
+    }
+
 }

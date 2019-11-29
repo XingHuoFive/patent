@@ -51,4 +51,11 @@ public interface PatentService {
      */
     int updatePatent(Patent patent);
 
+
+    /**
+     * 提交专利
+     * @param patent
+     * @return
+     */
+    int submitPatent(Patent patent);
 }

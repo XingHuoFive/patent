@@ -101,5 +101,9 @@
         ON i.patent_id = p.patent_id WHERE indicator_id = #{indicatorId}
     </select>
 
-
+    <update id="submitPatent">
+        UPDATE tb_patent
+        SET  patent_schedule="已提交"
+        where patent_id=#{patentId}
+    </update>
 </mapper>

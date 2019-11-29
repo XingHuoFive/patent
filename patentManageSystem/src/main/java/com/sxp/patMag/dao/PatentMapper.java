@@ -50,4 +50,12 @@ public interface PatentMapper {
      * @return 查询到的专利
      */
     Patent getById(String patentId);
+
+    /**
+     * 提交专利
+     * @param patent
+     * @return
+     */
+    int submitPatent(Patent patent);
+
 }
