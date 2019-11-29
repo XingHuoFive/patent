@@ -12,6 +12,7 @@ import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -36,6 +37,7 @@ public class HistoryServiceImpl implements HistoryService {
      * @return 插入流程历史
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public GeneralResult insertHistory(@Valid History history) {
         int a = historyMapper.insertHistory(history);
         if (a > 0) {
@@ -51,7 +53,6 @@ public class HistoryServiceImpl implements HistoryService {
 
     @Override
     public GeneralResult selectHistory(@Valid Patent patent) {
-
 
 
         if (patent.getPatentId() == null) {
