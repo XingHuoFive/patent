@@ -9,6 +9,7 @@ import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,9 +33,10 @@ public class UploadController {
      * 实现文件上传
      * */
 
+    @Transactional(rollbackFor = Exception.class)
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult fileUpload( HttpServletRequest request){
+    public GeneralResult fileUpload( HttpServletRequest request) throws IOException {
            return  uploadService.insertJbook( request);
     }
 }

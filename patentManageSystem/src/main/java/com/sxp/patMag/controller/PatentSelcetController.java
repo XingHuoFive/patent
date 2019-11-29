@@ -1,15 +1,18 @@
 package com.sxp.patMag.controller;
 
 
+import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentVO;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.JsonUtils;
+import com.sxp.patMag.util.JwtUtil;
 import com.sxp.patMag.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +39,7 @@ public class PatentSelcetController {
     @Autowired
     PatentSelcetService patentSelcetService;
     @Autowired
-    private RedisUtil redis ;
+    private LoginMapper mapper;
     /**
      * 专利查询
      * @param patent  专利对象
@@ -129,19 +132,17 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/updatePatentToWritePerson",method = RequestMethod.POST)
     @ResponseBody
+    @Transactional(rollbackFor = Exception.class)
     public  GeneralResult updatePatentToWritePerson(@RequestBody @Valid Patent patent,HttpServletRequest req,BindingResult bindingResult){
 
         // 获取redis中得token值并取得用户名
         String token  =  req.getHeader("data");
-        String json = (String) redis.get("UserLogin" + ":" + token);
-        if ( json==null||json.length()==0) {
-            return GeneralResult.build(1, "无此用户");
-        }
-
-        // 把json转换成User对象
-        User user = JsonUtils.jsonToPojo(json, User.class);
+        String userId = JwtUtil.getTokenUserId(token);
+        List<User> userList = mapper.selectUserById(userId);
+        User user = userList.get(0);
         patent.setWritePerson(user.getUserName());
         System.out.println(patent.toString());
+
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
         }
