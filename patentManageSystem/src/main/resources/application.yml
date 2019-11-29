@@ -26,6 +26,10 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+  http:
+    multipart:
+      max-file-size:  50Mb
+      maxRequestSize: 50Mb
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.sxp.patMag.entity
