@@ -155,5 +155,6 @@
         LEFT JOIN tb_jbook j ON j.jbook_user_id = #{userName}
         WHERE
         write_person = #{userName} AND jbook_view='1'
+        ORDER BY patent_schedule
     </select>
 </mapper>

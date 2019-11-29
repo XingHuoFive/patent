@@ -9,7 +9,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @MapperScan("com.sxp.patMag.dao")
 @SpringBootApplication
-@EnableTransactionManagement
+//@EnableTransactionManagement
 public class SystemApplication {
         public static void main(String[] args) {
         SpringApplication.run(SystemApplication.class,args);
