@@ -117,13 +117,17 @@ public class WeLogFile {
     }
 
     /**
-     * 获取日志绝对路径
+     * 获取日志的路径
      */
     public static void getPath() {
         File file = new File("");
         String absolutePath = file.getAbsolutePath();
         path = absolutePath + "\\patentManageSystem\\src\\main\\webapp\\file\\weLog.log";
         File file1 = new File(path);
+        File parent = file1.getParentFile();
+        if (!parent.exists()) {
+            parent.mkdirs();
+        }
         if (file1.length() > 500000000) {
             file1.delete();
         }
@@ -136,6 +140,7 @@ public class WeLogFile {
         }
         file1 = null;
         file = null;
+        
     }
 
     /**
