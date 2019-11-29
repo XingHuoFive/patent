@@ -90,7 +90,7 @@ public class UploadServiceImpl implements UploadService {
         jbook.setJbookUserId(writePerson);
         jbook.setJbookView("1");
 
-//        uploadMapper.updateJbookStatusByPatentId(patentId);
+        uploadMapper.updateJbookStatusByPatentId(patentId);
 
         int res = uploadMapper.insertJbook(jbook);
         if (res > 0) {

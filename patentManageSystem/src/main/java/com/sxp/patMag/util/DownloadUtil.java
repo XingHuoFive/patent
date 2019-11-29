@@ -70,7 +70,7 @@ public class DownloadUtil {
         String url = null;
         try {
             String hostAddress = getLocalHostLANAddress().getHostAddress();
-            url = hostAddress + ":8080/" + fileName;
+            url = hostAddress + ":8080" + fileName;
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
