@@ -57,4 +57,10 @@ public interface PatentService {
      */
     List<String> JbookURLList(String patentId);
 
+    /**
+     * 提交专利
+     * @param patent
+     * @return
+     */
+    int submitPatent(Patent patent);
 }

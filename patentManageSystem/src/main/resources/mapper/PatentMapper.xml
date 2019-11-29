@@ -105,5 +105,9 @@
         SELECT jbook_url FROM tb_jbook WHERE jbook_patent_id = #{patentId}
     </select>
 
-
+    <update id="submitPatent">
+    UPDATE tb_patent
+    SET  patent_schedule="已提交"
+    where patent_id=#{patentId}
+</update>
 </mapper>
