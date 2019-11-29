@@ -133,17 +133,17 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public GeneralResult readLogFile(String role) {
-        List<String> list = WeLogFile.readLog();
-        if (list == null || list.size() == 0) {
+        String dir = WeLogFile.readLog();
+        if (dir == null || dir.length() == 0) {
             //返回查询失败
-            return GeneralResult.build(1, "fail");
+            return GeneralResult.build(1, "fail", "查询失败");
         }
-        if ("0".equals(role) || role == null) {
+        if ("0".equals(role)) {
             return GeneralResult.build(1, "fail", "您不是管理员，无法查看日志!");
         }
         if ("1".equals(role)) {
-            return GeneralResult.build(0, "success", list);
+            return GeneralResult.build(0, "success", dir);
         }
-        return GeneralResult.build(0, "success", "日志正在维护中...");
+        return GeneralResult.build(0, "success", "role没收到!");
     }
 }
