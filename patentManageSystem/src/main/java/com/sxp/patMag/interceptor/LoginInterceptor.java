@@ -64,30 +64,29 @@ public class LoginInterceptor implements HandlerInterceptor {
             }
         }
         if(null == token){
-            responseWeb("1", "tokenIsNull", response);
+            responseWeb("110", "tokenIsNull", response);
             return false;
         }
         // 获取 token 中的 user id
         String userId;
-        JSONObject res = new JSONObject();
         try {
             userId = JWT.decode(token).getAudience().get(0);
         } catch (JWTDecodeException j) {
             log.info("token解析错误");
-            responseWeb("1", "tokenDecodeError", response);
+            responseWeb("110", "tokenDecodeError", response);
             return false;
         }
         // 获取 token 中的 user id
         Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() + Md5Util.getMd5Keys(userId));
         if (userJson == null) {
             log.info("token过期");
-            responseWeb("1", "tokenOutOfDate", response);
+            responseWeb("110", "tokenOutOfDate", response);
             return false;
         }
         List<User> list = loginMapper.selectUserById(userId);
         if (list == null || list.size() == 0) {
             log.info("用户不存在");
-            responseWeb("1", "NoSuchUser", response);
+            responseWeb("110", "NoSuchUser", response);
             return false;
         }
         // 验证 token
@@ -95,8 +94,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         try {
             jwtVerifier.verify(token);
         } catch (JWTVerificationException e) {
-            log.info(e.getMessage());
-            responseWeb("1", "tokenVerifyError", response);
+            log.info("用户解析错误");
+            responseWeb("110", "tokenVerifyError", response);
             return false;
         }
         return true;
