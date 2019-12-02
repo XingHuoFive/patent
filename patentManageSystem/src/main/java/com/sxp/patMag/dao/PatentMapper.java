@@ -57,4 +57,12 @@ public interface PatentMapper {
      * @return 查询到的交底书
      */
     List<String> getJbookURLList(String patentId);
+
+
+    /**
+     * 提交专利
+     * @param patent
+     * @return
+     */
+    int submitPatent(Patent patent);
 }

@@ -152,8 +152,8 @@
         FROM
         tb_patent p
         LEFT JOIN tb_indicator i ON p.patent_id = i.patent_id
-        LEFT JOIN tb_jbook j ON j.jbook_user_id = #{userName}
+        LEFT JOIN tb_jbook j ON j.jbook_user_id = p.patent_id
         WHERE
-        write_person = #{userName} AND jbook_view='1'
+        write_person = #{userName}
     </select>
 </mapper>

@@ -59,7 +59,7 @@ public class HistoryReflect {
 
     @Around("getAction()")
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println("佛祖显灵");
+        System.out.println("history...");
         History history = new History();
         //从切面织入点处通过反射机制获取织入点处的方法
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
@@ -73,6 +73,7 @@ public class HistoryReflect {
             history.setHtOperation(value);
             //保存获取的操作
         }
+        System.out.println(value);
         //请求的参数
         Object[] args = joinPoint.getArgs();
         //将参数所在的数组转换成json
@@ -108,7 +109,7 @@ public class HistoryReflect {
             history.setHtOperation("修改撰写人");
         }
         if(ProcessEnum.CHECK.getName().equals(value)){
-            if (patent.getPatentClaim()==statusCode_Zero){
+            if (patent.getPatentClaim().equals(statusCode_Zero)){
                 System.out.println("初审");
                 history.setHtPatentId(patent.getPatentId());
                 history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
@@ -116,13 +117,51 @@ public class HistoryReflect {
                 history.setHtProcess("初审");
                 history.setHtOperation(value);
             }
-            if (patent.getPatentClaim()==statusCode_One){
+            if (patent.getPatentClaim().equals(statusCode_One)){
                 System.out.println("复审");
                 history.setHtPatentId(patent.getPatentId());
                 history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
                 history.setHtOldItem("专利进度 : 编写中");
                 history.setHtProcess("复审");
                 history.setHtOperation(value);
+            }
+            if (patent.getSpare().equals(statusCode_Zero)){
+
+                if (patent.getPatentClaim() .equals(statusCode_Zero)){
+                    System.out.println("初审驳回");
+                    history.setHtPatentId(patent.getPatentId());
+                    history.setHtNewItem("专利进度 : 未审核");
+                    history.setHtOldItem("专利进度 : 未审核");
+                    history.setHtProcess("初审驳回");
+                    history.setHtOperation(value);
+                }
+                if (patent.getPatentClaim() .equals(statusCode_One)){
+                    System.out.println("复审驳回");
+                    history.setHtPatentId(patent.getPatentId());
+                    history.setHtNewItem("专利进度 : 编写中");
+                    history.setHtOldItem("专利进度 : 编写中");
+                    history.setHtProcess("复审驳回");
+                    history.setHtOperation(value);
+                }
+
+            }
+            if (patent.getSpare().equals(statusCode_One)){
+               if (patent.getPatentClaim() .equals(statusCode_Zero)){
+                   System.out.println("初审通过");
+                   history.setHtPatentId(patent.getPatentId());
+                   history.setHtNewItem("专利进度 : 待认领");
+                   history.setHtOldItem("专利进度 : 未审核");
+                   history.setHtProcess("初审通过");
+                   history.setHtOperation(value);
+               }
+                if (patent.getPatentClaim() .equals(statusCode_One)){
+                    System.out.println("复审通过");
+                    history.setHtPatentId(patent.getPatentId());
+                    history.setHtNewItem("专利进度 : 待提交");
+                    history.setHtOldItem("专利进度 : 编写中");
+                    history.setHtProcess("复审通过");
+                    history.setHtOperation(value);
+                }
             }
         }
         if(ProcessEnum.UPDATE.getName().equals(value)){
@@ -131,7 +170,15 @@ public class HistoryReflect {
             history.setHtNewItem(getHistory(patent));
             history.setHtOldItem(getHistory(oldPatent));
             history.setHtProcess(value);
-            history.setHtOperation("修改字段");
+            history.setHtOperation("修改专利");
+        }
+        if(ProcessEnum.SUBMIT.getName().equals(value)){
+
+            history.setHtPatentId(patent.getPatentId());
+            history.setHtNewItem(getHistory(patent));
+            history.setHtOldItem(getHistory(oldPatent));
+            history.setHtProcess(value);
+            history.setHtOperation("提交专利");
         }
         historyService.insertHistory(history);
         //获取用户名

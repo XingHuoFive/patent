@@ -27,7 +27,7 @@ public class HistoryController {
     @Autowired
     private HistoryService historyService ;
     /**
-     * 实现文件上传
+     * 获取历史记录
      *
      * */
 

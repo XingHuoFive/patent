@@ -1,6 +1,7 @@
 package com.sxp.patMag.service.serviceImpl;
 
 
+import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.dao.PatentMapper;
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
@@ -43,6 +44,7 @@ public class PatentServiceImpl implements PatentService {
     }
 
     @Override
+    @Monitor("修改专利")
     public int updatePatent(Patent patent) {
         return tbPatentMapper.updatePatent(patent);
     }
@@ -52,4 +54,9 @@ public class PatentServiceImpl implements PatentService {
         return tbPatentMapper.getJbookURLList(patentId);
     }
 
+    @Override
+    @Monitor("提交")
+    public int submitPatent(Patent patent) {
+        return tbPatentMapper.submitPatent(patent);
+    }
 }
