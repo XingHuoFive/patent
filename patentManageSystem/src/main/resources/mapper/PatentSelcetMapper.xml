@@ -56,7 +56,7 @@
         WHEN patent_schedule like '待提交%' then 5
         WHEN patent_schedule like '已提交%' then 6
         end
-        asc
+        asc,apply_time desc
     </select>
 
 
@@ -92,7 +92,7 @@
         WHEN patent_schedule like '待提交%' then 5
         WHEN patent_schedule like '已提交%' then 6
         end
-        asc
+        asc,apply_time desc
     </select>
 
 
@@ -111,28 +111,28 @@
     <select id="selectPatentToUser" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
         select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
            from  tb_patent   where patent_claim="0" order by case
-WHEN patent_schedule like '未审核%' then 1
-WHEN patent_schedule like '未通过%' then 2
-WHEN patent_schedule like '待认领%' then 3
-WHEN patent_schedule like '编写中%' then 4
-WHEN patent_schedule like '待提交%' then 5
-WHEN patent_schedule like '已提交%' then 6
-end
-asc
+        WHEN patent_schedule like '未审核%' then 1
+        WHEN patent_schedule like '未通过%' then 2
+        WHEN patent_schedule like '待认领%' then 3
+        WHEN patent_schedule like '编写中%' then 4
+        WHEN patent_schedule like '待提交%' then 5
+        WHEN patent_schedule like '已提交%' then 6
+        end
+        asc,apply_time desc
     </select>
 
     <!--admin用户查询-->
     <select id="selectPatentToAdmin" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.Patent" >
         select  patent_id,case_number,apply_number,apply_time,write_person,apply_person,create_person,patent_name,patent_schedule,patent_claim,patent_remarks
            from  tb_patent order by case
-WHEN patent_schedule like '未审核%' then 1
-WHEN patent_schedule like '未通过%' then 2
-WHEN patent_schedule like '待认领%' then 3
-WHEN patent_schedule like '编写中%' then 4
-WHEN patent_schedule like '待提交%' then 5
-WHEN patent_schedule like '已提交%' then 6
-end
-asc
+        WHEN patent_schedule like '未审核%' then 1
+        WHEN patent_schedule like '未通过%' then 2
+        WHEN patent_schedule like '待认领%' then 3
+        WHEN patent_schedule like '编写中%' then 4
+        WHEN patent_schedule like '待提交%' then 5
+        WHEN patent_schedule like '已提交%' then 6
+        end
+        asc,apply_time desc
 </select>
 
     <!--查询详细或审核信息-->
@@ -195,6 +195,6 @@ asc
             WHEN patent_schedule like '待提交%' then 5
             WHEN patent_schedule like '已提交%' then 6
             end
-        asc
+        asc,apply_time desc
     </select>
 </mapper>
