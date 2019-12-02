@@ -18,4 +18,5 @@ public interface HistoryService {
 
      GeneralResult selectHistory(Patent patent);
 
+     GeneralResult selectHistoryByPatentId( String patentId);
 }

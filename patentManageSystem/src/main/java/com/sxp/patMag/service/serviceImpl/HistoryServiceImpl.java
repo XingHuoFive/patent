@@ -69,4 +69,21 @@ public class HistoryServiceImpl implements HistoryService {
     }
 
 
+    @Override
+    public GeneralResult selectHistoryByPatentId( String patentId) {
+
+
+        if (patentId == null) {
+            return GeneralResult.build(1, "id不能为空");
+        }
+
+        List<History> historyList = historyMapper.selectHistoryByPatentId(patentId);
+        if (historyList.size() == 0) {
+            return GeneralResult.build(1, "查询记录为空");
+        }
+        return GeneralResult.build(0, "success", historyList);
+    }
+
+
+
 }
