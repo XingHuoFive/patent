@@ -114,13 +114,13 @@
 
     <select id="getFileURLByPatentId" resultType="com.sxp.patMag.entity.PatentFileMaintain">
         SELECT
-            f.file_url,
-            zd.zd_file
+            f.file_url patentfileURL,
+            zd.zd_file zdFile
         FROM
             tb_file f
             LEFT JOIN tb_zd zd ON f.file_zd_id = zd.zd_id
         WHERE
-	        f.file_patent_id = #{patendId}
+	        f.file_patent_id = #{patentId}
     </select>
 
 
