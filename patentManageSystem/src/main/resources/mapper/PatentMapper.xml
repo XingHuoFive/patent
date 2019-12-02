@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.PatentMapper">
+    <insert id="uploadFile">
+        INSERT INTO tb_file ('file_id', 'file_url', 'file_zd_id', 'file_patent_id') VALUES (#{fileId}, #{patentfileURL}, #{zdId}, #{patentId})
+    </insert>
 
     <update id="updatePatent">
         UPDATE tb_patent
@@ -105,9 +108,31 @@
         SELECT jbook_url FROM tb_jbook WHERE jbook_patent_id = #{patentId}
     </select>
 
+    <select id="getMaintainList" resultType="java.lang.String">
+        SELECT zd_value FROM tb_zd WHERE zd_file <![CDATA[ <> ]]> '无'
+    </select>
+
+    <select id="getFileURLByPatentId" resultType="com.sxp.patMag.entity.PatentFileMaintain">
+        SELECT
+            f.file_url,
+            zd.zd_file
+        FROM
+            tb_file f
+            LEFT JOIN tb_zd zd ON f.file_zd_id = zd.zd_id
+        WHERE
+	        f.file_patent_id = #{patendId}
+    </select>
+
+
     <update id="submitPatent">
     UPDATE tb_patent
     SET  patent_schedule="已提交"
     where patent_id=#{patentId}
-</update>
+    </update>
+
+    <update id="noSubmitPatent">
+    UPDATE tb_patent
+    SET  patent_schedule="编写中"
+    where patent_id=#{patentId}
+    </update>
 </mapper>

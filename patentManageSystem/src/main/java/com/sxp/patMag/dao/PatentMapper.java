@@ -3,6 +3,8 @@ package com.sxp.patMag.dao;
 
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.entity.PatentFileMaintain;
+import com.sxp.patMag.entity.PatentMaintain;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -65,4 +67,30 @@ public interface PatentMapper {
      * @return
      */
     int submitPatent(Patent patent);
+
+    /**
+     * 驳回提交的专利
+     * @param patent
+     * @return
+     */
+    int noSubmitPatent(Patent patent);
+
+    /**
+     * 获取数据维护阶段的字典值
+     * @return 字典值列表
+     */
+    List<String> getMaintainList();
+
+    /**
+     * 根据专利id查询文件下载链接
+     * @return 下载链及对应文件类型
+     */
+    List<PatentFileMaintain> getFileURLByPatentId(PatentFileMaintain patentFileMaintain);
+
+    /**
+     * 上传文件维护阶段文件
+     * @param patentMaintain 要上传的文件内容
+     * @return 影响行数
+     */
+    int uploadFile(PatentMaintain patentMaintain);
 }
