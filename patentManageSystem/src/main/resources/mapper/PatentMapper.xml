@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.PatentMapper">
-    <insert id="uploadFile">
+    <insert id="uploadFile" parameterType="com.sxp.patMag.entity.PatentMaintain">
         INSERT INTO tb_file ('file_id', 'file_url', 'file_zd_id', 'file_patent_id') VALUES (#{fileId}, #{patentfileURL}, #{zdId}, #{patentId})
     </insert>
 

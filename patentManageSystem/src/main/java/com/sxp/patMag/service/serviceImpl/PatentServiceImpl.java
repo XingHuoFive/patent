@@ -43,17 +43,17 @@ public class PatentServiceImpl implements PatentService {
     @Value("${file.uploadFolder}")
     private String realBasePath;
 
-    private static final Map<String, Integer> fileTypeMap = new HashMap<>();
+    private static final Map<String, String> fileTypeMap = new HashMap<>();
 
     static {
-        fileTypeMap.put("申请文件", 3);
-        fileTypeMap.put("受理通知书", 4);
-        fileTypeMap.put("初审合格通知书", 5);
-        fileTypeMap.put("公布及进入实审通知书", 6);
-        fileTypeMap.put("答复文件", 7);
-        fileTypeMap.put("授权办登通知书", 8);
-        fileTypeMap.put("驳回通知书", 9);
-        fileTypeMap.put("证书", 10);
+        fileTypeMap.put("申请文件", "3");
+        fileTypeMap.put("受理通知书", "4");
+        fileTypeMap.put("初审合格通知书", "5");
+        fileTypeMap.put("公布及进入实审通知书", "6");
+        fileTypeMap.put("答复文件", "7");
+        fileTypeMap.put("授权办登通知书", "8");
+        fileTypeMap.put("驳回通知书", "9");
+        fileTypeMap.put("证书", "10");
     }
 
     @Override
