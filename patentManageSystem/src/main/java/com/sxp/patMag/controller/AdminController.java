@@ -5,10 +5,7 @@ import com.sxp.patMag.service.AdminService;
 import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -38,9 +35,9 @@ public class AdminController {
     }
 
     /** 管理员读取日志 */
-    @RequestMapping(value = "/readLogFile", method = RequestMethod.POST)
+    @RequestMapping(value = "/readLogFile/{role}", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult readLogFile(String role, HttpServletResponse response) {
+    public GeneralResult readLogFile(@PathVariable String role, HttpServletResponse response) {
         return adminService.readLogFile(role, response);
     }
 
