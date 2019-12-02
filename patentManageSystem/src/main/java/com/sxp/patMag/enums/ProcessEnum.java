@@ -7,7 +7,7 @@ package com.sxp.patMag.enums;
  */
 public  enum ProcessEnum {
 
-    NEW("新建专利"), CLAIM("专利认领"), CHECK("审核"), UPDATE("修改字段"),USERLOGIN("UserLogin:");
+    NEW("新建专利"), CLAIM("专利认领"), CHECK("审核"), UPDATE("修改专利"),USERLOGIN("UserLogin:"),SUBMIT("提交");
     // 成员变量
     /**
      * name
