@@ -1,5 +1,6 @@
 package com.sxp.patMag.service.serviceImpl;
 
+import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.dao.AdminMapper;
 import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.entity.Patent;
@@ -34,6 +35,7 @@ public class AdminServiceImpl implements AdminService {
      * @return 修改结果
      */
     @Override
+    @Monitor("审核")
     public GeneralResult checkPatent(Patent patent) {
         System.out.println(patent);
         if (patent == null) {
