@@ -42,4 +42,13 @@ public class HistoryController {
 
            return  historyService.selectHistory(patent);
     }
+
+
+    @RequestMapping(value = "/getHistoryByPatentId/{patentId}", method = RequestMethod.POST)
+    @ResponseBody
+    public GeneralResult getHistory(@PathVariable String patentId){
+
+
+        return  historyService.selectHistoryByPatentId(patentId);
+    }
 }

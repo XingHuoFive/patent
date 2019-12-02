@@ -52,7 +52,8 @@ public class LoginServiceImpl implements LoginService {
         //权限存储
         user.setUserRole(list.get(0).getUserRole());
         user.setUserId(list.get(0).getUserId());
-        if (redis.get(ProcessEnum.USERLOGIN.name() +userMd5)==null){
+        String key = ProcessEnum.USERLOGIN.getName() +userMd5;
+        if (redis.get(key)==null){
         token= JwtUtil.getToken(list.get(0));
         //把用户信息保存到redis，key就是token，value就是用户信息
         redis.set(ProcessEnum.USERLOGIN.getName() + userMd5, token);
@@ -70,7 +71,6 @@ public class LoginServiceImpl implements LoginService {
         String token = request.getHeader("data");
         String userId =JwtUtil.getTokenUserId(token);
         return GeneralResult.build(0,"success",loginMapper.selectUserById(userId));
-
     }
     @Override
     public GeneralResult invalidate(HttpServletRequest request) {
