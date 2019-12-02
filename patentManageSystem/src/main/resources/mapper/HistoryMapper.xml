@@ -32,6 +32,20 @@ INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`,
     </insert>
 
 
+ <!--   <select id="selectHistory" parameterType="com.sxp.patMag.entity.History"  resultMap="HistoryMap" >
+        select hs.ht_id, hs.ht_date,hs.ht_user_id,hs.ht_process,hs.ht_old_item,hs.ht_new_item,hs.ht_patent_id,hs.ht_operation,us.user_name
+            ,pt.patent_name,pt.patent_id
+         from  tb_history hs  join tb_user us
+          on  hs.ht_user_id = us.user_id
+          join tb_patent pt
+          on  pt.patent_id = hs.ht_patent_id
+         where
+         hs.ht_patent_id  = #{htPatentId}
+         and hs.ht_process  LIKE CONCAT('%',#{htProcess},'%')
+         order by hs.ht_date desc
+    </select>
+-->
+
     <select id="selectHistory" parameterType="com.sxp.patMag.entity.History"  resultMap="HistoryMap" >
         select hs.ht_id, hs.ht_date,hs.ht_user_id,hs.ht_process,hs.ht_old_item,hs.ht_new_item,hs.ht_patent_id,hs.ht_operation,us.user_name
             ,pt.patent_name,pt.patent_id
@@ -41,7 +55,8 @@ INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`,
           on  pt.patent_id = hs.ht_patent_id
          where
          hs.ht_patent_id  = #{htPatentId}
-         and hs.ht_process  = #{htProcess}
+         and hs.ht_process  LIKE CONCAT('%',#{htProcess},'%')
+         order by hs.ht_date desc
     </select>
 
    <!-- <select id="selectHistory" parameterType="java.lang.String"  resultType="com.sxp.patMag.entity.History" >

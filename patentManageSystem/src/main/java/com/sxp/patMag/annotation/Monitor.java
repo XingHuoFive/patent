@@ -1,9 +1,9 @@
 package com.sxp.patMag.annotation;
 
 /**
- * Author： Jude
- * Date:2019/11/20
- * Time:19:32
+ * @author： Jude
+ * @date:2019/11/20
+ * @time:19:32
  */
 
 import java.lang.annotation.*;
