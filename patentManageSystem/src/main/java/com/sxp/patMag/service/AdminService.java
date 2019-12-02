@@ -34,4 +34,6 @@ public interface AdminService {
      * @return 封装数据包
      */
     GeneralResult readLogFile(String role, HttpServletResponse response);
+
+    GeneralResult getLogPath(String role);
 }

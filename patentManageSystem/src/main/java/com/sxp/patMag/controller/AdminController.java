@@ -5,10 +5,7 @@ import com.sxp.patMag.service.AdminService;
 import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,17 +28,23 @@ public class AdminController {
     }
 
     /** 根据专利的id查询专利所属的交底书 */
-    @RequestMapping(value = "/selectAllFilesByPatentId", method = RequestMethod.POST)
+    @RequestMapping(value = "/selectAllFilesByPatentId/{patentId}", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult selectAllFilesByPatentId(String patentId) {
+    public GeneralResult selectAllFilesByPatentId(@PathVariable("patentId") String patentId) {
         return adminService.selectAllFilesByPatentId(patentId);
     }
 
     /** 管理员读取日志 */
-    @RequestMapping(value = "/readLogFile", method = RequestMethod.POST)
+    @RequestMapping(value = "/readLogFile/{role}", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult readLogFile(String role, HttpServletResponse response) {
+    public GeneralResult readLogFile(@PathVariable("role") String role, HttpServletResponse response) {
         return adminService.readLogFile(role, response);
+    }
+
+    @RequestMapping(value = "/getLogPath/{role}", method = RequestMethod.POST)
+    @ResponseBody
+    public GeneralResult getLogPath(@PathVariable("role") String role) {
+        return adminService.getLogPath(role);
     }
 
 

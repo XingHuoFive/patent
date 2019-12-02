@@ -6,6 +6,7 @@ import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.AdminService;
+import com.sxp.patMag.util.DownloadUtil;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.WeLogFile;
 import org.springframework.stereotype.Service;
@@ -86,7 +87,7 @@ public class AdminServiceImpl implements AdminService {
         if (patentSpareInt == 0 && patentClaimInt == 0) {
             patent.setPatentSchedule("未通过");
         }
-        // 如果该专利审核没通过，就将它的进度修改成未通过
+        // 如果该专利审核没通过，就将它的进度修改成编写中
         if (patentSpareInt == 0 && patentClaimInt == 1) {
             patent.setPatentSchedule("编写中");
         }
@@ -190,5 +191,14 @@ public class AdminServiceImpl implements AdminService {
             return GeneralResult.build(0, "fail", "下载失败");
         }
         return GeneralResult.build(0, "success", "role没收到!");
+    }
+
+    @Override
+    public GeneralResult getLogPath(String role) {
+        if ("1".equals(role)) {
+            String url = DownloadUtil.downloadByUrl("/admin/readLogFile");
+            return GeneralResult.build(0, "success", url);
+        }
+        return GeneralResult.build(1, "您不是管理员");
     }
 }
