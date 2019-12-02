@@ -186,7 +186,7 @@ asc
         LEFT JOIN tb_indicator i ON p.patent_id = i.patent_id
         LEFT JOIN tb_jbook j ON j.jbook_user_id = p.patent_id
         WHERE
-        write_person = #{userName} and apply_person=#{userName}
+        write_person = #{userName} or apply_person=#{userName}
         order by case
             WHEN patent_schedule like '未审核%' then 1
             WHEN patent_schedule like '未通过%' then 2
