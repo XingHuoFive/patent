@@ -83,10 +83,9 @@ public class PatentServiceImpl implements PatentService {
     }
 
     @Override
-    public int submitPatent(Patent patent) {
-        return tbPatentMapper.submitPatent(patent);
+    public List<String> JbookURLList(String patentId) {
+        return tbPatentMapper.getJbookURLList(patentId);
     }
-
 
     @Override
     @Monitor("提交")
