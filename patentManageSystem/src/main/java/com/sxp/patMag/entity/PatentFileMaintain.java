@@ -26,4 +26,47 @@ public class PatentFileMaintain {
      * 专利文件类型
      */
     private String zdFile;
+
+    public PatentFileMaintain() {
+    }
+
+    public PatentFileMaintain(String patentId, String patentfileURL, String zdFile) {
+        this.patentId = patentId;
+        this.patentfileURL = patentfileURL;
+        this.zdFile = zdFile;
+    }
+
+    public String getPatentId() {
+        return patentId;
+    }
+
+    public void setPatentId(String patentId) {
+        this.patentId = patentId;
+    }
+
+    public String getPatentfileURL() {
+        return patentfileURL;
+    }
+
+    public void setPatentfileURL(String patentfileURL) {
+        this.patentfileURL = patentfileURL;
+    }
+
+    public String getZdFile() {
+        return zdFile;
+    }
+
+    public void setZdFile(String zdFile) {
+        this.zdFile = zdFile;
+    }
+
+    @Override
+    public String toString() {
+        return "PatentFileMaintain{" +
+                "patentId='" + patentId + '\'' +
+                ", patentfileURL='" + patentfileURL + '\'' +
+                ", zdFile='" + zdFile + '\'' +
+                '}';
+    }
+    
 }

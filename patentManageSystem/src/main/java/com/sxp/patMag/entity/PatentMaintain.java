@@ -25,7 +25,7 @@ public class PatentMaintain {
     /**
      * 对应字典id
      */
-    private int zdId;
+    private String zdId;
 
     /**
      * 文件id
@@ -35,7 +35,7 @@ public class PatentMaintain {
     public PatentMaintain() {
     }
 
-    public PatentMaintain(String patentId, String patentfileURL, int zdId, String fileId) {
+    public PatentMaintain(String patentId, String patentfileURL, String zdId, String fileId) {
         this.patentId = patentId;
         this.patentfileURL = patentfileURL;
         this.zdId = zdId;
@@ -58,11 +58,11 @@ public class PatentMaintain {
         this.patentfileURL = patentfileURL;
     }
 
-    public int getZdId() {
+    public String getZdId() {
         return zdId;
     }
 
-    public void setZdId(int zdId) {
+    public void setZdId(String zdId) {
         this.zdId = zdId;
     }
 
@@ -79,7 +79,7 @@ public class PatentMaintain {
         return "PatentMaintain{" +
                 "patentId='" + patentId + '\'' +
                 ", patentfileURL='" + patentfileURL + '\'' +
-                ", zdId=" + zdId +
+                ", zdId='" + zdId + '\'' +
                 ", fileId='" + fileId + '\'' +
                 '}';
     }
