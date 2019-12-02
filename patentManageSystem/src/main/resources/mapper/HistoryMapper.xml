@@ -57,7 +57,7 @@ INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`,
         <if test="htProcess != null and htProcess.length()>0">
             AND hs.ht_process  LIKE CONCAT('%',#{htProcess},'%')
         </if>
-         hs.ht_patent_id  = #{htPatentId}
+        AND hs.ht_patent_id  = #{htPatentId}
         order by hs.ht_date desc
 
 

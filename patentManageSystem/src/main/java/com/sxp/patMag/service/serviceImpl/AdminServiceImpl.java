@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Author： Guofengzhang
@@ -158,7 +159,7 @@ public class AdminServiceImpl implements AdminService {
                 FileInputStream fis = null;
                 BufferedInputStream bis = null;
 
-            return     toArrayByInputStreamReader1(dir);
+                return toArrayByInputStreamReader1(dir);
 
                /* try {
                     fis = new FileInputStream(file);
@@ -197,8 +198,8 @@ public class AdminServiceImpl implements AdminService {
 
     public static GeneralResult toArrayByInputStreamReader1(String name) {
         // 使用ArrayList来存储每行读取到的字符串
-          List<String> arrayList = new ArrayList<>();
-          List<LogPo> logList = new ArrayList<>();
+        List<String> arrayList = new ArrayList<>();
+        List<LogPo> logList = new ArrayList<>();
         try {
             File file = new File(name);
             InputStreamReader inputReader = new InputStreamReader(new FileInputStream(file));
@@ -216,10 +217,29 @@ public class AdminServiceImpl implements AdminService {
         // 对ArrayList中存储的字符串进行处理
         int length = arrayList.size();
         int[] array = new int[length];
+
+        Comparator<LogPo> comparator = new Comparator<LogPo>() {
+            @Override
+            public int compare(LogPo log1, LogPo log2) {
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date sd2 = null;
+                Date sd1 = null;
+                try {
+                    sd1 = df.parse(log1.getCreateTime());
+                    sd2 = df.parse(log2.getCreateTime());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return sd1.before(sd2) ? 1 : -1;
+            }
+        };
+
         for (int i = 0; i < length; i++) {
+
+
             String s = arrayList.get(i);
 
-            String[] one =s.split("--");
+            String[] one = s.split("--");
 /*
             System.out.println("-------------------------------------");
         for (int k =0 ;k<one.length;k++){
@@ -232,65 +252,64 @@ public class AdminServiceImpl implements AdminService {
             logPo.setCreateTime(one[0]);
             logPo.setUserName(one[2]);
 
-            if (one[3].contains("select") ||one[3].contains("get")  ||one[3].contains("list")  ||one[3].contains("List")   ){
- 
-                logPo.setItem("查询"+retString(one[3]));
-                logPo.setOperation(one[3].replace(one[3].substring(4,5),"**"));
+            if (one[3].contains("select") || one[3].contains("get") || one[3].contains("list") || one[3].contains("List")) {
+
+                logPo.setItem("查询" + retString(one[3]));
+                logPo.setOperation(one[3].replace(one[3].substring(3, one[3].length() - 1), "****"));
             }
-            if (one[3].contains("update")   ){
-                logPo.setItem("修改"+retString(one[3]));
-                logPo.setOperation(one[3].replace(one[3].substring(4,5),"**"));
+            if (one[3].contains("update")) {
+                logPo.setItem("修改" + retString(one[3]));
+                logPo.setOperation(one[3].replace(one[3].substring(3, one[3].length() - 1), "****"));
             }
-            if (one[3].contains("login")  ){
+            if (one[3].contains("login")) {
                 logPo.setItem("用户登录");
-                logPo.setOperation(one[3].replace(one[3].substring(4,5),"**"));
+                logPo.setOperation(one[3].replace(one[3].substring(3, one[3].length() - 1), "****"));
             }
-            if (one[3].contains("add") ||one[3].contains("insert") ||one[3].contains("list")  ){
-                logPo.setItem("新增"+retString(one[3]));
-                logPo.setOperation(one[3].replace(one[3].substring(4,5),"**"));
+            if (one[3].contains("add") || one[3].contains("insert") || one[3].contains("list")) {
+                logPo.setItem("新增" + retString(one[3]));
+                logPo.setOperation(one[3].replace(one[3].substring(3, one[3].length() - 1), "****"));
             }
-            if (one[3].contains("check") ){
-                logPo.setItem("审核"+retString(one[3]));
-                logPo.setOperation(one[3].replace(one[3].substring(4,5),"**"));
+            if (one[3].contains("check")) {
+                logPo.setItem("审核" + retString(one[3]));
+                logPo.setOperation(one[3].replace(one[3].substring(3, one[3].length() - 1), "****"));
             }
-            if (one[3].contains("export")   ){
+            if (one[3].contains("export")) {
                 logPo.setItem("导出");
             }
-            if (one[3].contains("submit")  ){
+            if (one[3].contains("submit")) {
                 logPo.setItem("提交");
             }
-            if (one[3].contains("upload")   ){
+            if (one[3].contains("upload")) {
                 logPo.setItem("上传文件");
             }
-            if (one[3].contains("read")   ){/*
-                logPo.setItem("读取日志");
-                logPo.setOperation(one[3]);*/
+            if (one[3].contains("read")) {
                 continue;
             }
 
 
             logList.add(logPo);
 
-           // array[i] = s;
+            // array[i] = s;
         }
         // 返回数组
-        return GeneralResult.build(0,"success",logList);
+        Collections.sort(logList, comparator);
+        List<LogPo> list = logList.subList(0, 50);
+        return GeneralResult.build(0, "success", list);
     }
 
-
-    public static   String retString(String str){
-        if (str.contains("History") ){
+    public static String retString(String str) {
+        if (str.contains("History")) {
             return "历史记录";
         }
-        if (str.contains("Indicator") ){
+        if (str.contains("Indicator")) {
             return "指标";
         }
-        if (str.contains("Jbook") ){
+        if (str.contains("Jbook")) {
             return "交底书";
         }
-        if (str.contains("Patent") ){
+        if (str.contains("Patent")) {
             return "专利";
         }
-        return  "";
+        return "";
     }
 }
