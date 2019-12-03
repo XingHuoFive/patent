@@ -99,6 +99,7 @@ public class Patent {
             ", \"patentSchedule\" : \"" + patentSchedule + '\"' +
             ", \"patentClaim\" : \"" + patentClaim + '\"' +
             ", \"patentRemarks\" : \"" + patentRemarks + '\"' +
+            ", \"spare\" : \"" + spare + '\"' +
             '}';
 }
 

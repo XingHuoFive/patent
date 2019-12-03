@@ -15,8 +15,10 @@ import com.sxp.patMag.enums.ProcessEnum;
 import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.LoginService;
+import com.sxp.patMag.util.HistoryReflect;
 import com.sxp.patMag.util.Md5Util;
 import com.sxp.patMag.util.RedisUtil;
+import com.sxp.patMag.util.WeLogFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,7 +42,10 @@ import java.util.List;
 @Slf4j
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
-
+    @Autowired
+    private WeLogFile weLogFile;
+    @Autowired
+    private HistoryReflect reflect;
     @Autowired
     private RedisUtil redis;
     @Autowired
@@ -63,6 +68,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
+
         if(null == token){
             responseWeb("110", "tokenIsNull", response);
             return false;
@@ -89,6 +95,8 @@ public class LoginInterceptor implements HandlerInterceptor {
             responseWeb("110", "NoSuchUser", response);
             return false;
         }
+        reflect.setUser(list.get(0));
+        weLogFile.setUser1(list.get(0));
         // 验证 token
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(list.get(0).getUserPassword())).build();
         try {

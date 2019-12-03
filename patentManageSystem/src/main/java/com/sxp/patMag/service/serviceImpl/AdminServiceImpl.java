@@ -206,8 +206,10 @@ public class AdminServiceImpl implements AdminService {
             BufferedReader bf = new BufferedReader(inputReader);
             // 按行读取字符串
             String str;
-            while ((str = bf.readLine()) != null) {
+            int i =0;
+            while ((str = bf.readLine()) != null && i<=100) {
                 arrayList.add(str);
+                i++;
             }
             bf.close();
             inputReader.close();
