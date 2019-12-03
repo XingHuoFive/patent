@@ -8,6 +8,7 @@ import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.service.PageService;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * @date:2019/12/3
  * @time:9:32
  */
-
+@Service
 public class PageServiceImpl implements PageService {
 
 @Autowired
