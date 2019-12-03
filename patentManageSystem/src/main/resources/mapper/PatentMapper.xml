@@ -35,6 +35,15 @@
         FROM  tb_patent p
         RIGHT JOIN tb_indicator i
         ON i.patent_id = p.patent_id
+        order by case
+        WHEN patent_schedule like '未审核%' then 1
+        WHEN patent_schedule like '未通过%' then 2
+        WHEN patent_schedule like '待认领%' then 3
+        WHEN patent_schedule like '编写中%' then 4
+        WHEN patent_schedule like '待提交%' then 5
+        WHEN patent_schedule like '已提交%' then 6
+        end
+        asc,apply_time desc
     </select>
 
     <select id="getById" parameterType="java.lang.String" resultType="com.sxp.patMag.entity.Patent">
@@ -88,6 +97,15 @@
                 apply_number  LIKE CONCAT('%',#{applyNumber},'%')
             </if>
         </trim>
+        order by case
+        WHEN patent_schedule like '未审核%' then 1
+        WHEN patent_schedule like '未通过%' then 2
+        WHEN patent_schedule like '待认领%' then 3
+        WHEN patent_schedule like '编写中%' then 4
+        WHEN patent_schedule like '待提交%' then 5
+        WHEN patent_schedule like '已提交%' then 6
+        end
+        asc,apply_time desc
     </select>
 
     <select id="getIndicatorById" resultType="com.sxp.patMag.entity.IndicatorExport">
