@@ -25,10 +25,10 @@ public class JwtUtil {
         String token = "";
         //日期转字符串
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MINUTE,30 );
-        //特定时间的年后
+        calendar.add(Calendar.MINUTE,60 );
+        //特定时间的年后.withExpiresAt(date)
         Date date = calendar.getTime();
-        token = JWT.create().withAudience(user.getUserId()).withExpiresAt(date)
+        token = JWT.create().withAudience(user.getUserId())
                 .sign(Algorithm.HMAC256(user.getUserPassword()));
         return token;
     }

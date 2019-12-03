@@ -46,17 +46,16 @@ subprojects {
     apply plugin: 'org.springframework.boot'
 
     apply plugin: 'application'
-    mainClassName = 'com.sxf.StuManageSystemApplication'
+    mainClassName = 'com.sxp.patMag.SystemApplication'
     jar {
         manifest {
-            attributes 'Main-Class': 'com.sxf.StuManageSystemApplication'
+            attributes 'Main-Class': 'com.sxp.patMag.SystemApplication'
         }
         from {
             configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
         }
     }
-    group 'com.sxf'
-    group 'com.sxf'
+    group 'com.sxp'
     version '1.0-SNAPSHOT'
     sourceCompatibility = 1.8
 
@@ -100,8 +99,12 @@ subprojects {
         // https://mvnrepository.com/artifact/com.auth0/java-jwt
         compile group: 'com.auth0', name: 'java-jwt', version: '3.4.0'
 
+        // https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter
+        compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.10'
+
     }
 
 
 }
+
 

@@ -2,7 +2,11 @@ package com.sxp.patMag.service;
 
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.entity.PatentFileMaintain;
+import com.sxp.patMag.entity.PatentMaintain;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -63,4 +67,30 @@ public interface PatentService {
      * @return
      */
     int submitPatent(Patent patent);
+
+    /**
+     * 驳回提交的专利
+     * @param patent
+     * @return
+     */
+    int noSubmitPatent(Patent patent);
+
+    /**
+     * 获取数据维护阶段的字典值
+     * @return 字典值列表
+     */
+    List<String> getMaintainList();
+
+    /**
+     * 根据专利id查询文件下载链接
+     * @return 下载链及对应文件类型
+     */
+    List<PatentFileMaintain> getFileURLByPatentId(PatentFileMaintain patentFileMaintain);
+
+    /**
+     * 上传文件维护阶段文件
+     * @param request 获取到的内容
+     * @return 影响行数
+     */
+    int uploadFile(HttpServletRequest request) throws IOException;
 }

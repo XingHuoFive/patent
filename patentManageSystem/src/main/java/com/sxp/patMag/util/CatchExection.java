@@ -20,7 +20,7 @@ public class CatchExection {
     @ExceptionHandler(NullPointerException.class)
     @ResponseBody
     public GeneralResult catchExection() {
-        return GeneralResult.build(1, "登陆不成功");
+        return GeneralResult.build(1, "空指针异常");
     }
 
     @ExceptionHandler(ServiceException.class)

@@ -14,4 +14,8 @@ public interface HistoryMapper {
 
    Integer insertHistory(History history);
    List<History> selectHistory(History history);
+   List<History> selectHistoryByPatentId(String patentId);
+
+
+
 }
