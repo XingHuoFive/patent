@@ -17,8 +17,7 @@ public class ErrorController {
 
     @RequestMapping("/e404")
     public GeneralResult onE404Error(){
-
-        return GeneralResult.build(1,"404");
+        return GeneralResult.build(404,"服务器出小差了");
     }
 
 }
