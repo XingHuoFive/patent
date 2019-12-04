@@ -1,9 +1,5 @@
-
 package com.sxp.patMag.entity;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +68,11 @@ public class Patent {
      **/
     @Size(max = 255,min = 0,message = "备注长度过长")
     private String patentRemarks;
+    /**
+     * 是否查看备注
+     **/
+    @Size(max = 1, message = "是否已查看长度超出范围")
+    private String remarkView;
     /**
      * 指标
      **/
@@ -215,8 +216,34 @@ public class Patent {
         this.patentRemarks = patentRemarks;
     }
 
+    public String getRemarkView() {
+        return remarkView;
+    }
+
+    public void setRemarkView(String remarkView) {
+        this.remarkView = remarkView;
+    }
+
     public Patent() {
 
+    }
+
+    public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, String remarkView, List<Indicator> indicatorList, String spare, List<Jbook> jbookList) {
+        this.patentId = patentId;
+        this.caseNumber = caseNumber;
+        this.applyNumber = applyNumber;
+        this.applyTime = applyTime;
+        this.writePerson = writePerson;
+        this.applyPerson = applyPerson;
+        this.createPerson = createPerson;
+        this.patentName = patentName;
+        this.patentSchedule = patentSchedule;
+        this.patentClaim = patentClaim;
+        this.patentRemarks = patentRemarks;
+        this.remarkView = remarkView;
+        this.indicatorList = indicatorList;
+        this.spare = spare;
+        this.jbookList = jbookList;
     }
 
     public Patent(String patentId, String caseNumber, String applyNumber, String applyTime, String writePerson, String applyPerson, String createPerson, String patentName, String patentSchedule, String patentClaim, String patentRemarks, List<Indicator> indicatorList, String spare) {
