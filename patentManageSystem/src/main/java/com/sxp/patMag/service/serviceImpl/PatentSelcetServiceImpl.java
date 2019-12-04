@@ -66,16 +66,7 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     @Override
     @Monitor("专利认领")
     public Integer updatePatentToWritePerson(Patent patent) {
-        int num = 0;
-        Lock lock = new ReentrantLock();
-        lock.lock();
-
-        String str = patentSelcetMapper.selectPatentSchedule(patent);
-        if(str.equals("待认领")){
-            num  = patentSelcetMapper.updatePatentToWritePerson(patent);
-        }
-        lock.unlock();
-        return  num;
+        return  patentSelcetMapper.updatePatentToWritePerson(patent);
     }
 
     @Override
@@ -148,6 +139,11 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
             return "";
         }
         //execl(list,columnNames,key,response);
+    }
+
+    @Override
+    public String selectPatentSchedule(Patent patent) {
+        return patentSelcetMapper.selectPatentSchedule(patent);
     }
 
 
