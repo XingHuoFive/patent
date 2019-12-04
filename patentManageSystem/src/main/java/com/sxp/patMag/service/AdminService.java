@@ -2,6 +2,7 @@ package com.sxp.patMag.service;
 
 
 import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.entity.User;
 import com.sxp.patMag.util.GeneralResult;
 
 import javax.servlet.http.HttpServletResponse;
@@ -21,17 +22,25 @@ public interface AdminService {
     GeneralResult checkPatent(Patent patent);
 
     /**
-     * 根据专利id查询它所有的文件
-     *
-     * @param patentId 专利id
-     * @return 文件地址
-     */
-    GeneralResult selectAllFilesByPatentId(String patentId);
-
-    /**
      * 读取日志
      *
      * @return 封装数据包
      */
     GeneralResult readLogFile(String role, HttpServletResponse response);
+
+//    GeneralResult getLogPath(String role);
+
+    /**
+     * 修改备注
+     * @param patent 存储修改信息
+     * @return
+     */
+    GeneralResult updatePatentRemarkView(Patent patent);
+
+    /**
+     * 登录后显示通知
+     * @param user 登录者信息
+     * @return 通知列表
+     */
+    GeneralResult showPatentNotice(User user);
 }

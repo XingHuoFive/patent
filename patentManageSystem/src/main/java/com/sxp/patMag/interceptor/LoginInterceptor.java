@@ -15,8 +15,10 @@ import com.sxp.patMag.enums.ProcessEnum;
 import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.LoginService;
+import com.sxp.patMag.util.HistoryReflect;
 import com.sxp.patMag.util.Md5Util;
 import com.sxp.patMag.util.RedisUtil;
+import com.sxp.patMag.util.WeLogFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,7 +42,10 @@ import java.util.List;
 @Slf4j
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
-
+    @Autowired
+    private WeLogFile weLogFile;
+    @Autowired
+    private HistoryReflect reflect;
     @Autowired
     private RedisUtil redis;
     @Autowired
@@ -63,8 +68,9 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
+
         if(null == token){
-            responseWeb("110", "tokenIsNull", response);
+            responseWeb("401", "tokenIsNull", response);
             return false;
         }
         // 获取 token 中的 user id
@@ -73,29 +79,31 @@ public class LoginInterceptor implements HandlerInterceptor {
             userId = JWT.decode(token).getAudience().get(0);
         } catch (JWTDecodeException j) {
             log.info("token解析错误");
-            responseWeb("110", "tokenDecodeError", response);
+            responseWeb("401", "tokenDecodeError", response);
             return false;
         }
         // 获取 token 中的 user id
         Object userJson = redis.get(ProcessEnum.USERLOGIN.getName() + Md5Util.getMd5Keys(userId));
         if (userJson == null) {
             log.info("token过期");
-            responseWeb("110", "tokenOutOfDate", response);
+            responseWeb("401", "tokenOutOfDate", response);
             return false;
         }
         List<User> list = loginMapper.selectUserById(userId);
         if (list == null || list.size() == 0) {
             log.info("用户不存在");
-            responseWeb("110", "NoSuchUser", response);
+            responseWeb("401", "NoSuchUser", response);
             return false;
         }
+        reflect.setUser(list.get(0));
+        weLogFile.setUser1(list.get(0));
         // 验证 token
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(list.get(0).getUserPassword())).build();
         try {
             jwtVerifier.verify(token);
         } catch (JWTVerificationException e) {
             log.info("用户密码校验错误");
-            responseWeb("110", "tokenVerifyError", response);
+            responseWeb("401", "tokenVerifyError", response);
             return false;
         }
         return true;

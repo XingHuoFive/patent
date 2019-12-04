@@ -255,7 +255,7 @@ public class PatentSelcetController {
 
         // System.out.println(list.toString());
         // 获取数据并封装数据
-        PatentVO list = patentSelcetService.selectPatentMessage(user);
+        List<PatentVO> list = patentSelcetService.selectPatentMessage(user);
         if(list == null){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{

@@ -109,7 +109,8 @@ public class PatentServiceImpl implements PatentService {
     }
 
     @Override
-    public int uploadFile(HttpServletRequest request) throws IOException {
+    @Monitor("上传文件")
+    public int uploadFile(HttpServletRequest request, String fileName ) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("fileName");
         String patentId = multipartRequest.getParameter("patentId");
@@ -123,7 +124,6 @@ public class PatentServiceImpl implements PatentService {
         if (null == fileType || "".equals(fileType)) {
             return 0;
         }
-        String fileName = file.getOriginalFilename();
         Date todayDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String today = dateFormat.format(todayDate);

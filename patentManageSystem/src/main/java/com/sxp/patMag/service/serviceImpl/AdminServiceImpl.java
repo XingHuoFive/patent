@@ -5,9 +5,12 @@ import com.sxp.patMag.dao.AdminMapper;
 import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.entity.LogPo;
 import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.AdminService;
+import com.sxp.patMag.service.PatentService;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.WeLogFile;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,6 +29,8 @@ import java.util.*;
 public class AdminServiceImpl implements AdminService {
     @Resource
     private AdminMapper adminMapper;
+    @Autowired
+    private PatentService tbPatentService;
 
     /**
      * 审核新建的专利
@@ -90,6 +95,7 @@ public class AdminServiceImpl implements AdminService {
         // 如果该专利审核没通过，就将它的进度修改成未通过
         if (patentSpareInt == 0 && patentClaimInt == 1) {
             patent.setPatentSchedule("编写中");
+            tbPatentService.noSubmitPatent(patent);
         }
 
         boolean flag = adminMapper.checkPatent(patent);
@@ -107,31 +113,31 @@ public class AdminServiceImpl implements AdminService {
         return GeneralResult.build(1, "其他错误!");
     }
 
-    /**
-     * 根据专利id查询它所有的文件
-     *
-     * @param patentId 专利id
-     * @return 文件地址
-     */
-    @Override
-    public GeneralResult selectAllFilesByPatentId(String patentId) {
-        if (patentId == null || patentId.length() > 16) {
-            return GeneralResult.build(1, "该专利id无效");
-        }
-        boolean check = true;
-        for (int i = 0; i < patentId.length(); i++) {
-            check = Character.isDigit(patentId.charAt(i));
-            if (check == false) {
-                return GeneralResult.build(1, "校验出错");
-            }
-        }
-        List<Jbook> list = adminMapper.selectAllFilesByPatentId(patentId);
-        if (list == null || list.size() == 0) {
-            //返回登录失败
-            return GeneralResult.build(1, "fail");
-        }
-        return GeneralResult.build(0, "success", list);
-    }
+//    /**
+//     * 根据专利id查询它所有的文件
+//     *
+//     * @param patentId 专利id
+//     * @return 文件地址
+//     */
+//    @Override
+//    public GeneralResult selectAllFilesByPatentId(String patentId) {
+//        if (patentId == null || patentId.length() > 16) {
+//            return GeneralResult.build(1, "该专利id无效");
+//        }
+//        boolean check = true;
+//        for (int i = 0; i < patentId.length(); i++) {
+//            check = Character.isDigit(patentId.charAt(i));
+//            if (check == false) {
+//                return GeneralResult.build(1, "校验出错");
+//            }
+//        }
+//        List<Jbook> list = adminMapper.selectAllFilesByPatentId(patentId);
+//        if (list == null || list.size() == 0) {
+//            //返回登录失败
+//            return GeneralResult.build(1, "fail");
+//        }
+//        return GeneralResult.build(0, "success", list);
+//    }
 
     /**
      * 管理员读取日志
@@ -206,8 +212,10 @@ public class AdminServiceImpl implements AdminService {
             BufferedReader bf = new BufferedReader(inputReader);
             // 按行读取字符串
             String str;
-            while ((str = bf.readLine()) != null) {
+            int i =0;
+            while ((str = bf.readLine()) != null && i<=100) {
                 arrayList.add(str);
+                i++;
             }
             bf.close();
             inputReader.close();
@@ -253,7 +261,6 @@ public class AdminServiceImpl implements AdminService {
             logPo.setUserName(one[2]);
 
             if (one[3].contains("select") || one[3].contains("get") || one[3].contains("list") || one[3].contains("List")) {
-
                 logPo.setItem("查询" + retString(one[3]));
                 logPo.setOperation(one[3].replace(one[3].substring(3, one[3].length() - 1), "****"));
             }
@@ -293,7 +300,7 @@ public class AdminServiceImpl implements AdminService {
         }
         // 返回数组
         Collections.sort(logList, comparator);
-        List<LogPo> list = logList.subList(0, 50);
+        List<LogPo> list = logList.subList(0, 90);
         return GeneralResult.build(0, "success", list);
     }
 
@@ -311,5 +318,35 @@ public class AdminServiceImpl implements AdminService {
             return "专利";
         }
         return "";
+    }
+
+    /**
+     * 修改通知状态
+     * @param patent 存储目标专利信息
+     * @return 操作信息
+     */
+    @Override
+    public GeneralResult updatePatentRemarkView(Patent patent) {
+        int flag = adminMapper.updatePatentRemarkView(patent);
+        if (flag > 0) {
+            return GeneralResult.build(0, "success", "修改成功");
+        } else {
+            return GeneralResult.build(1, "fail", "修改失败");
+        }
+    }
+
+    /**
+     * 登录后显示通知
+     * @param user 登录者信息
+     * @return 通知列表
+     */
+    @Override
+    public GeneralResult showPatentNotice(User user) {
+        List<Patent> list = adminMapper.selectRemarkViewOfPatent(user);
+        if (list != null || list.size() != 0) {
+            return GeneralResult.build(0, "success", list);
+        } else {
+            return GeneralResult.build(1, "fail", "暂时没有通知");
+        }
     }
 }
