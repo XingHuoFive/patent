@@ -31,6 +31,7 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
     @Autowired
     private PatentService tbPatentService;
+
     /**
      * 审核新建的专利
      *
@@ -216,8 +217,8 @@ public class AdminServiceImpl implements AdminService {
             BufferedReader bf = new BufferedReader(inputReader);
             // 按行读取字符串
             String str;
-            int i =0;
-            while ((str = bf.readLine()) != null && i<=100) {
+            int i = 0;
+            while ((str = bf.readLine()) != null && i <= 100) {
                 arrayList.add(str);
                 i++;
             }
@@ -302,9 +303,17 @@ public class AdminServiceImpl implements AdminService {
 
             // array[i] = s;
         }
+       // System.out.println(logList.size());
         // 返回数组
         Collections.sort(logList, comparator);
-        List<LogPo> list = logList.subList(0, 90);
+        List<LogPo> list = null;
+        if (logList.size() < 90) {
+            list = logList.subList(0, logList.size());
+        } else {
+            list = logList.subList(0, 90);
+        }
+
+
         return GeneralResult.build(0, "success", list);
     }
 
@@ -326,6 +335,7 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 修改通知状态
+     *
      * @param patent 存储目标专利信息
      * @return 操作信息
      */
@@ -341,11 +351,12 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 登录后显示通知
+     *
      * @param user 登录者信息
      * @return 通知列表
      */
     @Override
-    public GeneralResult showPatentNotice(User user) {
+    public GeneralResult showPatentNotice( User user) {
         List<Patent> list = adminMapper.selectRemarkViewOfPatent(user);
         if (list != null || list.size() != 0) {
             return GeneralResult.build(0, "success", list);

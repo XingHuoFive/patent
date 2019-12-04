@@ -59,7 +59,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/showPatentNotice", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult showPatentNotice(@Valid @RequestBody User user) {
+    public GeneralResult showPatentNotice( @RequestBody User user) {
         return adminService.showPatentNotice(user);
     }
 
