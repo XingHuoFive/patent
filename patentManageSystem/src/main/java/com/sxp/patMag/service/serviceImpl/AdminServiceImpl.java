@@ -78,25 +78,30 @@ public class AdminServiceImpl implements AdminService {
                 return GeneralResult.build(1, "参数包含除数字之外的其他字母");
             }
         }
+        String patentRemarks = patent.getPatentRemarks();
+        if (patentRemarks == null || "".equals(patentRemarks)) {
+            patent.setPatentRemarks("你的提交中有内容不符合专利局标准!");
+        }
         int patentSpareInt = Integer.parseInt(patentSpare);
         int patentClaimInt = Integer.parseInt(pClaim);
         // 如果该专利通过审核，并且是还没有被认领，就把他的进度修改成待认领状态
         if (patentSpareInt == 1 && patentClaimInt == 0) {
             patent.setPatentSchedule("待认领");
         }
-
         // 如果该专利通过审核，并且已经被认领了，就把他的进度修改成待提交状态
         if (patentSpareInt == 1 && patentClaimInt == 1) {
             patent.setPatentSchedule("待提交");
         }
+        // 如果该专利审核没通过，就将它的进度修改成未通过
         if (patentSpareInt == 0 && patentClaimInt == 0) {
             patent.setPatentSchedule("未通过");
         }
-        // 如果该专利审核没通过，就将它的进度修改成未通过
+        // 如果该专利审核没通过，就将它的进度修改成编写中
         if (patentSpareInt == 0 && patentClaimInt == 1) {
             patent.setPatentSchedule("编写中");
             tbPatentService.noSubmitPatent(patent);
         }
+
 
         boolean flag = adminMapper.checkPatent(patent);
         String spareNum = adminMapper.selectSpareOfPatent(patentId);
