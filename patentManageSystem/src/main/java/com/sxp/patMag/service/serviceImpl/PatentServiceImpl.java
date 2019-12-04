@@ -118,7 +118,7 @@ public class PatentServiceImpl implements PatentService {
 
     @Override
     @Monitor("上传文件")
-    public int uploadFile(HttpServletRequest request, String fileName ) throws IOException {
+    public int uploadFile(HttpServletRequest request, String fileName) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("fileName");
         String patentId = multipartRequest.getParameter("patentId");

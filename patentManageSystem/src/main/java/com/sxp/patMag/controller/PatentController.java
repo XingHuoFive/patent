@@ -179,7 +179,6 @@ public class PatentController {
         GeneralResult generalResult = new GeneralResult();
         try {
 
-
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
             MultipartFile file = multipartRequest.getFile("fileName");
             if (null == file || file.isEmpty()) {
