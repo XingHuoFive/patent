@@ -127,7 +127,7 @@
     </select>
 
     <select id="getMaintainList" resultType="java.lang.String">
-        SELECT zd_value FROM tb_zd WHERE zd_file <![CDATA[ <> ]]> '无'
+        SELECT zd_file FROM tb_zd WHERE zd_file <![CDATA[ <> ]]> '无'
     </select>
 
     <select id="getFileURLByPatentId" resultType="com.sxp.patMag.entity.PatentFileMaintain">
