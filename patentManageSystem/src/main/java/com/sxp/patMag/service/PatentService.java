@@ -8,6 +8,7 @@ import com.sxp.patMag.entity.PatentMaintain;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lhx
@@ -59,7 +60,7 @@ public interface PatentService {
      * 管理员获取交底书下载链接
      * @return 交底书下载链接
      */
-    List<String> JbookURLList(String patentId);
+    List<String> JbookUrlList(String patentId);
 
     /**
      * 提交专利
@@ -79,13 +80,13 @@ public interface PatentService {
      * 获取数据维护阶段的字典值
      * @return 字典值列表
      */
-    List<String> getMaintainList();
+    List<Map<String, String>> getMaintainList();
 
     /**
      * 根据专利id查询文件下载链接
      * @return 下载链及对应文件类型
      */
-    List<PatentFileMaintain> getFileURLByPatentId(PatentFileMaintain patentFileMaintain);
+    List<PatentFileMaintain> getFileUrlByPatentId(PatentFileMaintain patentFileMaintain);
 
     /**
      * 上传文件维护阶段文件

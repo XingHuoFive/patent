@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lhx
@@ -96,7 +97,7 @@ public class PatentController {
                 generalResult.setMsg("id为空，无法查询");
                 return generalResult;
             }
-            List<String> urlList = tbPatentService.JbookURLList(patentId);
+            List<String> urlList = tbPatentService.JbookUrlList(patentId);
             if (null == urlList) {
                 generalResult.setStatus(1);
                 generalResult.setMsg("未找到交底书");
@@ -137,8 +138,8 @@ public class PatentController {
     public GeneralResult getMaintainList() {
         GeneralResult generalResult = new GeneralResult();
         try {
-            List<String> maintainList = tbPatentService.getMaintainList();
-            if (null == maintainList) {
+            List<Map<String, String>> maintainList = tbPatentService.getMaintainList();
+            if (null == maintainList || maintainList.isEmpty()) {
                 generalResult.setStatus(1);
                 generalResult.setMsg("未找到下拉列表");
                 return generalResult;
@@ -146,23 +147,25 @@ public class PatentController {
             generalResult.setStatus(0);
             generalResult.setMsg("查询成功");
             generalResult.setData(maintainList);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (ServiceException e) {
+            generalResult.setStatus(1);
+            generalResult.setMsg(e.getMessage());
+            return generalResult;
         }
         return generalResult;
     }
 
     @PostMapping("/getFileURL")
-    public GeneralResult getFileURLByPatentId(@RequestBody @Valid PatentFileMaintain patentFileMaintain, BindingResult bindingResult) {
+    public GeneralResult getFileUrlByPatentId(@RequestBody @Valid PatentFileMaintain patentFileMaintain, BindingResult bindingResult) {
         GeneralResult generalResult = new GeneralResult();
         try {
             if(bindingResult.hasErrors()) {
                 throw new ServiceException(PatentException.ERROR_PARAME);
             }
-            List<PatentFileMaintain> fileURLByPatentId = tbPatentService.getFileURLByPatentId(patentFileMaintain);
+            List<PatentFileMaintain> fileUrlByPatentId = tbPatentService.getFileUrlByPatentId(patentFileMaintain);
             generalResult.setStatus(0);
             generalResult.setMsg("查询成功");
-            generalResult.setData(fileURLByPatentId);
+            generalResult.setData(fileUrlByPatentId);
         } catch (ServiceException e) {
             generalResult.setStatus(1);
             generalResult.setMsg(e.getMessage());
