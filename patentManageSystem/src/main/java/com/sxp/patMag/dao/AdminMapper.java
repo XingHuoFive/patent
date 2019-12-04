@@ -19,7 +19,6 @@ public interface AdminMapper {
      * @return 修改结果
      */
     boolean checkPatent(Patent patent);
-
 //    /**
 //     * 根据专利id查询它所有的文件
 //     *

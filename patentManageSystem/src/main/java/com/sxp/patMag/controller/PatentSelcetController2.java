@@ -1,16 +1,15 @@
 package com.sxp.patMag.controller;
 
 
+import com.sxp.patMag.config.RedisLock;
 import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentVO;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.GeneralResult;
-import com.sxp.patMag.util.JsonUtils;
 import com.sxp.patMag.util.JwtUtil;
-import com.sxp.patMag.util.RedisUtil;
-import lombok.Synchronized;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,8 +24,6 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @ClassName PatentSelcetController
@@ -36,15 +33,27 @@ import java.util.concurrent.locks.ReentrantLock;
  **/
 
 @Controller
-@RequestMapping("/patentSelect")
-public class PatentSelcetController {
+@RequestMapping("/patentSelect2")
+public class PatentSelcetController2 {
 
-
-    Lock lock = new ReentrantLock();
     @Autowired
     PatentSelcetService patentSelcetService;
     @Autowired
     private LoginMapper mapper;
+
+    // 锁名
+    private static final String ROP_TICKET_LOCK = "tickets:lock";
+    // 锁过期时间 30s
+    private static final Long ROP_TICKET_LOCK_TIME_OUT = 30000L;
+    // 获取锁超时时间 10s
+    private static final Long ROP_TICKET_LOCK_GET_TIME_OUT = 10000L;
+    // 消息存放key
+    private static final String ROP_TICKET_MESSAGE = "ticket:buy:message";
+
+    @Autowired
+    private RedisLock redisLock;
+
+
     /**
      * 专利查询
      * @param patent  专利对象
@@ -61,10 +70,33 @@ public class PatentSelcetController {
             return GeneralResult.build(1,"对象为空",null);
         }
 
+        /*if(patent.getCaseNumber() == null){
+
+        }else if(patent.getCaseNumber().length() > 16){
+            return GeneralResult.build(1,"案例号过长",null);
+        }
+
+        if(patent.getApplyNumber() == null){
+
+        }else if(patent.getApplyNumber().length() > 16){
+            return GeneralResult.build(1,"申请号过长",null);
+        }
+
+        if(patent.getPatentName() == null){
+
+        }else if(patent.getPatentName().length() > 150){
+            return GeneralResult.build(1,"专利名过长",null);
+        }
+
+        if(patent.getApplyTime() == null){
+
+        }else if(patent.getApplyTime().length() > 30){
+            return GeneralResult.build(1,"没有符合的申请时间",null);
+        }
+*/
         // 获取数据
         List<Patent> list = patentSelcetService.selectPatentByPatent(patent);
         String message = null;
-
         // 处理空指针异常
         try {
             message = bindingResult.getFieldError().getDefaultMessage();
@@ -94,6 +126,7 @@ public class PatentSelcetController {
     @ResponseBody
     public  GeneralResult selectPatentToUser(){
 
+        // System.out.println(patentSelcetService.selectPatentToUser());
         // 获取数据并封装对象
         List<Patent> list = patentSelcetService.selectPatentToUser();
         if(list==null){
@@ -113,42 +146,51 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/updatePatentToWritePerson",method = RequestMethod.POST)
     @ResponseBody
-  //  @Transactional(rollbackFor = Exception.class)
-    public  GeneralResult updatePatentToWritePerson(@RequestBody @Valid Patent patent, HttpServletRequest req, BindingResult bindingResult){
+    @Transactional(rollbackFor = Exception.class)
+    public  GeneralResult updatePatentToWritePerson(@RequestBody @Valid Patent patent,HttpServletRequest req,BindingResult bindingResult){
 
-        lock.lock();
+        //获取锁
+        String lockSign = redisLock.setLock(ROP_TICKET_LOCK, ROP_TICKET_LOCK_TIME_OUT);
 
-        // 获取redis中得token值并取得用户名
-        String token  =  req.getHeader("data");
-        String userId = JwtUtil.getTokenUserId(token);
-        List<User> userList = mapper.selectUserById(userId);
-        User user = userList.get(0);
-        patent.setWritePerson(user.getUserName());
-        System.out.println(patent.toString());
+        // 不为空则获取到锁
+        if (StringUtils.isNotBlank(lockSign)) {
 
-        // 数据校验
-        if(patent==null){
-            return GeneralResult.build(1,"对象为空",null);
+            // 获取redis中得token值并取得用户名
+            String token  =  req.getHeader("data");
+            String userId = JwtUtil.getTokenUserId(token);
+            List<User> userList = mapper.selectUserById(userId);
+            User user = userList.get(0);
+            patent.setWritePerson(user.getUserName());
+            System.out.println(patent.toString());
+
+            if(patent==null){
+                return GeneralResult.build(1,"对象为空",null);
+            }
+
+            // 数据校验
+            if(patent.getPatentId() == null){
+                return GeneralResult.build(1,"没有接收到专利ID",null);
+            }else if(patent.getPatentId().length() > 50){
+                return GeneralResult.build(1,"专利ID字符串过长",null);
+            }
+
+            // 获取数据并封装数据
+            Integer list =  0;
+            String str = patentSelcetService.selectPatentSchedule(patent);
+            if(str.equals("待认领")){
+                list  = patentSelcetService.updatePatentToWritePerson(patent);
+            }
+            //释放锁
+            redisLock.releaseLock(ROP_TICKET_LOCK, lockSign);
+            if(list==0){
+                return GeneralResult.build(1,"无匹配专利",null);
+            }else{
+                return GeneralResult.build(0,"成功",list);
+            }
+
         }
-        if(patent.getPatentId() == null){
-            return GeneralResult.build(1,"没有接收到专利ID",null);
-        }else if(patent.getPatentId().length() > 50){
-            return GeneralResult.build(1,"专利ID字符串过长",null);
-        }
 
-        // 获取数据并封装数据
-        Integer list =  0;
-
-        String str = patentSelcetService.selectPatentSchedule(patent);
-        if(str.equals("待认领")){
-            list  = patentSelcetService.updatePatentToWritePerson(patent);
-        }
-        lock.unlock();
-        if(list==0){
-            return GeneralResult.build(1,"无匹配专利",null);
-        }else{
-            return GeneralResult.build(0,"成功",list);
-        }
+        return GeneralResult.build(1,"啊啊服务器开小差了");
     }
 
 

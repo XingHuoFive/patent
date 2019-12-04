@@ -129,7 +129,7 @@ public class PatentServiceImpl implements PatentService {
         if (null == patentId || "".equals(patentId)) {
             return 0;
         }
-        if (null == fileType || "".equals(fileType)) {
+        if (null == fileType || "".equals(fileType) || null == fileTypeMap.get(fileType)) {
             return 0;
         }
         Date todayDate = new Date();
