@@ -40,7 +40,7 @@ mybatis:
   configuration:
     mapUnderscoreToCamelCase: true
 
-expireTime: 3600
+expireTime: 7200
 
 file:
   accessPath: /upload/

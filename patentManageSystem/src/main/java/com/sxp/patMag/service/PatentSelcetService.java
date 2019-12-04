@@ -53,7 +53,7 @@ public interface PatentSelcetService {
      * @param user
      * @return
      */
-    PatentVO selectPatentMessage(User user);
+    List<PatentVO> selectPatentMessage(User user);
 /**
      * 设置excel  专利
      * @param list

@@ -261,7 +261,6 @@ public class AdminServiceImpl implements AdminService {
             logPo.setUserName(one[2]);
 
             if (one[3].contains("select") || one[3].contains("get") || one[3].contains("list") || one[3].contains("List")) {
-
                 logPo.setItem("查询" + retString(one[3]));
                 logPo.setOperation(one[3].replace(one[3].substring(3, one[3].length() - 1), "****"));
             }
@@ -301,7 +300,7 @@ public class AdminServiceImpl implements AdminService {
         }
         // 返回数组
         Collections.sort(logList, comparator);
-        List<LogPo> list = logList.subList(0, 50);
+        List<LogPo> list = logList.subList(0, 90);
         return GeneralResult.build(0, "success", list);
     }
 

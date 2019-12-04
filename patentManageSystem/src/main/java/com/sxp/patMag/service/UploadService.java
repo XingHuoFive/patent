@@ -18,6 +18,6 @@ import java.util.Map;
 
 public interface UploadService {
 
-    public GeneralResult insertJbook( HttpServletRequest request ) throws IOException;
+    public GeneralResult insertJbook( Jbook jbook ) throws IOException;
 
 }

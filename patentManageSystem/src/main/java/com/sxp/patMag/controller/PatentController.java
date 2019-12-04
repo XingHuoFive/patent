@@ -9,6 +9,8 @@ import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -173,7 +175,15 @@ public class PatentController {
     public GeneralResult uploadFile(HttpServletRequest request) {
         GeneralResult generalResult = new GeneralResult();
         try {
-            int i = tbPatentService.uploadFile(request);
+
+
+            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+            MultipartFile file = multipartRequest.getFile("fileName");
+            if (null == file || file.isEmpty()) {
+                return GeneralResult.build(1,"文件为空");
+            }
+            String fileName = file.getOriginalFilename();
+            int i = tbPatentService.uploadFile(request , fileName);
             if (i <= 0) {
                 generalResult.setStatus(1);
                 generalResult.setMsg("上传失败");
