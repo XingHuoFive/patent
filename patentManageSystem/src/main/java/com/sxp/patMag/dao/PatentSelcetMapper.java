@@ -20,4 +20,8 @@ public interface PatentSelcetMapper {
     List<PatentExport> selectPatentByPatentExport(PatentVO patent);
     List<Patent>  selectPatentToAdmin();
     List<PatentVO> selectPatentMessage(User user);
+
+    String selectPatentSchedule(Patent patent);
+
+
 }
