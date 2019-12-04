@@ -144,9 +144,12 @@ public class PatentServiceImpl implements PatentService {
         if(!parent.exists()) {
             parent.mkdirs();
         }
-
         file.transferTo(dest);
+        int i = tbPatentMapper.updateView(patentId);
         PatentMaintain patentMaintain = new PatentMaintain();
+        if (i != 1) {
+            patentMaintain.setFileView("1");
+        }
         patentMaintain.setFileId(UUID.getUUID());
         patentMaintain.setPatentfileURL(url);
         patentMaintain.setPatentId(patentId);

@@ -32,7 +32,20 @@ public class PatentMaintain {
      */
     private String fileId;
 
+    /**
+     * 文件是否是最新
+     */
+    private String fileView;
+
     public PatentMaintain() {
+    }
+
+    public PatentMaintain(String patentId, String patentfileURL, String zdId, String fileId, String fileView) {
+        this.patentId = patentId;
+        this.patentfileURL = patentfileURL;
+        this.zdId = zdId;
+        this.fileId = fileId;
+        this.fileView = fileView;
     }
 
     public PatentMaintain(String patentId, String patentfileURL, String zdId, String fileId) {
@@ -50,6 +63,17 @@ public class PatentMaintain {
         this.patentId = patentId;
     }
 
+    @Override
+    public String toString() {
+        return "PatentMaintain{" +
+                "patentId='" + patentId + '\'' +
+                ", patentfileURL='" + patentfileURL + '\'' +
+                ", zdId='" + zdId + '\'' +
+                ", fileId='" + fileId + '\'' +
+                ", fileView='" + fileView + '\'' +
+                '}';
+    }
+
     public String getPatentfileURL() {
         return patentfileURL;
     }
@@ -62,6 +86,14 @@ public class PatentMaintain {
         return zdId;
     }
 
+    public String getFileView() {
+        return fileView;
+    }
+
+    public void setFileView(String fileView) {
+        this.fileView = fileView;
+    }
+
     public void setZdId(String zdId) {
         this.zdId = zdId;
     }
@@ -72,16 +104,6 @@ public class PatentMaintain {
 
     public void setFileId(String fileId) {
         this.fileId = fileId;
-    }
-
-    @Override
-    public String toString() {
-        return "PatentMaintain{" +
-                "patentId='" + patentId + '\'' +
-                ", patentfileURL='" + patentfileURL + '\'' +
-                ", zdId='" + zdId + '\'' +
-                ", fileId='" + fileId + '\'' +
-                '}';
     }
 
 }

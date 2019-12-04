@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.PatentMapper">
     <insert id="uploadFile" parameterType="com.sxp.patMag.entity.PatentMaintain">
-        INSERT INTO tb_file (file_id, file_url, file_zd_id, file_patent_id)
-        VALUES (#{fileId}, #{patentfileURL}, #{zdId}, #{patentId})
+        INSERT INTO tb_file (file_id, file_url, file_zd_id, file_patent_id, file_view)
+        VALUES (#{fileId}, #{patentfileURL}, #{zdId}, #{patentId}, #{fileView})
     </insert>
 
     <update id="updatePatent">
@@ -139,19 +139,23 @@
             tb_file f
             LEFT JOIN tb_zd zd ON f.file_zd_id = zd.zd_id
         WHERE
-	        f.file_patent_id = #{patentId}
+	        f.file_patent_id = #{patentId} AND f.file_view = '1'
     </select>
 
 
     <update id="submitPatent">
-    UPDATE tb_patent
-    SET  patent_schedule="已提交"
-    where patent_id=#{patentId}
+        UPDATE tb_patent
+        SET  patent_schedule="已提交"
+        where patent_id=#{patentId}
     </update>
 
     <update id="noSubmitPatent">
-    UPDATE tb_patent
-    SET  patent_schedule="编写中"
-    where patent_id=#{patentId}
+        UPDATE tb_patent
+        SET  patent_schedule="编写中"
+        where patent_id=#{patentId}
+    </update>
+
+    <update id="updateView">
+        UPDATE tb_file SET file_view = '1' WHERE file_patent_id = #{patentId}
     </update>
 </mapper>

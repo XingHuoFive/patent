@@ -93,4 +93,10 @@ public interface PatentMapper {
      * @return 影响行数
      */
     int uploadFile(PatentMaintain patentMaintain);
+
+    /**
+     * 更新最新文件
+     * @return 影响行数
+     */
+    int updateView(String patentId);
 }
