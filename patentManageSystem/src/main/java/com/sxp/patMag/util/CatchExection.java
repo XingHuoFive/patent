@@ -37,4 +37,35 @@ public class CatchExection {
         };
         return embeddedServletContainerCustomizer;
     }
+
+    @Bean
+    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer500() {
+
+        EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer = (container) -> {
+            container.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/e404"));
+        };
+        return embeddedServletContainerCustomizer;
+    }
+
+    @Bean
+    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer501() {
+
+        EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer = (container) -> {
+            container.addErrorPages(new ErrorPage(HttpStatus.NOT_IMPLEMENTED, "/e404"));
+        };
+        return embeddedServletContainerCustomizer;
+    }
+
+    @Bean
+    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer504() {
+
+        EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer = (container) -> {
+            container.addErrorPages(new ErrorPage(HttpStatus. GATEWAY_TIMEOUT, "/e404"));
+        };
+        return embeddedServletContainerCustomizer;
+    }
+
+
+
+
 }

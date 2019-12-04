@@ -19,5 +19,9 @@ public interface PatentSelcetMapper {
     Integer updatePatentToWritePerson(Patent patent);
     List<PatentExport> selectPatentByPatentExport(PatentVO patent);
     List<Patent>  selectPatentToAdmin();
-    PatentVO selectPatentMessage(User user);
+    List<PatentVO> selectPatentMessage(User user);
+
+    String selectPatentSchedule(Patent patent);
+
+
 }

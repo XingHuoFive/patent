@@ -20,10 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author lhx
@@ -83,8 +80,8 @@ public class PatentServiceImpl implements PatentService {
     }
 
     @Override
-    public List<String> JbookURLList(String patentId) {
-        return tbPatentMapper.getJbookURLList(patentId);
+    public List<String> JbookUrlList(String patentId) {
+        return tbPatentMapper.getJbookUrlList(patentId);
     }
 
     @Override
@@ -99,17 +96,29 @@ public class PatentServiceImpl implements PatentService {
     }
 
     @Override
-    public List<String> getMaintainList() {
-        return tbPatentMapper.getMaintainList();
+    public List<Map<String, String>> getMaintainList() {
+        List<String> maintainList = tbPatentMapper.getMaintainList();
+        if (null == maintainList || maintainList.isEmpty()) {
+            return new ArrayList<>();
+        }
+        List<Map<String, String>> res = new ArrayList<>(maintainList.size());
+        for (int i = 0; i < maintainList.size(); i++) {
+            Map<String, String> maintainMap = new HashMap<>(2);
+            maintainMap.put("label", maintainList.get(i));
+            maintainMap.put("value", maintainList.get(i));
+            res.add(maintainMap);
+        }
+        return res;
     }
 
     @Override
-    public List<PatentFileMaintain> getFileURLByPatentId(PatentFileMaintain patentFileMaintain) {
+    public List<PatentFileMaintain> getFileUrlByPatentId(PatentFileMaintain patentFileMaintain) {
         return tbPatentMapper.getFileURLByPatentId(patentFileMaintain);
     }
 
     @Override
-    public int uploadFile(HttpServletRequest request) throws IOException {
+    @Monitor("上传文件")
+    public int uploadFile(HttpServletRequest request, String fileName) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("fileName");
         String patentId = multipartRequest.getParameter("patentId");
@@ -123,7 +132,6 @@ public class PatentServiceImpl implements PatentService {
         if (null == fileType || "".equals(fileType)) {
             return 0;
         }
-        String fileName = file.getOriginalFilename();
         Date todayDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String today = dateFormat.format(todayDate);

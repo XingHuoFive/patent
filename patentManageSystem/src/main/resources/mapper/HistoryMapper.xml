@@ -59,8 +59,6 @@ INSERT INTO `wuzu`.`tb_history` (`ht_id`, `ht_date`, `ht_user_id`, `ht_process`,
         </if>
         AND hs.ht_patent_id  = #{htPatentId}
         order by hs.ht_date desc
-
-
     </select>
 
     <select id="selectHistoryByPatentId" parameterType="java.lang.String"  resultMap="HistoryMap" >

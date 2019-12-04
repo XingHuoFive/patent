@@ -197,4 +197,9 @@
             end
         asc,apply_time desc
     </select>
+
+
+    <select id="selectPatentSchedule" parameterType="com.sxp.patMag.entity.Patent" resultType="String">
+        select patent_schedule from tb_patent where patent_id=#{patentId}
+    </select>
 </mapper>

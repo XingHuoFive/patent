@@ -1,20 +1,35 @@
 package com.sxp.patMag.util;
+
 import com.alibaba.fastjson.JSON;
 import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.entity.History;
+import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.enums.ProcessEnum;
 import com.sxp.patMag.service.HistoryService;
+import org.apache.commons.lang3.ArrayUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * @author： Jude
  * @date:2019/11/26
@@ -26,15 +41,15 @@ public class HistoryReflect {
 
 
     @Autowired
-    private RedisUtil redis ;
+    private RedisUtil redis;
 
     @Autowired
     private HistoryService historyService;
 
 
-    private  static String statusCode_One = "1";
+    private static String statusCode_One = "1";
 
-    private  static String statusCode_Zero = "0";
+    private static String statusCode_Zero = "0";
 
     private User user;
 
@@ -53,10 +68,12 @@ public class HistoryReflect {
     /**
      * 使用AOP写日志文件
      *
-     * @param joinPoint
+     * @param array
      * @throws IOException
      */
-
+     public static <T> Stream<T> streamOf(T[] array) {
+        return ArrayUtils.isEmpty(array) ? Stream.empty() : Arrays.asList(array).stream();
+    }
     @Around("getAction()")
     public Object writeHistory(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("history...");
@@ -69,65 +86,100 @@ public class HistoryReflect {
         Monitor monitor = method.getAnnotation(Monitor.class);
         String value = null;
         if (monitor != null) {
-             value = monitor.value();
+            value = monitor.value();
             history.setHtOperation(value);
             //保存获取的操作
         }
         System.out.println(value);
         //请求的参数
         Object[] args = joinPoint.getArgs();
-        //将参数所在的数组转换成json
-        String params = JSON.toJSONString(args);
-        //时间格式化
+        String params =null;
+                //时间格式化
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = simpleDateFormat.format(new Date());
         history.setHtDate(date);
         history.setHtId(UUID.getUUID());
         history.setHtUserId(user.getUserId());
-        //解析参数中的patent 成对象
-        Patent patent  = JSON.parseObject( params.substring(1,params.length()-1), Patent.class);
-        //从redis获取之前的专利信息
-        String oldObj =  redis.get("Patent" + ":" + patent.getPatentId())!=null ? redis.get("Patent" + ":" +patent.getPatentId()).toString() :null;
-        //解析之前的专利为对象
-        Patent oldPatent = JSON.parseObject( oldObj, Patent.class);;
+        if (value.contains(ProcessEnum.UPLOAD.getName())) {
 
+            if (ProcessEnum.UPLOADFILES.getName().equals(value)) {
+
+                //序列化时过滤掉request和response
+                List<Object> logArgs =  streamOf(args)
+                        .filter(arg -> (!(arg instanceof HttpServletRequest) && !(arg instanceof HttpServletResponse)))
+                        .collect(Collectors.toList());
+                //将参数所在的数组转换成json
+                params = String.valueOf(logArgs.get(0));
+                HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+                String patentId = request.getParameter("patentId");
+                history.setHtPatentId(patentId);
+                history.setHtNewItem(params);
+                history.setHtOldItem("");
+                history.setHtProcess(value);
+                history.setHtOperation("上传文件");
+
+
+
+            }
+            if (ProcessEnum.UPLOADJBOOK.getName().equals(value)) {
+                params = JSON.toJSONString(args);
+                Jbook jbook = JSON.parseObject(params.substring(1, params.length() - 1), Jbook.class);
+                String[] jArr = jbook.getJbookUrl().split("/");
+                history.setHtPatentId(jbook.getJbookPatentId());
+                history.setHtNewItem(jArr[jArr.length - 1]);
+                history.setHtOldItem("");
+                history.setHtProcess(value);
+                history.setHtOperation("上传交底书");
+            }
+
+            historyService.insertHistory(history);
+            //获取用户名
+            return joinPoint.proceed();
+        }
+        params = JSON.toJSONString(args);
+        //解析参数中的patent 成对象
+        Patent patent = JSON.parseObject(params.substring(1, params.length() - 1), Patent.class);
+        //从redis获取之前的专利信息
+        String oldObj = redis.get("Patent" + ":" + patent.getPatentId()) != null ? redis.get("Patent" + ":" + patent.getPatentId()).toString() : null;
+        //解析之前的专利为对象
+        Patent oldPatent = JSON.parseObject(oldObj, Patent.class);
+        ;
         //将新的对象放到redis
-        redis.set("Patent" + ":" +patent.getPatentId(), JSON.toJSON(patent));
-        redis.expire("Patent" + ":" +patent.getPatentId(),  86400);
-        if (ProcessEnum.NEW.getName().equals(value)){
+        redis.set("Patent" + ":" + patent.getPatentId(), JSON.toJSON(patent));
+        redis.expire("Patent" + ":" + patent.getPatentId(), 86400);
+        if (ProcessEnum.NEW.getName().equals(value)) {
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem(getHistory(patent));
             history.setHtOldItem("无");
             history.setHtProcess(value);
             history.setHtOperation("新建专利");
         }
-        if(ProcessEnum.CLAIM.getName().equals(value)){
+        if (ProcessEnum.CLAIM.getName().equals(value)) {
             history.setHtPatentId(patent.getPatentId());
-            history.setHtNewItem("认领人 : "+patent.getWritePerson());
+            history.setHtNewItem("认领人 : " + patent.getWritePerson());
             history.setHtOldItem("认领人 : 无");
             history.setHtProcess(value);
             history.setHtOperation("修改撰写人");
         }
-        if(ProcessEnum.CHECK.getName().equals(value)){
-            if (patent.getPatentClaim().equals(statusCode_Zero)){
+        if (ProcessEnum.CHECK.getName().equals(value)) {
+            if (patent.getPatentClaim().equals(statusCode_Zero)) {
                 System.out.println("初审");
                 history.setHtPatentId(patent.getPatentId());
-                history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
+                history.setHtNewItem("专利进度 : " + patent.getPatentSchedule());
                 history.setHtOldItem("专利进度 : 未审核");
                 history.setHtProcess("初审");
                 history.setHtOperation(value);
             }
-            if (patent.getPatentClaim().equals(statusCode_One)){
+            if (patent.getPatentClaim().equals(statusCode_One)) {
                 System.out.println("复审");
                 history.setHtPatentId(patent.getPatentId());
-                history.setHtNewItem("专利进度 : "+patent.getPatentSchedule());
+                history.setHtNewItem("专利进度 : " + patent.getPatentSchedule());
                 history.setHtOldItem("专利进度 : 编写中");
                 history.setHtProcess("复审");
                 history.setHtOperation(value);
             }
-            if (patent.getSpare().equals(statusCode_Zero)){
-
-                if (patent.getPatentClaim() .equals(statusCode_Zero)){
+            if (patent.getSpare().equals(statusCode_Zero)) {
+                if (patent.getPatentClaim().equals(statusCode_Zero)) {
                     System.out.println("初审驳回");
                     history.setHtPatentId(patent.getPatentId());
                     history.setHtNewItem("专利进度 : 未审核");
@@ -135,7 +187,7 @@ public class HistoryReflect {
                     history.setHtProcess("初审驳回");
                     history.setHtOperation(value);
                 }
-                if (patent.getPatentClaim() .equals(statusCode_One)){
+                if (patent.getPatentClaim().equals(statusCode_One)) {
                     System.out.println("复审驳回");
                     history.setHtPatentId(patent.getPatentId());
                     history.setHtNewItem("专利进度 : 编写中");
@@ -143,18 +195,17 @@ public class HistoryReflect {
                     history.setHtProcess("复审驳回");
                     history.setHtOperation(value);
                 }
-
             }
-            if (patent.getSpare().equals(statusCode_One)){
-               if (patent.getPatentClaim() .equals(statusCode_Zero)){
-                   System.out.println("初审通过");
-                   history.setHtPatentId(patent.getPatentId());
-                   history.setHtNewItem("专利进度 : 待认领");
-                   history.setHtOldItem("专利进度 : 未审核");
-                   history.setHtProcess("初审通过");
-                   history.setHtOperation(value);
-               }
-                if (patent.getPatentClaim() .equals(statusCode_One)){
+            if (patent.getSpare().equals(statusCode_One)) {
+                if (patent.getPatentClaim().equals(statusCode_Zero)) {
+                    System.out.println("初审通过");
+                    history.setHtPatentId(patent.getPatentId());
+                    history.setHtNewItem("专利进度 : 待认领");
+                    history.setHtOldItem("专利进度 : 未审核");
+                    history.setHtProcess("初审通过");
+                    history.setHtOperation(value);
+                }
+                if (patent.getPatentClaim().equals(statusCode_One)) {
                     System.out.println("复审通过");
                     history.setHtPatentId(patent.getPatentId());
                     history.setHtNewItem("专利进度 : 待提交");
@@ -164,50 +215,51 @@ public class HistoryReflect {
                 }
             }
         }
-        if(ProcessEnum.UPDATE.getName().equals(value)){
-
+        if (ProcessEnum.UPDATE.getName().equals(value)) {
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem(getHistory(patent));
             history.setHtOldItem(getHistory(oldPatent));
             history.setHtProcess(value);
             history.setHtOperation("修改专利");
         }
-        if(ProcessEnum.SUBMIT.getName().equals(value)){
-
+        if (ProcessEnum.SUBMIT.getName().equals(value)) {
             history.setHtPatentId(patent.getPatentId());
             history.setHtNewItem(getHistory(patent));
             history.setHtOldItem(getHistory(oldPatent));
             history.setHtProcess(value);
             history.setHtOperation("提交专利");
         }
+
+
         historyService.insertHistory(history);
         //获取用户名
         return joinPoint.proceed();
     }
-public static String getHistory(Patent patent){
 
-    StringBuilder stringBuilder = new StringBuilder();
+    public static String getHistory(Patent patent) {
 
-    if (patent.getApplyNumber()!=null){
-        stringBuilder.append("申请号 ："+patent.getApplyNumber()+"  ");
-    }
-    if(patent.getCaseNumber()!=null){
-        stringBuilder.append("案件文号 ："+patent.getCaseNumber()+ "   ");
-    }
-    if(patent.getPatentName()!=null){
-        stringBuilder.append("专利名 ："+patent.getPatentName()+"   ");
-    }
-    if(patent.getPatentRemarks()!=null){
-        stringBuilder.append("备注 ："+patent.getPatentRemarks()+"  ");
-    }
-    if(patent.getWritePerson()!=null){
-        stringBuilder.append("撰写人 ："+patent.getWritePerson()+"   ");
-    }
-    if(patent.getCreatePerson()!=null){
-        stringBuilder.append("发明人 ："+patent.getCreatePerson()+"   ");
-    }
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (patent.getApplyNumber() != null) {
+            stringBuilder.append("申请号 ：" + patent.getApplyNumber() + "  ");
+        }
+        if (patent.getCaseNumber() != null) {
+            stringBuilder.append("案件文号 ：" + patent.getCaseNumber() + "   ");
+        }
+        if (patent.getPatentName() != null) {
+            stringBuilder.append("专利名 ：" + patent.getPatentName() + "   ");
+        }
+        if (patent.getPatentRemarks() != null) {
+            stringBuilder.append("备注 ：" + patent.getPatentRemarks() + "  ");
+        }
+        if (patent.getWritePerson() != null) {
+            stringBuilder.append("撰写人 ：" + patent.getWritePerson() + "   ");
+        }
+        if (patent.getCreatePerson() != null) {
+            stringBuilder.append("发明人 ：" + patent.getCreatePerson() + "   ");
+        }
         return stringBuilder.toString();
-}
+    }
 
 
 }

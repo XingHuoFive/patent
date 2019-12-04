@@ -23,6 +23,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 @Service
@@ -64,11 +66,11 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     @Override
     @Monitor("专利认领")
     public Integer updatePatentToWritePerson(Patent patent) {
-        return patentSelcetMapper.updatePatentToWritePerson(patent);
+        return  patentSelcetMapper.updatePatentToWritePerson(patent);
     }
 
     @Override
-    public PatentVO selectPatentMessage(User user) {
+    public List<PatentVO> selectPatentMessage(User user) {
         return patentSelcetMapper.selectPatentMessage(user);
     }
 
@@ -139,6 +141,11 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
         //execl(list,columnNames,key,response);
     }
 
+    @Override
+    public String selectPatentSchedule(Patent patent) {
+        return patentSelcetMapper.selectPatentSchedule(patent);
+    }
+
 
 //最初下载模板
 /*    @Override
@@ -207,7 +214,8 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     @Override
     public  Boolean execl(List<PatentExport> list, String[] columnNames, String[] keys , String path  /*HttpServletResponse response*/) throws IOException {
 
-        List<Map<String, Object>>  listMap = new ArrayList<>();
+        List<Map<String, Object>>  listMap
+                = new ArrayList<>();
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("sheetName", "sheet1");
         listMap.add(map);

@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxp.patMag.dao.PatentMapper">
     <insert id="uploadFile" parameterType="com.sxp.patMag.entity.PatentMaintain">
-        INSERT INTO tb_file ('file_id', 'file_url', 'file_zd_id', 'file_patent_id') VALUES (#{fileId}, #{patentfileURL}, #{zdId}, #{patentId})
+        INSERT INTO tb_file (file_id, file_url, file_zd_id, file_patent_id)
+        VALUES (#{fileId}, #{patentfileURL}, #{zdId}, #{patentId})
     </insert>
 
     <update id="updatePatent">
@@ -122,12 +123,12 @@
         ON i.patent_id = p.patent_id WHERE indicator_id = #{indicatorId}
     </select>
 
-    <select id="getJbookURLList" resultType="java.lang.String">
+    <select id="getJbookUrlList" resultType="java.lang.String">
         SELECT jbook_url FROM tb_jbook WHERE jbook_patent_id = #{patentId}
     </select>
 
     <select id="getMaintainList" resultType="java.lang.String">
-        SELECT zd_value FROM tb_zd WHERE zd_file <![CDATA[ <> ]]> '无'
+        SELECT zd_file FROM tb_zd WHERE zd_file <![CDATA[ <> ]]> '无'
     </select>
 
     <select id="getFileURLByPatentId" resultType="com.sxp.patMag.entity.PatentFileMaintain">
