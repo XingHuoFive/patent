@@ -23,6 +23,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 @Service
@@ -64,7 +66,16 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
     @Override
     @Monitor("专利认领")
     public Integer updatePatentToWritePerson(Patent patent) {
-        return patentSelcetMapper.updatePatentToWritePerson(patent);
+        int num = 0;
+        Lock lock = new ReentrantLock();
+        lock.lock();
+
+        String str = patentSelcetMapper.selectPatentSchedule(patent);
+        if(str.equals("待认领")){
+            num  = patentSelcetMapper.updatePatentToWritePerson(patent);
+        }
+        lock.unlock();
+        return  num;
     }
 
     @Override
