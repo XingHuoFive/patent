@@ -66,22 +66,22 @@
         select  patent_name, case_number,apply_number,patent_schedule, apply_time, create_person, write_person
         from  tb_patent   where  1=1
         <if test="caseNumber != null and caseNumber.length()>0">
-            AND case_number=#{caseNumber}
+            AND case_number  like CONCAT('%',#{caseNumber},'%')
         </if>
         <if test="applyNumber != null and applyNumber.length()>0">
-            AND apply_number=#{applyNumber}
+            AND apply_number like CONCAT('%',#{applyNumber},'%')
         </if>
         <if test="patentName != null and patentName.length()>0">
-            AND patent_Name=#{patentName}
+            AND patent_Name like CONCAT('%',#{patentName},'%')
         </if>
         <if test="createPerson != null and createPerson.length()>0">
-            AND create_person=#{createPerson}
+            AND create_person like CONCAT('%',#{createPerson},'%')
         </if>
         <if test="patentSchedule != null and patentSchedule.length()>0">
-            AND patent_schedule=#{patentSchedule}
+            AND patent_schedule like CONCAT('%',#{patentSchedule},'%')
         </if>
         <if test="applyTime != null and applyTime.length()>0">
-            AND apply_time=#{applyTime}
+            AND apply_time like CONCAT('%',#{applyTime},'%')
         </if >
 
         order by case
