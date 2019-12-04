@@ -41,5 +41,6 @@ public interface AdminService {
      * @param user 登录者信息
      * @return 通知列表
      */
+
     GeneralResult showPatentNotice(User user);
 }
