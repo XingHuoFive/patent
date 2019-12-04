@@ -45,7 +45,7 @@ public interface PatentSelcetService {
      * @param patent
      * @return
      */
-    Integer updatePatentToWritePerson(Patent patent);
+    Integer  updatePatentToWritePerson(Patent patent);
 
 
     /**
@@ -97,4 +97,13 @@ public interface PatentSelcetService {
      */
  //   Boolean export(PatentVO patent, HttpServletResponse response) throws IOException;
      String export(PatentVO patent, HttpServletRequest req) throws IOException;
+
+
+    /***
+     *
+     * 查询认领状态
+     * @param patent
+     * @return
+     */
+    String selectPatentSchedule(Patent patent);
 }

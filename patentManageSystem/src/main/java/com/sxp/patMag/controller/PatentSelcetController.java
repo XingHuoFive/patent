@@ -10,6 +10,7 @@ import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.JsonUtils;
 import com.sxp.patMag.util.JwtUtil;
 import com.sxp.patMag.util.RedisUtil;
+import lombok.Synchronized;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +25,8 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @ClassName PatentSelcetController
@@ -56,33 +59,10 @@ public class PatentSelcetController {
             return GeneralResult.build(1,"对象为空",null);
         }
 
-        /*if(patent.getCaseNumber() == null){
-
-        }else if(patent.getCaseNumber().length() > 16){
-            return GeneralResult.build(1,"案例号过长",null);
-        }
-
-        if(patent.getApplyNumber() == null){
-
-        }else if(patent.getApplyNumber().length() > 16){
-            return GeneralResult.build(1,"申请号过长",null);
-        }
-
-        if(patent.getPatentName() == null){
-
-        }else if(patent.getPatentName().length() > 150){
-            return GeneralResult.build(1,"专利名过长",null);
-        }
-
-        if(patent.getApplyTime() == null){
-
-        }else if(patent.getApplyTime().length() > 30){
-            return GeneralResult.build(1,"没有符合的申请时间",null);
-        }
-*/
         // 获取数据
         List<Patent> list = patentSelcetService.selectPatentByPatent(patent);
         String message = null;
+
         // 处理空指针异常
         try {
             message = bindingResult.getFieldError().getDefaultMessage();
@@ -112,7 +92,6 @@ public class PatentSelcetController {
     @ResponseBody
     public  GeneralResult selectPatentToUser(){
 
-        // System.out.println(patentSelcetService.selectPatentToUser());
         // 获取数据并封装对象
         List<Patent> list = patentSelcetService.selectPatentToUser();
         if(list==null){
@@ -132,8 +111,8 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/updatePatentToWritePerson",method = RequestMethod.POST)
     @ResponseBody
-    @Transactional(rollbackFor = Exception.class)
-    public  GeneralResult updatePatentToWritePerson(@RequestBody @Valid Patent patent,HttpServletRequest req,BindingResult bindingResult){
+  //  @Transactional(rollbackFor = Exception.class)
+    public  GeneralResult updatePatentToWritePerson(@RequestBody @Valid Patent patent, HttpServletRequest req, BindingResult bindingResult){
 
         // 获取redis中得token值并取得用户名
         String token  =  req.getHeader("data");
@@ -143,11 +122,12 @@ public class PatentSelcetController {
         patent.setWritePerson(user.getUserName());
         System.out.println(patent.toString());
 
+
+
+        // 数据校验
         if(patent==null){
             return GeneralResult.build(1,"对象为空",null);
         }
-
-        // 数据校验
         if(patent.getPatentId() == null){
             return GeneralResult.build(1,"没有接收到专利ID",null);
         }else if(patent.getPatentId().length() > 50){
@@ -155,7 +135,14 @@ public class PatentSelcetController {
         }
 
         // 获取数据并封装数据
-        Integer list = patentSelcetService.updatePatentToWritePerson(patent);
+        Integer list =  0;
+        Lock lock = new ReentrantLock();
+        lock.lock();
+        String str = patentSelcetService.selectPatentSchedule(patent);
+        if(str.equals("待认领")){
+            list  = patentSelcetService.updatePatentToWritePerson(patent);
+        }
+        lock.unlock();
         if(list==0){
             return GeneralResult.build(1,"无匹配专利",null);
         }else{
