@@ -60,7 +60,7 @@ public interface PatentService {
      * 管理员获取交底书下载链接
      * @return 交底书下载链接
      */
-    List<String> JbookURLList(String patentId);
+    List<String> JbookUrlList(String patentId);
 
     /**
      * 提交专利
@@ -86,7 +86,7 @@ public interface PatentService {
      * 根据专利id查询文件下载链接
      * @return 下载链及对应文件类型
      */
-    List<PatentFileMaintain> getFileURLByPatentId(PatentFileMaintain patentFileMaintain);
+    List<PatentFileMaintain> getFileUrlByPatentId(PatentFileMaintain patentFileMaintain);
 
     /**
      * 上传文件维护阶段文件

@@ -97,7 +97,7 @@ public class PatentController {
                 generalResult.setMsg("id为空，无法查询");
                 return generalResult;
             }
-            List<String> urlList = tbPatentService.JbookURLList(patentId);
+            List<String> urlList = tbPatentService.JbookUrlList(patentId);
             if (null == urlList) {
                 generalResult.setStatus(1);
                 generalResult.setMsg("未找到交底书");
@@ -156,16 +156,16 @@ public class PatentController {
     }
 
     @PostMapping("/getFileURL")
-    public GeneralResult getFileURLByPatentId(@RequestBody @Valid PatentFileMaintain patentFileMaintain, BindingResult bindingResult) {
+    public GeneralResult getFileUrlByPatentId(@RequestBody @Valid PatentFileMaintain patentFileMaintain, BindingResult bindingResult) {
         GeneralResult generalResult = new GeneralResult();
         try {
             if(bindingResult.hasErrors()) {
                 throw new ServiceException(PatentException.ERROR_PARAME);
             }
-            List<PatentFileMaintain> fileURLByPatentId = tbPatentService.getFileURLByPatentId(patentFileMaintain);
+            List<PatentFileMaintain> fileUrlByPatentId = tbPatentService.getFileUrlByPatentId(patentFileMaintain);
             generalResult.setStatus(0);
             generalResult.setMsg("查询成功");
-            generalResult.setData(fileURLByPatentId);
+            generalResult.setData(fileUrlByPatentId);
         } catch (ServiceException e) {
             generalResult.setStatus(1);
             generalResult.setMsg(e.getMessage());

@@ -122,7 +122,7 @@
         ON i.patent_id = p.patent_id WHERE indicator_id = #{indicatorId}
     </select>
 
-    <select id="getJbookURLList" resultType="java.lang.String">
+    <select id="getJbookUrlList" resultType="java.lang.String">
         SELECT jbook_url FROM tb_jbook WHERE jbook_patent_id = #{patentId}
     </select>
 

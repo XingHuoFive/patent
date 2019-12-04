@@ -80,8 +80,8 @@ public class PatentServiceImpl implements PatentService {
     }
 
     @Override
-    public List<String> JbookURLList(String patentId) {
-        return tbPatentMapper.getJbookURLList(patentId);
+    public List<String> JbookUrlList(String patentId) {
+        return tbPatentMapper.getJbookUrlList(patentId);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class PatentServiceImpl implements PatentService {
     }
 
     @Override
-    public List<PatentFileMaintain> getFileURLByPatentId(PatentFileMaintain patentFileMaintain) {
+    public List<PatentFileMaintain> getFileUrlByPatentId(PatentFileMaintain patentFileMaintain) {
         return tbPatentMapper.getFileURLByPatentId(patentFileMaintain);
     }
 
