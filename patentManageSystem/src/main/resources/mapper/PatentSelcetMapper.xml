@@ -63,7 +63,14 @@
 
     <!--专利导出-->
     <select id="selectPatentByPatentExport" parameterType="com.sxp.patMag.entity.Patent"  resultType="com.sxp.patMag.entity.PatentExport" >
-        select  patent_name, case_number,apply_number,patent_schedule, apply_time, create_person, write_person
+        select
+        patent_name,
+        case_number,
+        apply_number,
+        patent_schedule,
+        apply_time,
+        create_person,
+        write_person
         from  tb_patent   where  1=1
         <if test="caseNumber != null and caseNumber.length()>0">
             AND case_number  like CONCAT('%',#{caseNumber},'%')
@@ -83,6 +90,10 @@
         <if test="applyTime != null and applyTime.length()>0">
             AND apply_time like CONCAT('%',#{applyTime},'%')
         </if >
+        <if test="patentClaim != null and  patentClaim !=1">
+            AND patent_claim=#{patentClaim}
+            AND patent_schedule="待认领"
+        </if>
 
         order by case
         WHEN patent_schedule like '未审核%' then 1
