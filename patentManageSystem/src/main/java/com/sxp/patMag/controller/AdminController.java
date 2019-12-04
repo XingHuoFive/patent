@@ -21,7 +21,6 @@ import javax.validation.Valid;
 public class AdminController {
     @Autowired
     private AdminService adminService;
-
     /**
      * 审核新建的专利
      */

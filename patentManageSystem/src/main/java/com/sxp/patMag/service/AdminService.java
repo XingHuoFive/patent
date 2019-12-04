@@ -20,7 +20,6 @@ public interface AdminService {
      * @return 修改结果
      */
     GeneralResult checkPatent(Patent patent);
-
     /**
      * 读取日志
      *

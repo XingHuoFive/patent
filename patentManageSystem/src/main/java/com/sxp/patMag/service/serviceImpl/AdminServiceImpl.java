@@ -31,7 +31,6 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
     @Autowired
     private PatentService tbPatentService;
-
     /**
      * 审核新建的专利
      *
