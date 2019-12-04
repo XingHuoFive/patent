@@ -92,5 +92,5 @@ public interface PatentService {
      * @param request 获取到的内容
      * @return 影响行数
      */
-    int uploadFile(HttpServletRequest request) throws IOException;
+    int uploadFile(HttpServletRequest request , String fileName ) throws IOException;
 }
