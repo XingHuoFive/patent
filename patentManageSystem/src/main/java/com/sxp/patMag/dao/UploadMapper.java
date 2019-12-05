@@ -25,5 +25,12 @@ public interface UploadMapper {
      */
  Integer updateJbookStatusByPatentId(String  patentId);
 
+    /**
+     *  修改进度
+     * @param patentId 专利id
+     * @return
+     */
+    Integer updatePatentSchedule(String patentId);
+
 
 }

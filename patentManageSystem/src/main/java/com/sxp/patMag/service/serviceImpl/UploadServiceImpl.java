@@ -29,6 +29,7 @@ public class UploadServiceImpl implements UploadService {
     public GeneralResult insertJbook( Jbook jbook) throws IOException {
 
         uploadMapper.updateJbookStatusByPatentId(jbook.getJbookPatentId());
+        uploadMapper.updatePatentSchedule(jbook.getJbookPatentId());
         int res = uploadMapper.insertJbook(jbook);
         if (res > 0) {
             return GeneralResult.build(0, "success");

@@ -11,4 +11,10 @@
         where jbook_patent_id = #{patentId}
     </update>
 
+    <update id="updatePatentSchedule">
+        update tb_patent
+        set patent_schedule = '待复审'
+        where patent_id = #{patentId}
+    </update>
+
 </mapper>
