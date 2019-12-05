@@ -9,7 +9,8 @@ public enum StatusEnum {
 
 
     Success(0,"成功"),
-    Fail(1,"无匹配专利");
+    Fail(1,"无匹配专利"),
+    Objeck_NULL(1,"对象为空");
 
 
     private int status;
