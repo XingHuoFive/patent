@@ -19,7 +19,19 @@ public class DateUtils {
        //时间格式化
        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
        return simpleDateFormat.format(date);
-
    }
+    /**
+     * 日期格式化工具
+     * @param time
+     * @return
+     */
+    public static String formatDate(Long time){
+        //时间格式化
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return simpleDateFormat.format(time);
+    }
+
+
+
 
 }

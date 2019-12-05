@@ -52,7 +52,7 @@ public class LoginServiceImpl implements LoginService {
             return GeneralResult.build(1, "用户名或密码不正确");
         }
         //生成token，使用uuid
-        String token =null;
+        String token = null;
         String userMd5 = Md5Util.getMd5Keys(list.get(0).getUserId());
         //清空密码
         user.setUserPassword(null);
@@ -63,13 +63,13 @@ public class LoginServiceImpl implements LoginService {
         //权限存储
         user.setUserRole(list.get(0).getUserRole());
         user.setUserId(list.get(0).getUserId());
-        String key = ProcessEnum.USERLOGIN.getName() +userMd5;
-        if (redis.get(key)==null){
-        token= JwtUtil.getToken(list.get(0));
-        //把用户信息保存到redis，key就是token，value就是用户信息
-        redis.set(ProcessEnum.USERLOGIN.getName() + userMd5, token);
-        }else {
-        token = redis.get(ProcessEnum.USERLOGIN .getName()+userMd5).toString();
+        String key = ProcessEnum.USERLOGIN.getName() + userMd5;
+        if (redis.get(key) == null) {
+            token = JwtUtil.getToken(list.get(0));
+            //把用户信息保存到redis，key就是token，value就是用户信息
+            redis.set(ProcessEnum.USERLOGIN.getName() + userMd5, token);
+        } else {
+            token = redis.get(ProcessEnum.USERLOGIN.getName() + userMd5).toString();
         }
         //重置key的过期时间
         redis.expire(ProcessEnum.USERLOGIN.getName() + userMd5, expireTime);
@@ -80,19 +80,20 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public GeneralResult getUserByToken(HttpServletRequest request) {
         String token = request.getHeader("data");
-        String userId =JwtUtil.getTokenUserId(token);
-        return GeneralResult.build(0,"success",loginMapper.selectUserById(userId));
+        String userId = JwtUtil.getTokenUserId(token);
+        return GeneralResult.build(0, "success", loginMapper.selectUserById(userId));
     }
+
     @Override
     public GeneralResult invalidate(HttpServletRequest request) {
         String token = request.getHeader("data");
-        String userId =JwtUtil.getTokenUserId(token);
+        String userId = JwtUtil.getTokenUserId(token);
         try {
             redis.del(Md5Util.encrypt(userId));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-         return GeneralResult.ok();
+        return GeneralResult.ok();
     }
 
 
