@@ -1,10 +1,10 @@
 package com.sxp.patMag.util;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-import com.sxp.patMag.dao.UploadMapper;
 import com.sxp.patMag.entity.LogPo;
 import com.sxp.patMag.entity.User;
-import com.sxp.patMag.enums.ProcessEnum;
+import com.sxp.patMag.enums.ActionEnum;
+import com.sxp.patMag.enums.NounEnum;
+import com.sxp.patMag.enums.RedisEnum;
 import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.LoginService;
@@ -17,9 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.*;
 import java.util.logging.Formatter;
@@ -48,9 +46,6 @@ public class WeLogFile {
      * 当时操作人
      */
     private String username;
-
-
-    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:sss");
 
     private ThreadLocal<User> user = new ThreadLocal<User>();
 
@@ -94,7 +89,7 @@ public class WeLogFile {
             @Override
             public String format(LogRecord record) {
                 StringBuilder stringBuilder = new StringBuilder();
-                String sDate = simpleDateFormat.format(System.currentTimeMillis());
+                String sDate =DateUtils.formatDate(System.currentTimeMillis());
                 stringBuilder.append(sDate);
                 stringBuilder.append("--");
                 stringBuilder.append(record.getLevel());
@@ -127,55 +122,55 @@ public class WeLogFile {
         }
 
         /*               redis            */
-        String sDate = simpleDateFormat.format(System.currentTimeMillis());
+        String sDate =DateUtils.formatDate(System.currentTimeMillis());
         LogPo logPo = new LogPo();
         logPo.setCreateTime(sDate);
         logPo.setUserName(username);
 
-        if (methodName.contains("select") || methodName.contains("get") || methodName.contains("list") || methodName.contains("List") || methodName.contains("show")) {
-            logPo.setItem("查询" + retString(methodName));
-            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        if (methodName.contains(ActionEnum.SELECT1.getName()) || methodName.contains(ActionEnum.SELECT2.getName()) || methodName.contains(ActionEnum.SELECT3.getName()) || methodName.contains(ActionEnum.SELECT4.getName()) || methodName.contains(ActionEnum.SELECT5.getName())) {
+            logPo.setItem(ActionEnum.SELECT.getName() + retString(methodName));
+            logPo.setOperation(replaceMethod(methodName));
         }
-        if (methodName.contains("update")) {
-            logPo.setItem("修改" + retString(methodName));
-            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        if (methodName.contains(ActionEnum.UPDATE1.getName())) {
+            logPo.setItem(ActionEnum.UPDATE.getName()  + retString(methodName));
+            logPo.setOperation(replaceMethod(methodName));
         }
-        if (methodName.contains("login")) {
-            logPo.setItem("用户登录");
-            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        if (methodName.contains(ActionEnum.LOGIN1.getName())) {
+            logPo.setItem(ActionEnum.LOGIN.getName() );
+            logPo.setOperation(replaceMethod(methodName));
         }
-        if (methodName.contains("add") || methodName.contains("insert") || methodName.contains("list")) {
-            logPo.setItem("新增" + retString(methodName));
-            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        if (methodName.contains(ActionEnum.INSERT1.getName()) || methodName.contains(ActionEnum.INSERT2.getName()) || methodName.contains(ActionEnum.INSERT3.getName())) {
+            logPo.setItem(ActionEnum.SELECT.getName() + retString(methodName));
+            logPo.setOperation(replaceMethod(methodName));
         }
-        if (methodName.contains("check")) {
-            logPo.setItem("审核" + retString(methodName));
-            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        if (methodName.contains(ActionEnum.CHECK1.getName())) {
+            logPo.setItem(ActionEnum.CHECK.getName()  + retString(methodName));
+            logPo.setOperation(replaceMethod(methodName));
         }
-        if (methodName.contains("export")) {
-            logPo.setItem("导出");
+        if (methodName.contains(ActionEnum.EXPORT1.getName())) {
+            logPo.setItem(ActionEnum.EXPORT.getName() );
             logPo.setOperation("****");
         }
-        if (methodName.contains("submit")) {
-            logPo.setItem("提交");
+        if (methodName.contains(ActionEnum.SUBMIT1.getName())) {
+            logPo.setItem(ActionEnum.SUBMIT.getName() );
             logPo.setOperation("****");
         }
-        if (methodName.contains("upload")) {
-            logPo.setItem("上传文件");
+        if (methodName.contains(ActionEnum.UPLOAD1.getName())) {
+            logPo.setItem(ActionEnum.UPLOAD.getName() );
             logPo.setOperation("****");
         }
-        if (methodName.contains("read")) {
+        if (methodName.contains(ActionEnum.READ1.getName())) {
             fileHandler.close();
             return proceed;
         }
 
-        if (redis.lGetListSize("logs")<=1000){
-            redis.lpush("logs",logPo);
+        if (redis.lGetListSize(RedisEnum.LOGKEY.getName())<=1000){
+            redis.lpush(RedisEnum.LOGKEY.getName(),logPo);
         }else{
-            redis.rpop("logs");
-            redis.lpush("logs",logPo);
+            redis.rpop(RedisEnum.LOGKEY.getName());
+            redis.lpush(RedisEnum.LOGKEY.getName(),logPo);
         }
-        redis.expire("logs",logExpireTime);
+        redis.expire(RedisEnum.LOGKEY.getName(),logExpireTime);
         fileHandler.close();
         return proceed;
     }
@@ -215,26 +210,31 @@ public class WeLogFile {
         return path;
     }
     public static String retString(String str) {
-        if (str.contains("History")) {
-            return "历史记录";
+        if (str.contains(NounEnum.HISTORY1.getName())) {
+            return NounEnum.HISTORY.getName();
         }
-        if (str.contains("Indicator")) {
-            return "指标";
+        if (str.contains(NounEnum.INDICATOR1.getName())) {
+            return NounEnum.INDICATOR.getName();
         }
-        if (str.contains("RemarkView")) {
-            return "专利的备注状态";
+        if (str.contains(NounEnum.REMARKVIEW1.getName())) {
+            return NounEnum.REMARKVIEW.getName();
         }
-        if (str.contains("Notice")) {
-            return "通知";
+        if (str.contains(NounEnum.NOTICE1.getName())) {
+            return NounEnum.NOTICE.getName();
         }
-        if (str.contains("Patent")) {
-            return "专利";
+        if (str.contains(NounEnum.PATENT1.getName())) {
+            return NounEnum.PATENT.getName();
         }
-        if (str.contains("Jbook")) {
-            return "交底书";
+        if (str.contains(NounEnum.JBOOK1.getName())) {
+            return NounEnum.JBOOK.getName();
         }
 
         return "";
+    }
+    
+    
+    public static  String replaceMethod(String methodName){
+        return methodName.replace(methodName.substring(3, methodName.length() - 1), "****");
     }
 
 }
