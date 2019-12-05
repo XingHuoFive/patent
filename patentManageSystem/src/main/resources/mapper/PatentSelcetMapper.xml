@@ -53,8 +53,10 @@
         WHEN patent_schedule like '未通过%' then 2
         WHEN patent_schedule like '待认领%' then 3
         WHEN patent_schedule like '编写中%' then 4
-        WHEN patent_schedule like '待提交%' then 5
-        WHEN patent_schedule like '已提交%' then 6
+        WHEN patent_schedule like '%复%' then 5
+        WHEN patent_schedule like '待提交%' then 6
+        WHEN patent_schedule like '已提交%' then 7
+        WHEN patent_schedule like '%维护%' then 8
         end
         asc,apply_time desc
     </select>
@@ -100,8 +102,10 @@
         WHEN patent_schedule like '未通过%' then 2
         WHEN patent_schedule like '待认领%' then 3
         WHEN patent_schedule like '编写中%' then 4
-        WHEN patent_schedule like '待提交%' then 5
-        WHEN patent_schedule like '已提交%' then 6
+        WHEN patent_schedule like '%复%' then 5
+        WHEN patent_schedule like '待提交%' then 6
+        WHEN patent_schedule like '已提交%' then 7
+        WHEN patent_schedule like '%维护%' then 8
         end
         asc,apply_time desc
     </select>
@@ -126,8 +130,10 @@
         WHEN patent_schedule like '未通过%' then 2
         WHEN patent_schedule like '待认领%' then 3
         WHEN patent_schedule like '编写中%' then 4
-        WHEN patent_schedule like '待提交%' then 5
-        WHEN patent_schedule like '已提交%' then 6
+        WHEN patent_schedule like '%复%' then 5
+        WHEN patent_schedule like '待提交%' then 6
+        WHEN patent_schedule like '已提交%' then 7
+        WHEN patent_schedule like '%维护%' then 8
         end
         asc,apply_time desc
     </select>
@@ -140,8 +146,10 @@
         WHEN patent_schedule like '未通过%' then 2
         WHEN patent_schedule like '待认领%' then 3
         WHEN patent_schedule like '编写中%' then 4
-        WHEN patent_schedule like '待提交%' then 5
-        WHEN patent_schedule like '已提交%' then 6
+        WHEN patent_schedule like '%复%' then 5
+        WHEN patent_schedule like '待提交%' then 6
+        WHEN patent_schedule like '已提交%' then 7
+        WHEN patent_schedule like '%维护%' then 8
         end
         asc,apply_time desc
 </select>
@@ -199,12 +207,14 @@
         WHERE
         write_person = #{userName} or apply_person=#{userName}
         order by case
-            WHEN patent_schedule like '未审核%' then 1
-            WHEN patent_schedule like '未通过%' then 2
-            WHEN patent_schedule like '待认领%' then 3
-            WHEN patent_schedule like '编写中%' then 4
-            WHEN patent_schedule like '待提交%' then 5
-            WHEN patent_schedule like '已提交%' then 6
+        WHEN patent_schedule like '未审核%' then 1
+        WHEN patent_schedule like '未通过%' then 2
+        WHEN patent_schedule like '待认领%' then 3
+        WHEN patent_schedule like '编写中%' then 4
+        WHEN patent_schedule like '%复%' then 5
+        WHEN patent_schedule like '待提交%' then 6
+        WHEN patent_schedule like '已提交%' then 7
+        WHEN patent_schedule like '%维护%' then 8
             end
         asc,apply_time desc
     </select>
