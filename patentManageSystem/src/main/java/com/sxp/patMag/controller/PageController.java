@@ -2,6 +2,7 @@ package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.DataGridResult;
 import com.sxp.patMag.entity.Patent;
+import com.sxp.patMag.enums.StatusEnum;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.PageService;
 import com.sxp.patMag.service.PatentService;
@@ -29,10 +30,10 @@ public class PageController {
             GeneralResult generalResult = new GeneralResult();
             try {
                 if (null == rows || "".equals(rows)) {
-                    return GeneralResult.build(1,"行数为空，无法查询");
+                    return GeneralResult.build(StatusEnum.Lang_NULL);
                 }
                 if (null == page || "".equals(page)) {
-                    return GeneralResult.build(1,"页数为空，无法查询");
+                    return GeneralResult.build(StatusEnum.PAGE_NULL);
                 }
 
                 if (null == patent) {
