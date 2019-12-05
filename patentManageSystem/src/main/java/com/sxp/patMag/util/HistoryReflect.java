@@ -51,9 +51,10 @@ public class HistoryReflect {
 
     private static String statusCode_Zero = "0";
 
-    private User user;
 
-    public void setUser(User user) {
+    private ThreadLocal<User> user = new ThreadLocal<User>();
+
+    public void setUser(ThreadLocal<User> user) {
         this.user = user;
     }
 
@@ -99,9 +100,8 @@ public class HistoryReflect {
         String date = simpleDateFormat.format(new Date());
         history.setHtDate(date);
         history.setHtId(UUID.getUUID());
-        history.setHtUserId(user.getUserId());
+        history.setHtUserId(user.get().getUserId());
         if (value.contains(ProcessEnum.UPLOAD.getName())) {
-
             if (ProcessEnum.UPLOADFILES.getName().equals(value)) {
 
                 //序列化时过滤掉request和response
@@ -182,7 +182,7 @@ public class HistoryReflect {
                 if (patent.getPatentClaim().equals(statusCode_Zero)) {
                     System.out.println("初审驳回");
                     history.setHtPatentId(patent.getPatentId());
-                    history.setHtNewItem("专利进度 : 未审核");
+                    history.setHtNewItem("驳回理由 ："+patent.getPatentRemarks());
                     history.setHtOldItem("专利进度 : 未审核");
                     history.setHtProcess("初审驳回");
                     history.setHtOperation(value);
@@ -190,7 +190,7 @@ public class HistoryReflect {
                 if (patent.getPatentClaim().equals(statusCode_One)) {
                     System.out.println("复审驳回");
                     history.setHtPatentId(patent.getPatentId());
-                    history.setHtNewItem("专利进度 : 编写中");
+                    history.setHtNewItem("驳回理由 ："+patent.getPatentRemarks());
                     history.setHtOldItem("专利进度 : 编写中");
                     history.setHtProcess("复审驳回");
                     history.setHtOperation(value);

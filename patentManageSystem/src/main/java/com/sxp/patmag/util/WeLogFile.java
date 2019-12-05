@@ -53,10 +53,10 @@ public class WeLogFile {
 
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:sss");
 
-    private User user1;
+    private ThreadLocal<User> user = new ThreadLocal<User>();
 
-    public void setUser1(User user1) {
-        this.user1 = user1;
+    public void setUser(ThreadLocal<User> user) {
+        this.user = user;
     }
 
     @Value("${logExpireTime}")
@@ -114,8 +114,8 @@ public class WeLogFile {
         // 获取参数
         List<Object> args = Arrays.asList(joinPoint.getArgs());
         Object proceed = joinPoint.proceed();
-        if (user1 != null) {
-            username = user1.getUserName();
+        if (user.get() != null) {
+            username = user.get().getUserName();
         }
         if (username != null && proceed != null) {
             log.info(username + "--" + methodName + "--paramter:" + args.toString() + "returning:" + proceed.toString());

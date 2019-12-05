@@ -34,6 +34,15 @@ public class LoginServiceImpl implements LoginService {
     private HistoryReflect reflect;
     @Value("${expireTime}")
     private Integer expireTime;
+    private ThreadLocal<User> localUser = new ThreadLocal<User>();
+
+    public ThreadLocal<User> getLocalUser() {
+        return localUser;
+    }
+
+    public void setLocalUser(ThreadLocal<User> localUser) {
+        this.localUser = localUser;
+    }
 
     @Override
     public GeneralResult login(@Valid User user) {
@@ -47,8 +56,10 @@ public class LoginServiceImpl implements LoginService {
         String userMd5 = Md5Util.getMd5Keys(list.get(0).getUserId());
         //清空密码
         user.setUserPassword(null);
-        reflect.setUser(user);
-        weLogFile.setUser1(user);
+
+        localUser.set(list.get(0));
+        reflect.setUser(localUser);
+        weLogFile.setUser(localUser);
         //权限存储
         user.setUserRole(list.get(0).getUserRole());
         user.setUserId(list.get(0).getUserId());

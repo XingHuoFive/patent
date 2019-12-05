@@ -47,6 +47,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Autowired
     private LoginMapper loginMapper;
 
+    private ThreadLocal<User> user = new ThreadLocal<User>();
+
+    public void setUser(ThreadLocal<User> user) {
+        this.user = user;
+    }
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
 
@@ -64,7 +70,6 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
-
         if(null == token){
             responseWeb("401", "tokenIsNull", response);
             return false;
@@ -91,8 +96,9 @@ public class LoginInterceptor implements HandlerInterceptor {
             responseWeb("401", "NoSuchUser", response);
             return false;
         }
-        reflect.setUser(list.get(0));
-        weLogFile.setUser1(list.get(0));
+        user.set(list.get(0));
+        reflect.setUser(user);
+        weLogFile.setUser(user);
         // 验证 token
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(list.get(0).getUserPassword())).build();
         try {

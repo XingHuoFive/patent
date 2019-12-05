@@ -24,14 +24,18 @@ public class LoggerHandler extends HandlerInterceptorAdapter {
     WeLogFile weLogFile;
     @Autowired
     LoginMapper mapper;
+    private ThreadLocal<User> user = new ThreadLocal<User>();
 
+    public void setUser(ThreadLocal<User> user) {
+        this.user = user;
+    }
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("data");
         String userId = JwtUtil.getTokenUserId(token);
         List<User> list = mapper.selectUserById(userId);
-        User user = list.get(0);
-        weLogFile.setUser1(user);
+        user.set(list.get(0));
+        weLogFile.setUser(user);
         return true;
     }
 }
