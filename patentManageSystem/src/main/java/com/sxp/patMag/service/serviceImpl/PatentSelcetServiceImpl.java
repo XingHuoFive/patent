@@ -117,7 +117,6 @@ public class PatentSelcetServiceImpl implements PatentSelcetService {
         String[] keys = {"number", "patentName", "caseNumber", "applyNumber","patentSchedule", "applyTime", "createPerson", "writePerson"};
    /*     String projectUrl = req.getSession().getServletContext().getRealPath("/");
         String path = projectUrl + "/" + "patent.xlsx";
-
 */
 
         Date todayDate = new Date();

@@ -131,7 +131,7 @@ public class AdminServiceImpl implements AdminService {
             return GeneralResult.build(1, "fail", "您不是管理员，无法查看日志!");
         }
         if ("1".equals(role)) {
-           List  logList =  redis.lGet("logs",0,90);
+           List  logList =  redis.lGet("logs",0,89);
             return GeneralResult.build(0, "success", logList);
         }
             return GeneralResult.build(1, "failed", "您啥也不是");

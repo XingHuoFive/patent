@@ -72,7 +72,8 @@ public class PatentController {
                 generalResult.setMsg("id有误，无法更改");
                 return generalResult;
             }
-            if(patent.getPatentSchedule().equals("未通过")){
+            /*未校验  报错！！*/
+            if(null != patent.getPatentSchedule() && patent.getPatentSchedule().equals("未通过")){
                 patent.setPatentSchedule("未审核");
             }
             int i = tbPatentService.updatePatent(patent);
@@ -205,6 +206,16 @@ public class PatentController {
             return generalResult;
         }
         return generalResult;
+    }
+
+    @PostMapping("/getStatus")
+    public GeneralResult getStatus(@RequestBody  Patent patent){
+        String status = tbPatentService.getStatus(patent);
+        if(status != null || !status.equals("")){
+            return GeneralResult.build(0,"成功",status,200);
+        }else {
+            return GeneralResult.build(1,"提交失败",2);
+        }
     }
 
 }

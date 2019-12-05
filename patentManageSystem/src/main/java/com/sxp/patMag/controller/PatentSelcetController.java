@@ -205,7 +205,7 @@ public class PatentSelcetController {
      */
     @RequestMapping(value = "/patentExeclOut",method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult patentExeclOut(PatentVO patent, HttpServletRequest request, BindingResult bindingResult) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public GeneralResult patentExeclOut(@RequestBody PatentVO patent, HttpServletRequest request, BindingResult bindingResult) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
 
         String url = "";
