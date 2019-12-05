@@ -1,5 +1,6 @@
 package com.sxp.patMag.util;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sxp.patMag.dao.UploadMapper;
 import com.sxp.patMag.entity.LogPo;
 import com.sxp.patMag.entity.User;
@@ -56,6 +57,17 @@ public class WeLogFile {
 
     public void setUser1(User user1) {
         this.user1 = user1;
+    }
+
+    @Value("${logExpireTime}")
+    private int logExpireTime;
+
+    public int getLogExpireTime() {
+        return logExpireTime;
+    }
+
+    public void setLogExpireTime(int logExpireTime) {
+        this.logExpireTime = logExpireTime;
     }
 
     /**
@@ -116,19 +128,14 @@ public class WeLogFile {
                 e.getExceptionEnum().getMessage();
             }
         }
-/*               redis            */
 
-        StringBuilder redisBilder = new StringBuilder();
+        /*               redis            */
         String sDate = simpleDateFormat.format(System.currentTimeMillis());
-        if (redisBilder != null) {
-            redisBilder.delete(0, redisBilder.length());
-        }
-
         LogPo logPo = new LogPo();
         logPo.setCreateTime(sDate);
         logPo.setUserName(username);
 
-        if (methodName.contains("select") || methodName.contains("get") || methodName.contains("list") || methodName.contains("List")|| methodName.contains("show")) {
+        if (methodName.contains("select") || methodName.contains("get") || methodName.contains("list") || methodName.contains("List") || methodName.contains("show")) {
             logPo.setItem("查询" + retString(methodName));
             logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
         }
@@ -164,7 +171,16 @@ public class WeLogFile {
             fileHandler.close();
             return proceed;
         }
-        redis.lSet("logs",logPo);
+
+        if (redis.lGetListSize("logs")<=1000){
+            redis.lpush("logs",logPo);
+        }else{
+            redis.rpop("logs");
+            redis.lpush("logs",logPo);
+        }
+
+
+        redis.expire("logs",logExpireTime);
         fileHandler.close();
         return proceed;
     }
@@ -193,9 +209,8 @@ public class WeLogFile {
         }
         file1 = null;
         file = null;
-        
-    }
 
+    }
     /**
      * 管理员读取日志
      *
@@ -204,9 +219,6 @@ public class WeLogFile {
     public static String readLog() {
         return path;
     }
-
-
-
     public static String retString(String str) {
         if (str.contains("History")) {
             return "历史记录";
