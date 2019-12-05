@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sxp.patMag.enums.StatusEnum;
 
 public class GeneralResult {
 
@@ -22,12 +23,24 @@ public class GeneralResult {
     // 状态码
     private Integer code;
 
+    private StatusEnum statusEnum;
+
     public static GeneralResult build(Integer status, String msg, Object data) {
         return new GeneralResult(status, msg, data);
     }
 
     public static GeneralResult build(Integer status, String msg, Object data,Integer code) {
         return new GeneralResult(status, msg, data,code);
+    }
+
+    public static GeneralResult build(StatusEnum statusEnum, String msg, Object data, Integer code) {
+        return new GeneralResult(statusEnum, msg, data,code);
+    }
+    public static GeneralResult build(StatusEnum statusEnum, String msg, Object data) {
+        return new GeneralResult(statusEnum, msg, data);
+    }
+    public static GeneralResult build(StatusEnum statusEnum, Object data) {
+        return new GeneralResult(statusEnum, data);
     }
 
     public static GeneralResult ok(Object data) {
@@ -55,6 +68,29 @@ public class GeneralResult {
     public GeneralResult(Integer status, String msg, Object data,Integer code) {
         this.status = status;
         this.msg = msg;
+        this.data = data;
+        this.code = code;
+    }
+    public GeneralResult (StatusEnum statusEnum, String msg, Object data, Integer code) {
+        this.status = statusEnum.getStatus();
+        this.msg = statusEnum.getMessage();
+        this.data = data;
+        this.code = code;
+    }
+    public GeneralResult (StatusEnum statusEnum, String msg, Object data) {
+        this.statusEnum = statusEnum;
+        this.msg = msg;
+        this.data = data;
+    }
+    public  GeneralResult (StatusEnum statusEnum, Object data) {
+        this.status = statusEnum.getStatus();
+        this.msg = statusEnum.getMessage();
+        this.data = data;
+        this.code = code;
+    }
+    public  GeneralResult (StatusEnum statusEnum, Object data,Integer code) {
+        this.status = statusEnum.getStatus();
+        this.msg = statusEnum.getMessage();
         this.data = data;
         this.code = code;
     }
