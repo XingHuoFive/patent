@@ -51,3 +51,4 @@ server:
   port: 8080
   tomcat:
     uri-encoding: utf-8
+    max-http-header-size: 8192

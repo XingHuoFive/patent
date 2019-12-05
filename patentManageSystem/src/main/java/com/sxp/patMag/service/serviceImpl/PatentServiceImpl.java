@@ -145,7 +145,8 @@ public class PatentServiceImpl implements PatentService {
             parent.mkdirs();
         }
         file.transferTo(dest);
-        int i = tbPatentMapper.updateView(patentId);
+        String zdId = fileTypeMap.get(fileType);
+        int i = tbPatentMapper.updateView(patentId,zdId);
         PatentMaintain patentMaintain = new PatentMaintain();
         if (i != 1) {
             patentMaintain.setFileView("1");
@@ -153,7 +154,14 @@ public class PatentServiceImpl implements PatentService {
         patentMaintain.setFileId(UUID.getUUID());
         patentMaintain.setPatentfileURL(url);
         patentMaintain.setPatentId(patentId);
-        patentMaintain.setZdId(fileTypeMap.get(fileType));
+        patentMaintain.setZdId(zdId);
         return tbPatentMapper.uploadFile(patentMaintain);
     }
+
+    @Override
+    public String getStatus(Patent patent) {
+        return tbPatentMapper.getStatus(patent);
+    }
+
+
 }

@@ -19,10 +19,15 @@ public class GeneralResult {
     // 响应中的数据
     private Object data;
 
-
+    // 状态码
+    private Integer code;
 
     public static GeneralResult build(Integer status, String msg, Object data) {
         return new GeneralResult(status, msg, data);
+    }
+
+    public static GeneralResult build(Integer status, String msg, Object data,Integer code) {
+        return new GeneralResult(status, msg, data,code);
     }
 
     public static GeneralResult ok(Object data) {
@@ -45,6 +50,13 @@ public class GeneralResult {
         this.status = status;
         this.msg = msg;
         this.data = data;
+    }
+
+    public GeneralResult(Integer status, String msg, Object data,Integer code) {
+        this.status = status;
+        this.msg = msg;
+        this.data = data;
+        this.code = code;
     }
 
     public GeneralResult(Object data) {

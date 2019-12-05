@@ -6,6 +6,7 @@ import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentFileMaintain;
 import com.sxp.patMag.entity.PatentMaintain;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -98,5 +99,12 @@ public interface PatentMapper {
      * 更新最新文件
      * @return 影响行数
      */
-    int updateView(String patentId);
+    int updateView(@Param("patentId") String patentId, @Param("zdId") String zdId);
+
+    /**
+     * 查询进度（进度条）
+     * @param patent
+     * @return
+     */
+    String getStatus(Patent patent);
 }
