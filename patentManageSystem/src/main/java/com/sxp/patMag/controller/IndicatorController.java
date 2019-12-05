@@ -2,6 +2,7 @@ package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.IndicatorExport;
+import com.sxp.patMag.enums.StatusEnum;
 import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.IndicatorService;
@@ -32,28 +33,19 @@ public class IndicatorController {
 
     @GetMapping("/get/{indicatorId}")
     public GeneralResult getById(@PathVariable String indicatorId) {
-        GeneralResult generalResult = new GeneralResult();
         try {
-            if (null == indicatorId || "".equals(indicatorId) || 32 == indicatorId.length()) {
-                generalResult.setStatus(1);
-                generalResult.setMsg("id有误，无法获取");
-                return generalResult;
+            if (null == indicatorId || "".equals(indicatorId) || 32 > indicatorId.length()) {
+               return GeneralResult.build(StatusEnum.ID_ERROR);
             }
             IndicatorExport indicator = indicatorService.getById(indicatorId);
             if (null == indicator) {
-                generalResult.setStatus(0);
-                generalResult.setMsg("无匹配数据，查询失败");
-                return generalResult;
+
+                return GeneralResult.build(StatusEnum.NOT_PATENT);
             }
-            generalResult.setStatus(0);
-            generalResult.setMsg("查询成功");
-            generalResult.setData(indicator);
         } catch (ServiceException e) {
-            generalResult.setStatus(1);
-            generalResult.setMsg(e.getMessage());
-            return generalResult;
+            return  GeneralResult.build(1,e.getMessage());
         }
-        return generalResult;
+        return GeneralResult.build(StatusEnum.SELECT_SUCCESS);
     }
 
     @PostMapping("/export")
@@ -67,6 +59,7 @@ public class IndicatorController {
                 generalResult.setStatus(1);
                 generalResult.setMsg("导出失败");
                 return generalResult;
+
             }
             String export = indicatorService.export(indicatorExport, resp, req);
             if ("".equals(export)) {
