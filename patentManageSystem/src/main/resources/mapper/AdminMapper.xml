@@ -11,7 +11,10 @@
     <update id="checkPatent">
         update tb_patent
         set patent_schedule = #{patentSchedule}, spare = #{spare},
-        patent_remarks = #{patentRemarks}, remark_view = '0'
+        patent_remarks = #{patentRemarks}
+        <if test="spare == 0">
+            , remark_view = '0'
+        </if>
         where patent_id = #{patentId}
     </update>
     <!--修改专利的通知查看-->

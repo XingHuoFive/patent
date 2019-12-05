@@ -1,6 +1,5 @@
 package com.sxp.patMag.interceptor;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -12,9 +11,6 @@ import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.enums.ProcessEnum;
-import com.sxp.patMag.exception.PatentException;
-import com.sxp.patMag.exception.ServiceException;
-import com.sxp.patMag.service.LoginService;
 import com.sxp.patMag.util.HistoryReflect;
 import com.sxp.patMag.util.Md5Util;
 import com.sxp.patMag.util.RedisUtil;
