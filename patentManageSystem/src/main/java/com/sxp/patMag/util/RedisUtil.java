@@ -188,7 +188,6 @@ public final class RedisUtil {
     public Object rpop(String key ) {
         return redisTemplate.opsForList().rightPop(key);
     }
-
     /**
      * LPUSH
      *

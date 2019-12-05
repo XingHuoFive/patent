@@ -72,6 +72,9 @@ public class PatentController {
                 generalResult.setMsg("id有误，无法更改");
                 return generalResult;
             }
+            if(patent.getPatentSchedule().equals("未通过")){
+                patent.setPatentSchedule("未审核");
+            }
             int i = tbPatentService.updatePatent(patent);
             if (i <= 0) {
                 generalResult.setStatus(1);

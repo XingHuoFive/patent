@@ -178,8 +178,6 @@ public class WeLogFile {
             redis.rpop("logs");
             redis.lpush("logs",logPo);
         }
-
-
         redis.expire("logs",logExpireTime);
         fileHandler.close();
         return proceed;
