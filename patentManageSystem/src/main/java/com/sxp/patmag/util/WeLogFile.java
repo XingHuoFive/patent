@@ -49,7 +49,6 @@ public class WeLogFile {
      */
     private String username;
 
-    private StringBuilder stringBuilder = new StringBuilder();
 
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:sss");
 
@@ -94,10 +93,8 @@ public class WeLogFile {
         fileHandler.setFormatter(new Formatter() {
             @Override
             public String format(LogRecord record) {
+                StringBuilder stringBuilder = new StringBuilder();
                 String sDate = simpleDateFormat.format(System.currentTimeMillis());
-                if (stringBuilder != null) {
-                    stringBuilder.delete(0, stringBuilder.length());
-                }
                 stringBuilder.append(sDate);
                 stringBuilder.append("--");
                 stringBuilder.append(record.getLevel());
