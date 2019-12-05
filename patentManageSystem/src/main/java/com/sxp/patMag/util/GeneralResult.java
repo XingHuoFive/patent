@@ -59,11 +59,16 @@ public class GeneralResult {
         return new GeneralResult(status, msg, null);
     }
 
+    public static GeneralResult build(StatusEnum statusEnum) {
+        return new GeneralResult(statusEnum, null);
+    }
+
     public GeneralResult(Integer status, String msg, Object data) {
         this.status = status;
         this.msg = msg;
         this.data = data;
     }
+
 
     public GeneralResult(Integer status, String msg, Object data,Integer code) {
         this.status = status;
@@ -86,7 +91,6 @@ public class GeneralResult {
         this.status = statusEnum.getStatus();
         this.msg = statusEnum.getMessage();
         this.data = data;
-        this.code = code;
     }
     public  GeneralResult (StatusEnum statusEnum, Object data,Integer code) {
         this.status = statusEnum.getStatus();

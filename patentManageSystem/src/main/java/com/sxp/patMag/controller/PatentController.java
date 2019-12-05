@@ -2,6 +2,7 @@ package com.sxp.patMag.controller;
 
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentFileMaintain;
+import com.sxp.patMag.enums.StatusEnum;
 import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.PatentService;
@@ -121,9 +122,9 @@ public class PatentController {
     public GeneralResult submitPatent(@RequestBody Patent patent){
         int flag = tbPatentService.submitPatent(patent);
         if(flag != 0){
-            return GeneralResult.build(0,"成功");
+            return GeneralResult.build(StatusEnum.Success);
         }else {
-            return GeneralResult.build(1,"提交失败");
+            return GeneralResult.build(StatusEnum.Submit_FAIL);
         }
 
     }
@@ -132,9 +133,9 @@ public class PatentController {
     public GeneralResult noSubmitPatent(@RequestBody Patent patent){
         int flag = tbPatentService.noSubmitPatent(patent);
         if(flag != 0){
-            return GeneralResult.build(0,"成功");
+            return GeneralResult.build(StatusEnum.Success);
         }else {
-            return GeneralResult.build(1,"提交失败");
+            return GeneralResult.build(StatusEnum.Submit_FAIL);
         }
     }
 
@@ -214,7 +215,7 @@ public class PatentController {
         if(status != null || !status.equals("")){
             return GeneralResult.build(0,"成功",status,200);
         }else {
-            return GeneralResult.build(1,"提交失败",2);
+            return GeneralResult.build(StatusEnum.Submit_FAIL,2);
         }
     }
 

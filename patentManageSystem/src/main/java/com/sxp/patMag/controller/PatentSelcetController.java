@@ -5,6 +5,7 @@ import com.sxp.patMag.dao.LoginMapper;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.PatentVO;
 import com.sxp.patMag.entity.User;
+import com.sxp.patMag.enums.StatusEnum;
 import com.sxp.patMag.service.PatentSelcetService;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.JsonUtils;
@@ -58,7 +59,7 @@ public class PatentSelcetController {
 
         // 校验对象
         if(patent==null){
-            return GeneralResult.build(1,"对象为空",null);
+            return GeneralResult.build(StatusEnum.Objeck_NULL,null);
         }
 
         // 获取数据
@@ -74,11 +75,12 @@ public class PatentSelcetController {
 
         // 封装数据
         if(list == null || list.isEmpty()){
-            return GeneralResult.build(1,"无匹配专利",null);
+            return GeneralResult.build(StatusEnum.Fail,null);
+            /*1,"无匹配专利"*/
         }else if(message==null || message.isEmpty()){
             return GeneralResult.build(1,message,null);
         } else{
-            return GeneralResult.build(0,"成功",list);
+            return GeneralResult.build(StatusEnum.Success,list);
         }
 
     }
@@ -97,9 +99,9 @@ public class PatentSelcetController {
         // 获取数据并封装对象
         List<Patent> list = patentSelcetService.selectPatentToUser();
         if(list==null){
-            return GeneralResult.build(1,"无匹配专利",null);
+            return GeneralResult.build(StatusEnum.Fail,null);
         }else{
-            return GeneralResult.build(0,"成功",list);
+            return GeneralResult.build(StatusEnum.Success,list);
         }
 
     }
@@ -128,7 +130,7 @@ public class PatentSelcetController {
 
         // 数据校验
         if(patent==null){
-            return GeneralResult.build(1,"对象为空",null);
+            return GeneralResult.build(StatusEnum.Objeck_NULL,null);
         }
         if(patent.getPatentId() == null){
             return GeneralResult.build(1,"没有接收到专利ID",null);
@@ -145,9 +147,9 @@ public class PatentSelcetController {
         }
         lock.unlock();
         if(list==0){
-            return GeneralResult.build(1,"无匹配专利",null);
+            return GeneralResult.build(StatusEnum.Fail,null);
         }else{
-            return GeneralResult.build(0,"成功",list);
+            return GeneralResult.build(StatusEnum.Success,list);
         }
     }
 
@@ -168,9 +170,9 @@ public class PatentSelcetController {
         // 获取数据并封装数据
         PatentVO list = patentSelcetService.selectPatentById(patentId);
         if(list == null){
-            return GeneralResult.build(1,"无匹配专利",null);
+            return GeneralResult.build(StatusEnum.Fail,null);
         }else{
-            return GeneralResult.build(0,"成功",list);
+            return GeneralResult.build(StatusEnum.Success,list);
         }
     }
     //System.out.println(patentId);
@@ -187,9 +189,9 @@ public class PatentSelcetController {
         // 获取数据并封装数据
         List<Patent> list = patentSelcetService.selectPatentToAdmin();
         if(list == null){
-            return GeneralResult.build(1,"无匹配专利",null);
+            return GeneralResult.build(StatusEnum.Fail,null);
         }else{
-            return GeneralResult.build(0,"成功",list);
+            return GeneralResult.build(StatusEnum.Success,list);
         }
     }
 
@@ -219,9 +221,9 @@ public class PatentSelcetController {
 
         // 封装数据
         if(url == ""){
-            return GeneralResult.build(1,"无匹配专利",null);
+            return GeneralResult.build(StatusEnum.Fail,null);
         }else{
-            return GeneralResult.build(0,"成功",url);
+            return GeneralResult.build(StatusEnum.Success,url);
         }
 
 
@@ -238,16 +240,16 @@ public class PatentSelcetController {
 
         //校验数据
         if(user == null){
-            return GeneralResult.build(1,"对象为空",null);
+            return GeneralResult.build(StatusEnum.Objeck_NULL,null);
         }
 
         // System.out.println(list.toString());
         // 获取数据并封装数据
         List<PatentVO> list = patentSelcetService.selectPatentMessage(user);
         if(list == null){
-            return GeneralResult.build(1,"无匹配专利",null);
+            return GeneralResult.build(StatusEnum.Fail,null);
         }else{
-            return GeneralResult.build(0,"成功",list);
+            return GeneralResult.build(StatusEnum.Success,list);
         }
     }
         /*public void downloadPlan(HttpServletResponse response, HttpServletRequest request) throws IOException{
