@@ -1,7 +1,9 @@
 package com.sxp.patMag.util;
 
 import com.sxp.patMag.dao.UploadMapper;
+import com.sxp.patMag.entity.LogPo;
 import com.sxp.patMag.entity.User;
+import com.sxp.patMag.enums.ProcessEnum;
 import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.LoginService;
@@ -30,6 +32,8 @@ import java.util.logging.Formatter;
 @Component
 @EnableAspectJAutoProxy
 public class WeLogFile {
+    @Autowired
+    private RedisUtil redis;
 
     @Autowired
     private LoginService loginService;
@@ -83,9 +87,9 @@ public class WeLogFile {
                     stringBuilder.delete(0, stringBuilder.length());
                 }
                 stringBuilder.append(sDate);
-                stringBuilder.append("|");
+                stringBuilder.append("--");
                 stringBuilder.append(record.getLevel());
-                stringBuilder.append("|");
+                stringBuilder.append("--");
                 stringBuilder.append(record.getMessage());
                 stringBuilder.append("\n");
                 return stringBuilder.toString();
@@ -102,9 +106,9 @@ public class WeLogFile {
             username = user1.getUserName();
         }
         if (username != null && proceed != null) {
-            log.info(username + "|" + methodName + "|paramter:" + args.toString() + "returning:" + proceed.toString());
+            log.info(username + "--" + methodName + "--paramter:" + args.toString() + "returning:" + proceed.toString());
         } else if (proceed == null) {
-            log.info(username + "|" + methodName + "|paramter:" + args.toString());
+            log.info(username + "--" + methodName + "--paramter:" + args.toString());
         } else {
             try {
                 throw new ServiceException(PatentException.LOGIN_ERR);
@@ -112,6 +116,55 @@ public class WeLogFile {
                 e.getExceptionEnum().getMessage();
             }
         }
+/*               redis            */
+
+        StringBuilder redisBilder = new StringBuilder();
+        String sDate = simpleDateFormat.format(System.currentTimeMillis());
+        if (redisBilder != null) {
+            redisBilder.delete(0, redisBilder.length());
+        }
+
+        LogPo logPo = new LogPo();
+        logPo.setCreateTime(sDate);
+        logPo.setUserName(username);
+
+        if (methodName.contains("select") || methodName.contains("get") || methodName.contains("list") || methodName.contains("List")|| methodName.contains("show")) {
+            logPo.setItem("查询" + retString(methodName));
+            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        }
+        if (methodName.contains("update")) {
+            logPo.setItem("修改" + retString(methodName));
+            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        }
+        if (methodName.contains("login")) {
+            logPo.setItem("用户登录");
+            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        }
+        if (methodName.contains("add") || methodName.contains("insert") || methodName.contains("list")) {
+            logPo.setItem("新增" + retString(methodName));
+            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        }
+        if (methodName.contains("check")) {
+            logPo.setItem("审核" + retString(methodName));
+            logPo.setOperation(methodName.replace(methodName.substring(3, methodName.length() - 1), "****"));
+        }
+        if (methodName.contains("export")) {
+            logPo.setItem("导出");
+            logPo.setOperation("****");
+        }
+        if (methodName.contains("submit")) {
+            logPo.setItem("提交");
+            logPo.setOperation("****");
+        }
+        if (methodName.contains("upload")) {
+            logPo.setItem("上传文件");
+            logPo.setOperation("****");
+        }
+        if (methodName.contains("read")) {
+            fileHandler.close();
+            return proceed;
+        }
+        redis.lSet("logs",logPo);
         fileHandler.close();
         return proceed;
     }
@@ -128,7 +181,7 @@ public class WeLogFile {
         if (!parent.exists()) {
             parent.mkdirs();
         }
-        if (file1.length() > 500000000) {
+        if (file1.length() > 5048576) {
             file1.delete();
         }
         if (!file1.exists()) {
@@ -150,6 +203,31 @@ public class WeLogFile {
      */
     public static String readLog() {
         return path;
+    }
+
+
+
+    public static String retString(String str) {
+        if (str.contains("History")) {
+            return "历史记录";
+        }
+        if (str.contains("Indicator")) {
+            return "指标";
+        }
+        if (str.contains("RemarkView")) {
+            return "专利的备注状态";
+        }
+        if (str.contains("Notice")) {
+            return "通知";
+        }
+        if (str.contains("Patent")) {
+            return "专利";
+        }
+        if (str.contains("Jbook")) {
+            return "交底书";
+        }
+
+        return "";
     }
 
 }

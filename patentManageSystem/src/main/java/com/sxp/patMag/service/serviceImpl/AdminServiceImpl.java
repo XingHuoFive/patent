@@ -9,7 +9,9 @@ import com.sxp.patMag.entity.User;
 import com.sxp.patMag.service.AdminService;
 import com.sxp.patMag.service.PatentService;
 import com.sxp.patMag.util.GeneralResult;
+import com.sxp.patMag.util.RedisUtil;
 import com.sxp.patMag.util.WeLogFile;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,8 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
     @Autowired
     private PatentService tbPatentService;
-
+    @Autowired
+    private RedisUtil redis;
     /**
      * 审核新建的专利
      *
@@ -143,13 +146,23 @@ public class AdminServiceImpl implements AdminService {
 //        }
 //        return GeneralResult.build(0, "success", list);
 //    }
-
+   @Override
+    public GeneralResult readLogFile(String role, HttpServletResponse response) {
+        if ("0".equals(role)) {
+            return GeneralResult.build(1, "fail", "您不是管理员，无法查看日志!");
+        }
+        if ("1".equals(role)) {
+           List  logList =  redis.lGet("logs",0,90);
+            return GeneralResult.build(0, "success", logList);
+        }
+            return GeneralResult.build(1, "failed", "您啥也不是");
+    }
     /**
      * 管理员读取日志
      *
      * @return 日志列表
      */
-    @Override
+/*
     public GeneralResult readLogFile(String role, HttpServletResponse response) {
         String dir = WeLogFile.readLog();
         if (dir == null || dir.length() == 0) {
@@ -172,7 +185,8 @@ public class AdminServiceImpl implements AdminService {
 
                 return toArrayByInputStreamReader1(dir);
 
-               /* try {
+               */
+/* try {
                     fis = new FileInputStream(file);
                     bis = new BufferedInputStream(fis);
                     OutputStream os = response.getOutputStream();
@@ -199,13 +213,14 @@ public class AdminServiceImpl implements AdminService {
                             e.printStackTrace();
                         }
                     }
-                }*/
+                }*//*
+
             }
             return GeneralResult.build(0, "fail", "下载失败");
         }
         return GeneralResult.build(0, "success", "role没收到!");
     }
-
+*/
 
     public static GeneralResult toArrayByInputStreamReader1(String name) {
         // 使用ArrayList来存储每行读取到的字符串
@@ -218,10 +233,12 @@ public class AdminServiceImpl implements AdminService {
             // 按行读取字符串
             String str;
             int i = 0;
-            while ((str = bf.readLine()) != null && i <= 100) {
-                arrayList.add(str);
-                i++;
+            while ((str = bf.readLine()) != null) {
+                if (StringUtils.isNotBlank(str)){
+               arrayList.add(str);
+                }
             }
+            System.out.println(arrayList.size());
             bf.close();
             inputReader.close();
         } catch (IOException e) {
@@ -246,26 +263,13 @@ public class AdminServiceImpl implements AdminService {
                 return sd1.before(sd2) ? 1 : -1;
             }
         };
-
         for (int i = 0; i < length; i++) {
-
-
             String s = arrayList.get(i);
-
             String[] one = s.split("--");
-/*
-            System.out.println("-------------------------------------");
-        for (int k =0 ;k<one.length;k++){
-            System.out.println(one[k]);
-        }
-            System.out.println("-------------------------------------");
-*/
-
             LogPo logPo = new LogPo();
             logPo.setCreateTime(one[0]);
             logPo.setUserName(one[2]);
-
-            if (one[3].contains("select") || one[3].contains("get") || one[3].contains("list") || one[3].contains("List")) {
+            if (one[3].contains("select") || one[3].contains("get") || one[3].contains("list") || one[3].contains("List")|| one[3].contains("show")) {
                 logPo.setItem("查询" + retString(one[3]));
                 logPo.setOperation(one[3].replace(one[3].substring(3, one[3].length() - 1), "****"));
             }
@@ -287,23 +291,21 @@ public class AdminServiceImpl implements AdminService {
             }
             if (one[3].contains("export")) {
                 logPo.setItem("导出");
+                logPo.setOperation("****");
             }
             if (one[3].contains("submit")) {
                 logPo.setItem("提交");
+                logPo.setOperation("****");
             }
             if (one[3].contains("upload")) {
                 logPo.setItem("上传文件");
+                logPo.setOperation("****");
             }
             if (one[3].contains("read")) {
                 continue;
             }
-
-
             logList.add(logPo);
-
-            // array[i] = s;
         }
-       // System.out.println(logList.size());
         // 返回数组
         Collections.sort(logList, comparator);
         List<LogPo> list = null;
@@ -312,8 +314,6 @@ public class AdminServiceImpl implements AdminService {
         } else {
             list = logList.subList(0, 90);
         }
-
-
         return GeneralResult.build(0, "success", list);
     }
 
@@ -324,12 +324,19 @@ public class AdminServiceImpl implements AdminService {
         if (str.contains("Indicator")) {
             return "指标";
         }
-        if (str.contains("Jbook")) {
-            return "交底书";
+        if (str.contains("RemarkView")) {
+            return "专利的备注状态";
+        }
+        if (str.contains("Notice")) {
+            return "通知";
         }
         if (str.contains("Patent")) {
             return "专利";
         }
+        if (str.contains("Jbook")) {
+            return "交底书";
+        }
+
         return "";
     }
 
