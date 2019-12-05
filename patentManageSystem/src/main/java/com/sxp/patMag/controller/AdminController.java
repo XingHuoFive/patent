@@ -47,7 +47,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/updatePatentRemarkView", method = RequestMethod.POST)
     @ResponseBody
-    public GeneralResult updatePatentRemarkView(@Valid @RequestBody Patent patent) {
+    public GeneralResult updatePatentRemarkView(  @RequestBody Patent patent) {
         return adminService.updatePatentRemarkView(patent);
     }
 
