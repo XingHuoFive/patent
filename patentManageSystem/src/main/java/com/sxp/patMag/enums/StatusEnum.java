@@ -9,6 +9,9 @@ public enum StatusEnum {
 
     Success(0,"成功"),
     Fail(1,"无匹配专利"),
+    FAIL(1, "失败"),
+    CHECKYES(0, "审核通过"),
+    CHECKNO(1, "审核不通过"),
     Objeck_NULL(1,"对象为空"),
     Submit_FAIL(1,"提交失败"),
     Lang_NULL(1,"行数为空，无法查询"),

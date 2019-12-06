@@ -7,7 +7,7 @@ package com.sxp.patMag.enums;
  */
 public  enum RedisEnum {
 
-    LOGKEY("查询") ;
+    LOGKEY("logs") ;
     // 成员变量
     /**
      * name

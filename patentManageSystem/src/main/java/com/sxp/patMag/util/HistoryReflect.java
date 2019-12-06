@@ -6,6 +6,7 @@ import com.sxp.patMag.entity.History;
 import com.sxp.patMag.entity.Jbook;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
+import com.sxp.patMag.enums.ActionEnum;
 import com.sxp.patMag.enums.ProcessEnum;
 import com.sxp.patMag.service.HistoryService;
 import lombok.extern.slf4j.Slf4j;
@@ -114,11 +115,12 @@ public class HistoryReflect {
                    params = String.valueOf(logArgs.get(0));
                    HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
                    String patentId = request.getParameter("patentId");
+                   String fileType = request.getParameter("fileType");
                    history.setHtPatentId(patentId);
                    history.setHtNewItem(params);
                    history.setHtOldItem("");
                    history.setHtProcess(value);
-                   history.setHtOperation(ProcessEnum.UPLOADFILES.getName());
+                   history.setHtOperation(ActionEnum.UP.getName()+fileType);
 
                }
                if (ProcessEnum.UPLOADJBOOK.getName().equals(value)) {

@@ -14,6 +14,7 @@ public  enum ActionEnum {
     CHECK("审核"),
     SUBMIT("提交"),
     UPLOAD("上传文件"),
+    UP("上传"),
     EXPORT("导出"),
 
     SELECT1("select"),

@@ -163,7 +163,6 @@ public class WeLogFile {
             fileHandler.close();
             return proceed;
         }
-
         if (redis.lGetListSize(RedisEnum.LOGKEY.getName())<=1000){
             redis.lpush(RedisEnum.LOGKEY.getName(),logPo);
         }else{

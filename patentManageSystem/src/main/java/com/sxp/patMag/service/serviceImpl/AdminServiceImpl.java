@@ -2,8 +2,6 @@ package com.sxp.patMag.service.serviceImpl;
 
 import com.sxp.patMag.annotation.Monitor;
 import com.sxp.patMag.dao.AdminMapper;
-import com.sxp.patMag.entity.Jbook;
-import com.sxp.patMag.entity.LogPo;
 import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.entity.User;
 import com.sxp.patMag.enums.NumberEnum;
@@ -13,16 +11,11 @@ import com.sxp.patMag.service.AdminService;
 import com.sxp.patMag.service.PatentService;
 import com.sxp.patMag.util.GeneralResult;
 import com.sxp.patMag.util.RedisUtil;
-import com.sxp.patMag.util.WeLogFile;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**

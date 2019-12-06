@@ -5,7 +5,6 @@ import com.sxp.patMag.entity.Patent;
 import com.sxp.patMag.enums.StatusEnum;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.PageService;
-import com.sxp.patMag.service.PatentService;
 import com.sxp.patMag.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

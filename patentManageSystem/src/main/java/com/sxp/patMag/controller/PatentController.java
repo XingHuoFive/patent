@@ -7,6 +7,7 @@ import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.PatentService;
 import com.sxp.patMag.util.GeneralResult;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -212,7 +213,7 @@ public class PatentController {
     @PostMapping("/getStatus")
     public GeneralResult getStatus(@RequestBody  Patent patent){
         String status = tbPatentService.getStatus(patent);
-        if(status != null || !status.equals("")){
+        if(StringUtils.isNotBlank(status)){
             return GeneralResult.build(0,"成功",status,200);
         }else {
             return GeneralResult.build(StatusEnum.Submit_FAIL,2);
