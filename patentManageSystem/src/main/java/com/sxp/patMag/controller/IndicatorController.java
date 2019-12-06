@@ -1,18 +1,15 @@
 package com.sxp.patMag.controller;
 
-import com.sxp.patMag.entity.Indicator;
 import com.sxp.patMag.entity.IndicatorExport;
 import com.sxp.patMag.enums.StatusEnum;
 import com.sxp.patMag.exception.PatentException;
 import com.sxp.patMag.exception.ServiceException;
 import com.sxp.patMag.service.IndicatorService;
 import com.sxp.patMag.util.GeneralResult;
-import com.sxp.patMag.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
